@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read our latest articles about free AI text tools, SEO tips, content writing guides, and text formatting tutorials. Expert advice to improve your writing workflow.">
+  <meta name="keywords" content="AI text tools, SEO tips, content writing, text formatting, blog posts">
+  <meta name="author" content="Free AI Text Tools">
+  <meta name="robots" content="index, follow">
+  <title>Blog - Free AI Text Tools | SEO Tips, Guides &amp; Tutorials</title>
+  <link rel="canonical" href="https://freeaitexttools.com/blog/">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="logo">
+        <span class="logo-icon">✦</span>
+        Free AI Text Tools
+      </a>
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <a href="/tools/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+        <a href="/about/">About</a>
+        <a href="/advertise/">Advertise</a>
+      </nav>
+      <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+      <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
+
+  <section class="hero hero-blog">
+    <div class="container">
+      <h1>Blog &amp; Guides</h1>
+      <p>Expert tips, tutorials, and guides to help you get the most out of free AI text tools.</p>
+    </div>
+  </section>
+
+  <!-- Ad Placeholder - Top Banner -->
+  <div class="ad-placeholder ad-top-banner">
+    <div class="container">
+      <p>Advertisement</p>
+    </div>
+  </div>
+
+  <main class="container blog-layout">
+    <div class="blog-content">
+      <div class="category-filter" id="categoryFilter" style="display:none;">
+        <span>Filtered by:</span>
+        <span class="filter-tag"></span>
+        <button class="clear-filter">✕ Clear</button>
+      </div>
+      <div class="blog-grid" id="blogGrid">
+        <!-- Blog posts rendered by JavaScript -->
+      </div>
+    </div>
+
+    <aside class="blog-sidebar">
+      <div class="sidebar-widget">
+        <h3>Categories</h3>
+        <ul class="categories-list" id="categoriesWidget">
+          <!-- Categories rendered by JavaScript -->
+        </ul>
+      </div>
+
+      <div class="sidebar-widget">
+        <h3>Popular Posts</h3>
+        <ul class="popular-posts" id="popularPostsWidget">
+          <!-- Popular posts rendered by JavaScript -->
+        </ul>
+      </div>
+
+      <!-- Ad Placeholder - Sidebar -->
+      <div class="ad-placeholder ad-sidebar">
+        <p>Advertisement</p>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Ad Placeholder - Mid Content -->
+  <div class="ad-placeholder ad-mid-content">
+    <div class="container">
+      <p>Advertisement</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About</h4>
+          <p>Free AI Text Tools provides a collection of powerful, free online tools for text formatting, SEO analysis, and content optimization.</p>
+          <p>All tools run in your browser - no data is sent to any server.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Text Tools</h4>
+          <ul>
+            <li><a href="/tools/word-counter/">Word Counter</a></li>
+            <li><a href="/tools/character-counter/">Character Counter</a></li>
+            <li><a href="/tools/case-converter/">Case Converter</a></li>
+            <li><a href="/tools/text-diff/">Text Diff</a></li>
+            <li><a href="/tools/lorem-ipsum-generator/">Lorem Ipsum Generator</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>SEO Tools</h4>
+          <ul>
+            <li><a href="/tools/meta-tag-generator/">Meta Tag Generator</a></li>
+            <li><a href="/tools/keyword-density-checker/">Keyword Density Checker</a></li>
+            <li><a href="/tools/readability-checker/">Readability Checker</a></li>
+            <li><a href="/tools/og-meta-checker/">OG Meta Checker</a></li>
+            <li><a href="/tools/robots-txt-generator/">Robots.txt Generator</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about/">About Us</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/advertise/">Advertise</a></li>
+            <li><a href="/privacy-policy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Free AI Text Tools. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cookie-consent" id="cookieConsent">
+    <div class="container">
+      <p>We use cookies to improve your experience and for analytics. By continuing to use this site, you agree to our use of cookies.</p>
+      <div class="cookie-buttons">
+        <button class="btn btn-primary" id="acceptCookies">Accept All</button>
+        <button class="btn btn-secondary" id="declineCookies">Decline</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const blogGrid = document.getElementById('blogGrid');
+      const categoryFilter = document.getElementById('categoryFilter');
+      const filterTag = categoryFilter.querySelector('.filter-tag');
+      const clearFilter = categoryFilter.querySelector('.clear-filter');
+      const categoriesWidget = document.getElementById('categoriesWidget');
+      const popularPostsWidget = document.getElementById('popularPostsWidget');
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const selectedCategory = urlParams.get('category');
+
+      function getCategorySlug(category) {
+        return category.toLowerCase().replace(/\s+/g, '-');
+      }
+
+      function getCategoryCount(category) {
+        return App.blogPosts.filter(post => post.category === category).length;
+      }
+
+      function renderCategories() {
+        const categories = [...new Set(App.blogPosts.map(post => post.category))];
+        categoriesWidget.innerHTML = categories.map(category => `
+          <li>
+            <a href="?category=${encodeURIComponent(category)}" class="${selectedCategory === category ? 'active' : ''}">
+              ${category}
+              <span class="category-count">${getCategoryCount(category)}</span>
+            </a>
+          </li>
+        `).join('');
+      }
+
+      function renderPopularPosts() {
+        const sorted = [...App.blogPosts].sort((a, b) => {
+          const aNum = parseInt(a.readTime) || 0;
+          const bNum = parseInt(b.readTime) || 0;
+          return bNum - aNum;
+        }).slice(0, 5);
+
+        popularPostsWidget.innerHTML = sorted.map(post => `
+          <li>
+            <a href="/blog/${post.slug}/">
+              <span class="popular-post-title">${post.title}</span>
+              <span class="popular-post-meta">${post.readTime} read</span>
+            </a>
+          </li>
+        `).join('');
+      }
+
+      function renderBlogPosts(posts) {
+        if (posts.length === 0) {
+          blogGrid.innerHTML = '<p class="no-posts">No posts found for this category.</p>';
+          return;
+        }
+
+        blogGrid.innerHTML = posts.map(post => `
+          <article class="blog-card">
+            <a href="/blog/${post.slug}/">
+              <div class="blog-card-header">
+                <span class="blog-card-category">${post.category}</span>
+                <span class="blog-card-read-time">${post.readTime} read</span>
+              </div>
+              <h2 class="blog-card-title">${post.title}</h2>
+              <p class="blog-card-excerpt">${post.excerpt}</p>
+              <div class="blog-card-footer">
+                <time datetime="${post.date}">${new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+                <span class="blog-card-read-more">Read more →</span>
+              </div>
+            </a>
+          </article>
+        `).join('');
+      }
+
+      function filterByCategory(category) {
+        if (!category) {
+          renderBlogPosts(App.blogPosts);
+          categoryFilter.style.display = 'none';
+          document.title = 'Blog - Free AI Text Tools | SEO Tips, Guides & Tutorials';
+          return;
+        }
+
+        const filtered = App.blogPosts.filter(post => post.category === category);
+        renderBlogPosts(filtered);
+        filterTag.textContent = category;
+        categoryFilter.style.display = 'flex';
+        document.title = `${category} - Blog | Free AI Text Tools`;
+      }
+
+      clearFilter.addEventListener('click', function() {
+        window.history.pushState({}, '', '/blog/');
+        filterByCategory(null);
+      });
+
+      renderCategories();
+      renderPopularPosts();
+      filterByCategory(selectedCategory);
+
+      if (typeof App !== 'undefined' && App.initThemeToggle) {
+        App.initThemeToggle();
+      }
+      if (typeof App !== 'undefined' && App.initCookieConsent) {
+        App.initCookieConsent();
+      }
+      if (typeof App !== 'undefined' && App.initMobileMenu) {
+        App.initMobileMenu();
+      }
+    });
+  </script>
+</body>
+</html>

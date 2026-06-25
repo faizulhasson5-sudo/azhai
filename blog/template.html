@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Blog Post - Free AI Text Tools</title>
+    <meta id="meta-description" name="description" content="">
+    <meta id="meta-keywords" name="keywords" content="">
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="application/ld+json" id="article-schema"></script>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a href="/" class="logo">Free AI Text Tools</a>
+        <nav class="main-nav" id="main-nav">
+            <a href="/">Home</a>
+            <a href="/tools.html">Tools</a>
+            <a href="/blog.html" class="active">Blog</a>
+            <a href="/about.html">About</a>
+            <a href="/advertise.html">Advertise</a>
+        </nav>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">Dark</button>
+    </div>
+</header>
+
+<div class="top-banner-ad" id="top-banner-ad">
+    <!-- Ad Slot -->
+</div>
+
+<main class="blog-post-page">
+    <div class="container">
+        <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a> &gt;
+            <a href="/blog.html">Blog</a> &gt;
+            <span id="breadcrumb-category"></span> &gt;
+            <span id="breadcrumb-title"></span>
+        </nav>
+
+        <div class="blog-post-layout">
+            <article class="blog-post-content">
+                <div class="article-meta" id="article-meta">
+                    <span class="article-category" id="article-category"></span>
+                    <time class="article-date" id="article-date"></time>
+                    <span class="article-read-time" id="article-read-time"></span>
+                    <span class="article-author" id="article-author"></span>
+                </div>
+
+                <h1 class="article-title" id="article-title"></h1>
+                <p class="article-excerpt" id="article-excerpt"></p>
+
+                <div class="article-tags" id="article-tags"></div>
+
+                <div class="article-body" id="article-body"></div>
+
+                <div class="in-content-ad" id="in-content-ad">
+                    <!-- Ad Slot -->
+                </div>
+
+                <div class="social-share">
+                    <span>Share:</span>
+                    <a href="#" class="share-twitter" id="share-twitter" target="_blank" rel="noopener">Twitter</a>
+                    <a href="#" class="share-facebook" id="share-facebook" target="_blank" rel="noopener">Facebook</a>
+                    <a href="#" class="share-linkedin" id="share-linkedin" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="#" class="share-reddit" id="share-reddit" target="_blank" rel="noopener">Reddit</a>
+                </div>
+
+                <section class="faq-section" id="faq-section" style="display:none;">
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="faq-list" id="faq-list"></div>
+                </section>
+
+                <section class="related-posts" id="related-posts-section">
+                    <h2>Related Posts</h2>
+                    <div class="related-posts-grid" id="related-posts-grid"></div>
+                </section>
+            </article>
+
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-widget">
+                    <h3>Categories</h3>
+                    <ul class="sidebar-categories" id="sidebar-categories"></ul>
+                </div>
+                <div class="sidebar-widget">
+                    <h3>Popular Posts</h3>
+                    <ul class="sidebar-popular-posts" id="sidebar-popular-posts"></ul>
+                </div>
+                <div class="sidebar-ad" id="sidebar-ad">
+                    <!-- Ad Slot -->
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-columns">
+            <div class="footer-col">
+                <h4>Free AI Text Tools</h4>
+                <p>Empowering writers and marketers with free, instant AI-powered text analysis and generation tools.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <a href="/tools.html">All Tools</a>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <a href="/blog.html">Blog</a>
+                <a href="/about.html">About</a>
+                <a href="/advertise.html">Advertise</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Free AI Text Tools. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<div class="cookie-consent" id="cookie-consent" style="display:none;">
+    <p>We use cookies to improve your experience. By continuing, you agree to our <a href="/privacy.html">Privacy Policy</a>.</p>
+    <button class="cookie-accept" id="cookie-accept">Accept</button>
+    <button class="cookie-decline" id="cookie-decline">Decline</button>
+</div>
+
+<div class="toast" id="toast" style="display:none;"></div>
+
+<script src="/js/components.js"></script>
+<script src="/js/app.js"></script>
+<script>
+(function() {
+    var match = window.location.pathname.match(/\/blog\/([a-z0-9-]+)\.html$/);
+    if (!match) { window.location.href = '/blog.html'; return; }
+    var slug = match[1];
+    var post = App.blogPosts[slug];
+    if (!post) { window.location.href = '/blog.html'; return; }
+
+    document.getElementById('page-title').textContent = post.title + ' - Free AI Text Tools';
+    document.getElementById('meta-description').setAttribute('content', post.excerpt);
+    document.getElementById('meta-keywords').setAttribute('content', (post.tags || []).join(', '));
+
+    document.getElementById('og-title') && (document.getElementById('og-title').setAttribute('content', post.title));
+    document.getElementById('og-desc') && (document.getElementById('og-desc').setAttribute('content', post.excerpt));
+    document.getElementById('og-url') && (document.getElementById('og-url').setAttribute('content', window.location.href));
+
+    var schema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": post.title,
+        "description": post.excerpt,
+        "datePublished": post.date,
+        "author": { "@type": "Person", "name": post.author || "Editorial Team" },
+        "publisher": { "@type": "Organization", "name": "Free AI Text Tools" },
+        "mainEntityOfPage": window.location.href
+    };
+    document.getElementById('article-schema').textContent = JSON.stringify(schema);
+
+    var metaDesc = document.createElement('meta');
+    metaDesc.name = 'description';
+    metaDesc.content = post.excerpt;
+    document.head.appendChild(metaDesc);
+
+    var ogTitle = document.createElement('meta');
+    ogTitle.setAttribute('property', 'og:title');
+    ogTitle.content = post.title;
+    document.head.appendChild(ogTitle);
+
+    var ogDesc = document.createElement('meta');
+    ogDesc.setAttribute('property', 'og:description');
+    ogDesc.content = post.excerpt;
+    document.head.appendChild(ogDesc);
+
+    var ogType = document.createElement('meta');
+    ogType.setAttribute('property', 'og:type');
+    ogType.content = 'article';
+    document.head.appendChild(ogType);
+
+    var ogUrl = document.createElement('meta');
+    ogUrl.setAttribute('property', 'og:url');
+    ogUrl.content = window.location.href;
+    document.head.appendChild(ogUrl);
+
+    var twCard = document.createElement('meta');
+    twCard.name = 'twitter:card';
+    twCard.content = 'summary_large_image';
+    document.head.appendChild(twCard);
+
+    var twTitle = document.createElement('meta');
+    twTitle.name = 'twitter:title';
+    twTitle.content = post.title;
+    document.head.appendChild(twTitle);
+
+    var twDesc = document.createElement('meta');
+    twDesc.name = 'twitter:description';
+    twDesc.content = post.excerpt;
+    document.head.appendChild(twDesc);
+
+    document.getElementById('breadcrumb-category').textContent = post.category;
+    document.getElementById('breadcrumb-title').textContent = post.title;
+    document.getElementById('article-category').textContent = post.category;
+    document.getElementById('article-date').textContent = post.date;
+    document.getElementById('article-read-time').textContent = post.readTime + ' min read';
+    document.getElementById('article-author').textContent = 'By ' + (post.author || 'Editorial Team');
+    document.getElementById('article-title').textContent = post.title;
+    document.getElementById('article-excerpt').textContent = post.excerpt;
+    document.getElementById('article-body').innerHTML = post.content;
+
+    var tagsEl = document.getElementById('article-tags');
+    if (post.tags && post.tags.length) {
+        post.tags.forEach(function(tag) {
+            var span = document.createElement('span');
+            span.className = 'tag';
+            span.textContent = tag;
+            tagsEl.appendChild(span);
+        });
+    }
+
+    var pageUrl = encodeURIComponent(window.location.href);
+    var pageTitle = encodeURIComponent(post.title);
+    document.getElementById('share-twitter').href = 'https://twitter.com/intent/tweet?url=' + pageUrl + '&text=' + pageTitle;
+    document.getElementById('share-facebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + pageUrl;
+    document.getElementById('share-linkedin').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + pageUrl;
+    document.getElementById('share-reddit').href = 'https://reddit.com/submit?url=' + pageUrl + '&title=' + pageTitle;
+
+    if (post.faq && post.faq.length) {
+        document.getElementById('faq-section').style.display = 'block';
+        var faqList = document.getElementById('faq-list');
+        post.faq.forEach(function(item) {
+            var div = document.createElement('div');
+            div.className = 'faq-item';
+            div.innerHTML = '<button class="faq-question">' + item.q + '</button><div class="faq-answer"><p>' + item.a + '</p></div>';
+            faqList.appendChild(div);
+        });
+    }
+
+    var allPosts = Object.values(App.blogPosts).filter(function(p) { return p.slug !== slug; });
+    var related = allPosts.sort(function() { return 0.5 - Math.random(); }).slice(0, 3);
+    var relatedGrid = document.getElementById('related-posts-grid');
+    related.forEach(function(rp) {
+        var card = document.createElement('a');
+        card.className = 'related-post-card';
+        card.href = '/blog/' + rp.slug + '.html';
+        card.innerHTML = '<span class="related-category">' + rp.category + '</span><h3>' + rp.title + '</h3><p>' + rp.excerpt + '</p><span class="related-date">' + rp.date + '</span>';
+        relatedGrid.appendChild(card);
+    });
+
+    var cats = {};
+    var popular = [];
+    Object.values(App.blogPosts).forEach(function(p) {
+        cats[p.category] = (cats[p.category] || 0) + 1;
+        popular.push(p);
+    });
+    popular.sort(function(a, b) { return (b.views || 0) - (a.views || 0); });
+
+    var catList = document.getElementById('sidebar-categories');
+    Object.keys(cats).forEach(function(cat) {
+        var li = document.createElement('li');
+        li.innerHTML = '<a href="/blog.html?category=' + encodeURIComponent(cat) + '">' + cat + ' (' + cats[cat] + ')</a>';
+        catList.appendChild(li);
+    });
+
+    var popList = document.getElementById('sidebar-popular-posts');
+    popular.slice(0, 5).forEach(function(p) {
+        var li = document.createElement('li');
+        li.innerHTML = '<a href="/blog/' + p.slug + '.html">' + p.title + '</a>';
+        popList.appendChild(li);
+    });
+
+    if (typeof Comp !== 'undefined' && Comp.initThemeToggle) Comp.initThemeToggle();
+    if (typeof Comp !== 'undefined' && Comp.initCookieConsent) Comp.initCookieConsent();
+    if (typeof Comp !== 'undefined' && Comp.initMobileMenu) Comp.initMobileMenu();
+
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            this.parentElement.classList.toggle('active');
+        });
+    });
+})();
+</script>
+</body>
+</html>

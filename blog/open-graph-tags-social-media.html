@@ -161,7 +161,7 @@
     var match = window.location.pathname.match(/\/blog\/([a-z0-9-]+)\.html$/);
     if (!match) { window.location.href = '/blog/'; return; }
     var slug = match[1];
-    var post = App.blogPosts[slug];
+    var post = App.blogPosts.find(function(p) { return p.slug === slug; });
     if (!post) { window.location.href = '/blog/'; return; }
 
     var icons = {'SEO Tools':'🔍','SEO Tips':'📈','Development':'💻','Blogging':'✍','Social Media':'📱','Content Marketing':'📊'};

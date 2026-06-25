@@ -6,151 +6,174 @@
     <title id="page-title">Blog Post - Free AI Text Tools</title>
     <meta id="meta-description" name="description" content="">
     <meta id="meta-keywords" name="keywords" content="">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="article">
+    <meta property="og:title" id="og-title" content="">
+    <meta property="og:description" id="og-desc" content="">
+    <meta property="og:url" id="og-url" content="">
+    <meta property="og:site_name" content="Free AI Text Tools">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" id="tw-title" content="">
+    <meta name="twitter:description" id="tw-desc" content="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <script type="application/ld+json" id="article-schema"></script>
 </head>
 <body>
 
-<header class="site-header">
+<header class="site-header" id="siteHeader">
     <div class="header-inner">
-        <a href="/" class="logo">Free AI Text Tools</a>
-        <nav class="main-nav" id="main-nav">
+        <a href="/" class="logo">
+            <div class="logo-icon">T</div>
+            <div class="logo-text">Free AI <span class="brand">Text Tools</span></div>
+        </a>
+        <nav class="nav" id="mainNav">
             <a href="/">Home</a>
-            <a href="/tools.html">Tools</a>
-            <a href="/blog.html" class="active">Blog</a>
+            <a href="/tools/">Tools</a>
+            <a href="/blog/" class="active">Blog</a>
             <a href="/about.html">About</a>
             <a href="/advertise.html">Advertise</a>
         </nav>
-        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </button>
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">Dark</button>
+        <button class="mobile-menu" id="mobileMenu" aria-label="Toggle menu">☰</button>
+        <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
     </div>
 </header>
 
-<div class="top-banner-ad" id="top-banner-ad">
-    <!-- Ad Slot -->
+<div class="ad-container top-banner">
+    <span class="ad-label">Advertisement</span>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
 </div>
 
-<main class="blog-post-page">
-    <div class="container">
-        <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb">
-            <a href="/">Home</a> &gt;
-            <a href="/blog.html">Blog</a> &gt;
-            <span id="breadcrumb-category"></span> &gt;
-            <span id="breadcrumb-title"></span>
-        </nav>
+<main class="container" style="padding:1.5rem 1.5rem 4rem">
+    <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span class="breadcrumb-sep">›</span>
+        <a href="/blog/">Blog</a> <span class="breadcrumb-sep">›</span>
+        <span id="breadcrumb-category"></span> <span class="breadcrumb-sep">›</span>
+        <span id="breadcrumb-title" style="color:var(--text-secondary)"></span>
+    </nav>
 
-        <div class="blog-post-layout">
-            <article class="blog-post-content">
-                <div class="article-meta" id="article-meta">
-                    <span class="article-category" id="article-category"></span>
-                    <time class="article-date" id="article-date"></time>
-                    <span class="article-read-time" id="article-read-time"></span>
-                    <span class="article-author" id="article-author"></span>
+    <div class="tool-layout" style="gap:2.5rem;margin-top:1.5rem">
+        <article style="flex:1;min-width:0">
+            <div style="display:flex;gap:.75rem;align-items:center;margin-bottom:1rem;flex-wrap:wrap">
+                <span class="blog-tag" id="article-category"></span>
+                <time style="color:var(--text-secondary);font-size:.85rem" id="article-date"></time>
+                <span style="color:var(--text-secondary);font-size:.85rem" id="article-read-time"></span>
+                <span style="color:var(--text-secondary);font-size:.85rem" id="article-author"></span>
+            </div>
+
+            <h1 style="font-size:2rem;font-weight:900;line-height:1.3;margin-bottom:1rem;letter-spacing:-.03em" id="article-title"></h1>
+            <p style="font-size:1.1rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.5rem" id="article-excerpt"></p>
+
+            <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem" id="article-tags"></div>
+
+            <div class="article-body" id="article-body" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:2rem;line-height:1.8"></div>
+
+            <div class="ad-container" style="margin:2rem 0">
+                <span class="ad-label">Advertisement</span>
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            </div>
+
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:1.5rem;margin-bottom:2rem">
+                <h3 style="font-size:1rem;font-weight:700;margin-bottom:.75rem">Share this article</h3>
+                <div style="display:flex;gap:.75rem">
+                    <a href="#" class="btn btn-outline btn-sm" id="share-twitter" target="_blank" rel="noopener">Twitter</a>
+                    <a href="#" class="btn btn-outline btn-sm" id="share-facebook" target="_blank" rel="noopener">Facebook</a>
+                    <a href="#" class="btn btn-outline btn-sm" id="share-linkedin" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="#" class="btn btn-outline btn-sm" id="share-reddit" target="_blank" rel="noopener">Reddit</a>
                 </div>
+            </div>
 
-                <h1 class="article-title" id="article-title"></h1>
-                <p class="article-excerpt" id="article-excerpt"></p>
+            <section id="faq-section" style="display:none;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:2rem;margin-bottom:2rem">
+                <h2 style="font-size:1.3rem;font-weight:800;margin-bottom:1rem">Frequently Asked Questions</h2>
+                <div class="faq-list" id="faq-list"></div>
+            </section>
 
-                <div class="article-tags" id="article-tags"></div>
+            <section style="margin-bottom:2rem">
+                <h2 style="font-size:1.3rem;font-weight:800;margin-bottom:1rem">Related Posts</h2>
+                <div class="blog-grid" id="related-posts-grid"></div>
+            </section>
+        </article>
 
-                <div class="article-body" id="article-body"></div>
-
-                <div class="in-content-ad" id="in-content-ad">
-                    <!-- Ad Slot -->
-                </div>
-
-                <div class="social-share">
-                    <span>Share:</span>
-                    <a href="#" class="share-twitter" id="share-twitter" target="_blank" rel="noopener">Twitter</a>
-                    <a href="#" class="share-facebook" id="share-facebook" target="_blank" rel="noopener">Facebook</a>
-                    <a href="#" class="share-linkedin" id="share-linkedin" target="_blank" rel="noopener">LinkedIn</a>
-                    <a href="#" class="share-reddit" id="share-reddit" target="_blank" rel="noopener">Reddit</a>
-                </div>
-
-                <section class="faq-section" id="faq-section" style="display:none;">
-                    <h2>Frequently Asked Questions</h2>
-                    <div class="faq-list" id="faq-list"></div>
-                </section>
-
-                <section class="related-posts" id="related-posts-section">
-                    <h2>Related Posts</h2>
-                    <div class="related-posts-grid" id="related-posts-grid"></div>
-                </section>
-            </article>
-
-            <aside class="sidebar" id="sidebar">
-                <div class="sidebar-widget">
-                    <h3>Categories</h3>
-                    <ul class="sidebar-categories" id="sidebar-categories"></ul>
-                </div>
-                <div class="sidebar-widget">
-                    <h3>Popular Posts</h3>
-                    <ul class="sidebar-popular-posts" id="sidebar-popular-posts"></ul>
-                </div>
-                <div class="sidebar-ad" id="sidebar-ad">
-                    <!-- Ad Slot -->
-                </div>
-            </aside>
-        </div>
+        <aside style="width:280px;flex-shrink:0">
+            <div class="sidebar-card">
+                <h3 style="font-size:1rem;font-weight:700;margin-bottom:.75rem">Categories</h3>
+                <ul id="sidebar-categories" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.35rem"></ul>
+            </div>
+            <div class="sidebar-card">
+                <h3 style="font-size:1rem;font-weight:700;margin-bottom:.75rem">Popular Posts</h3>
+                <ul id="sidebar-popular-posts" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.35rem"></ul>
+            </div>
+        </aside>
     </div>
 </main>
 
 <footer class="site-footer">
-    <div class="footer-inner">
-        <div class="footer-columns">
+    <div class="container">
+        <div class="footer-grid">
             <div class="footer-col">
-                <h4>Free AI Text Tools</h4>
-                <p>Empowering writers and marketers with free, instant AI-powered text analysis and generation tools.</p>
+                <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem">
+                    <div class="logo-icon" style="width:32px;height:32px;font-size:.8rem">T</div>
+                    <span style="font-weight:800;font-size:1rem">Free AI <span style="color:var(--brand-600)">Text Tools</span></span>
+                </div>
+                <p>31+ free AI-powered text and SEO utility tools. Fast, accurate, and works entirely in your browser.</p>
             </div>
             <div class="footer-col">
-                <h4>Tools</h4>
-                <a href="/tools.html">All Tools</a>
+                <h4>Text Tools</h4>
+                <a href="/tools/word-counter.html">Word Counter</a>
+                <a href="/tools/case-converter.html">Case Converter</a>
+                <a href="/tools/json-formatter.html">JSON Formatter</a>
+                <a href="/tools/">View All Tools →</a>
             </div>
             <div class="footer-col">
-                <h4>Resources</h4>
-                <a href="/blog.html">Blog</a>
-                <a href="/about.html">About</a>
+                <h4>SEO Tools</h4>
+                <a href="/tools/meta-gen.html">Meta Tag Generator</a>
+                <a href="/tools/robots-txt.html">Robots.txt Generator</a>
+                <a href="/tools/sitemap-gen.html">Sitemap Generator</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="/about.html">About Us</a>
+                <a href="/blog/">Blog</a>
+                <a href="/contact.html">Contact</a>
                 <a href="/advertise.html">Advertise</a>
-            </div>
-            <div class="footer-col">
-                <h4>Legal</h4>
-                <a href="/privacy.html">Privacy Policy</a>
-                <a href="/terms.html">Terms of Service</a>
+                <a href="/privacy-policy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms & Conditions</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Free AI Text Tools. All rights reserved.</p>
-        </div>
+        <div class="footer-bottom"><p>&copy; 2026 Free AI Text Tools. All rights reserved.</p></div>
     </div>
 </footer>
 
-<div class="cookie-consent" id="cookie-consent" style="display:none;">
-    <p>We use cookies to improve your experience. By continuing, you agree to our <a href="/privacy.html">Privacy Policy</a>.</p>
-    <button class="cookie-accept" id="cookie-accept">Accept</button>
-    <button class="cookie-decline" id="cookie-decline">Decline</button>
+<div id="appToast" class="toast" role="alert"></div>
+<div class="cookie-banner" id="cookieBanner">
+    <p>We use cookies to improve your experience and serve personalized ads. <a href="/cookie-policy.html">Learn more</a></p>
+    <div class="btn-group">
+        <button class="btn btn-primary btn-sm" id="cookieAccept">Accept</button>
+        <button class="btn btn-sm" id="cookieReject">Reject</button>
+    </div>
 </div>
 
-<div class="toast" id="toast" style="display:none;"></div>
-
-<script src="/js/components.js"></script>
 <script src="/js/app.js"></script>
 <script>
 (function() {
     var match = window.location.pathname.match(/\/blog\/([a-z0-9-]+)\.html$/);
-    if (!match) { window.location.href = '/blog.html'; return; }
+    if (!match) { window.location.href = '/blog/'; return; }
     var slug = match[1];
     var post = App.blogPosts[slug];
-    if (!post) { window.location.href = '/blog.html'; return; }
+    if (!post) { window.location.href = '/blog/'; return; }
+
+    var icons = {'SEO Tools':'🔍','SEO Tips':'📈','Development':'💻','Blogging':'✍','Social Media':'📱','Content Marketing':'📊'};
 
     document.getElementById('page-title').textContent = post.title + ' - Free AI Text Tools';
     document.getElementById('meta-description').setAttribute('content', post.excerpt);
     document.getElementById('meta-keywords').setAttribute('content', (post.tags || []).join(', '));
-
-    document.getElementById('og-title') && (document.getElementById('og-title').setAttribute('content', post.title));
-    document.getElementById('og-desc') && (document.getElementById('og-desc').setAttribute('content', post.excerpt));
-    document.getElementById('og-url') && (document.getElementById('og-url').setAttribute('content', window.location.href));
+    document.getElementById('og-title').setAttribute('content', post.title);
+    document.getElementById('og-desc').setAttribute('content', post.excerpt);
+    document.getElementById('og-url').setAttribute('content', window.location.href);
+    document.getElementById('tw-title').setAttribute('content', post.title);
+    document.getElementById('tw-desc').setAttribute('content', post.excerpt);
 
     var schema = {
         "@context": "https://schema.org",
@@ -164,51 +187,11 @@
     };
     document.getElementById('article-schema').textContent = JSON.stringify(schema);
 
-    var metaDesc = document.createElement('meta');
-    metaDesc.name = 'description';
-    metaDesc.content = post.excerpt;
-    document.head.appendChild(metaDesc);
-
-    var ogTitle = document.createElement('meta');
-    ogTitle.setAttribute('property', 'og:title');
-    ogTitle.content = post.title;
-    document.head.appendChild(ogTitle);
-
-    var ogDesc = document.createElement('meta');
-    ogDesc.setAttribute('property', 'og:description');
-    ogDesc.content = post.excerpt;
-    document.head.appendChild(ogDesc);
-
-    var ogType = document.createElement('meta');
-    ogType.setAttribute('property', 'og:type');
-    ogType.content = 'article';
-    document.head.appendChild(ogType);
-
-    var ogUrl = document.createElement('meta');
-    ogUrl.setAttribute('property', 'og:url');
-    ogUrl.content = window.location.href;
-    document.head.appendChild(ogUrl);
-
-    var twCard = document.createElement('meta');
-    twCard.name = 'twitter:card';
-    twCard.content = 'summary_large_image';
-    document.head.appendChild(twCard);
-
-    var twTitle = document.createElement('meta');
-    twTitle.name = 'twitter:title';
-    twTitle.content = post.title;
-    document.head.appendChild(twTitle);
-
-    var twDesc = document.createElement('meta');
-    twDesc.name = 'twitter:description';
-    twDesc.content = post.excerpt;
-    document.head.appendChild(twDesc);
-
     document.getElementById('breadcrumb-category').textContent = post.category;
     document.getElementById('breadcrumb-title').textContent = post.title;
     document.getElementById('article-category').textContent = post.category;
-    document.getElementById('article-date').textContent = post.date;
-    document.getElementById('article-read-time').textContent = post.readTime + ' min read';
+    document.getElementById('article-date').textContent = new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById('article-read-time').textContent = post.readTime + ' read';
     document.getElementById('article-author').textContent = 'By ' + (post.author || 'Editorial Team');
     document.getElementById('article-title').textContent = post.title;
     document.getElementById('article-excerpt').textContent = post.excerpt;
@@ -218,7 +201,7 @@
     if (post.tags && post.tags.length) {
         post.tags.forEach(function(tag) {
             var span = document.createElement('span');
-            span.className = 'tag';
+            span.className = 'blog-tag';
             span.textContent = tag;
             tagsEl.appendChild(span);
         });
@@ -235,27 +218,28 @@
         document.getElementById('faq-section').style.display = 'block';
         var faqList = document.getElementById('faq-list');
         post.faq.forEach(function(item) {
-            var div = document.createElement('div');
-            div.className = 'faq-item';
-            div.innerHTML = '<button class="faq-question">' + item.q + '</button><div class="faq-answer"><p>' + item.a + '</p></div>';
-            faqList.appendChild(div);
+            var details = document.createElement('details');
+            details.className = 'faq-item';
+            details.style.cssText = 'border-bottom:1px solid var(--border);padding:.75rem 0';
+            details.innerHTML = '<summary style="cursor:pointer;font-weight:600;font-size:.95rem;color:var(--text)">' + item.q + '</summary><p style="color:var(--text-secondary);margin-top:.5rem;line-height:1.7;font-size:.9rem">' + item.a + '</p>';
+            faqList.appendChild(details);
         });
     }
 
-    var allPosts = Object.values(App.blogPosts).filter(function(p) { return p.slug !== slug; });
+    var allPosts = App.blogPosts.filter(function(p) { return p.slug !== slug; });
     var related = allPosts.sort(function() { return 0.5 - Math.random(); }).slice(0, 3);
     var relatedGrid = document.getElementById('related-posts-grid');
     related.forEach(function(rp) {
         var card = document.createElement('a');
-        card.className = 'related-post-card';
+        card.className = 'blog-card';
         card.href = '/blog/' + rp.slug + '.html';
-        card.innerHTML = '<span class="related-category">' + rp.category + '</span><h3>' + rp.title + '</h3><p>' + rp.excerpt + '</p><span class="related-date">' + rp.date + '</span>';
+        card.innerHTML = '<div class="blog-card-img">' + (icons[rp.category]||'📄') + '</div><div class="blog-card-body"><div class="blog-card-meta"><span class="blog-tag">' + rp.category + '</span><span>' + rp.readTime + ' read</span></div><h3>' + rp.title + '</h3><p>' + rp.excerpt + '</p></div>';
         relatedGrid.appendChild(card);
     });
 
     var cats = {};
     var popular = [];
-    Object.values(App.blogPosts).forEach(function(p) {
+    App.blogPosts.forEach(function(p) {
         cats[p.category] = (cats[p.category] || 0) + 1;
         popular.push(p);
     });
@@ -264,25 +248,28 @@
     var catList = document.getElementById('sidebar-categories');
     Object.keys(cats).forEach(function(cat) {
         var li = document.createElement('li');
-        li.innerHTML = '<a href="/blog.html?category=' + encodeURIComponent(cat) + '">' + cat + ' (' + cats[cat] + ')</a>';
+        li.innerHTML = '<a href="/blog/?category=' + encodeURIComponent(cat) + '" style="display:flex;justify-content:space-between;align-items:center;padding:.5rem .75rem;border-radius:var(--r);color:var(--text);text-decoration:none;font-size:.9rem"><span>' + (icons[cat]||'📄') + ' ' + cat + '</span><span style="background:var(--bg);padding:.1rem .5rem;border-radius:var(--r-full);font-size:.75rem;color:var(--text-secondary)">' + cats[cat] + '</span></a>';
         catList.appendChild(li);
     });
 
     var popList = document.getElementById('sidebar-popular-posts');
     popular.slice(0, 5).forEach(function(p) {
         var li = document.createElement('li');
-        li.innerHTML = '<a href="/blog/' + p.slug + '.html">' + p.title + '</a>';
+        li.innerHTML = '<a href="/blog/' + p.slug + '.html" style="display:block;padding:.5rem .75rem;border-radius:var(--r);color:var(--text);text-decoration:none;font-size:.88rem"><div style="font-weight:600;margin-bottom:.15rem">' + p.title + '</div><div style="color:var(--text-secondary);font-size:.8rem">' + p.readTime + ' read</div></a>';
         popList.appendChild(li);
     });
 
-    if (typeof Comp !== 'undefined' && Comp.initThemeToggle) Comp.initThemeToggle();
-    if (typeof Comp !== 'undefined' && Comp.initCookieConsent) Comp.initCookieConsent();
-    if (typeof Comp !== 'undefined' && Comp.initMobileMenu) Comp.initMobileMenu();
-
-    document.querySelectorAll('.faq-question').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            this.parentElement.classList.toggle('active');
-        });
+    App.initCookieConsent();
+    var themeBtn = document.getElementById('themeToggle');
+    themeBtn.addEventListener('click', App.toggleTheme);
+    themeBtn.textContent = (localStorage.getItem('attTheme')||'light')==='dark'?'☀️':'🌙';
+    var mm = document.getElementById('mobileMenu');
+    var nav = document.getElementById('mainNav');
+    if(mm && nav) mm.addEventListener('click', function(){ nav.classList.toggle('open'); });
+    var header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', function(){
+        if(window.scrollY > 10) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
     });
 })();
 </script>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free AI Text Tools - 31+ Online Word Counter, JSON Formatter, SEO Tools & More</title>
+    <title>Free AI Text Tools - 31+ Online Word Counter, JSON Formatter, SEO Tools</title>
     <meta name="description" content="Free AI-powered text & SEO utility tools: word counter, JSON formatter, XML validator, Markdown editor, robots.txt generator, meta tag generator, keyword density checker, and 25+ more. Fast, accurate, 100% free.">
     <meta name="keywords" content="free word counter tool, JSON formatter online, XML validator, Markdown editor, robots.txt generator, sitemap generator, meta tag generator, keyword density checker, keyword extractor, SEO tools, text utility tools">
     <meta name="robots" content="index, follow">
@@ -15,17 +15,23 @@
     <meta property="og:site_name" content="Free AI Text Tools">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Free AI Text Tools - 31+ Online Text & SEO Utilities">
-    <meta name="twitter:description" content="Free AI-powered text & SEO tools: word counter, JSON formatter, meta tag generator, keyword tools, and more.">
+    <meta name="twitter:description" content="Free AI-powered text & SEO tools.">
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Free AI Text Tools","applicationCategory":"UtilitiesApplication","operatingSystem":"Web Browser","description":"Free online AI-powered text and SEO utility tools.","url":"https://example.com/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","ratingCount":"2400"}}
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <header class="site-header">
+    <header class="site-header" id="siteHeader">
         <div class="header-inner">
-            <a href="/" class="logo"><div class="logo-icon">T</div>Free AI <span>Text Tools</span></a>
-            <nav class="nav">
+            <a href="/" class="logo">
+                <div class="logo-icon">T</div>
+                <div class="logo-text">Free AI <span class="brand">Text Tools</span></div>
+            </a>
+            <nav class="nav" id="mainNav">
                 <a href="/" class="active">Home</a>
                 <a href="/tools/">Tools</a>
                 <a href="/blog/">Blog</a>
@@ -33,86 +39,85 @@
                 <a href="/advertise.html">Advertise</a>
                 <a href="/tools/" class="nav-cta">All Tools</a>
             </nav>
-            <button class="mobile-menu" aria-label="Menu">☰</button>
-            <button class="theme-btn" aria-label="Toggle dark mode">🌙</button>
+            <button class="mobile-menu" id="mobileMenu" aria-label="Toggle menu">☰</button>
+            <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
         </div>
     </header>
 
-    <div class="ad-container top-banner" data-slot="top-banner">
+    <div class="ad-container top-banner">
         <span class="ad-label">Advertisement</span>
         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
     </div>
 
     <section class="hero">
         <div class="container">
-            <span class="section-tag">31+ Free Tools</span>
-            <h1>All-in-One Free AI <span>Text Tools</span> &amp; SEO Utilities</h1>
-            <p>Word counter, JSON formatter, meta tag generator, keyword density checker, Markdown editor, and 26 more powerful tools. Fast, accurate, and works entirely in your browser.</p>
+            <div class="hero-badge"><span class="dot"></span> 31+ Free Tools — No Sign-up Required</div>
+            <h1>The All-in-One<br><span class="gradient">Text & SEO Toolkit</span></h1>
+            <p>Word counter, JSON formatter, meta tag generator, keyword density checker, and 27 more powerful tools. Instant results, 100% private, completely free.</p>
             <div class="hero-actions">
                 <a href="/tools/" class="btn btn-primary btn-lg">Explore All Tools →</a>
-                <a href="/blog/" class="btn btn-lg">Read the Blog</a>
+                <a href="/blog/" class="btn btn-outline btn-lg">Read the Blog</a>
             </div>
         </div>
     </section>
 
     <div class="container">
         <div class="section-header">
-            <span class="section-tag">Popular Tools</span>
-            <h2>Free Online Text &amp; SEO Tools</h2>
-            <p>Click any tool to start working instantly. No sign-up required.</p>
+            <span class="section-tag">⚡ Text Processing</span>
+            <h2>Popular Text Tools</h2>
+            <p>Click any tool to start working instantly. Everything runs in your browser.</p>
         </div>
         <div class="tool-grid" id="toolGrid"></div>
 
-        <div class="ad-container" data-slot="mid-content">
+        <div class="ad-container">
             <span class="ad-label">Advertisement</span>
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
         </div>
 
         <div class="section-header">
-            <span class="section-tag">SEO Suite</span>
+            <span class="section-tag">📈 SEO Suite</span>
             <h2>Professional SEO Tools</h2>
-            <p>Generate meta tags, sitemaps, robots.txt, and analyze keywords—all free.</p>
+            <p>Generate meta tags, sitemaps, robots.txt, and analyze keywords — all free.</p>
         </div>
+        <div class="tool-grid" id="seoGrid"></div>
 
         <div class="section-header" style="margin-top:4rem">
-            <span class="section-tag">From the Blog</span>
+            <span class="section-tag">✍ From the Blog</span>
             <h2>Latest Guides &amp; Tutorials</h2>
             <p>Learn how to use text tools and SEO strategies to grow your website.</p>
         </div>
         <div class="blog-grid" id="blogGrid"></div>
 
-        <div class="section-header" style="margin-top:3rem">
-            <h2>Why Choose Free AI Text Tools?</h2>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem;margin-bottom:3rem">
-            <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow)">
-                <div style="font-size:1.5rem;margin-bottom:.5rem">⚡</div>
-                <h3 style="font-size:1rem;margin-bottom:.4rem">Lightning Fast</h3>
-                <p style="font-size:.88rem;color:var(--text-sec)">All tools run in your browser. No server uploads, no waiting. Instant results.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin:3.5rem 0">
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.75rem;box-shadow:var(--shadow-sm);transition:all var(--t) var(--ease)" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                <div style="width:44px;height:44px;border-radius:var(--r);background:linear-gradient(135deg,var(--brand-500),var(--brand-700));display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1rem;box-shadow:0 4px 12px rgba(99,102,241,.25)">⚡</div>
+                <h3 style="font-size:1rem;font-weight:700;margin-bottom:.4rem">Lightning Fast</h3>
+                <p style="font-size:.88rem;color:var(--text-secondary);line-height:1.65">All tools run in your browser. No server uploads, no waiting. Instant results every time.</p>
             </div>
-            <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow)">
-                <div style="font-size:1.5rem;margin-bottom:.5rem">🔒</div>
-                <h3 style="font-size:1rem;margin-bottom:.4rem">100% Private</h3>
-                <p style="font-size:.88rem;color:var(--text-sec)">Your text never leaves your device. Complete privacy guaranteed.</p>
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.75rem;box-shadow:var(--shadow-sm);transition:all var(--t) var(--ease)" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                <div style="width:44px;height:44px;border-radius:var(--r);background:linear-gradient(135deg,var(--success),#059669);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1rem;box-shadow:0 4px 12px rgba(16,185,129,.25)">🔒</div>
+                <h3 style="font-size:1rem;font-weight:700;margin-bottom:.4rem">100% Private</h3>
+                <p style="font-size:.88rem;color:var(--text-secondary);line-height:1.65">Your text never leaves your device. Complete privacy guaranteed. Zero data collection.</p>
             </div>
-            <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow)">
-                <div style="font-size:1.5rem;margin-bottom:.5rem">💰</div>
-                <h3 style="font-size:1rem;margin-bottom:.4rem">Completely Free</h3>
-                <p style="font-size:.88rem;color:var(--text-sec)">No sign-up, no limits, no hidden fees. Use all 31+ tools for free.</p>
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.75rem;box-shadow:var(--shadow-sm);transition:all var(--t) var(--ease)" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                <div style="width:44px;height:44px;border-radius:var(--r);background:linear-gradient(135deg,var(--accent),#0891b2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1rem;box-shadow:0 4px 12px rgba(6,182,212,.25)">💰</div>
+                <h3 style="font-size:1rem;font-weight:700;margin-bottom:.4rem">Completely Free</h3>
+                <p style="font-size:.88rem;color:var(--text-secondary);line-height:1.65">No sign-up, no limits, no hidden fees. Use all 31+ tools completely free forever.</p>
             </div>
-            <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow)">
-                <div style="font-size:1.5rem;margin-bottom:.5rem">📱</div>
-                <h3 style="font-size:1rem;margin-bottom:.4rem">Mobile Friendly</h3>
-                <p style="font-size:.88rem;color:var(--text-sec)">Works perfectly on phones, tablets, and desktops. Responsive design.</p>
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.75rem;box-shadow:var(--shadow-sm);transition:all var(--t) var(--ease)" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                <div style="width:44px;height:44px;border-radius:var(--r);background:linear-gradient(135deg,var(--warning),#d97706);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1rem;box-shadow:0 4px 12px rgba(245,158,11,.25)">📱</div>
+                <h3 style="font-size:1rem;font-weight:700;margin-bottom:.4rem">Mobile Friendly</h3>
+                <p style="font-size:.88rem;color:var(--text-secondary);line-height:1.65">Works perfectly on phones, tablets, and desktops. Fully responsive design.</p>
             </div>
         </div>
 
-        <section class="seo-content" style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow);margin-bottom:2rem">
-            <h2 style="font-size:1.35rem;font-weight:700;margin-bottom:1rem">About Free AI Text Tools</h2>
-            <p style="color:var(--text-sec);margin-bottom:.75rem;line-height:1.7">Free AI Text Tools is a comprehensive suite of 31+ online utilities designed for writers, developers, SEO professionals, students, and anyone who works with text. Every tool runs entirely in your browser — your data never leaves your device.</p>
-            <p style="color:var(--text-sec);margin-bottom:.75rem;line-height:1.7">Our text tools include word counter, character counter, sentence counter, paragraph counter, duplicate line remover, case converter, text reverser, line sorter, and remove extra spaces. The encoding suite covers URL encoder/decoder, HTML encoder/decoder, and Base64 encoder/decoder.</p>
-            <p style="color:var(--text-sec);margin-bottom:.75rem;line-height:1.7">For developers, we offer JSON formatter, JSON validator, XML formatter, XML validator, Markdown editor with live preview, and robots.txt generator. SEO professionals love our meta tag generator, Open Graph generator, sitemap generator, canonical tag generator, slug generator, meta description generator, keyword density checker, and keyword extractor.</p>
-            <p style="color:var(--text-sec);line-height:1.7">Whether you need to count words for an essay, format JSON for an API, generate meta tags for a website, or analyze keyword density for an article — Free AI Text Tools has you covered. All tools are completely free with no sign-up required.</p>
+        <section style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:2.5rem;box-shadow:var(--shadow-sm);margin-bottom:2.5rem;position:relative;overflow:hidden">
+            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--brand-500),var(--accent),var(--brand-500))"></div>
+            <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:1rem;letter-spacing:-.02em">About Free AI Text Tools</h2>
+            <p style="color:var(--text-secondary);margin-bottom:1rem;line-height:1.8">Free AI Text Tools is a comprehensive suite of 31+ online utilities designed for writers, developers, SEO professionals, students, and anyone who works with text. Every tool runs entirely in your browser — your data never leaves your device.</p>
+            <p style="color:var(--text-secondary);margin-bottom:1rem;line-height:1.8">Our text tools include word counter, character counter, sentence counter, paragraph counter, duplicate line remover, case converter, text reverser, line sorter, and remove extra spaces. The encoding suite covers URL encoder/decoder, HTML encoder/decoder, and Base64 encoder/decoder.</p>
+            <p style="color:var(--text-secondary);margin-bottom:1rem;line-height:1.8">For developers, we offer JSON formatter, JSON validator, XML formatter, XML validator, Markdown editor with live preview, and robots.txt generator. SEO professionals love our meta tag generator, Open Graph generator, sitemap generator, canonical tag generator, slug generator, meta description generator, keyword density checker, and keyword extractor.</p>
+            <p style="color:var(--text-secondary);line-height:1.8">Whether you need to count words for an essay, format JSON for an API, generate meta tags for a website, or analyze keyword density for an article — Free AI Text Tools has you covered.</p>
         </section>
     </div>
 
@@ -120,8 +125,11 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4>Free AI Text Tools</h4>
-                    <p>31+ free AI-powered text and SEO utility tools. Fast, accurate, and works entirely in your browser.</p>
+                    <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem">
+                        <div class="logo-icon" style="width:32px;height:32px;font-size:.8rem">T</div>
+                        <span style="font-weight:800;font-size:1rem">Free AI <span style="color:var(--brand-600)">Text Tools</span></span>
+                    </div>
+                    <p>31+ free AI-powered text and SEO utility tools. Fast, accurate, and works entirely in your browser. Your data never leaves your device.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Text Tools</h4>
@@ -147,10 +155,12 @@
                     <a href="/contact.html">Contact</a>
                     <a href="/advertise.html">Advertise</a>
                     <a href="/privacy-policy.html">Privacy Policy</a>
-                    <a href="/terms.html">Terms</a>
+                    <a href="/terms.html">Terms & Conditions</a>
                 </div>
             </div>
-            <div class="footer-bottom"><p>&copy; 2026 Free AI Text Tools. All rights reserved.</p></div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Free AI Text Tools. All rights reserved. Built for speed, privacy, and simplicity.</p>
+            </div>
         </div>
     </footer>
 
@@ -166,37 +176,55 @@
     <script src="/js/app.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function(){
-        // Render tool grid
-        const grid = document.getElementById('toolGrid');
-        if(grid && App.tools){
-            grid.innerHTML = App.tools.map(t =>
-                '<a href="/tools/'+t.id+'.html" class="tool-card">' +
-                '<div class="tool-card-icon">'+t.icon+'</div>' +
-                '<div class="tool-card-title">'+t.name+'</div>' +
-                '<div class="tool-card-desc">'+t.desc+'</div></a>'
-            ).join('');
+        // Header scroll effect
+        var header = document.getElementById('siteHeader');
+        window.addEventListener('scroll', function(){
+            if(window.scrollY > 10) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+
+        // Render tool grids
+        var textTools = ['duplicate-remover','word-counter','char-counter','sentence-counter','paragraph-counter','case-converter','remove-spaces','line-sorter','alpha-sorter','text-reverser','url-encoder','url-decoder','html-encoder','html-decoder','b64-encoder','b64-decoder'];
+        var seoTools = ['json-formatter','json-validator','xml-formatter','xml-validator','markdown-editor','markdown-preview','robots-txt','sitemap-gen','meta-gen','og-generator','slug-generator','meta-desc-gen','canonical-gen','keyword-density','keyword-extract'];
+
+        function renderGrid(el, ids){
+            if(!el) return;
+            el.innerHTML = ids.map(function(id){
+                var t = App.getToolById(id);
+                if(!t) return '';
+                return '<a href="/tools/'+t.id+'.html" class="tool-card">'+
+                    '<div class="tool-card-icon">'+t.icon+'</div>'+
+                    '<div class="tool-card-title">'+t.name+'</div>'+
+                    '<div class="tool-card-desc">'+t.desc+'</div></a>';
+            }).join('');
         }
+        renderGrid(document.getElementById('toolGrid'), textTools);
+        renderGrid(document.getElementById('seoGrid'), seoTools);
+
         // Render blog grid
-        const blogGrid = document.getElementById('blogGrid');
+        var blogGrid = document.getElementById('blogGrid');
         if(blogGrid && App.blogPosts){
-            blogGrid.innerHTML = App.blogPosts.slice(0,3).map(p =>
-                '<a href="/blog/'+p.slug+'.html" class="blog-card">' +
-                '<div class="blog-card-img" style="background:var(--primary-light);height:180px;display:flex;align-items:center;justify-content:center;font-size:2.5rem">'+(p.category==='SEO Tools'?'🔍':p.category==='SEO Tips'?'📈':p.category==='Development'?'💻':p.category==='Blogging'?'✍':'📱')+'</div>' +
-                '<div class="blog-card-body">' +
-                '<div class="blog-card-meta"><span>'+p.category+'</span><span>'+p.readTime+' read</span></div>' +
-                '<h3>'+p.title+'</h3>' +
-                '<p>'+p.excerpt+'</p></div></a>'
-            ).join('');
+            var icons = {'SEO Tools':'🔍','SEO Tips':'📈','Development':'💻','Blogging':'✍','Social Media':'📱','Content Marketing':'📊'};
+            blogGrid.innerHTML = App.blogPosts.slice(0,3).map(function(p){
+                return '<a href="/blog/'+p.slug+'.html" class="blog-card">'+
+                    '<div class="blog-card-img">'+(icons[p.category]||'📄')+'</div>'+
+                    '<div class="blog-card-body">'+
+                    '<div class="blog-card-meta"><span class="blog-tag">'+p.category+'</span><span>'+p.readTime+' read</span></div>'+
+                    '<h3>'+p.title+'</h3>'+
+                    '<p>'+p.excerpt+'</p></div></a>';
+            }).join('');
         }
+
         // Init
         App.initCookieConsent();
-        document.querySelectorAll('.theme-btn').forEach(b=>{
-            b.addEventListener('click', App.toggleTheme);
-            b.textContent = (localStorage.getItem('attTheme')||'light')==='dark'?'☀️':'🌙';
-        });
-        const mm = document.querySelector('.mobile-menu');
-        const nav = document.querySelector('.nav');
-        if(mm && nav) mm.addEventListener('click',()=>{nav.style.display=nav.style.display==='flex'?'none':'flex';nav.style.flexDirection='column';nav.style.position='absolute';nav.style.top='64px';nav.style.right='1rem';nav.style.background='var(--card-bg)';nav.style.padding='1rem';nav.style.borderRadius='var(--radius)';nav.style.boxShadow='var(--shadow-lg)';nav.style.border='1px solid var(--border)';nav.style.zIndex='100'});
+        var themeBtn = document.getElementById('themeToggle');
+        themeBtn.addEventListener('click', App.toggleTheme);
+        themeBtn.textContent = (localStorage.getItem('attTheme')||'light')==='dark'?'☀️':'🌙';
+
+        // Mobile menu
+        var mm = document.getElementById('mobileMenu');
+        var nav = document.getElementById('mainNav');
+        if(mm && nav) mm.addEventListener('click', function(){ nav.classList.toggle('open'); });
     });
     </script>
 </body>

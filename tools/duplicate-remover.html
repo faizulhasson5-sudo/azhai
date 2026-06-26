@@ -396,6 +396,7 @@ function processCurrentTool() {
     }
     if (toolId === 'keyword-extract') {
         var words = input.toLowerCase().match(/\b[\w'-]+\b/g) || [];
+        var total = words.length;
         var freq = {};
         var stopWords = {'the':1,'a':1,'an':1,'and':1,'or':1,'but':1,'in':1,'on':1,'at':1,'to':1,'for':1,'of':1,'with':1,'by':1,'is':1,'are':1,'was':1,'were':1,'be':1,'been':1,'being':1,'have':1,'has':1,'had':1,'do':1,'does':1,'did':1,'will':1,'would':1,'could':1,'should':1,'may':1,'might':1,'shall':1,'can':1,'this':1,'that':1,'these':1,'those':1,'it':1,'its':1,'i':1,'me':1,'my':1,'we':1,'our':1,'you':1,'your':1,'he':1,'him':1,'his':1,'she':1,'her':1,'they':1,'them':1,'their':1,'what':1,'which':1,'who':1,'whom':1,'how':1,'when':1,'where':1,'why':1};
         words.forEach(function(w) { if (w.length > 2 && !stopWords[w]) freq[w] = (freq[w] || 0) + 1; });
@@ -420,13 +421,48 @@ function processCurrentTool() {
         output.innerHTML = html;
         return;
     }
-    if (typeof App !== 'undefined' && App.processTool) {
-        var result = App.processTool(toolId, input);
-        if (result !== undefined) output.textContent = result;
-    } else {
-        var result = defaultProcess(toolId, input);
-        output.textContent = result;
+    if (toolId === 'json-formatter') {
+        try { output.textContent = JSON.stringify(JSON.parse(input), null, 2); }
+        catch(e) { output.textContent = 'Error: ' + e.message; }
+        return;
     }
+    if (toolId === 'json-validator') {
+        try { JSON.parse(input); output.textContent = 'Valid JSON\n\nThe input is properly formatted JSON.'; }
+        catch(e) { output.textContent = 'Invalid JSON\n\nError: ' + e.message; }
+        return;
+    }
+    if (toolId === 'xml-formatter') {
+        try {
+            var lines = input.replace(/(>)\s*(</g, '$1\n$2').split('\n');
+            var f = '', ind = 0;
+            lines.forEach(function(l) {
+                l = l.trim(); if (!l) return;
+                if (l.match(/^<\//)) ind--;
+                f += '  '.repeat(Math.max(0, ind)) + l + '\n';
+                if (l.match(/^<[^\/?]/) && !l.match(/\/>$/)) ind++;
+            });
+            output.textContent = f.trim();
+        } catch(e) { output.textContent = 'Error: ' + e.message; }
+        return;
+    }
+    if (toolId === 'xml-validator') {
+        try {
+            var p = new DOMParser();
+            var d = p.parseFromString(input, 'text/xml');
+            if (d.querySelector('parsererror'))
+                output.textContent = 'Invalid XML\n\n' + d.querySelector('parsererror').textContent.substring(0, 300);
+            else output.textContent = 'Valid XML';
+        } catch(e) { output.textContent = 'Error: ' + e.message; }
+        return;
+    }
+    if (toolId === 'hash-generator') {
+        var hash = 0;
+        for (var i = 0; i < input.length; i++) { var ch = input.charCodeAt(i); hash = ((hash << 5) - hash) + ch; hash = hash & hash; }
+        output.textContent = 'Simple Hash: ' + Math.abs(hash).toString(16) + '\n\nNote: For cryptographic hashes (MD5, SHA-256), use a dedicated library.';
+        return;
+    }
+    var result = defaultProcess(toolId, input);
+    if (result !== undefined) output.textContent = result;
 }
 
 function defaultProcess(toolId, input) {

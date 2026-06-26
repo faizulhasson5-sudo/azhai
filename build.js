@@ -1,4 +1,4 @@
-// Build script: generates 31 individual tool HTML files from template.html
+// Build script: generates individual tool HTML files from template.html
 // Run: node build.js
 
 const fs = require('fs');
@@ -11,7 +11,8 @@ const tools = [
     'json-formatter','json-validator','xml-formatter','xml-validator','markdown-editor','markdown-preview',
     'robots-txt','sitemap-gen','meta-gen','og-generator','slug-generator','meta-desc-gen',
     'canonical-gen','keyword-density','keyword-extract',
-    'find-replace','regex-tester','html-previewer'
+    'find-replace','regex-tester','html-previewer',
+    'hash-generator','lorem-generator'
 ];
 
 const templatePath = path.join(__dirname, 'tools', 'template.html');

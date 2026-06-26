@@ -7,6 +7,7 @@
     <meta id="meta-description" name="description" content="">
     <meta id="meta-keywords" name="keywords" content="">
     <meta name="robots" content="index, follow">
+    <link rel="canonical" id="canonical-link" href="">
     <meta property="og:type" content="article">
     <meta property="og:title" id="og-title" content="">
     <meta property="og:description" id="og-desc" content="">
@@ -186,6 +187,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('og-url').setAttribute('content', window.location.href);
     document.getElementById('tw-title').setAttribute('content', post.title);
     document.getElementById('tw-desc').setAttribute('content', post.excerpt);
+    document.getElementById('canonical-link').setAttribute('href', window.location.href);
+    document.getElementById('og-url').setAttribute('content', window.location.href);
 
     var schema = {
         "@context": "https://schema.org",

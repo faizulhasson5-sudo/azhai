@@ -10,7 +10,8 @@ const tools = [
     'url-encoder','url-decoder','html-encoder','html-decoder','b64-encoder','b64-decoder',
     'json-formatter','json-validator','xml-formatter','xml-validator','markdown-editor','markdown-preview',
     'robots-txt','sitemap-gen','meta-gen','og-generator','slug-generator','meta-desc-gen',
-    'canonical-gen','keyword-density','keyword-extract'
+    'canonical-gen','keyword-density','keyword-extract',
+    'find-replace','regex-tester','html-previewer'
 ];
 
 const templatePath = path.join(__dirname, 'tools', 'template.html');

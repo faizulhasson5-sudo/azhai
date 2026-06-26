@@ -79,7 +79,13 @@ App.tools = [
     {id:'og-generator',name:'OG Generator',icon:'\uD83D\uDCF1',cat:'seo',desc:'Open Graph meta tags'},
     {id:'slug-generator',name:'Slug Generator',icon:'\uD83D\uDD17',cat:'seo',desc:'URL-friendly slug from title'},
     {id:'meta-desc-gen',name:'Meta Desc Generator',icon:'160',cat:'seo',desc:'SEO meta description under 160 chars'},
-    {id:'canonical-gen',name:'Canonical Tag Gen',icon:'Link',cat:'seo',desc:'Generate canonical link tags'}
+    {id:'canonical-gen',name:'Canonical Tag Gen',icon:'Link',cat:'seo',desc:'Generate canonical link tags'},
+    {id:'find-replace',name:'Find and Replace',icon:'\uD83D\uDD0D',cat:'text',desc:'Search and replace text instantly'},
+    {id:'regex-tester',name:'Regex Tester',icon:'.*',cat:'code',desc:'Test regular expressions live'},
+    {id:'html-previewer',name:'HTML Previewer',icon:'\uD83C\uDF10',cat:'code',desc:'Preview HTML code in real-time'},
+    {id:'hash-generator',name:'Hash Generator',icon:'#',cat:'code',desc:'Generate simple text hashes'},
+    {id:'lorem-generator',name:'Lorem Generator',icon:'\uD83D\uDCDD',cat:'text',desc:'Generate Lorem Ipsum placeholder text'},
+    {id:'word-frequency',name:'Word Frequency',icon:'\uD83D\uDCCA',cat:'counters',desc:'Count word occurrences in text'}
 ];
 
 App.getToolById = function(id){ return App.tools.find(function(t){ return t.id === id; }); };

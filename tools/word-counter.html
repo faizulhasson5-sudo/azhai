@@ -367,6 +367,12 @@ function renderToolOptions(toolId) {
         case 'sitemap-gen':
             html = '<label class="input-label" for="opt-urls">Enter URLs (one per line):</label><textarea id="opt-urls" class="tool-textarea" rows="6" placeholder="https://example.com/\nhttps://example.com/about\nhttps://example.com/contact"></textarea><button onclick="generateSitemap()" class="btn btn-primary" style="margin-top:.5rem">Generate Sitemap</button>';
             break;
+        case 'find-replace':
+            html = '<div class="form-grid"><label>Find:<input type="text" id="opt-find" class="tool-input" placeholder="Text to find"></label><label>Replace:<input type="text" id="opt-replace" class="tool-input" placeholder="Replace with"></label></div><label class="checkbox-label" style="margin-top:.4rem"><input type="checkbox" id="opt-casesensitive"> Case-sensitive search</label>';
+            break;
+        case 'regex-tester':
+            html = '<div class="form-grid"><label>Pattern:<input type="text" id="opt-regex" class="tool-input" placeholder="Regular expression pattern"></label><label>Flags:<input type="text" id="opt-regexflags" class="tool-input" value="gi" placeholder="gi"></label></div>';
+            break;
     }
     opts.innerHTML = html;
 }
@@ -459,6 +465,51 @@ function processCurrentTool() {
         var hash = 0;
         for (var i = 0; i < input.length; i++) { var ch = input.charCodeAt(i); hash = ((hash << 5) - hash) + ch; hash = hash & hash; }
         output.textContent = 'Simple Hash: ' + Math.abs(hash).toString(16) + '\n\nNote: For cryptographic hashes (MD5, SHA-256), use a dedicated library.';
+        return;
+    }
+    if (toolId === 'find-replace') {
+        var find = document.getElementById('opt-find');
+        var repl = document.getElementById('opt-replace');
+        var cs = document.getElementById('opt-casesensitive');
+        if (!find || !find.value) { showToast('Enter text to find.'); return; }
+        var flags = cs && cs.checked ? 'g' : 'gi';
+        var escaped = find.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        var count = (input.match(new RegExp(escaped, flags)) || []).length;
+        var result = input.replace(new RegExp(escaped, flags), repl ? repl.value : '');
+        output.textContent = result + '\n\n---\n' + count + ' replacement(s) made.';
+        return;
+    }
+    if (toolId === 'regex-tester') {
+        var pat = document.getElementById('opt-regex');
+        var flagsEl = document.getElementById('opt-regexflags');
+        if (!pat || !pat.value) { showToast('Enter a regex pattern.'); return; }
+        try {
+            var regex = new RegExp(pat.value, flagsEl ? flagsEl.value : 'gi');
+            var matches = input.match(regex);
+            var html = '<strong>Pattern:</strong> /' + escapeHTML(pat.value) + '/' + (flagsEl ? flagsEl.value : 'gi') + '\n\n';
+            if (matches) {
+                html += '<strong>Matches found:</strong> ' + matches.length + '\n\n';
+                html += '<table class="results-table"><tr><th>#</th><th>Match</th></tr>';
+                matches.slice(0, 100).forEach(function(m, i) {
+                    html += '<tr><td>' + (i + 1) + '</td><td>' + escapeHTML(m) + '</td></tr>';
+                });
+                html += '</table>';
+                if (matches.length > 100) html += '\n<p style="color:var(--text-tertiary);font-size:.8rem;margin-top:.5rem">Showing first 100 of ' + matches.length + ' matches.</p>';
+            } else {
+                html += 'No matches found.';
+            }
+            output.innerHTML = html;
+        } catch(e) {
+            output.textContent = 'Invalid regex: ' + e.message;
+        }
+        return;
+    }
+    if (toolId === 'html-previewer') {
+        output.innerHTML = '<iframe srcdoc="' + escapeHTML(input).replace(/"/g, '&quot;') + '" style="width:100%;min-height:300px;border:2px solid var(--black);background:var(--white)"></iframe>';
+        return;
+    }
+    if (toolId === 'markdown-editor') {
+        output.innerHTML = input.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/^### (.+)$/gm, '<h3>$1</h3>').replace(/^## (.+)$/gm, '<h2>$1</h2>').replace(/^# (.+)$/gm, '<h1>$1</h1>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>').replace(/`(.+?)`/g, '<code>$1</code>').replace(/^\- (.+)$/gm, '<li>$1</li>').replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>').replace(/^---$/gm, '<hr>').replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank">$1</a>').replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
         return;
     }
     var result = defaultProcess(toolId, input);

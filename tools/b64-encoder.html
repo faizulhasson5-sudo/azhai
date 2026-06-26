@@ -18,6 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
 </head>
 <body>
 <header class="site-header" id="siteHeader">
@@ -77,7 +78,7 @@
 
         <div class="action-bar">
             <button onclick="copyInput()" class="btn btn-sm" title="Copy input text">📋 Copy Input</button>
-            <button onclick="processCurrentTool()" class="btn-primary btn-lg" id="process-btn" title="Process text">⚡ Process</button>
+            <button onclick="processCurrentTool()" class="btn btn-primary btn-lg" id="process-btn" title="Process text">⚡ Process</button>
             <button onclick="copyResult()" class="btn btn-sm" title="Copy result">📋 Copy Result</button>
             <button onclick="downloadResult()" class="btn btn-sm" title="Download result">⬇ Download</button>
         </div>
@@ -378,6 +379,7 @@ function renderToolOptions(toolId) {
 }
 
 function processCurrentTool() {
+try {
     var path = window.location.pathname;
     var match = path.match(/\/tools\/([a-z0-9-]+)\.html$/);
     var toolId = match ? match[1] : '';
@@ -385,7 +387,9 @@ function processCurrentTool() {
     var output = document.getElementById('tool-output');
     if (!input) { showToast('Please enter some text to process.'); return; }
     if (toolId === 'markdown-preview') {
-        output.innerHTML = (typeof marked !== 'undefined') ? marked.parse(input) : input.replace(/\n/g, '<br>');
+        try {
+            output.innerHTML = (typeof marked !== 'undefined') ? marked.parse(input) : input.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/^### (.+)$/gm,'<h3>$1</h3>').replace(/^## (.+)$/gm,'<h2>$1</h2>').replace(/^# (.+)$/gm,'<h1>$1</h1>').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/`(.+?)`/g,'<code>$1</code>').replace(/^\- (.+)$/gm,'<li>$1</li>').replace(/^> (.+)$/gm,'<blockquote>$1</blockquote>').replace(/^---$/gm,'<hr>').replace(/\[(.+?)\]\((.+?)\)/g,'<a href="$2" target="_blank">$1</a>').replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br>');
+        } catch(e) { output.textContent = 'Error rendering markdown: ' + e.message; }
         return;
     }
     if (toolId === 'keyword-density') {
@@ -514,6 +518,11 @@ function processCurrentTool() {
     }
     var result = defaultProcess(toolId, input);
     if (result !== undefined) output.textContent = result;
+} catch(e) {
+    var out = document.getElementById('tool-output');
+    if(out) out.textContent = 'Error: ' + e.message;
+    showToast('An error occurred: ' + e.message);
+}
 }
 
 function defaultProcess(toolId, input) {
@@ -553,19 +562,16 @@ function defaultProcess(toolId, input) {
             if (mode === 'words') return input.split(/\s+/).reverse().join(' ');
             if (mode === 'lines') return lines.reverse().join('\n');
             return input;
-        case 'find-replace':
-            var find = document.getElementById('opt-find');
-            var repl = document.getElementById('opt-replace');
-            var cs = document.getElementById('opt-casesensitive');
-            if (!find) return input;
-            var flags = cs && cs.checked ? 'g' : 'gi';
-            return input.replace(new RegExp(find.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), flags), repl.value);
         case 'url-encoder': return encodeURIComponent(input);
-        case 'url-decoder': return decodeURIComponent(input);
+        case 'url-decoder':
+            try { return decodeURIComponent(input); }
+            catch(e) { return 'Error: Invalid URL-encoded string'; }
         case 'html-encoder': return input.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
         case 'html-decoder': var el = document.createElement('div'); el.innerHTML = input; return el.textContent;
         case 'b64-encoder': return btoa(unescape(encodeURIComponent(input)));
-        case 'b64-decoder': return decodeURIComponent(escape(atob(input)));
+        case 'b64-decoder':
+            try { return decodeURIComponent(escape(atob(input.trim()))); }
+            catch(e) { return 'Error: Invalid Base64 string'; }
         case 'slug-generator': return input.toLowerCase().trim().replace(/[^\w\s-]/g,'').replace(/[\s_]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
         case 'lorem-generator':
             var paras = Math.max(1, Math.min(20, parseInt(input) || 3));
@@ -712,7 +718,7 @@ function showToast(msg) {
 function acceptCookies() {
     var el = document.getElementById('cookie-consent');
     if(el) el.style.display = 'none';
-    localStorage.setItem('cookiesAccepted', '1');
+    localStorage.setItem('attCookies', 'accepted');
 }
 function initToolPage() {
     var path = window.location.pathname;
@@ -741,6 +747,20 @@ function initToolPage() {
         });
     }
     document.getElementById('faq-list').innerHTML = faqHtml;
+    var blogPosts = [
+        {slug:'ultimate-guide-seo-text-tools',title:'The Ultimate Guide to Free SEO Text Tools in 2026',category:'SEO Tools',date:'2026-06-20'},
+        {slug:'how-to-write-perfect-meta-descriptions',title:'How to Write Perfect Meta Descriptions',category:'SEO Tips',date:'2026-06-18'},
+        {slug:'json-formatting-best-practices',title:'JSON Formatting Best Practices for Developers',category:'Development',date:'2026-06-15'},
+        {slug:'markdown-for-bloggers',title:'Markdown for Bloggers: A Complete Beginner Guide',category:'Blogging',date:'2026-06-12'},
+        {slug:'understanding-canonical-tags-seo',title:'Understanding Canonical Tags: The Complete SEO Guide',category:'SEO Tips',date:'2026-06-10'},
+        {slug:'open-graph-tags-social-media',title:'Open Graph Tags: Get Perfect Social Media Previews',category:'Social Media',date:'2026-06-08'}
+    ];
+    var sidebarBlog = document.getElementById('sidebar-blog');
+    if (sidebarBlog) {
+        sidebarBlog.innerHTML = blogPosts.slice(0,3).map(function(p){
+            return '<a href="/blog/' + p.slug + '.html" class="sidebar-link"><span style="font-size:.65rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.04em">' + p.category + ' &middot; ' + p.date + '</span><br>' + p.title + '</a>';
+        }).join('');
+    }
     renderToolOptions(toolId);
     var schema = toolSchema[toolId];
     if (schema) {
@@ -749,7 +769,7 @@ function initToolPage() {
         script.textContent = JSON.stringify(schema);
         document.head.appendChild(script);
     }
-    if (!localStorage.getItem('cookiesAccepted')) {
+    if (!localStorage.getItem('attCookies')) {
         document.getElementById('cookie-consent').style.display = 'flex';
     } else {
         document.getElementById('cookie-consent').style.display = 'none';
@@ -759,6 +779,8 @@ function initToolPage() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    var savedTheme = localStorage.getItem('attTheme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
     initToolPage();
     var header = document.getElementById('siteHeader');
     if(header) {
@@ -769,11 +791,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     var themeBtn = document.getElementById('themeToggle');
     if(themeBtn) {
+        themeBtn.textContent = savedTheme === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
         themeBtn.addEventListener('click', function(){
-            if(typeof App !== 'undefined' && App.toggleTheme) App.toggleTheme();
-            themeBtn.textContent = (localStorage.getItem('attTheme')||'light')==='dark'?'☀️':'🌙';
+            var current = document.documentElement.getAttribute('data-theme');
+            var next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('attTheme', next);
+            themeBtn.textContent = next === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
         });
-        themeBtn.textContent = (localStorage.getItem('attTheme')||'light')==='dark'?'☀️':'🌙';
     }
     var mm = document.getElementById('mobileMenu');
     var nav = document.getElementById('mainNav');

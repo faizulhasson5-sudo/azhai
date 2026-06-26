@@ -34,7 +34,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <header class="site-header">
         <div class="header-inner">
             <a href="/" class="logo"><div class="logo-icon">T</div>Free AI <span>Text Tools</span></a>
-            <nav class="nav">
+            <nav class="nav" id="mainNav">
                 <a href="/">Home</a>
                 <a href="/tools/">Tools</a>
                 <a href="/blog/">Blog</a>
@@ -42,7 +42,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <a href="/advertise.html" class="active">Advertise</a>
                 <a href="/tools/" class="nav-cta">All Tools</a>
             </nav>
-            <button class="mobile-menu" aria-label="Menu">☰</button>
+            <button class="mobile-menu" id="mobileMenu" aria-label="Menu">☰</button>
             <button class="theme-btn" aria-label="Toggle dark mode">🌙</button>
         </div>
     </header>
@@ -284,9 +284,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             b.addEventListener('click', App.toggleTheme);
             b.textContent = (localStorage.getItem('attTheme')||'light')==='dark'?'☀️':'🌙';
         });
-        var mm = document.querySelector('.mobile-menu');
-        var nav = document.querySelector('.nav');
-        if(mm && nav) mm.addEventListener('click',function(){nav.style.display=nav.style.display==='flex'?'none':'flex';nav.style.flexDirection='column';nav.style.position='absolute';nav.style.top='64px';nav.style.right='1rem';nav.style.background='var(--card-bg)';nav.style.padding='1rem';nav.style.borderRadius='var(--radius)';nav.style.boxShadow='var(--shadow-lg)';nav.style.border='1px solid var(--border)';nav.style.zIndex='100'});
+        var mm = document.getElementById('mobileMenu');
+        var nav = document.getElementById('mainNav');
+        if(mm && nav) mm.addEventListener('click',function(){nav.classList.toggle('open')});
 
         document.getElementById('advertiseForm').addEventListener('submit', function(e){
             e.preventDefault();

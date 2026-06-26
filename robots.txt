@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /build.js
+Disallow: /build-blog.js
+
+Sitemap: https://free-aitexttools.vercel.app/sitemap.xml

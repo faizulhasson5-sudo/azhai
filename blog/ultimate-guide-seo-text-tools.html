@@ -13,9 +13,11 @@
     <meta property="og:description" id="og-desc" content="">
     <meta property="og:url" id="og-url" content="">
     <meta property="og:site_name" content="Free AI Text Tools">
+    <meta property="og:image" id="og-image" content="">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" id="tw-title" content="">
     <meta name="twitter:description" id="tw-desc" content="">
+    <meta name="twitter:image" id="tw-image" content="">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -73,8 +75,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="blog-tag" id="article-category"></span>
                 <time style="color:var(--text-secondary);font-size:.78rem;font-weight:700;text-transform:uppercase" id="article-date"></time>
                 <span style="color:var(--text-secondary);font-size:.78rem;font-weight:700;text-transform:uppercase" id="article-read-time"></span>
-                <span style="color:var(--text-secondary);font-size:.78rem;font-weight:700;text-transform:uppercase" id="article-author"></span>
+                <span style="display:flex;align-items:center;gap:.4rem;color:var(--text-secondary);font-size:.78rem;font-weight:700;text-transform:uppercase"><img class="author-img" id="article-author-img" src="" alt="" style="display:none"><span id="article-author"></span></span>
             </div>
+
+            <div id="article-banner-wrap"></div>
 
             <h1 style="font-size:clamp(1.4rem,3vw,2rem);font-weight:900;line-height:1.2;margin-bottom:.75rem;text-transform:uppercase;letter-spacing:-.02em;border-bottom:var(--border);padding-bottom:.5rem" id="article-title"></h1>
             <p style="font-size:.95rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem" id="article-excerpt"></p>
@@ -200,6 +204,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         "publisher": { "@type": "Organization", "name": "Free AI Text Tools" },
         "mainEntityOfPage": window.location.href
     };
+    if (post.image) schema.image = window.location.origin + post.image;
     document.getElementById('article-schema').textContent = JSON.stringify(schema);
 
     document.getElementById('breadcrumb-category').textContent = post.category;
@@ -208,6 +213,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('article-date').textContent = new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     document.getElementById('article-read-time').textContent = post.readTime + ' read';
     document.getElementById('article-author').textContent = 'By ' + (post.author || 'Editorial Team');
+
+    if (post.authorImage) {
+        var authorImg = document.getElementById('article-author-img');
+        authorImg.src = post.authorImage;
+        authorImg.alt = post.author || 'Author';
+        authorImg.style.display = 'inline-block';
+    }
+
+    if (post.image) {
+        var imgUrl = window.location.origin + post.image;
+        document.getElementById('og-image').setAttribute('content', imgUrl);
+        document.getElementById('tw-image').setAttribute('content', imgUrl);
+    }
+
+    if (post.banner) {
+        document.getElementById('article-banner-wrap').innerHTML = '<img class="article-banner" src="' + post.banner + '" alt="' + post.title + '">';
+    }
+
     document.getElementById('article-title').textContent = post.title;
     document.getElementById('article-excerpt').textContent = post.excerpt;
     document.getElementById('article-body').innerHTML = post.content;
@@ -248,7 +271,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var card = document.createElement('a');
         card.className = 'blog-card';
         card.href = '/blog/' + rp.slug + '.html';
-        card.innerHTML = '<div class="blog-card-img">' + (icons[rp.category]||'📄') + '</div><div class="blog-card-body"><div class="blog-card-meta"><span class="blog-tag">' + rp.category + '</span><span>' + rp.readTime + ' read</span></div><h3>' + rp.title + '</h3><p>' + rp.excerpt + '</p></div>';
+        card.innerHTML = '<div class="blog-card-img">' + (rp.image ? '<img src="'+rp.image+'" alt="'+rp.title+'" loading="lazy">' : '<div style="height:160px;display:flex;align-items:center;justify-content:center;font-size:2rem">'+(icons[rp.category]||'📄')+'</div>') + '</div><div class="blog-card-body"><div class="blog-card-meta"><span class="blog-tag">' + rp.category + '</span><span>' + rp.readTime + ' read</span></div><h3>' + rp.title + '</h3><p>' + rp.excerpt + '</p></div>';
         relatedGrid.appendChild(card);
     });
 

@@ -211,8 +211,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if(blogGrid && App.blogPosts){
             var icons = {'SEO Tools':'🔍','SEO Tips':'📈','Development':'💻','Blogging':'✍','Social Media':'📱','Content Marketing':'📊'};
             blogGrid.innerHTML = App.blogPosts.slice(0,3).map(function(p){
+                var imgHtml = p.image ? '<img src="'+p.image+'" alt="'+p.title+'" loading="lazy">' : '<div style="height:160px;display:flex;align-items:center;justify-content:center;font-size:2.5rem">'+(icons[p.category]||'📄')+'</div>';
                 return '<a href="/blog/'+p.slug+'.html" class="blog-card">'+
-                    '<div class="blog-card-img">'+(icons[p.category]||'📄')+'</div>'+
+                    '<div class="blog-card-img">'+imgHtml+'</div>'+
                     '<div class="blog-card-body">'+
                     '<div class="blog-card-meta"><span class="blog-tag">'+p.category+'</span><span>'+p.readTime+' read</span></div>'+
                     '<h3>'+p.title+'</h3>'+

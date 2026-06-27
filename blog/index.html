@@ -172,7 +172,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           return;
         }
         blogGrid.innerHTML = posts.map(function(post) {
-          return '<a href="/blog/' + post.slug + '.html" class="blog-card"><div class="blog-card-img">' + (icons[post.category]||'📄') + '</div><div class="blog-card-body"><div class="blog-card-meta"><span class="blog-tag">' + post.category + '</span><span>' + post.readTime + ' read</span></div><h3>' + post.title + '</h3><p>' + post.excerpt + '</p></div></a>';
+          var imgHtml = post.image ? '<img src="'+post.image+'" alt="'+post.title+'" loading="lazy">' : '<div style="height:160px;display:flex;align-items:center;justify-content:center;font-size:2.5rem">'+(icons[post.category]||'📄')+'</div>';
+          return '<a href="/blog/' + post.slug + '.html" class="blog-card"><div class="blog-card-img">' + imgHtml + '</div><div class="blog-card-body"><div class="blog-card-meta"><span class="blog-tag">' + post.category + '</span><span>' + post.readTime + ' read</span></div><h3>' + post.title + '</h3><p>' + post.excerpt + '</p></div></a>';
         }).join('');
       }
 

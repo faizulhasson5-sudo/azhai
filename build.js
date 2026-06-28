@@ -12,7 +12,7 @@ const tools = [
     'robots-txt','sitemap-gen','meta-gen','og-generator','slug-generator','meta-desc-gen',
     'canonical-gen','keyword-density','keyword-extract',
     'find-replace','regex-tester','html-previewer',
-    'hash-generator','lorem-generator'
+    'hash-generator','lorem-generator','word-frequency'
 ];
 
 const templatePath = path.join(__dirname, 'tools', 'template.html');

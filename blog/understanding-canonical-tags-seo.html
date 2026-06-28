@@ -75,7 +75,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="blog-tag" id="article-category"></span>
                 <time style="color:var(--text-secondary);font-size:.78rem;font-weight:700;text-transform:uppercase" id="article-date"></time>
                 <span style="color:var(--text-secondary);font-size:.78rem;font-weight:700;text-transform:uppercase" id="article-read-time"></span>
-                <span style="display:flex;align-items:center;gap:.4rem;color:var(--text-secondary);font-size:.78rem;font-weight:700;text-transform:uppercase"><img class="author-img" id="article-author-img" src="" alt="" style="display:none"><span id="article-author"></span></span>
+                <span style="color:var(--text-secondary);font-size:.78rem;font-weight:700;text-transform:uppercase" id="article-author"></span>
             </div>
 
             <div id="article-banner-wrap"></div>
@@ -213,13 +213,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('article-date').textContent = new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     document.getElementById('article-read-time').textContent = post.readTime + ' read';
     document.getElementById('article-author').textContent = 'By ' + (post.author || 'Editorial Team');
-
-    if (post.authorImage) {
-        var authorImg = document.getElementById('article-author-img');
-        authorImg.src = post.authorImage;
-        authorImg.alt = post.author || 'Author';
-        authorImg.style.display = 'inline-block';
-    }
 
     if (post.image) {
         var imgUrl = window.location.origin + post.image;

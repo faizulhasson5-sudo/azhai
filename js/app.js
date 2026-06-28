@@ -253,7 +253,7 @@ App.blogPosts = [
         tags:['SEO','tools','content'],
         image:'/blog/images/ultimate-guide-seo-text-tools.jpg',
         banner:'/blog/images/ultimate-guide-seo-text-tools-banner.jpg',
-        authorImage:'/blog/images/author.jpg',
+
         content:'<h2>Why SEO Text Tools Matter</h2><p>In today\'s competitive digital landscape, having the right SEO tools can make or break your content strategy. Free online text tools provide instant analysis, optimization, and formatting capabilities that previously required expensive software.</p><h2>Top Tools Every Blogger Needs</h2><p>Word counters help you hit target lengths. Keyword density checkers prevent over-optimization. Meta tag generators ensure proper on-page SEO. These tools work together to create content that both readers and search engines love.</p><h2>How to Use Text Tools for Better Rankings</h2><p>Start with keyword research using our Keyword Extractor. Write your draft, then use the Keyword Density Checker to optimize. Generate meta tags with our Meta Tag Generator. Check your character counts for social media previews. Each step improves your content\'s visibility.</p><h2>Conclusion</h2><p>Free AI text tools democratize SEO. Whether you\'re a beginner blogger or experienced marketer, these tools streamline your workflow and help you create optimized content faster.</p>'
     },
     {
@@ -266,7 +266,7 @@ App.blogPosts = [
         tags:['meta tags','SEO','CTR'],
         image:'/blog/images/meta-descriptions.jpg',
         banner:'/blog/images/meta-descriptions-banner.jpg',
-        authorImage:'/blog/images/author.jpg',
+
         content:'<h2>What Makes a Great Meta Description?</h2><p>A meta description is your elevator pitch in search results. It should be under 160 characters, include your target keyword, and compellingly describe what the page offers.</p><h2>Best Practices for Meta Descriptions</h2><p>Always include a call-to-action. Use active voice. Match search intent. Include numbers when possible. Our Meta Description Generator can help you craft optimized descriptions in seconds.</p><h2>Common Mistakes to Avoid</h2><p>Duplicate descriptions across pages, keyword stuffing, missing descriptions entirely, and writing descriptions that don\'t match page content are the most common errors.</p>'
     },
     {
@@ -279,7 +279,7 @@ App.blogPosts = [
         tags:['JSON','development','API'],
         image:'/blog/images/json-formatting.jpg',
         banner:'/blog/images/json-formatting-banner.jpg',
-        authorImage:'/blog/images/author.jpg',
+
         content:'<h2>Why Proper JSON Formatting Matters</h2><p>Well-formatted JSON is easier to read, debug, and maintain. It reduces errors in API integrations and makes collaboration smoother.</p><h2>JSON Formatting Rules</h2><p>Use consistent indentation (2 spaces). Order keys logically. Validate before deploying. Our JSON Formatter and Validator tools make this effortless.</p><h2>Common JSON Errors</h2><p>Trailing commas, missing quotes around keys, and incorrect nesting are the most frequent issues. Always validate your JSON before sending it to an API.</p>'
     },
     {
@@ -292,7 +292,7 @@ App.blogPosts = [
         tags:['Markdown','blogging','writing'],
         image:'/blog/images/markdown-bloggers.jpg',
         banner:'/blog/images/markdown-bloggers-banner.jpg',
-        authorImage:'/blog/images/author.jpg',
+
         content:'<h2>What is Markdown?</h2><p>Markdown is a lightweight markup language that lets you write formatted text using plain text syntax. It\'s used everywhere from GitHub to blog platforms.</p><h2>Essential Markdown Syntax</h2><p># for headings, ** for bold, * for italic, - for lists, and > for blockquotes. That\'s really all you need to start writing great content.</p><h2>Try Our Markdown Editor</h2><p>Our free Markdown Editor with live preview lets you write and see results instantly. Perfect for documentation, README files, and blog posts.</p>'
     },
     {
@@ -305,7 +305,7 @@ App.blogPosts = [
         tags:['canonical','SEO','duplicate content'],
         image:'/blog/images/canonical-tags.jpg',
         banner:'/blog/images/canonical-tags-banner.jpg',
-        authorImage:'/blog/images/author.jpg',
+
         content:'<h2>What Are Canonical Tags?</h2><p>A canonical tag tells search engines which version of a URL is the "master" version. It\'s essential for preventing duplicate content penalties.</p><h2>When to Use Canonical Tags</h2><p>Use them when similar content exists at multiple URLs, when URL parameters create duplicate pages, or when syndicating content across domains.</p><h2>Generate Canonical Tags</h2><p>Our Canonical Tag Generator creates proper link tags instantly. Just enter your preferred URL and copy the output into your HTML head.</p>'
     },
     {
@@ -318,7 +318,7 @@ App.blogPosts = [
         tags:['Open Graph','social media','meta tags'],
         image:'/blog/images/open-graph-tags.jpg',
         banner:'/blog/images/open-graph-tags-banner.jpg',
-        authorImage:'/blog/images/author.jpg',
+
         content:'<h2>Why Open Graph Tags Matter</h2><p>Open Graph tags control how your content appears when shared on social media. Without them, platforms guess how to display your link \u2014 often badly.</p><h2>Essential OG Tags</h2><p>og:title, og:description, og:image, og:url, and og:type are the must-haves. Our OG Generator creates complete tags including Twitter Card support.</p><h2>Image Specifications</h2><p>Use 1200x630px for the best results across all platforms. Keep file size under 1MB. Use JPG or PNG format.</p>'
     }
 ];

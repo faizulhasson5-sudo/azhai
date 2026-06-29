@@ -153,7 +153,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         };
         Object.keys(cats).forEach(function(cat){
             var el = document.getElementById(cat+'Tools');
-            if(el) el.innerHTML = cats[cat].map(function(id){var t=App.getToolById(id);return t?'<a href="/tools/'+t.id+'.html" class="tool-card"><div class="tool-card-icon">'+t.icon+'</div><div class="tool-card-title">'+t.name+'</div><div class="tool-card-desc">'+t.desc+'</div></a>':'';}).join('');
+            if(el) el.innerHTML = cats[cat].map(function(id){var t=App.getToolById(id);return t?'<a href="/tools/'+t.id+'.html" class="tool-card"><div class="tool-card-icon" style="background:'+t.color+'">'+t.icon+'</div><div class="tool-card-title">'+t.name+'</div><div class="tool-card-desc">'+t.desc+'</div></a>':'';}).join('');
         });
         App.initCookieConsent();
         var themeBtn = document.getElementById('themeToggle');

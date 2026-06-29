@@ -199,7 +199,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 var t = App.getToolById(id);
                 if(!t) return '';
                 return '<a href="/tools/'+t.id+'.html" class="tool-card">'+
-                    '<div class="tool-card-icon">'+t.icon+'</div>'+
+                    '<div class="tool-card-icon" style="background:'+t.color+'">'+t.icon+'</div>'+
                     '<div class="tool-card-title">'+t.name+'</div>'+
                     '<div class="tool-card-desc">'+t.desc+'</div></a>';
             }).join('');

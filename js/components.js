@@ -157,7 +157,7 @@ Comp.toolSidebar = function(currentToolId){
         html += `<div class="sidebar-widget"><h3>${cat}</h3><ul>`;
         tools.forEach(id=>{
             const t = App.getToolById(id);
-            if(t) html += `<li><a href="/tools/${id}.html" class="${id===currentToolId?'active':''}">${t.icon} ${t.name}</a></li>`;
+            if(t) html += `<li><a href="/tools/${id}.html" class="${id===currentToolId?'active':''}"><span style="display:inline-flex;width:18px;height:18px;background:${t.color};border:2px solid var(--black);align-items:center;justify-content:center;border-radius:2px;vertical-align:middle;margin-right:.3rem">${t.icon.replace(/viewBox="0 0 40 40"/,'viewBox="0 0 40 40" width="12" height="12"')}</span> ${t.name}</a></li>`;
         });
         html += '</ul></div>';
     });

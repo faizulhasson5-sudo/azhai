@@ -84,34 +84,69 @@ img{max-width:100%;height:auto;display:block}
 
 /* ---------- Hero ---------- */
 .hero{
-  padding:calc(var(--header-h) + 3rem) 0 3rem;
+  padding:calc(var(--header-h) + 4rem) 0 4rem;
   text-align:center;position:relative;
-  background:var(--bg);border-bottom:var(--border);
+  background:var(--black);border-bottom:4px solid var(--red);overflow:hidden;
 }
 .hero::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  content:'';position:absolute;top:0;left:0;right:0;height:5px;
+  background:var(--red);
+}
+.hero::after{
+  content:'';position:absolute;top:0;left:0;bottom:0;width:5px;
   background:var(--red);
 }
 .hero-badge{
   display:inline-flex;align-items:center;gap:.5rem;
-  padding:.4rem 1rem;
-  background:var(--red);border:var(--border);box-shadow:var(--shadow-sm);
-  font-size:.72rem;font-weight:900;color:var(--white);
-  text-transform:uppercase;letter-spacing:.08em;
-  margin-bottom:1.25rem;
+  padding:.45rem 1.2rem;
+  background:transparent;border:3px solid var(--red);box-shadow:4px 4px 0 var(--red);
+  font-size:.72rem;font-weight:900;color:var(--red);
+  text-transform:uppercase;letter-spacing:.12em;
+  margin-bottom:2rem;position:relative;z-index:1;
+  font-family:'Space Mono','IBM Plex Mono','Courier New',monospace;
 }
-.hero-badge .dot{width:8px;height:8px;background:var(--green);border:1px solid var(--white)}
+.hero-badge .dot{
+  width:8px;height:8px;background:var(--red);
+  border:1px solid var(--red);animation:pulse-dot 1.5s ease-in-out infinite;
+}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.3}}
 .hero h1{
-  font-size:clamp(2rem,5vw,3.8rem);font-weight:900;
-  letter-spacing:-.04em;line-height:1.05;
-  margin-bottom:1.25rem;text-transform:uppercase;
+  font-size:clamp(2.8rem,7vw,5.5rem);font-weight:900;
+  letter-spacing:-.06em;line-height:.95;
+  margin-bottom:1.5rem;text-transform:uppercase;
+  color:var(--white);position:relative;z-index:1;
+  font-family:'Space Mono','IBM Plex Mono','Courier New',monospace;
 }
-.hero h1 .gradient{color:var(--red)}
+.hero h1 .gradient{
+  color:var(--red);display:block;
+  text-shadow:4px 4px 0 rgba(230,57,70,.3);
+}
 .hero p{
-  font-size:clamp(.85rem,2vw,1.05rem);color:var(--text-secondary);
-  max-width:640px;margin:0 auto 2rem;line-height:1.7;
+  font-size:clamp(.7rem,1.5vw,.85rem);color:rgba(255,255,255,.5);
+  max-width:600px;margin:0 auto 2.5rem;line-height:1.8;
+  text-transform:uppercase;letter-spacing:.06em;
+  font-family:'Space Mono','IBM Plex Mono','Courier New',monospace;
+  position:relative;z-index:1;
 }
-.hero-actions{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+.hero-actions{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.hero-actions .btn-primary{
+  background:var(--red);color:var(--white);border:3px solid var(--red);
+  box-shadow:4px 4px 0 rgba(230,57,70,.4);
+  font-family:'Space Mono','IBM Plex Mono','Courier New',monospace;
+}
+.hero-actions .btn-primary:hover{
+  background:var(--white);color:var(--black);border-color:var(--white);
+  transform:translate(2px,2px);box-shadow:2px 2px 0 rgba(230,57,70,.3);
+}
+.hero-actions .btn-outline{
+  background:transparent;color:var(--white);border:3px solid var(--white);
+  box-shadow:4px 4px 0 rgba(255,255,255,.15);
+  font-family:'Space Mono','IBM Plex Mono','Courier New',monospace;
+}
+.hero-actions .btn-outline:hover{
+  background:var(--white);color:var(--black);
+  transform:translate(2px,2px);box-shadow:2px 2px 0 rgba(255,255,255,.1);
+}
 
 /* ---------- Buttons ---------- */
 .btn{
@@ -490,9 +525,9 @@ img{max-width:100%;height:auto;display:block}
 @media(max-width:768px){
   :root{--header-h:52px;--container-px:1rem}
 
-  .hero{padding:calc(var(--header-h) + 1.5rem) 0 1.5rem}
-  .hero h1{font-size:1.6rem}
-  .hero p{font-size:.85rem;padding:0 .5rem}
+  .hero{padding:calc(var(--header-h) + 2.5rem) 0 2.5rem}
+  .hero h1{font-size:clamp(2rem,6vw,3rem)}
+  .hero p{font-size:.75rem;padding:0 .5rem}
   .hero-actions{gap:.5rem}
 
   .nav{display:none}
@@ -579,8 +614,8 @@ img{max-width:100%;height:auto;display:block}
   .faq-item details[open] .faq-answer{padding:0 .75rem .6rem;font-size:.82rem}
 }
 @media(max-width:480px){
-  .hero h1{font-size:1.3rem}
-  .hero p{font-size:.8rem}
+  .hero h1{font-size:clamp(1.6rem,5vw,2.2rem)}
+  .hero p{font-size:.65rem;letter-spacing:.04em}
   .hero-actions{flex-direction:column;align-items:center}
   .hero-actions .btn{width:100%;max-width:280px;justify-content:center}
 

@@ -132,7 +132,7 @@ Comp.relatedPosts = function(currentSlug){
     return `<div class="section-header"><h2>Related Articles</h2></div>
     <div class="blog-grid">${posts.map(p=>`
         <a href="/blog/${p.slug}.html" class="blog-card">
-            <div class="blog-card-img">${p.image ? '<img src="'+p.image+'" alt="'+p.title+'" loading="lazy">' : '<div style="height:160px;display:flex;align-items:center;justify-content:center;font-size:2rem">'+(p.category==='SEO Tools'?'🔍':p.category==='SEO Tips'?'📈':p.category==='Development'?'💻':p.category==='Blogging'?'✍':'📱')+'</div>'}</div>
+            <div class="blog-card-img">${p.image ? '<img src="'+p.image+'" alt="'+p.title+'" loading="lazy">' : '<div style="height:160px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;color:var(--red)">'+p.category.charAt(0)+'</div>'}</div>
             <div class="blog-card-body">
                 <div class="blog-card-meta"><span>${p.category}</span><span>${p.readTime} read</span></div>
                 <h3>${p.title}</h3>

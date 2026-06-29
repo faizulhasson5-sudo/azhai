@@ -181,7 +181,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var post = App.blogPosts.find(function(p) { return p.slug === slug; });
     if (!post) { window.location.href = '/blog/'; return; }
 
-    var icons = {'SEO Tools':'🔍','SEO Tips':'📈','Development':'💻','Blogging':'✍','Social Media':'📱','Content Marketing':'📊'};
+    var icons = {'SEO Tools':'S','SEO Tips':'T','Development':'D','Blogging':'B','Social Media':'M','Content Marketing':'C'};
 
     document.getElementById('page-title').textContent = post.title + ' - Free AI Text Tools';
     document.getElementById('meta-description').setAttribute('content', post.excerpt);
@@ -264,7 +264,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var card = document.createElement('a');
         card.className = 'blog-card';
         card.href = '/blog/' + rp.slug + '.html';
-        card.innerHTML = '<div class="blog-card-img">' + (rp.image ? '<img src="'+rp.image+'" alt="'+rp.title+'" loading="lazy">' : '<div style="height:160px;display:flex;align-items:center;justify-content:center;font-size:2rem">'+(icons[rp.category]||'📄')+'</div>') + '</div><div class="blog-card-body"><div class="blog-card-meta"><span class="blog-tag">' + rp.category + '</span><span>' + rp.readTime + ' read</span></div><h3>' + rp.title + '</h3><p>' + rp.excerpt + '</p></div>';
+        card.innerHTML = '<div class="blog-card-img">' + (rp.image ? '<img src="'+rp.image+'" alt="'+rp.title+'" loading="lazy">' : '<div style="height:160px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;color:var(--red)">'+(icons[rp.category]||'?')+'</div>') + '</div><div class="blog-card-body"><div class="blog-card-meta"><span class="blog-tag">' + rp.category + '</span><span>' + rp.readTime + ' read</span></div><h3>' + rp.title + '</h3><p>' + rp.excerpt + '</p></div>';
         relatedGrid.appendChild(card);
     });
 
@@ -279,7 +279,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var catList = document.getElementById('sidebar-categories');
     Object.keys(cats).forEach(function(cat) {
         var li = document.createElement('li');
-        li.innerHTML = '<a href="/blog/?category=' + encodeURIComponent(cat) + '" style="display:flex;justify-content:space-between;align-items:center;padding:.4rem .5rem;color:var(--text);text-decoration:none;font-size:.82rem;font-weight:700;border-bottom:2px solid var(--bg-alt)"><span>' + (icons[cat]||'📄') + ' ' + cat + '</span><span style="background:var(--bg);padding:.1rem .4rem;font-size:.68rem;font-weight:900;border:1px solid var(--black)">' + cats[cat] + '</span></a>';
+        li.innerHTML = '<a href="/blog/?category=' + encodeURIComponent(cat) + '" style="display:flex;justify-content:space-between;align-items:center;padding:.4rem .5rem;color:var(--text);text-decoration:none;font-size:.82rem;font-weight:700;border-bottom:2px solid var(--bg-alt)"><span style="font-weight:900;color:var(--red)">' + (icons[cat]||'?') + '</span> ' + cat + '<span style="background:var(--bg);padding:.1rem .4rem;font-size:.68rem;font-weight:900;border:1px solid var(--black)">' + cats[cat] + '</span></a>';
         catList.appendChild(li);
     });
 

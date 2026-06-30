@@ -48,8 +48,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <a href="/about.html" class="active">About</a>
             <a href="/advertise.html">Advertise</a>
         </nav>
-        <button class="mobile-menu" id="mobileMenu" aria-label="Toggle menu">☰</button>
-        <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+        <button class="mobile-menu" id="mobileMenu" aria-label="Toggle menu">&#9776;</button>
+        <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">&#9789;</button>
     </div>
 </header>
 
@@ -163,7 +163,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         App.initCookieConsent();
         document.querySelectorAll('.theme-btn').forEach(function(b){
             b.addEventListener('click', App.toggleTheme);
-            b.textContent = (localStorage.getItem('attTheme')||'light')==='dark'?'☀️':'🌙';
+            b.textContent = (localStorage.getItem('attTheme')||'light')==='dark'?'\u2600':'\u263E';
         });
         var mm = document.getElementById('mobileMenu');
         var nav = document.getElementById('mainNav');

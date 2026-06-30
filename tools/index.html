@@ -37,8 +37,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <a href="/advertise.html">Advertise</a>
                 <a href="/tools/" class="nav-cta">All 37 Tools</a>
             </nav>
-            <button class="mobile-menu" id="mobileMenu" aria-label="Toggle menu">☰</button>
-            <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+            <button class="mobile-menu" id="mobileMenu" aria-label="Toggle menu">&#9776;</button>
+            <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">&#9789;</button>
         </div>
     </header>
 
@@ -132,11 +132,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 return matchCat && matchSearch;
             });
             grid.innerHTML = filtered.map(function(t){
-                return '<a href="/tools/'+t.id+'.html" class="tool-card">'+
-                    '<div class="tool-card-icon" style="background:'+t.color+'15">'+t.icon+'</div>'+
+                return '<a href="/tools/'+t.id+'.html" class="tool-card reveal visible">'+
+                    '<div class="tool-card-icon">'+t.icon+'</div>'+
                     '<div class="tool-card-title">'+t.name+'</div>'+
                     '<div class="tool-card-desc">'+t.desc+'</div>'+
-                    '<span class="tool-link">Use tool →</span></a>';
+                    '<span class="tool-link">Use tool &#8594;</span></a>';
             }).join('');
             if(!filtered.length) grid.innerHTML = '<p style="text-align:center;color:var(--text-secondary);padding:2rem">No tools found matching your search.</p>';
         }
@@ -160,7 +160,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         App.initCookieConsent();
         var themeBtn = document.getElementById('themeToggle');
         themeBtn.addEventListener('click', App.toggleTheme);
-        themeBtn.textContent = (localStorage.getItem('attTheme')||'light')==='dark'?'☀️':'🌙';
+        themeBtn.textContent = (localStorage.getItem('attTheme')||'light')==='dark'?'\u2600':'\u263E';
         var mm = document.getElementById('mobileMenu');
         var nav = document.getElementById('mainNav');
         if(mm && nav) mm.addEventListener('click', function(){ nav.classList.toggle('open'); });

@@ -44,8 +44,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="/about.html">About</a>
         <a href="/advertise.html">Advertise</a>
     </nav>
-    <button class="mobile-menu" id="mobileMenu" aria-label="Toggle menu">☰</button>
-    <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+    <button class="mobile-menu" id="mobileMenu" aria-label="Toggle menu">&#9776;</button>
+    <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">&#9789;</button>
 </div>
 </header>
 
@@ -839,13 +839,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     var themeBtn = document.getElementById('themeToggle');
     if(themeBtn) {
-        themeBtn.textContent = savedTheme === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
+        themeBtn.textContent = savedTheme === 'dark' ? '\u2600' : '\u263E';
         themeBtn.addEventListener('click', function(){
             var current = document.documentElement.getAttribute('data-theme');
             var next = current === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', next);
             localStorage.setItem('attTheme', next);
-            themeBtn.textContent = next === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
+            themeBtn.textContent = next === 'dark' ? '\u2600' : '\u263E';
         });
     }
     var mm = document.getElementById('mobileMenu');

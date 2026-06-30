@@ -16,30 +16,28 @@
 <title id="page-title">Tool - Free AI Text Tools</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
-<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,
 f);})(window,document,'script','dataLayer','GTM-KDTPKT4T');</script>
-<!-- End Google Tag Manager -->
 <meta name="google-site-verification" content="6MsJ07hr52c91ZELOm9kIZmgvj0NOpWWM360VR2cG7A" />
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDTPKT4T"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <header class="site-header" id="siteHeader">
 <div class="header-inner">
     <a href="/" class="logo">
         <div class="logo-icon">T</div>
-        <div class="logo-text">Free AI <span class="brand">Text Tools</span></div>
+        <div>Free AI <strong>Text Tools</strong></div>
     </a>
-    <nav class="nav" id="mainNav">
+    <nav class="nav" id="mainNav" aria-label="Main navigation">
         <a href="/">Home</a>
         <a href="/tools/" class="active">Tools</a>
         <a href="/blog/">Blog</a>
@@ -56,8 +54,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
 </div>
 
-<main class="container" style="padding-top:1.25rem;padding-bottom:3rem">
-<nav class="breadcrumb" id="breadcrumb">
+<main class="container" id="main-content" style="padding-top:1.25rem;padding-bottom:3rem">
+<nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a> <span class="breadcrumb-sep">›</span> <a href="/tools/">Tools</a> <span class="breadcrumb-sep">›</span> <span id="breadcrumb-tool">Tool</span>
 </nav>
 
@@ -89,10 +87,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="tool-options" id="tool-options"></div>
 
         <div class="action-bar">
-            <button onclick="copyInput()" class="btn btn-sm" title="Copy input text">📋 Copy Input</button>
-            <button onclick="processCurrentTool()" class="btn btn-primary btn-lg" id="process-btn" title="Process text">⚡ Process</button>
-            <button onclick="copyResult()" class="btn btn-sm" title="Copy result">📋 Copy Result</button>
-            <button onclick="downloadResult()" class="btn btn-sm" title="Download result">⬇ Download</button>
+            <button onclick="copyInput()" class="btn btn-sm" title="Copy input text">Copy Input</button>
+            <button onclick="processCurrentTool()" class="btn btn-primary btn-lg" id="process-btn" title="Process text">Process</button>
+            <button onclick="copyResult()" class="btn btn-sm" title="Copy result">Copy Result</button>
+            <button onclick="downloadResult()" class="btn btn-sm" title="Download result">Download</button>
         </div>
 
         <div class="output-section">
@@ -112,60 +110,66 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </div>
 
-    <div class="seo-content" id="seo-content" style="background:var(--surface);border:var(--border);padding:1.5rem;margin-bottom:1.5rem;box-shadow:var(--shadow)"></div>
+    <div class="seo-content card" id="seo-content"></div>
 
-    <div class="faq-section" id="faq-section" style="background:var(--surface);border:var(--border);padding:1.5rem;margin-bottom:1.5rem;box-shadow:var(--shadow)">
-        <h2 style="font-size:1.1rem;font-weight:900;margin-bottom:.75rem;text-transform:uppercase;border-bottom:3px solid var(--black);padding-bottom:.3rem;display:inline-block">FAQ</h2>
+    <div class="faq-section card" id="faq-section">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
         <div class="faq-list" id="faq-list"></div>
     </div>
 </div>
 
 <aside class="tool-sidebar">
     <div class="sidebar-card">
-        <h3 style="font-size:.8rem;font-weight:900;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.06em">All 31+ Tools</h3>
-        <ul style="list-style:none;padding:0;margin:0">
-            <li><a href="/tools/word-counter.html" class="sidebar-link">📝 Word Counter</a></li>
-            <li><a href="/tools/char-counter.html" class="sidebar-link">🔢 Character Counter</a></li>
-            <li><a href="/tools/case-converter.html" class="sidebar-link">🔠 Case Converter</a></li>
-            <li><a href="/tools/duplicate-remover.html" class="sidebar-link">🗑 Duplicate Remover</a></li>
-            <li><a href="/tools/line-sorter.html" class="sidebar-link">↕ Line Sorter</a></li>
-            <li><a href="/tools/alpha-sorter.html" class="sidebar-link">🔤 Alphabetical Sorter</a></li>
-            <li><a href="/tools/text-reverser.html" class="sidebar-link">🔄 Text Reverser</a></li>
-            <li><a href="/tools/sentence-counter.html" class="sidebar-link">📄 Sentence Counter</a></li>
-            <li><a href="/tools/paragraph-counter.html" class="sidebar-link">📑 Paragraph Counter</a></li>
-            <li><a href="/tools/remove-spaces.html" class="sidebar-link">✂ Remove Extra Spaces</a></li>
-            <li><a href="/tools/json-formatter.html" class="sidebar-link">🔧 JSON Formatter</a></li>
-            <li><a href="/tools/json-validator.html" class="sidebar-link">✅ JSON Validator</a></li>
-            <li><a href="/tools/xml-formatter.html" class="sidebar-link">📄 XML Formatter</a></li>
-            <li><a href="/tools/xml-validator.html" class="sidebar-link">✅ XML Validator</a></li>
-            <li><a href="/tools/markdown-editor.html" class="sidebar-link">📝 Markdown Editor</a></li>
-            <li><a href="/tools/markdown-preview.html" class="sidebar-link">👁 Markdown Preview</a></li>
-            <li><a href="/tools/url-encoder.html" class="sidebar-link">🔗 URL Encoder</a></li>
-            <li><a href="/tools/url-decoder.html" class="sidebar-link">🔗 URL Decoder</a></li>
-            <li><a href="/tools/html-encoder.html" class="sidebar-link">🌐 HTML Encoder</a></li>
-            <li><a href="/tools/html-decoder.html" class="sidebar-link">🌐 HTML Decoder</a></li>
-            <li><a href="/tools/b64-encoder.html" class="sidebar-link">🔐 Base64 Encoder</a></li>
-            <li><a href="/tools/b64-decoder.html" class="sidebar-link">🔐 Base64 Decoder</a></li>
-            <li><a href="/tools/robots-txt.html" class="sidebar-link">🤖 Robots.txt Generator</a></li>
-            <li><a href="/tools/sitemap-gen.html" class="sidebar-link">🗺 Sitemap Generator</a></li>
-            <li><a href="/tools/meta-gen.html" class="sidebar-link">🏷 Meta Tag Generator</a></li>
-            <li><a href="/tools/og-generator.html" class="sidebar-link">📱 OG Generator</a></li>
-            <li><a href="/tools/slug-generator.html" class="sidebar-link">🔗 Slug Generator</a></li>
-            <li><a href="/tools/meta-desc-gen.html" class="sidebar-link">📝 Meta Description Gen</a></li>
-            <li><a href="/tools/canonical-gen.html" class="sidebar-link">🔗 Canonical Tag Gen</a></li>
-            <li><a href="/tools/keyword-density.html" class="sidebar-link">📊 Keyword Density</a></li>
-            <li><a href="/tools/keyword-extract.html" class="sidebar-link">🔑 Keyword Extractor</a></li>
+        <h3>All 37 Tools</h3>
+        <ul class="sidebar-links">
+            <li><a href="/tools/word-counter.html" class="sidebar-link">Word Counter</a></li>
+            <li><a href="/tools/char-counter.html" class="sidebar-link">Character Counter</a></li>
+            <li><a href="/tools/case-converter.html" class="sidebar-link">Case Converter</a></li>
+            <li><a href="/tools/duplicate-remover.html" class="sidebar-link">Duplicate Remover</a></li>
+            <li><a href="/tools/line-sorter.html" class="sidebar-link">Line Sorter</a></li>
+            <li><a href="/tools/alpha-sorter.html" class="sidebar-link">Alphabetical Sorter</a></li>
+            <li><a href="/tools/text-reverser.html" class="sidebar-link">Text Reverser</a></li>
+            <li><a href="/tools/sentence-counter.html" class="sidebar-link">Sentence Counter</a></li>
+            <li><a href="/tools/paragraph-counter.html" class="sidebar-link">Paragraph Counter</a></li>
+            <li><a href="/tools/remove-spaces.html" class="sidebar-link">Remove Extra Spaces</a></li>
+            <li><a href="/tools/find-replace.html" class="sidebar-link">Find and Replace</a></li>
+            <li><a href="/tools/lorem-generator.html" class="sidebar-link">Lorem Generator</a></li>
+            <li><a href="/tools/word-frequency.html" class="sidebar-link">Word Frequency</a></li>
+            <li><a href="/tools/json-formatter.html" class="sidebar-link">JSON Formatter</a></li>
+            <li><a href="/tools/json-validator.html" class="sidebar-link">JSON Validator</a></li>
+            <li><a href="/tools/xml-formatter.html" class="sidebar-link">XML Formatter</a></li>
+            <li><a href="/tools/xml-validator.html" class="sidebar-link">XML Validator</a></li>
+            <li><a href="/tools/markdown-editor.html" class="sidebar-link">Markdown Editor</a></li>
+            <li><a href="/tools/markdown-preview.html" class="sidebar-link">Markdown Preview</a></li>
+            <li><a href="/tools/html-previewer.html" class="sidebar-link">HTML Previewer</a></li>
+            <li><a href="/tools/regex-tester.html" class="sidebar-link">Regex Tester</a></li>
+            <li><a href="/tools/hash-generator.html" class="sidebar-link">Hash Generator</a></li>
+            <li><a href="/tools/url-encoder.html" class="sidebar-link">URL Encoder</a></li>
+            <li><a href="/tools/url-decoder.html" class="sidebar-link">URL Decoder</a></li>
+            <li><a href="/tools/html-encoder.html" class="sidebar-link">HTML Encoder</a></li>
+            <li><a href="/tools/html-decoder.html" class="sidebar-link">HTML Decoder</a></li>
+            <li><a href="/tools/b64-encoder.html" class="sidebar-link">Base64 Encoder</a></li>
+            <li><a href="/tools/b64-decoder.html" class="sidebar-link">Base64 Decoder</a></li>
+            <li><a href="/tools/robots-txt.html" class="sidebar-link">Robots.txt Generator</a></li>
+            <li><a href="/tools/sitemap-gen.html" class="sidebar-link">Sitemap Generator</a></li>
+            <li><a href="/tools/meta-gen.html" class="sidebar-link">Meta Tag Generator</a></li>
+            <li><a href="/tools/og-generator.html" class="sidebar-link">OG Generator</a></li>
+            <li><a href="/tools/slug-generator.html" class="sidebar-link">Slug Generator</a></li>
+            <li><a href="/tools/meta-desc-gen.html" class="sidebar-link">Meta Description Gen</a></li>
+            <li><a href="/tools/canonical-gen.html" class="sidebar-link">Canonical Tag Gen</a></li>
+            <li><a href="/tools/keyword-density.html" class="sidebar-link">Keyword Density</a></li>
+            <li><a href="/tools/keyword-extract.html" class="sidebar-link">Keyword Extractor</a></li>
         </ul>
     </div>
 
-    <div class="sidebar-card" style="background:var(--red);color:var(--white);border-color:var(--black)">
-        <h3 style="font-size:.8rem;font-weight:900;margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.06em;color:var(--yellow)">🚀 Pro Features Soon</h3>
-        <p style="font-size:.78rem;opacity:.9;margin-bottom:.5rem">Batch processing, API access, advanced analytics.</p>
-        <a href="/advertise.html" class="btn btn-white btn-sm" style="font-size:.7rem">Learn More →</a>
+    <div class="sidebar-card sidebar-promo">
+        <h3>Pro Features Soon</h3>
+        <p>Batch processing, API access, advanced analytics.</p>
+        <a href="/advertise.html" class="btn btn-primary btn-sm">Learn More →</a>
     </div>
 
     <div class="sidebar-card">
-        <h3 style="font-size:.8rem;font-weight:900;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.06em">Latest Posts</h3>
+        <h3>Latest Posts</h3>
         <div id="sidebar-blog"></div>
     </div>
 </aside>
@@ -176,11 +180,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="container">
     <div class="footer-grid">
         <div class="footer-col">
-            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem">
-                <div style="width:28px;height:28px;background:var(--red);border:2px solid var(--white);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:900;color:var(--white)">T</div>
-                <span style="font-weight:900;font-size:.9rem;text-transform:uppercase">Free AI <span style="color:var(--yellow)">Text Tools</span></span>
-            </div>
-            <p>31+ free AI-powered text and SEO utility tools. Fast, accurate, and works entirely in your browser.</p>
+            <h4>Free AI Text Tools</h4>
+            <p>37 free AI-powered text and SEO utility tools. Fast, accurate, and works entirely in your browser.</p>
         </div>
         <div class="footer-col">
             <h4>Text Tools</h4>
@@ -395,7 +396,7 @@ function renderToolOptions(toolId) {
             html = '<label class="input-label" for="opt-keyword">Enter keyword or phrase:</label><input type="text" id="opt-keyword" class="tool-input" placeholder="Enter keyword...">';
             break;
         case 'slug-generator':
-            html = '<p style="color:var(--text-secondary);font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em">Paste any text above and click Process to generate a clean URL slug.</p>';
+            html = '<p style="color:var(--text-secondary);font-size:.85rem">Paste any text above and click Process to generate a clean URL slug.</p>';
             break;
         case 'meta-desc-gen':
             html = '<label class="input-label" for="opt-mdkeyword">Enter keyword or topic:</label><input type="text" id="opt-mdkeyword" class="tool-input" placeholder="Enter main keyword...">';
@@ -556,7 +557,7 @@ try {
         return;
     }
     if (toolId === 'html-previewer') {
-        output.innerHTML = '<iframe srcdoc="' + escapeHTML(input).replace(/"/g, '&quot;') + '" style="width:100%;min-height:300px;border:2px solid var(--black);background:var(--white)"></iframe>';
+        output.innerHTML = '<iframe srcdoc="' + escapeHTML(input).replace(/"/g, '&quot;') + '" style="width:100%;min-height:300px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white)"></iframe>';
         return;
     }
     if (toolId === 'markdown-editor') {
@@ -785,12 +786,12 @@ function initToolPage() {
     document.getElementById('breadcrumb-tool').textContent = seo.title.split(' - ')[0];
     document.getElementById('tool-heading').textContent = seo.title.split(' - ')[0];
     document.getElementById('tool-description').textContent = seo.desc;
-    document.getElementById('seo-content').innerHTML = '<h2 style="font-size:1.1rem;font-weight:900;margin-bottom:.6rem;text-transform:uppercase;border-bottom:3px solid var(--black);padding-bottom:.3rem;display:inline-block">' + escapeHTML(content.about) + '</h2><p style="color:var(--text-secondary);line-height:1.7;font-size:.88rem">' + escapeHTML(content.desc) + '</p>';
+    document.getElementById('seo-content').innerHTML = '<h2>' + escapeHTML(content.about) + '</h2><p>' + escapeHTML(content.desc) + '</p>';
     var faqHtml = '';
     if (faqs && faqs.items && faqs.items.length) {
         faqHtml = '';
         faqs.items.forEach(function(item) {
-            faqHtml += '<details class="faq-item" style="border-bottom:2px solid var(--black)"><summary style="cursor:pointer;font-weight:700;font-size:.88rem;padding:.6rem 0;color:var(--text);text-transform:uppercase;letter-spacing:.02em">' + escapeHTML(item.q) + '</summary><p style="color:var(--text-secondary);margin-top:.4rem;line-height:1.7;font-size:.85rem;padding-bottom:.6rem">' + escapeHTML(item.a) + '</p></details>';
+            faqHtml += '<details class="faq-item"><summary class="faq-question">' + escapeHTML(item.q) + ' <span>▼</span></summary><div class="faq-answer"><p>' + escapeHTML(item.a) + '</p></div></details>';
         });
     }
     document.getElementById('faq-list').innerHTML = faqHtml;
@@ -805,7 +806,7 @@ function initToolPage() {
     var sidebarBlog = document.getElementById('sidebar-blog');
     if (sidebarBlog) {
         sidebarBlog.innerHTML = blogPosts.slice(0,3).map(function(p){
-            return '<a href="/blog/' + p.slug + '.html" class="sidebar-link"><span style="font-size:.65rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.04em">' + p.category + ' &middot; ' + p.date + '</span><br>' + p.title + '</a>';
+            return '<a href="/blog/' + p.slug + '.html" class="sidebar-link"><span class="sidebar-link-meta">' + p.category + ' · ' + p.date + '</span>' + p.title + '</a>';
         }).join('');
     }
     renderToolOptions(toolId);

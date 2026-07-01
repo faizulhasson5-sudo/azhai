@@ -391,7 +391,24 @@ function renderToolOptions(toolId) {
         case 'case-converter':
             html = '<div class="case-buttons"><button onclick="convertCase(\'upper\')" class="btn btn-sm">UPPERCASE</button><button onclick="convertCase(\'lower\')" class="btn btn-sm">lowercase</button><button onclick="convertCase(\'title\')" class="btn btn-sm">Title Case</button><button onclick="convertCase(\'sentence\')" class="btn btn-sm">Sentence case</button></div>';
             break;
-        case 'keyword-density':
+        case 'meta-desc-gen':
+        var mdInput = document.getElementById('tool-input').value.trim();
+        var mdKw = document.getElementById('opt-mdkeyword');
+        var mdKeyword = mdKw ? mdKw.value.trim() : '';
+        if (!mdInput) { showToast('Please enter some text.'); return; }
+        var mdSentences = mdInput.match(/[^.!?]+[.!?]+/g);
+        var mdDesc = mdSentences && mdSentences.length ? mdSentences[0].trim() : mdInput.substring(0, 155);
+        if (mdDesc.length > 160) mdDesc = mdDesc.substring(0, 157) + '...';
+        if (mdKeyword && mdDesc.length < 150 && mdDesc.toLowerCase().indexOf(mdKeyword.toLowerCase()) === -1) {
+            mdDesc = mdDesc.replace(/\.$/, '') + ' ' + mdKeyword + '.';
+        }
+        if (mdDesc.length > 160) mdDesc = mdDesc.substring(0, 157) + '...';
+        var mdOut = '<title>' + escapeHTML(document.title.split(' - ')[0]) + '</title>\n<meta name="description" content="' + escapeHTML(mdDesc) + '">';
+        if (mdKeyword) mdOut += '\n<meta name="keywords" content="' + escapeHTML(mdKeyword) + '">';
+        output.textContent = mdOut;
+        showToast('Meta description generated!');
+        return;
+    case 'keyword-density':
             html = '<label class="input-label" for="opt-keyword">Enter keyword or phrase:</label><input type="text" id="opt-keyword" class="tool-input" placeholder="Enter keyword...">';
             break;
         case 'slug-generator':
@@ -406,7 +423,15 @@ function renderToolOptions(toolId) {
         case 'og-generator':
             html = '<div class="form-grid"><label>Title:<input type="text" id="opt-ogtitle" class="tool-input" placeholder="Page title"></label><label>Description:<textarea id="opt-ogdesc" class="tool-input" rows="2" placeholder="Page description"></textarea></label><label>URL:<input type="url" id="opt-ogurl" class="tool-input" placeholder="https://example.com/page"></label><label>Image URL:<input type="url" id="opt-ogimg" class="tool-input" placeholder="https://example.com/image.jpg"></label><label>Type:<select id="opt-ogtype" class="tool-input"><option value="website">Website</option><option value="article">Article</option><option value="product">Product</option></select></label></div><button onclick="generateOG()" class="btn btn-primary" style="margin-top:.5rem">Generate OG Tags</button>';
             break;
-        case 'meta-gen':
+        case 'canonical-gen':
+        var cu = document.getElementById('opt-curl');
+        var curl = cu ? cu.value.trim() : '';
+        if (!curl) { showToast('Please enter a URL.'); return; }
+        if (!/^https?:\/\//i.test(curl)) curl = 'https://' + curl;
+        output.textContent = '<link rel="canonical" href="' + curl + '">';
+        showToast('Canonical tag generated!');
+        return;
+    case 'meta-gen':
             html = '<div class="form-grid"><label>Title:<input type="text" id="opt-mgtitle" class="tool-input" placeholder="Page title"></label><label>Description:<textarea id="opt-mgdesc" class="tool-input" rows="2" placeholder="Page description"></textarea></label><label>Keywords:<input type="text" id="opt-mgkeywords" class="tool-input" placeholder="keyword1, keyword2"></label><label>Author:<input type="text" id="opt-mgauthor" class="tool-input" placeholder="Author name"></label><label>OG Image:<input type="url" id="opt-mgimg" class="tool-input" placeholder="https://example.com/image.jpg"></label></div><button onclick="generateMetaTags()" class="btn btn-primary" style="margin-top:.5rem">Generate Meta Tags</button>';
             break;
         case 'robots-txt':
@@ -446,7 +471,13 @@ try {
         var words = input.toLowerCase().match(/\b[\w'-]+\b/g) || [];
         var total = words.length;
         var count = 0;
-        words.forEach(function(w) { if (w === keyword) count++; });
+        if (keyword.indexOf(' ') !== -1) {
+                var kwRegex = new RegExp(keyword.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\words.forEach(function(w) { if (w === keyword) count++; });'), 'gi');
+                var kwMatches = input.toLowerCase().match(kwRegex);
+                count = kwMatches ? kwMatches.length : 0;
+            } else {
+                words.forEach(function(w) { if (w === keyword) count++; });
+            }
         var density = total ? ((count / total) * 100).toFixed(2) : 0;
         output.innerHTML = '<table class="results-table"><tr><th>Keyword</th><th>Count</th><th>Total Words</th><th>Density</th></tr><tr><td>' + escapeHTML(keyword) + '</td><td>' + count + '</td><td>' + total + '</td><td>' + density + '%</td></tr></table>';
         return;
@@ -556,7 +587,7 @@ try {
         return;
     }
     if (toolId === 'html-previewer') {
-        output.innerHTML = '<iframe srcdoc="' + escapeHTML(input).replace(/"/g, '&quot;') + '" style="width:100%;min-height:300px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white)"></iframe>';
+        output.innerHTML = '<iframe srcdoc="' + escapeHTML(input).replace(/"/g, '&quot;') + '" style="width:100%;min-height:300px;border:1px solid var(--border);border-radius:var(--radius);background:#ffffff"></iframe>';
         return;
     }
     if (toolId === 'markdown-editor') {
@@ -632,7 +663,7 @@ function defaultProcess(toolId, input) {
 }
 
 function escapeHTML(str) {
-    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
 }
 function generateOG() {
     var t = document.getElementById('opt-ogtitle').value;
@@ -655,17 +686,22 @@ function generateMetaTags() {
     showToast('Meta tags generated!');
 }
 function generateRobots() {
-    var ua = escapeHTML(document.getElementById('opt-rua').value || '*');
+    var ua = document.getElementById('opt-rua').value.trim() || '*';
     var cd = escapeHTML(document.getElementById('opt-rcd').value);
     var dis = document.getElementById('opt-rdisallow').value;
     var sm = escapeHTML(document.getElementById('opt-rsitemap').value);
-    var out = 'User-agent: ' + ua + '\n';
-    if (cd) out += 'Crawl-delay: ' + cd + '\n';
+    var out = '';
+    if (ua !== '*') {
+        out += 'User-agent: ' + ua + '\n';
+        if (cd) out += 'Crawl-delay: ' + cd + '\n';
+        out += '\n';
+    }
+    out += 'User-agent: *\n';
     if (dis) {
         var paths = dis.split('\n').filter(function(p){return p.trim();});
         paths.forEach(function(p) { out += 'Disallow: ' + escapeHTML(p.trim()) + '\n'; });
     }
-    out += '\nUser-agent: *\nAllow: /\n';
+    out += 'Allow: /\n';
     if (sm) out += '\nSitemap: ' + sm;
     document.getElementById('tool-output').textContent = out;
     showToast('robots.txt generated!');

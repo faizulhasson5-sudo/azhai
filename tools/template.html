@@ -24,7 +24,7 @@
 <a href="/" class="site-logo"><div class="logo-mark">T</div>Free AI Text Tools</a>
 <nav class="nav">
 <a href="/" class="nav-link">Home</a>
-<a href="/tools/" class="nav-link">Tools</a>
+<a href="/tools/" class="nav-link active">Tools</a>
 <a href="/blog/" class="nav-link">Blog</a>
 <a href="/tools/" class="nav-cta">All 37 Tools</a>
 <button class="theme-btn" onclick="App.toggleTheme()" aria-label="Toggle theme">&#9789;</button>
@@ -74,8 +74,8 @@
 <div class="container">
 <div class="footer-grid">
 <div class="footer-col">
-<a href="/" class="site-logo" style="color:inherit;margin-bottom:.5rem"><div class="logo-mark">T</div>Free AI Text Tools</a>
-<p>37 free online text tools. No sign-up needed.</p>
+<a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><div class="logo-mark">T</div>Free AI Text Tools</a>
+<p style="font-size:14px;color:var(--text-secondary)">37 free online text tools. No sign-up needed.</p>
 </div>
 <div class="footer-col">
 <h4>Tools</h4>
@@ -170,9 +170,9 @@ OPT='<div class="tool-option"><label>Title:</label><input type="text" id="opt-ot
 case'canonical-gen':
 OPT='<div class="tool-option"><label>Page URL:</label><input type="url" id="opt-cu" placeholder="https://example.com/page" style="width:100%"></div>';break;
 case'robots-txt':
-OPT='<div class="tool-option"><label>User-agent:</label><input type="text" id="opt-ru" value="*" style="width:80px"></div><div class="tool-option"><label>Crawl-delay (sec):</label><input type="number" id="opt-rc" placeholder="10" style="width:80px"></div><div class="tool-option"><label>Disallow paths:</label><textarea id="opt-rd" placeholder="/admin/&#10;/private/" style="width:100%;min-height:60px;font-family:monospace;font-size:.8rem"></textarea></div><div class="tool-option"><label>Sitemap URL:</label><input type="url" id="opt-rs" placeholder="https://example.com/sitemap.xml" style="width:100%"></div>';break;
+OPT='<div class="tool-option"><label>User-agent:</label><input type="text" id="opt-ru" value="*" style="width:80px"></div><div class="tool-option"><label>Crawl-delay (sec):</label><input type="number" id="opt-rc" placeholder="10" style="width:80px"></div><div class="tool-option"><label>Disallow paths:</label><textarea id="opt-rd" placeholder="/admin/&#10;/private/" style="width:100%;min-height:60px;font-family:var(--font-mono);font-size:.8rem"></textarea></div><div class="tool-option"><label>Sitemap URL:</label><input type="url" id="opt-rs" placeholder="https://example.com/sitemap.xml" style="width:100%"></div>';break;
 case'sitemap-gen':
-OPT='<div class="tool-option"><label>Page URLs (one per line):</label><textarea id="opt-su" placeholder="https://example.com/&#10;https://example.com/about&#10;https://example.com/contact" style="width:100%;min-height:100px;font-family:monospace;font-size:.8rem"></textarea></div>';break;
+OPT='<div class="tool-option"><label>Page URLs (one per line):</label><textarea id="opt-su" placeholder="https://example.com/&#10;https://example.com/about&#10;https://example.com/contact" style="width:100%;min-height:100px;font-family:var(--font-mono);font-size:.8rem"></textarea></div>';break;
 case'json-formatter':
 OPT='<div class="tool-option"><label>Indent:</label><select id="opt-ji"><option value="2">2 spaces</option><option value="4">4 spaces</option><option value="tab">Tab</option></select></div>';break;
 case'hash-generator':
@@ -182,7 +182,7 @@ OPT='<div class="tool-option"><label>Paragraphs:</label><input type="number" id=
 case'find-replace':
 OPT='<div class="tool-option"><label>Find:</label><input type="text" id="opt-f" placeholder="search text" style="width:180px"></div><div class="tool-option"><label>Replace:</label><input type="text" id="opt-rp" placeholder="replacement" style="width:180px"></div><div class="tool-option"><label><input type="checkbox" id="opt-ci"> Case-insensitive</label> <label><input type="checkbox" id="opt-rx"> Regex</label></div>';break;
 case'regex-tester':
-OPT='<div class="tool-option"><label>Pattern:</label><input type="text" id="opt-rp2" placeholder="[a-z]+" style="width:250px;font-family:monospace"></div><div class="tool-option"><label>Flags:</label><input type="text" id="opt-rf" value="gi" style="width:60px"></div>';break;
+OPT='<div class="tool-option"><label>Pattern:</label><input type="text" id="opt-rp2" placeholder="[a-z]+" style="width:250px;font-family:var(--font-mono)"></div><div class="tool-option"><label>Flags:</label><input type="text" id="opt-rf" value="gi" style="width:60px"></div>';break;
 case'markdown-editor':
 OPT='<div class="tool-option"><span style="font-size:.8rem;color:var(--text-secondary)">Write Markdown on the left, see live HTML preview on the right.</span></div>';break;
 }
@@ -341,8 +341,8 @@ try{var parsed=JSON.parse(input);result='<div class="code-block"><pre>'+esc(JSON
 catch(e){result='<p style="color:var(--accent)">JSON Error: '+esc(e.message)+'</p>';}
 break;
 case'json-validator':
-try{JSON.parse(input);result='<p style="color:var(--accent)">&#10003; Valid JSON</p><p style="font-size:.8rem;color:var(--text-secondary)">The JSON is syntactically correct.</p>';}
-catch(e){result='<p style="color:#dc2626">&#10007; Invalid JSON</p><p style="font-size:.8rem;color:var(--text-secondary)">'+esc(e.message)+'</p>';}
+try{JSON.parse(input);result='<p style="color:var(--success)">&#10003; Valid JSON</p><p style="font-size:.8rem;color:var(--text-secondary)">The JSON is syntactically correct.</p>';}
+catch(e){result='<p style="color:var(--danger)">&#10007; Invalid JSON</p><p style="font-size:.8rem;color:var(--text-secondary)">'+esc(e.message)+'</p>';}
 break;
 case'xml-formatter':
 try{
@@ -356,11 +356,11 @@ result='<div class="code-block"><pre>'+esc(xf2.join('\n'))+'</pre></div>';
 break;
 case'xml-validator':
 var xv=input.trim();
-if(!xv.startsWith('<')){result='<p style="color:#dc2626">&#10007; Not valid XML</p>';}
+if(!xv.startsWith('<')){result='<p style="color:var(--danger)">&#10007; Not valid XML</p>';}
 else{var xtags=(xv.match(/<\/?[^>]+>/g)||[]);var xstack=[];
 xtags.forEach(function(t){if(t.match(/^<[^\/]/)){var tn=t.match(/<(\w+)/);if(tn)xstack.push(tn[1]);}
 else if(t.match(/^<\//)){var tn2=t.match(/<\/(\w+)/);if(tn2&&xstack.length&&xstack[xstack.length-1]===tn2[1])xstack.pop();}});
-result=xstack.length===0?'<p style="color:var(--accent)">&#10003; Valid XML</p>':'<p style="color:#dc2626">&#10007; Invalid XML - unclosed tags</p>';}
+result=xstack.length===0?'<p style="color:var(--success)">&#10003; Valid XML</p>':'<p style="color:var(--danger)">&#10007; Invalid XML - unclosed tags</p>';}
 break;
 case'markdown-editor':
 var mdLib=window.marked;
@@ -373,7 +373,7 @@ if(mdLib2&&mdLib2.parse){result='<div class="output-content" style="padding:1rem
 else{result='<div class="output-content"><pre>'+esc(input)+'</pre></div>';}
 break;
 case'html-previewer':
-result='<div class="output-content" style="padding:0"><iframe srcdoc="'+esc(input)+'" style="width:100%;min-height:400px;border:1px solid var(--border);border-radius:8px"></iframe></div>';break;
+result='<div class="output-content" style="padding:0"><iframe srcdoc="'+esc(input)+'" style="width:100%;min-height:400px;border:1px solid var(--border);border-radius:var(--radius)"></iframe></div>';break;
 case'regex-tester':
 var rp=document.getElementById('opt-rp2').value;
 var rf=document.getElementById('opt-rf').value;
@@ -384,8 +384,8 @@ var matches=[];
 var rm;
 while((rm=rre.exec(input))!==null){matches.push({match:rm[0],index:rm.index,length:rm[0].length});if(!rf.includes('g'))break;}
 var highlighted=input;
-matches.slice().reverse().forEach(function(m){highlighted=highlighted.substring(0,m.index)+'<mark>'+esc(m.match)+'</mark>'+highlighted.substring(m.index+m.length);});
-result='<div class="output-content"><div style="padding:1rem;border:1px solid var(--border);border-radius:8px;margin-bottom:.5rem">'+highlighted+'</div><p style="font-size:.8rem;color:var(--text-secondary)">'+matches.length+' match(es) found</p></div>';
+matches.slice().reverse().forEach(function(m){highlighted=highlighted.substring(0,m.index)+'<mark style="background:var(--accent-glow);color:var(--accent);padding:2px 4px;border-radius:4px">'+esc(m.match)+'</mark>'+highlighted.substring(m.index+m.length);});
+result='<div class="output-content"><div style="padding:1rem;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:.5rem">'+highlighted+'</div><p style="font-size:.8rem;color:var(--text-secondary)">'+matches.length+' match(es) found</p></div>';
 }catch(e){result='<p style="color:var(--accent)">Regex Error: '+esc(e.message)+'</p>';}
 break;
 case'url-encoder':
@@ -418,7 +418,7 @@ default:
 result='<p style="color:var(--text-secondary)">Processing not available for this tool.</p>';
 }
 if(typeof result==='string')out.innerHTML='<div class="output-content">'+result+'</div>';
-}catch(err){out.innerHTML='<p style="color:var(--accent)">Error: '+esc(err.message)+'</p>';}
+}catch(err){out.innerHTML='<p style="color:var(--danger)">Error: '+esc(err.message)+'</p>';}
 };
 
 window.clearTool=function(){document.getElementById('tool-input').value='';document.getElementById('tool-output').innerHTML='';};

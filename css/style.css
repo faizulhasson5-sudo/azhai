@@ -778,8 +778,11 @@ a:hover { color: var(--accent-hover); }
   border-radius: var(--radius-lg);
   padding: 20px 24px;
   box-shadow: var(--shadow-xl);
-  display: flex; align-items: center; gap: 16px;
+  display: none; align-items: center; gap: 16px;
   z-index: 9999;
+}
+.cookie-banner.show {
+  display: flex;
   animation: slideUp 0.4s ease-out;
 }
 .cookie-banner p {

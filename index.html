@@ -233,20 +233,29 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 
     // Scroll reveal
+    window._revealObserver = null;
     var revealEls = document.querySelectorAll('.reveal');
     if(revealEls.length && 'IntersectionObserver' in window){
-        var observer = new IntersectionObserver(function(entries){
+        window._revealObserver = new IntersectionObserver(function(entries){
             entries.forEach(function(entry){
                 if(entry.isIntersecting){
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+                    window._revealObserver.unobserve(entry.target);
                 }
             });
         },{threshold:0.1});
-        revealEls.forEach(function(el){ observer.observe(el); });
+        revealEls.forEach(function(el){ window._revealObserver.observe(el); });
     } else {
         document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('visible'); });
     }
+    window._observeReveals = function(){
+        var els = document.querySelectorAll('.reveal:not(.visible)');
+        if(window._revealObserver){
+            els.forEach(function(el){ window._revealObserver.observe(el); });
+        } else {
+            els.forEach(function(el){ el.classList.add('visible'); });
+        }
+    };
 
     var searchInput = document.getElementById('heroSearch');
     if(searchInput){

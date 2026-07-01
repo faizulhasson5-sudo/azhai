@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta id="meta-title" content="Tool">
-<meta id="meta-desc" content="">
-<meta id="meta-keywords" content="">
+<meta id="meta-desc" content="Generate canonical URL tags for SEO optimization. Free online canonical tag generator for duplicate content prevention.">
+<meta id="meta-keywords" content="canonical url, canonical tag, canonical generator, seo canonical, duplicate content">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
-<meta property="og:title" id="og-title" content="">
-<meta property="og:description" id="og-desc" content="">
-<meta property="og:url" id="og-url" content="">
-<meta name="twitter:card" content="summary">
-<link rel="canonical" id="canonical-link" href="">
-<title id="page-title">Tool - Free AI Text Tools</title>
+<meta property="og:title" id="og-title" content="Canonical URL Generator - Generate Canonical Tags">
+<meta property="og:description" id="og-desc" content="Generate canonical URL tags for SEO optimization. Free online canonical tag generator for duplicate content prevention.">
+<meta property="og:url" id="og-url" content="https://azhai-six.vercel.app/tools/canonical-gen.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" id="canonical-link" href="https://azhai-six.vercel.app/tools/canonical-gen.html">
+<title id="page-title">Canonical URL Generator - Generate Canonical Tags</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -24,7 +24,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,
 f);})(window,document,'script','dataLayer','GTM-KDTPKT4T');</script>
 <meta name="google-site-verification" content="6MsJ07hr52c91ZELOm9kIZmgvj0NOpWWM360VR2cG7A" />
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDTPKT4T"
@@ -436,7 +435,7 @@ try {
     if (!input) { showToast('Please enter some text to process.'); return; }
     if (toolId === 'markdown-preview') {
         try {
-            output.innerHTML = (typeof marked !== 'undefined') ? marked.parse(input) : input.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/^### (.+)$/gm,'<h3>$1</h3>').replace(/^## (.+)$/gm,'<h2>$1</h2>').replace(/^# (.+)$/gm,'<h1>$1</h1>').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/`(.+?)`/g,'<code>$1</code>').replace(/^\- (.+)$/gm,'<li>$1</li>').replace(/^> (.+)$/gm,'<blockquote>$1</blockquote>').replace(/^---$/gm,'<hr>').replace(/\[(.+?)\]\((.+?)\)/g,'<a href="$2" target="_blank">$1</a>').replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br>');
+            output.innerHTML = (typeof marked !== 'undefined') ? marked.parse(input) : (function(){var h=input.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');h=h.replace(/^### (.+)$/gm,'<h3>$1</h3>').replace(/^## (.+)$/gm,'<h2>$1</h2>').replace(/^# (.+)$/gm,'<h1>$1</h1>');h=h.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>');h=h.replace(/`(.+?)`/g,'<code>$1</code>');h=h.replace(/^\- (.+)$/gm,'<li>$1</li>');h=h.replace(/^> (.+)$/gm,'<blockquote>$1</blockquote>');h=h.replace(/^---$/gm,'<hr>');h=h.replace(/\[(.+?)\]\((.+?)\)/g,'<a href="$2" target="_blank">$1</a>');var lines=h.split('\n');var out=[],inP=false;var blockRe=/^<(h[1-6]|li|blockquote|hr|ul|ol|pre|table)/;lines.forEach(function(line){if(blockRe.test(line)){if(inP){out.push('</p>');inP=false;}out.push(line);}else if(line.trim()===''){if(inP){out.push('</p>');inP=false;}}else{if(!inP){out.push('<p>');inP=true;}out.push(line);}});if(inP)out.push('</p>');return out.join('\n');})()
         } catch(e) { output.textContent = 'Error rendering markdown: ' + e.message; }
         return;
     }
@@ -656,15 +655,15 @@ function generateMetaTags() {
     showToast('Meta tags generated!');
 }
 function generateRobots() {
-    var ua = document.getElementById('opt-rua').value || '*';
-    var cd = document.getElementById('opt-rcd').value;
+    var ua = escapeHTML(document.getElementById('opt-rua').value || '*');
+    var cd = escapeHTML(document.getElementById('opt-rcd').value);
     var dis = document.getElementById('opt-rdisallow').value;
-    var sm = document.getElementById('opt-rsitemap').value;
+    var sm = escapeHTML(document.getElementById('opt-rsitemap').value);
     var out = 'User-agent: ' + ua + '\n';
     if (cd) out += 'Crawl-delay: ' + cd + '\n';
     if (dis) {
         var paths = dis.split('\n').filter(function(p){return p.trim();});
-        paths.forEach(function(p) { out += 'Disallow: ' + p.trim() + '\n'; });
+        paths.forEach(function(p) { out += 'Disallow: ' + escapeHTML(p.trim()) + '\n'; });
     }
     out += '\nUser-agent: *\nAllow: /\n';
     if (sm) out += '\nSitemap: ' + sm;
@@ -731,10 +730,18 @@ function downloadResult() {
     var el = document.getElementById('tool-output');
     var text = el.textContent || el.innerText;
     if (!text) { showToast('Nothing to download.'); return; }
-    var blob = new Blob([text], {type: 'text/plain'});
+    var toolId = location.pathname.match(/\/tools\/(.+)\.html/);
+    toolId = toolId ? toolId[1] : '';
+    var ext = 'txt', mime = 'text/plain';
+    if (toolId === 'json-formatter' || toolId === 'json-validator') { ext = 'json'; mime = 'application/json'; }
+    else if (toolId === 'xml-formatter' || toolId === 'xml-validator' || toolId === 'sitemap-gen') { ext = 'xml'; mime = 'application/xml'; }
+    else if (toolId === 'html-previewer') { ext = 'html'; mime = 'text/html'; }
+    else if (toolId === 'markdown-editor' || toolId === 'markdown-preview') { ext = 'md'; mime = 'text/markdown'; }
+    else if (toolId === 'meta-gen' || toolId === 'og-generator' || toolId === 'meta-desc-gen' || toolId === 'canonical-gen') { ext = 'html'; mime = 'text/html'; }
+    var blob = new Blob([text], {type: mime});
     var a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = 'result.txt';
+    a.download = toolId ? toolId + '.' + ext : 'result.txt';
     a.click();
     URL.revokeObjectURL(a.href);
     showToast('Downloaded!');

@@ -1,4 +1,4 @@
-/* ===================================================
+﻿/* ===================================================
    Free AI Text Tools - Core Application JavaScript
    =================================================== */
 window.dataLayer = window.dataLayer || [];
@@ -21,7 +21,7 @@ App.toggleTheme = function(){
     document.documentElement.setAttribute('data-theme', n);
     localStorage.setItem('attTheme', n);
     var btn = document.querySelector('.theme-btn');
-    if(btn) btn.textContent = n === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
+    if(btn) btn.textContent = n === 'dark' ? '\u2600' : '\u263E';
 };
 
 // ---- Toast ----

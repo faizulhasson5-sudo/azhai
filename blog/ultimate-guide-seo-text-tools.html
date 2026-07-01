@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -64,9 +64,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <main class="container" style="padding:1.25rem 1rem 3rem">
     <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a> <span class="breadcrumb-sep">›</span>
-        <a href="/blog/">Blog</a> <span class="breadcrumb-sep">›</span>
-        <span id="breadcrumb-category"></span> <span class="breadcrumb-sep">›</span>
+        <a href="/">Home</a> <span class="breadcrumb-sep">â€º</span>
+        <a href="/blog/">Blog</a> <span class="breadcrumb-sep">â€º</span>
+        <span id="breadcrumb-category"></span> <span class="breadcrumb-sep">â€º</span>
         <span id="breadcrumb-title" style="color:var(--text-tertiary)"></span>
     </nav>
 
@@ -104,7 +104,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
 
             <section id="faq-section" style="display:none;background:var(--surface);border:var(--border);padding:1.5rem;margin-bottom:1.5rem;box-shadow:var(--shadow)">
-                <h2 style="font-size:1.1rem;font-weight:900;margin-bottom:.75rem;text-transform:uppercase;border-bottom:3px solid var(--black);padding-bottom:.3rem;display:inline-block">FAQ</h2>
+                <h2 style="font-size:1.1rem;font-weight:900;margin-bottom:.75rem;text-transform:uppercase;border-bottom:3px solid var(--text);padding-bottom:.3rem;display:inline-block">FAQ</h2>
                 <div class="faq-list" id="faq-list"></div>
             </section>
 
@@ -139,7 +139,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <a href="/tools/word-counter.html">Word Counter</a>
                 <a href="/tools/case-converter.html">Case Converter</a>
                 <a href="/tools/json-formatter.html">JSON Formatter</a>
-                <a href="/tools/">View All →</a>
+                <a href="/tools/">View All â†’</a>
             </div>
             <div class="footer-col">
                 <h4>SEO Tools</h4>
@@ -249,7 +249,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         post.faq.forEach(function(item) {
             var details = document.createElement('details');
             details.className = 'faq-item';
-            details.style.cssText = 'border-bottom:2px solid var(--black)';
+            details.style.cssText = 'border-bottom:2px solid var(--text)';
             details.innerHTML = '<summary style="cursor:pointer;font-weight:700;font-size:.85rem;padding:.5rem 0;color:var(--text);text-transform:uppercase;letter-spacing:.02em">' + item.q + '</summary><p style="color:var(--text-secondary);margin-top:.4rem;line-height:1.7;font-size:.82rem;padding-bottom:.5rem">' + item.a + '</p>';
             faqList.appendChild(details);
         });
@@ -262,7 +262,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var card = document.createElement('a');
         card.className = 'blog-card';
         card.href = '/blog/' + rp.slug + '.html';
-        card.innerHTML = '<div class="blog-card-img">' + (rp.image ? '<img src="'+rp.image+'" alt="'+rp.title+'" loading="lazy">' : '<div style="height:160px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;color:var(--red)">'+(icons[rp.category]||'?')+'</div>') + '</div><div class="blog-card-body"><div class="blog-card-meta"><span class="blog-tag">' + rp.category + '</span><span>' + rp.readTime + ' read</span></div><h3>' + rp.title + '</h3><p>' + rp.excerpt + '</p></div>';
+        card.innerHTML = '<div class="blog-card-img">' + (rp.image ? '<img src="'+rp.image+'" alt="'+rp.title+'" loading="lazy">' : '<div style="height:160px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;color:var(--error)">'+(icons[rp.category]||'?')+'</div>') + '</div><div class="blog-card-body"><div class="blog-card-meta"><span class="blog-tag">' + rp.category + '</span><span>' + rp.readTime + ' read</span></div><h3>' + rp.title + '</h3><p>' + rp.excerpt + '</p></div>';
         relatedGrid.appendChild(card);
     });
 
@@ -277,14 +277,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var catList = document.getElementById('sidebar-categories');
     Object.keys(cats).forEach(function(cat) {
         var li = document.createElement('li');
-        li.innerHTML = '<a href="/blog/?category=' + encodeURIComponent(cat) + '" style="display:flex;justify-content:space-between;align-items:center;padding:.4rem .5rem;color:var(--text);text-decoration:none;font-size:.82rem;font-weight:700;border-bottom:2px solid var(--bg-alt)"><span style="font-weight:900;color:var(--red)">' + (icons[cat]||'?') + '</span> ' + cat + '<span style="background:var(--bg);padding:.1rem .4rem;font-size:.68rem;font-weight:900;border:1px solid var(--black)">' + cats[cat] + '</span></a>';
+        li.innerHTML = '<a href="/blog/?category=' + encodeURIComponent(cat) + '" style="display:flex;justify-content:space-between;align-items:center;padding:.4rem .5rem;color:var(--text);text-decoration:none;font-size:.82rem;font-weight:700;border-bottom:2px solid var(--bg-secondary)"><span style="font-weight:900;color:var(--error)">' + (icons[cat]||'?') + '</span> ' + cat + '<span style="background:var(--bg);padding:.1rem .4rem;font-size:.68rem;font-weight:900;border:1px solid var(--text)">' + cats[cat] + '</span></a>';
         catList.appendChild(li);
     });
 
     var popList = document.getElementById('sidebar-popular-posts');
     popular.slice(0, 5).forEach(function(p) {
         var li = document.createElement('li');
-        li.innerHTML = '<a href="/blog/' + p.slug + '.html" style="display:block;padding:.4rem .5rem;color:var(--text);text-decoration:none;font-size:.8rem;border-bottom:2px solid var(--bg-alt)"><div style="font-weight:900;margin-bottom:.1rem;text-transform:uppercase;font-size:.75rem">' + p.title + '</div><div style="color:var(--text-tertiary);font-size:.7rem;font-weight:700;text-transform:uppercase">' + p.readTime + ' read</div></a>';
+        li.innerHTML = '<a href="/blog/' + p.slug + '.html" style="display:block;padding:.4rem .5rem;color:var(--text);text-decoration:none;font-size:.8rem;border-bottom:2px solid var(--bg-secondary)"><div style="font-weight:900;margin-bottom:.1rem;text-transform:uppercase;font-size:.75rem">' + p.title + '</div><div style="color:var(--text-tertiary);font-size:.7rem;font-weight:700;text-transform:uppercase">' + p.readTime + ' read</div></a>';
         popList.appendChild(li);
     });
 

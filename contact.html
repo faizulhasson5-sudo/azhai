@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,7 +45,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <a href="/">Home</a>
             <a href="/tools/">Tools</a>
             <a href="/blog/">Blog</a>
-            <a href="/about.html" class="active">About</a>
+            <a href="/about.html">About</a>
             <a href="/advertise.html">Advertise</a>
         </nav>
         <button class="mobile-menu" id="mobileMenu" aria-label="Toggle menu">&#9776;</button>
@@ -58,7 +58,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
     </div>
 
-    <div class="container" id="main-content">
+    <main class="container" id="main-content">
         <div class="page-header">
             <h1>Contact Us</h1>
             <p>Have a question or feedback? We'd love to hear from you.</p>
@@ -133,7 +133,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <a href="/tools/word-counter.html">Word Counter</a>
                     <a href="/tools/case-converter.html">Case Converter</a>
                     <a href="/tools/json-formatter.html">JSON Formatter</a>
-                    <a href="/tools/">View All →</a>
+                    <a href="/tools/">View All â†’</a>
                 </div>
                 <div class="footer-col">
                     <h4>SEO Tools</h4>
@@ -179,7 +179,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         document.getElementById('contactForm').addEventListener('submit', function(e){
             e.preventDefault();
-            App.showToast('Message sent! We\'ll get back to you soon.');
+            App.toast('Message sent! We\'ll get back to you soon.');
             this.reset();
         });
     });

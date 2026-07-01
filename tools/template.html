@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -56,7 +56,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <main class="container" id="main-content" style="padding-top:1.25rem;padding-bottom:3rem">
 <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb">
-    <a href="/">Home</a> <span class="breadcrumb-sep">›</span> <a href="/tools/">Tools</a> <span class="breadcrumb-sep">›</span> <span id="breadcrumb-tool">Tool</span>
+    <a href="/">Home</a> <span class="breadcrumb-sep">â€º</span> <a href="/tools/">Tools</a> <span class="breadcrumb-sep">â€º</span> <span id="breadcrumb-tool">Tool</span>
 </nav>
 
 <div class="tool-layout">
@@ -165,7 +165,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="sidebar-card sidebar-promo">
         <h3>Pro Features Soon</h3>
         <p>Batch processing, API access, advanced analytics.</p>
-        <a href="/advertise.html" class="btn btn-primary btn-sm">Learn More →</a>
+        <a href="/advertise.html" class="btn btn-primary btn-sm">Learn More â†’</a>
     </div>
 
     <div class="sidebar-card">
@@ -189,7 +189,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <a href="/tools/word-counter.html">Word Counter</a>
             <a href="/tools/case-converter.html">Case Converter</a>
             <a href="/tools/json-formatter.html">JSON Formatter</a>
-            <a href="/tools/">View All →</a>
+            <a href="/tools/">View All â†’</a>
         </div>
         <div class="footer-col">
             <h4>SEO Tools</h4>
@@ -219,7 +219,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>We use cookies to improve your experience and serve personalized ads. <a href="/cookie-policy.html">Learn more</a></p>
 <div class="btn-group">
     <button class="btn btn-primary btn-sm" onclick="acceptCookies()">Accept</button>
-    <button class="btn btn-sm" onclick="acceptCookies()">Reject</button>
+    <button class="btn btn-sm" onclick="rejectCookies()">Reject</button>
 </div>
 </div>
 
@@ -331,7 +331,7 @@ var toolContent = {
 "word-counter":{about:"Word Counter Tool",desc:"Our Word Counter tool provides instant and accurate text analysis for writers, students, and professionals. Paste your text into the input area above to get a comprehensive breakdown including word count, character count, sentence count, paragraph count, and line count. The stats update in real-time as you type."},
 "json-formatter":{about:"JSON Formatter Tool",desc:"Format, validate, and beautify your JSON data. Paste your JSON string and instantly get a properly indented, readable format. The tool validates your JSON syntax and highlights any errors."},
 "meta-gen":{about:"Meta Tag Generator Tool",desc:"Generate comprehensive HTML meta tags for your web pages. Enter your page title, description, keywords, author, and Open Graph image URL to get a complete set of meta tags."},
-"default":{about:"About This Tool",desc:"This free online tool helps you process and transform text directly in your browser. All processing happens locally — your text is never sent to any server. Use the input area above to paste or type your text, configure any options, and click Process to see results instantly."}
+"default":{about:"About This Tool",desc:"This free online tool helps you process and transform text directly in your browser. All processing happens locally â€” your text is never sent to any server. Use the input area above to paste or type your text, configure any options, and click Process to see results instantly."}
 };
 var toolSchema = {
 "word-counter":{"@context":"https://schema.org","@type":"WebApplication",name:"Word Counter",description:"Count words, characters, lines, sentences and paragraphs instantly.",url:"https://azhai-six.vercel.app/tools/word-counter.html",applicationCategory:"UtilityApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
@@ -768,6 +768,11 @@ function acceptCookies() {
     if(el) el.style.display = 'none';
     localStorage.setItem('attCookies', 'accepted');
 }
+function rejectCookies() {
+    var el = document.getElementById('cookie-consent');
+    if(el) el.style.display = 'none';
+    localStorage.setItem('attCookies', 'rejected');
+}
 function initToolPage() {
     var path = window.location.pathname;
     var match = path.match(/\/tools\/([a-z0-9-]+)\.html$/);
@@ -791,7 +796,7 @@ function initToolPage() {
     if (faqs && faqs.items && faqs.items.length) {
         faqHtml = '';
         faqs.items.forEach(function(item) {
-            faqHtml += '<details class="faq-item"><summary class="faq-question">' + escapeHTML(item.q) + ' <span>▼</span></summary><div class="faq-answer"><p>' + escapeHTML(item.a) + '</p></div></details>';
+            faqHtml += '<details class="faq-item"><summary class="faq-question">' + escapeHTML(item.q) + ' <span>â–¼</span></summary><div class="faq-answer"><p>' + escapeHTML(item.a) + '</p></div></details>';
         });
     }
     document.getElementById('faq-list').innerHTML = faqHtml;
@@ -806,7 +811,7 @@ function initToolPage() {
     var sidebarBlog = document.getElementById('sidebar-blog');
     if (sidebarBlog) {
         sidebarBlog.innerHTML = blogPosts.slice(0,3).map(function(p){
-            return '<a href="/blog/' + p.slug + '.html" class="sidebar-link"><span class="sidebar-link-meta">' + p.category + ' · ' + p.date + '</span>' + p.title + '</a>';
+            return '<a href="/blog/' + p.slug + '.html" class="sidebar-link"><span class="sidebar-link-meta">' + p.category + ' Â· ' + p.date + '</span>' + p.title + '</a>';
         }).join('');
     }
     renderToolOptions(toolId);

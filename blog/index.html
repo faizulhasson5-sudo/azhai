@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -52,7 +52,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <section class="hero" style="padding:2rem 0 1.5rem">
     <div class="container" style="text-align:center">
-      <div class="hero-badge" style="display:inline-flex">✍ Blog</div>
+      <div class="hero-badge" style="display:inline-flex">âœ Blog</div>
       <h1 style="font-size:2rem;margin-top:.5rem">Blog &amp; Tutorials</h1>
       <p style="max-width:500px;margin:.5rem auto 0">Expert tips, tutorials, and guides to help you get the most out of free AI text tools.</p>
     </div>
@@ -63,8 +63,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div style="flex:1;min-width:0">
         <div class="category-filter" id="categoryFilter" style="display:none;margin-bottom:1.25rem">
           <span style="color:var(--text-secondary);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em">Filtered by:</span>
-          <span class="filter-tag" style="background:var(--yellow);border:2px solid var(--black);padding:.2rem .6rem;font-size:.72rem;font-weight:900;text-transform:uppercase"></span>
-          <button class="clear-filter" style="background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:.82rem;font-weight:700">✕ Clear</button>
+          <span class="filter-tag" style="background:var(--accent-light);border:2px solid var(--text);padding:.2rem .6rem;font-size:.72rem;font-weight:900;text-transform:uppercase"></span>
+          <button class="clear-filter" style="background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:.82rem;font-weight:700">âœ• Clear</button>
         </div>
         <div class="blog-grid" id="blogGrid"></div>
       </div>
@@ -98,7 +98,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a href="/tools/word-counter.html">Word Counter</a>
           <a href="/tools/case-converter.html">Case Converter</a>
           <a href="/tools/json-formatter.html">JSON Formatter</a>
-          <a href="/tools/">View All →</a>
+          <a href="/tools/">View All â†’</a>
         </div>
         <div class="footer-col">
           <h4>SEO Tools</h4>
@@ -151,7 +151,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var categories = [];
         App.blogPosts.forEach(function(post) { if (categories.indexOf(post.category) === -1) categories.push(post.category); });
         categoriesWidget.innerHTML = categories.map(function(category) {
-          return '<li><a href="?category=' + encodeURIComponent(category) + '" style="display:flex;justify-content:space-between;align-items:center;padding:.4rem .5rem;color:var(--text);text-decoration:none;font-size:.82rem;font-weight:700;border-bottom:2px solid var(--bg-alt)' + (selectedCategory === category ? ';background:var(--yellow);border-color:var(--black)' : '') + '"><span style="font-weight:900;color:var(--red)">' + (icons[category]||'?') + '</span> ' + category + '<span style="background:var(--bg);padding:.1rem .4rem;font-size:.68rem;font-weight:900;border:1px solid var(--black)">' + getCategoryCount(category) + '</span></a></li>';
+          return '<li><a href="?category=' + encodeURIComponent(category) + '" style="display:flex;justify-content:space-between;align-items:center;padding:.4rem .5rem;color:var(--text);text-decoration:none;font-size:.82rem;font-weight:700;border-bottom:2px solid var(--bg-secondary)' + (selectedCategory === category ? ';background:var(--accent-light);border-color:var(--text)' : '') + '"><span style="font-weight:900;color:var(--error)">' + (icons[category]||'?') + '</span> ' + category + '<span style="background:var(--bg);padding:.1rem .4rem;font-size:.68rem;font-weight:900;border:1px solid var(--text)">' + getCategoryCount(category) + '</span></a></li>';
         }).join('');
       }
 
@@ -160,7 +160,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           return (parseInt(b.readTime) || 0) - (parseInt(a.readTime) || 0);
         }).slice(0, 5);
         popularPostsWidget.innerHTML = sorted.map(function(post) {
-          return '<li><a href="/blog/' + post.slug + '.html" style="display:block;padding:.4rem .5rem;color:var(--text);text-decoration:none;font-size:.8rem;border-bottom:2px solid var(--bg-alt)"><div style="font-weight:900;margin-bottom:.1rem;text-transform:uppercase;font-size:.75rem">' + post.title + '</div><div style="color:var(--text-tertiary);font-size:.7rem;font-weight:700;text-transform:uppercase">' + post.readTime + ' read</div></a></li>';
+          return '<li><a href="/blog/' + post.slug + '.html" style="display:block;padding:.4rem .5rem;color:var(--text);text-decoration:none;font-size:.8rem;border-bottom:2px solid var(--bg-secondary)"><div style="font-weight:900;margin-bottom:.1rem;text-transform:uppercase;font-size:.75rem">' + post.title + '</div><div style="color:var(--text-tertiary);font-size:.7rem;font-weight:700;text-transform:uppercase">' + post.readTime + ' read</div></a></li>';
         }).join('');
       }
 
@@ -170,7 +170,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           return;
         }
         blogGrid.innerHTML = posts.map(function(post) {
-          var imgHtml = post.image ? '<img src="'+post.image+'" alt="'+post.title+'" loading="lazy">' : '<div style="height:160px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;color:var(--red)">'+(icons[post.category]||'?')+'</div>';
+          var imgHtml = post.image ? '<img src="'+post.image+'" alt="'+post.title+'" loading="lazy">' : '<div style="height:160px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;color:var(--error)">'+(icons[post.category]||'?')+'</div>';
           return '<a href="/blog/' + post.slug + '.html" class="blog-card"><div class="blog-card-img">' + imgHtml + '</div><div class="blog-card-body"><div class="blog-card-meta"><span class="blog-tag">' + post.category + '</span><span>' + post.readTime + ' read</span></div><h3>' + post.title + '</h3><p>' + post.excerpt + '</p></div></a>';
         }).join('');
       }

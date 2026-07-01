@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -53,7 +53,7 @@
 <div class="footer-grid">
 <div class="footer-col">
 <a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><div class="logo-mark">T</div>Free AI Text Tools</a>
-<p style="font-size:14px;color:var(--text-secondary)">37 free online text tools. No sign-up needed.</p>
+<p style="font-size:14px;color:var(--text-2)">37 free online text tools. No sign-up needed.</p>
 </div>
 <div class="footer-col">
 <h4>Tools</h4>
@@ -109,7 +109,7 @@ var html='';
 filtered.forEach(function(t){
 html+='<a href="/tools/'+t.id+'.html" class="tool-card" data-cat="'+t.cat+'"><h3>'+t.name+'</h3><p>'+t.desc+'</p><span class="card-arrow">&rarr;</span></a>';
 });
-grid.innerHTML=html||'<p style="color:var(--text-secondary)">No tools found.</p>';
+grid.innerHTML=html||'<p style="color:var(--text-2)">No tools found.</p>';
 }
 
 render();

@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -76,7 +76,7 @@
 <div class="footer-grid">
 <div class="footer-col">
 <a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><div class="logo-mark">T</div>Free AI Text Tools</a>
-<p style="font-size:14px;color:var(--text-secondary)">37 free online text tools. No sign-up needed.</p>
+<p style="font-size:14px;color:var(--text-2)">37 free online text tools. No sign-up needed.</p>
 </div>
 <div class="footer-col">
 <h4>Tools</h4>
@@ -185,7 +185,7 @@ OPT='<div class="tool-option"><label>Find:</label><input type="text" id="opt-f" 
 case'regex-tester':
 OPT='<div class="tool-option"><label>Pattern:</label><input type="text" id="opt-rp2" placeholder="[a-z]+" style="width:250px;font-family:var(--font-mono)"></div><div class="tool-option"><label>Flags:</label><input type="text" id="opt-rf" value="gi" style="width:60px"></div>';break;
 case'markdown-editor':
-OPT='<div class="tool-option"><span style="font-size:.8rem;color:var(--text-secondary)">Write Markdown on the left, see live HTML preview on the right.</span></div>';break;
+OPT='<div class="tool-option"><span style="font-size:.8rem;color:var(--text-2)">Write Markdown on the left, see live HTML preview on the right.</span></div>';break;
 }
 
 document.getElementById('toolOptions').innerHTML=OPT;
@@ -212,7 +212,7 @@ window.convertCase=cv;
 window.processCurrentTool=function(){
 var input=document.getElementById('tool-input').value;
 var out=document.getElementById('tool-output');
-if(!input.trim()&&tid!=='lorem-generator'){out.innerHTML='<p style="color:var(--text-secondary)">Please enter some text.</p>';return;}
+if(!input.trim()&&tid!=='lorem-generator'){out.innerHTML='<p style="color:var(--text-2)">Please enter some text.</p>';return;}
 try{
 var result='';
 switch(tid){
@@ -243,7 +243,7 @@ var findT=document.getElementById('opt-f').value;
 var repT=document.getElementById('opt-rp').value;
 var ci=document.getElementById('opt-ci').checked;
 var rx=document.getElementById('opt-rx').checked;
-if(!findT){out.innerHTML='<p style="color:var(--text-secondary)">Enter text to find.</p>';return;}
+if(!findT){out.innerHTML='<p style="color:var(--text-2)">Enter text to find.</p>';return;}
 if(rx){var fl=ci?'gi':'g';var re=new RegExp(findT,fl);result=input.replace(re,repT);}
 else{var flags=ci?'gi':'g';result=input.replace(new RegExp(findT.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),flags),repT);}
 break;
@@ -284,7 +284,7 @@ if(kw){sorted2=sorted2.filter(function(w){return w.indexOf(kw)!==-1;});}
 sorted2=sorted2.slice(0,20);
 var tb='<table class="result-table"><thead><tr><th>Keyword</th><th>Count</th><th>Density</th></tr></thead><tbody>';
 sorted2.forEach(function(w){tb+='<tr><td>'+esc(w)+'</td><td>'+freq2[w]+'</td><td>'+(freq2[w]/totalW*100).toFixed(2)+'%</td></tr>';});
-tb+='</tbody></table><p style="font-size:.8rem;color:var(--text-secondary)">Total words: '+totalW+'</p>';
+tb+='</tbody></table><p style="font-size:.8rem;color:var(--text-2)">Total words: '+totalW+'</p>';
 result=tb;break;
 case'meta-gen':
 var ti=document.getElementById('opt-mt').value;
@@ -303,7 +303,7 @@ case'meta-desc-gen':
 var kw2=document.getElementById('opt-dk')?document.getElementById('opt-dk').value:'';
 var words=input.trim().split(/\s+/).slice(0,40).join(' ');
 var desc=words+(words.length>=150?'...':'');
-result='<div class="output-content"><p><strong>Meta Description:</strong></p><p>'+esc(desc)+'</p><p style="font-size:.8rem;color:var(--text-secondary)">Length: '+desc.length+' characters (recommended: 150-160)</p></div>';break;
+result='<div class="output-content"><p><strong>Meta Description:</strong></p><p>'+esc(desc)+'</p><p style="font-size:.8rem;color:var(--text-2)">Length: '+desc.length+' characters (recommended: 150-160)</p></div>';break;
 case'og-generator':
 var ot=document.getElementById('opt-ot').value;
 var od=document.getElementById('opt-od').value;
@@ -315,7 +315,7 @@ if(oi)og+='<span class="hl-tag">&lt;meta</span> <span class="hl-attr">property</
 result='<div class="code-block"><pre>'+og+'</pre></div>';break;
 case'canonical-gen':
 var cu=document.getElementById('opt-cu').value;
-if(!cu){out.innerHTML='<p style="color:var(--text-secondary)">Enter a page URL.</p>';return;}
+if(!cu){out.innerHTML='<p style="color:var(--text-2)">Enter a page URL.</p>';return;}
 result='<div class="code-block"><pre><span class="hl-tag">&lt;link</span> <span class="hl-attr">rel</span>=<span class="hl-str">"canonical"</span> <span class="hl-attr">href</span>=<span class="hl-str">"'+esc(cu)+'"</span><span class="hl-tag">&gt;</span></pre></div>';break;
 case'robots-txt':
 var ua=document.getElementById('opt-ru').value||'*';
@@ -342,8 +342,8 @@ try{var parsed=JSON.parse(input);result='<div class="code-block"><pre>'+esc(JSON
 catch(e){result='<p style="color:var(--accent)">JSON Error: '+esc(e.message)+'</p>';}
 break;
 case'json-validator':
-try{JSON.parse(input);result='<p style="color:var(--success)">&#10003; Valid JSON</p><p style="font-size:.8rem;color:var(--text-secondary)">The JSON is syntactically correct.</p>';}
-catch(e){result='<p style="color:var(--danger)">&#10007; Invalid JSON</p><p style="font-size:.8rem;color:var(--text-secondary)">'+esc(e.message)+'</p>';}
+try{JSON.parse(input);result='<p style="color:var(--success)">&#10003; Valid JSON</p><p style="font-size:.8rem;color:var(--text-2)">The JSON is syntactically correct.</p>';}
+catch(e){result='<p style="color:var(--danger)">&#10007; Invalid JSON</p><p style="font-size:.8rem;color:var(--text-2)">'+esc(e.message)+'</p>';}
 break;
 case'xml-formatter':
 try{
@@ -378,15 +378,15 @@ result='<div class="output-content" style="padding:0"><iframe srcdoc="'+esc(inpu
 case'regex-tester':
 var rp=document.getElementById('opt-rp2').value;
 var rf=document.getElementById('opt-rf').value;
-if(!rp){out.innerHTML='<p style="color:var(--text-secondary)">Enter a regex pattern.</p>';return;}
+if(!rp){out.innerHTML='<p style="color:var(--text-2)">Enter a regex pattern.</p>';return;}
 try{
 var rre=new RegExp(rp,rf);
 var matches=[];
 var rm;
 while((rm=rre.exec(input))!==null){matches.push({match:rm[0],index:rm.index,length:rm[0].length});if(!rf.includes('g'))break;}
 var highlighted=input;
-matches.slice().reverse().forEach(function(m){highlighted=highlighted.substring(0,m.index)+'<mark style="background:var(--accent-glow);color:var(--accent);padding:2px 4px;border-radius:4px">'+esc(m.match)+'</mark>'+highlighted.substring(m.index+m.length);});
-result='<div class="output-content"><div style="padding:1rem;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:.5rem">'+highlighted+'</div><p style="font-size:.8rem;color:var(--text-secondary)">'+matches.length+' match(es) found</p></div>';
+matches.slice().reverse().forEach(function(m){highlighted=highlighted.substring(0,m.index)+'<mark style="background:rgba(108,60,224,0.15);color:var(--accent);padding:2px 4px;border-radius:4px">'+esc(m.match)+'</mark>'+highlighted.substring(m.index+m.length);});
+result='<div class="output-content"><div style="padding:1rem;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:.5rem">'+highlighted+'</div><p style="font-size:.8rem;color:var(--text-2)">'+matches.length+' match(es) found</p></div>';
 }catch(e){result='<p style="color:var(--accent)">Regex Error: '+esc(e.message)+'</p>';}
 break;
 case'url-encoder':
@@ -416,7 +416,7 @@ if(ha==='djb2'||ha==='both')result+='<p><strong>djb2:</strong> '+djb2(input)+'</
 if(ha==='fnv'||ha==='both')result+='<p><strong>FNV-1a:</strong> '+fnv(input)+'</p>';
 result+='</div>';break;
 default:
-result='<p style="color:var(--text-secondary)">Processing not available for this tool.</p>';
+result='<p style="color:var(--text-2)">Processing not available for this tool.</p>';
 }
 if(typeof result==='string')out.innerHTML='<div class="output-content">'+result+'</div>';
 }catch(err){out.innerHTML='<p style="color:var(--danger)">Error: '+esc(err.message)+'</p>';}

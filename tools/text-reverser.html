@@ -170,9 +170,9 @@ OPT='<div class="tool-option"><label>Title:</label><input type="text" id="opt-ot
 case'canonical-gen':
 OPT='<div class="tool-option"><label>Page URL:</label><input type="url" id="opt-cu" placeholder="https://example.com/page" style="width:100%"></div>';break;
 case'robots-txt':
-OPT='<div class="tool-option"><label>User-agent:</label><input type="text" id="opt-ru" value="*" style="width:80px"></div><div class="tool-option"><label>Crawl-delay (sec):</label><input type="number" id="opt-rc" placeholder="10" style="width:80px"></div><div class="tool-option"><label>Disallow paths:</label><textarea id="opt-rd" placeholder="/admin/&#10;/private/" style="width:100%;min-height:60px;font-family:var(--font-mono);font-size:.8rem"></textarea></div><div class="tool-option"><label>Sitemap URL:</label><input type="url" id="opt-rs" placeholder="https://example.com/sitemap.xml" style="width:100%"></div>';break;
+OPT='<div class="tool-option"><label>User-agent:</label><input type="text" id="opt-ru" value="*" style="width:80px"></div><div class="tool-option"><label>Crawl-delay (sec):</label><input type="number" id="opt-rc" placeholder="10" style="width:80px"></div><div class="tool-option"><label>Disallow paths:</label><textarea id="opt-rd" placeholder="/admin/&#10;/private/" style="width:100%;min-height:60px;font-family:var(--mono);font-size:.8rem"></textarea></div><div class="tool-option"><label>Sitemap URL:</label><input type="url" id="opt-rs" placeholder="https://example.com/sitemap.xml" style="width:100%"></div>';break;
 case'sitemap-gen':
-OPT='<div class="tool-option"><label>Page URLs (one per line):</label><textarea id="opt-su" placeholder="https://example.com/&#10;https://example.com/about&#10;https://example.com/contact" style="width:100%;min-height:100px;font-family:var(--font-mono);font-size:.8rem"></textarea></div>';break;
+OPT='<div class="tool-option"><label>Page URLs (one per line):</label><textarea id="opt-su" placeholder="https://example.com/&#10;https://example.com/about&#10;https://example.com/contact" style="width:100%;min-height:100px;font-family:var(--mono);font-size:.8rem"></textarea></div>';break;
 case'json-formatter':
 OPT='<div class="tool-option"><label>Indent:</label><select id="opt-ji"><option value="2">2 spaces</option><option value="4">4 spaces</option><option value="tab">Tab</option></select></div>';break;
 case'hash-generator':
@@ -182,7 +182,7 @@ OPT='<div class="tool-option"><label>Paragraphs:</label><input type="number" id=
 case'find-replace':
 OPT='<div class="tool-option"><label>Find:</label><input type="text" id="opt-f" placeholder="search text" style="width:180px"></div><div class="tool-option"><label>Replace:</label><input type="text" id="opt-rp" placeholder="replacement" style="width:180px"></div><div class="tool-option"><label><input type="checkbox" id="opt-ci"> Case-insensitive</label> <label><input type="checkbox" id="opt-rx"> Regex</label></div>';break;
 case'regex-tester':
-OPT='<div class="tool-option"><label>Pattern:</label><input type="text" id="opt-rp2" placeholder="[a-z]+" style="width:250px;font-family:var(--font-mono)"></div><div class="tool-option"><label>Flags:</label><input type="text" id="opt-rf" value="gi" style="width:60px"></div>';break;
+OPT='<div class="tool-option"><label>Pattern:</label><input type="text" id="opt-rp2" placeholder="[a-z]+" style="width:250px;font-family:var(--mono)"></div><div class="tool-option"><label>Flags:</label><input type="text" id="opt-rf" value="gi" style="width:60px"></div>';break;
 case'markdown-editor':
 OPT='<div class="tool-option"><span style="font-size:.8rem;color:var(--text-2)">Write Markdown on the left, see live HTML preview on the right.</span></div>';break;
 }

@@ -1,124 +1,95 @@
-﻿// Build script: generates individual tool HTML files from template.html
-// Injects static meta tags at build time for SEO (crawlers see correct content without JS)
-// Run: node build.js
-
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
 
 const tools = [
-    'duplicate-remover','word-counter','char-counter','sentence-counter','paragraph-counter',
-    'case-converter','remove-spaces','line-sorter','alpha-sorter','text-reverser',
-    'url-encoder','url-decoder','html-encoder','html-decoder','b64-encoder','b64-decoder',
-    'json-formatter','json-validator','xml-formatter','xml-validator','markdown-editor','markdown-preview',
-    'robots-txt','sitemap-gen','meta-gen','og-generator','slug-generator','meta-desc-gen',
-    'canonical-gen','keyword-density','keyword-extract',
-    'find-replace','regex-tester','html-previewer',
-    'hash-generator','lorem-generator','word-frequency'
+    'word-counter','char-counter','sentence-counter','paragraph-counter','word-frequency',
+    'case-converter','remove-spaces','find-replace','line-sorter','alpha-sorter',
+    'text-reverser','duplicate-remover','lorem-generator','slug-generator',
+    'keyword-density','keyword-extract','meta-gen','meta-desc-gen','og-generator',
+    'canonical-gen','robots-txt','sitemap-gen',
+    'json-formatter','json-validator','xml-formatter','xml-validator',
+    'markdown-editor','markdown-preview','html-previewer','regex-tester',
+    'url-encoder','url-decoder','html-encoder','html-decoder',
+    'b64-encoder','b64-decoder','hash-generator'
 ];
 
 const toolSEO = {
-"word-counter":{title:"Word Counter - Free Online Word Count Tool",desc:"Count words, characters, lines, sentences and paragraphs instantly with our free online word counter tool. Fast, accurate, and easy to use.",keywords:"word counter, word count, word count tool, free word counter, online word count"},
-"char-counter":{title:"Character Counter - Free Online Character Count Tool",desc:"Count characters, words, and lines in your text with this free character counter tool. Supports character count with and without spaces.",keywords:"character counter, char count, character count tool, character count online"},
-"case-converter":{title:"Case Converter - Convert Text Case Online",desc:"Convert text between UPPERCASE, lowercase, Title Case, and Sentence case instantly. Free online case converter tool.",keywords:"case converter, text case, uppercase lowercase, title case, sentence case"},
-"duplicate-remover":{title:"Duplicate Line Remover - Remove Duplicate Lines",desc:"Remove duplicate lines from text instantly. Supports case-insensitive duplicate removal. Free online duplicate remover tool.",keywords:"duplicate remover, remove duplicates, remove duplicate lines, deduplicate text"},
-"line-sorter":{title:"Line Sorter - Sort Lines of Text Online",desc:"Sort lines of text alphabetically, reverse sort, or sort by length. Free online line sorting tool for any text.",keywords:"line sorter, sort lines, sort text lines, alphabetical sort"},
-"alpha-sorter":{title:"Alphabetical Sorter - Sort Text Alphabetically",desc:"Sort text lines in alphabetical order with options for case-insensitive and reverse sorting. Free online alphabetical sorter.",keywords:"alphabetical sorter, sort alphabetically, alphabetical sort tool, a-z sort"},
-"text-reverser":{title:"Text Reverser - Reverse Text Online",desc:"Reverse text by characters, words, or lines with one click. Free online text reverser tool that works instantly in your browser.",keywords:"text reverser, reverse text, backwards text, reverse words, reverse lines"},
-"sentence-counter":{title:"Sentence Counter - Count Sentences in Text",desc:"Count the number of sentences in any text. Free online sentence counter with accurate detection of sentence boundaries.",keywords:"sentence counter, count sentences, sentence count tool, how many sentences"},
-"paragraph-counter":{title:"Paragraph Counter - Count Paragraphs in Text",desc:"Count paragraphs in your text instantly. Free online paragraph counter tool that handles empty lines and spacing.",keywords:"paragraph counter, count paragraphs, paragraph count, how many paragraphs"},
-"find-replace":{title:"Find and Replace - Text Search and Replace Tool",desc:"Find and replace text in your content instantly. Supports case-sensitive search and regex. Free online find and replace tool.",keywords:"find and replace, search and replace, text replace, find replace tool"},
-"regex-tester":{title:"Regex Tester - Test Regular Expressions Online",desc:"Test and debug regular expressions with real-time matching. Free online regex tester with pattern highlighting and capture groups.",keywords:"regex tester, regular expression tester, regex test, regex online, pattern matching"},
-"markdown-preview":{title:"Markdown Preview - Live Markdown Editor",desc:"Write and preview Markdown in real-time with live HTML rendering. Free online Markdown editor and preview tool.",keywords:"markdown preview, markdown editor, markdown viewer, live markdown, markdown online"},
-"html-previewer":{title:"HTML Previewer - Live HTML Code Preview",desc:"Preview HTML code in real-time with live rendering. Free online HTML previewer for testing and debugging markup.",keywords:"html previewer, html preview, live html viewer, html code preview, render html"},
-"json-formatter":{title:"JSON Formatter - Format and Validate JSON Online",desc:"Format, validate, and beautify JSON data instantly. Free online JSON formatter with syntax validation and indentation.",keywords:"json formatter, format json, json beautifier, json validator, json pretty print"},
-"xml-formatter":{title:"XML Formatter - Format and Validate XML Online",desc:"Format and beautify XML data with proper indentation. Free online XML formatter and validator tool.",keywords:"xml formatter, format xml, xml beautifier, xml validator, xml pretty print"},
-"url-encoder":{title:"URL Encoder - Encode and Decode URLs Online",desc:"Encode and decode URLs and URL parameters instantly. Free online URL encoder and decoder tool.",keywords:"url encoder, url decode, percent encoding, url encode decode, encode url"},
-"url-decoder":{title:"URL Decoder - Decode URL Encoded Strings",desc:"Decode URL encoded strings back to readable text. Free online URL decoder tool for percent-encoded data.",keywords:"url decoder, decode url, percent decode, url decode online"},
-"html-encoder":{title:"HTML Encoder - Encode and Decode HTML Entities",desc:"Encode and decode HTML entities and special characters. Free online HTML encoder and decoder tool.",keywords:"html encoder, html decode, html entities, encode html, html special characters"},
-"html-decoder":{title:"HTML Decoder - Decode HTML Entities to Text",desc:"Decode HTML entities back to readable text. Free online HTML decoder for &amp; entities, &lt; tags, and more.",keywords:"html decoder, decode html, html entities decoder, unescape html"},
-"b64-encoder":{title:"Base64 Encoder - Encode Text to Base64 Online",desc:"Encode text to Base64 format instantly. Free online Base64 encoder for strings, URLs, and data.",keywords:"base64 encode, base64 encoder, encode base64, base64 convert"},
-"b64-decoder":{title:"Base64 Decoder - Decode Base64 to Text Online",desc:"Decode Base64 encoded strings back to original text. Free online Base64 decoder tool.",keywords:"base64 decode, base64 decoder, decode base64, base64 to text"},
-"hash-generator":{title:"Hash Generator - Generate MD5 SHA1 SHA256 Hashes",desc:"Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from any text. Free online hash generator tool.",keywords:"hash generator, md5 hash, sha1 hash, sha256 hash, hash calculator"},
-"lorem-generator":{title:"Lorem Ipsum Generator - Generate Dummy Text",desc:"Generate Lorem Ipsum placeholder text with custom paragraphs and words. Free online Lorem Ipsum generator.",keywords:"lorem generator, lorem ipsum, dummy text, placeholder text, filler text"},
-"word-frequency":{title:"Word Frequency Counter - Count Word Occurrences",desc:"Analyze word frequency and count occurrences in your text. Free online word frequency counter and text analyzer.",keywords:"word frequency, word count, word occurrences, text analysis, frequency counter"},
-"keyword-density":{title:"Keyword Density Checker - Analyze Keyword Usage",desc:"Check keyword density in your text with percentage breakdown. Free online keyword density analyzer for SEO.",keywords:"keyword density, keyword density checker, keyword analysis, seo keyword density"},
-"keyword-extract":{title:"Keyword Extractor - Extract Keywords from Text",desc:"Extract top keywords and phrases from any text for SEO analysis. Free online keyword extraction tool.",keywords:"keyword extractor, extract keywords, keyword analysis, text keywords"},
-"slug-generator":{title:"URL Slug Generator - Create SEO-Friendly Slugs",desc:"Generate clean, SEO-friendly URL slugs from any text. Free online slug generator with automatic formatting.",keywords:"slug generator, url slug, seo slug, permalink generator, clean url"},
-"meta-desc-gen":{title:"Meta Description Generator - Create Meta Descriptions",desc:"Generate optimized meta descriptions for SEO from your content. Free online meta description generator tool.",keywords:"meta description generator, meta description, seo description, meta tag generator"},
-"canonical-gen":{title:"Canonical URL Generator - Generate Canonical Tags",desc:"Generate canonical URL tags for SEO optimization. Free online canonical tag generator for duplicate content prevention.",keywords:"canonical url, canonical tag, canonical generator, seo canonical, duplicate content"},
-"og-generator":{title:"Open Graph Tag Generator - Create OG Meta Tags",desc:"Generate Open Graph meta tags for social media sharing. Free online OG tag generator for Facebook, Twitter, and more.",keywords:"open graph, og tags, og meta, social media tags, facebook meta tags"},
-"meta-gen":{title:"Meta Tag Generator - Generate SEO Meta Tags",desc:"Generate complete HTML meta tags for SEO optimization. Free online meta tag generator with title, description, keywords, and Open Graph.",keywords:"meta tag generator, meta tags, seo meta, html meta tags, meta tag creator"},
-"robots-txt":{title:"Robots.txt Generator - Create Robots.txt File",desc:"Generate robots.txt file for your website with proper crawl directives. Free online robots.txt generator tool.",keywords:"robots.txt, robots.txt generator, crawl rules, sitemap, robots file"},
-"sitemap-gen":{title:"Sitemap Generator - Create XML Sitemap",desc:"Generate XML sitemaps for your website to improve search engine indexing. Free online sitemap generator tool.",keywords:"sitemap generator, xml sitemap, sitemap creator, search engine sitemap, seo sitemap"}
+"word-counter":{title:"Word Counter - Free Online Word Count Tool",desc:"Count words, characters, lines, sentences and paragraphs instantly with our free online word counter. Fast, accurate, no sign-up.",keywords:"word counter, word count, word count tool, free word counter"},
+"char-counter":{title:"Character Counter - Free Online Character Count Tool",desc:"Count characters with and without spaces, words, and lines. Free online character counter for any text.",keywords:"character counter, char count, character count tool"},
+"sentence-counter":{title:"Sentence Counter - Count Sentences in Text",desc:"Count sentences in any text by detecting punctuation boundaries. Free online sentence counter tool.",keywords:"sentence counter, count sentences, sentence count"},
+"paragraph-counter":{title:"Paragraph Counter - Count Paragraphs in Text",desc:"Count paragraphs by detecting empty line breaks. Free online paragraph counter tool.",keywords:"paragraph counter, count paragraphs, paragraph count"},
+"word-frequency":{title:"Word Frequency Counter - Count Word Occurrences",desc:"Analyze word occurrence frequency and distribution in your text. Free online word frequency counter.",keywords:"word frequency, word count, word occurrences, text analysis"},
+"case-converter":{title:"Case Converter - Convert Text Case Online",desc:"Convert text between UPPERCASE, lowercase, Title Case, Sentence case, and toggleCase instantly.",keywords:"case converter, text case, uppercase lowercase, title case"},
+"remove-spaces":{title:"Remove Spaces - Remove Extra Whitespace",desc:"Remove leading, trailing, and extra whitespace from text. Free online space remover tool.",keywords:"remove spaces, extra spaces, whitespace remover"},
+"find-replace":{title:"Find and Replace - Text Search and Replace",desc:"Find and replace text with regex support and case-insensitive options. Free online find replace tool.",keywords:"find and replace, search and replace, text replace"},
+"line-sorter":{title:"Line Sorter - Sort Lines of Text",desc:"Sort lines of text alphabetically in ascending or descending order. Free online line sorter.",keywords:"line sorter, sort lines, text sort"},
+"alpha-sorter":{title:"Alphabetical Sorter - Sort Text A-Z",desc:"Sort text lines in strict alphabetical order. Free online alphabetical sorter.",keywords:"alphabetical sorter, sort alphabetically, a-z sort"},
+"text-reverser":{title:"Text Reverser - Reverse Text Online",desc:"Reverse text by characters, words, or lines with one click. Free online text reverser.",keywords:"text reverser, reverse text, backwards text"},
+"duplicate-remover":{title:"Duplicate Line Remover - Remove Duplicate Lines",desc:"Remove duplicate lines from text with case-insensitive option. Free online duplicate remover.",keywords:"duplicate remover, remove duplicates, deduplicate text"},
+"lorem-generator":{title:"Lorem Ipsum Generator - Generate Dummy Text",desc:"Generate Lorem Ipsum placeholder text with custom paragraph count. Free online lorem generator.",keywords:"lorem generator, lorem ipsum, dummy text, placeholder text"},
+"slug-generator":{title:"URL Slug Generator - Create SEO-Friendly Slugs",desc:"Convert titles to URL-friendly slugs instantly. Free online slug generator.",keywords:"slug generator, url slug, seo slug, permalink generator"},
+"keyword-density":{title:"Keyword Density Checker - Analyze Keyword Usage",desc:"Calculate keyword frequency and density percentage for SEO. Free online keyword density analyzer.",keywords:"keyword density, keyword density checker, seo keyword density"},
+"keyword-extract":{title:"Keyword Extractor - Extract Keywords from Text",desc:"Extract the most frequent keywords from text for SEO analysis. Free online keyword extractor.",keywords:"keyword extractor, extract keywords, keyword analysis"},
+"meta-gen":{title:"Meta Tag Generator - Generate SEO Meta Tags",desc:"Generate complete HTML meta tags including OG and Twitter cards. Free online meta tag generator.",keywords:"meta tag generator, meta tags, seo meta, html meta tags"},
+"meta-desc-gen":{title:"Meta Description Generator - Create Meta Descriptions",desc:"Generate SEO-optimized meta descriptions from your content. Free online meta description generator.",keywords:"meta description generator, seo description, meta tag generator"},
+"og-generator":{title:"Open Graph Tag Generator - Create OG Meta Tags",desc:"Generate Open Graph meta tags for social media sharing. Free online OG tag generator.",keywords:"open graph, og tags, social media tags, facebook meta tags"},
+"canonical-gen":{title:"Canonical URL Generator - Generate Canonical Tags",desc:"Generate canonical link tags for SEO. Free online canonical tag generator.",keywords:"canonical url, canonical tag, seo canonical"},
+"robots-txt":{title:"Robots.txt Generator - Create Robots.txt File",desc:"Generate robots.txt with crawl directives, disallow rules, and sitemap reference. Free online generator.",keywords:"robots.txt, robots.txt generator, crawl rules, sitemap"},
+"sitemap-gen":{title:"Sitemap Generator - Create XML Sitemap",desc:"Generate XML sitemaps for search engine indexing. Free online sitemap generator.",keywords:"sitemap generator, xml sitemap, seo sitemap"},
+"json-formatter":{title:"JSON Formatter - Format and Validate JSON",desc:"Beautify and validate JSON with customizable indentation. Free online JSON formatter.",keywords:"json formatter, format json, json beautifier, json validator"},
+"json-validator":{title:"JSON Validator - Validate JSON Syntax",desc:"Validate JSON syntax and structure instantly. Free online JSON validator.",keywords:"json validator, validate json, json syntax check"},
+"xml-formatter":{title:"XML Formatter - Format and Pretty-Print XML",desc:"Pretty-print and indent XML documents. Free online XML formatter.",keywords:"xml formatter, format xml, xml beautifier, xml pretty print"},
+"xml-validator":{title:"XML Validator - Validate XML Structure",desc:"Validate XML structure and syntax. Free online XML validator.",keywords:"xml validator, validate xml, xml syntax check"},
+"markdown-editor":{title:"Markdown Editor - Write Markdown with Live Preview",desc:"Write Markdown with live HTML preview side by side. Free online Markdown editor.",keywords:"markdown editor, markdown preview, live markdown, markdown online"},
+"markdown-preview":{title:"Markdown Preview - Convert Markdown to HTML",desc:"Convert Markdown to HTML output instantly. Free online Markdown preview tool.",keywords:"markdown preview, markdown to html, markdown converter"},
+"html-previewer":{title:"HTML Previewer - Live HTML Code Preview",desc:"Preview HTML code with live rendering in browser. Free online HTML previewer.",keywords:"html previewer, html preview, live html viewer"},
+"regex-tester":{title:"Regex Tester - Test Regular Expressions",desc:"Test regular expressions with match highlighting. Free online regex tester.",keywords:"regex tester, regular expression tester, regex test"},
+"url-encoder":{title:"URL Encoder - Encode URLs Online",desc:"Encode special characters for URLs instantly. Free online URL encoder.",keywords:"url encoder, percent encoding, encode url"},
+"url-decoder":{title:"URL Decoder - Decode URL Strings",desc:"Decode percent-encoded URL strings back to readable text. Free online URL decoder.",keywords:"url decoder, decode url, percent decode"},
+"html-encoder":{title:"HTML Encoder - Escape HTML Entities",desc:"Escape HTML special characters to entities. Free online HTML encoder.",keywords:"html encoder, html entities, encode html"},
+"html-decoder":{title:"HTML Decoder - Decode HTML Entities",desc:"Decode HTML entities back to readable text. Free online HTML decoder.",keywords:"html decoder, decode html, unescape html"},
+"b64-encoder":{title:"Base64 Encoder - Encode Text to Base64",desc:"Encode text to Base64 format instantly. Free online Base64 encoder.",keywords:"base64 encode, base64 encoder, encode base64"},
+"b64-decoder":{title:"Base64 Decoder - Decode Base64 to Text",desc:"Decode Base64 strings back to original text. Free online Base64 decoder.",keywords:"base64 decode, base64 decoder, decode base64"},
+"hash-generator":{title:"Hash Generator - Generate Text Hashes",desc:"Generate djb2 and FNV-1a hashes from text. Free online hash generator.",keywords:"hash generator, djb2, fnv1a, text hash"}
 };
 
 const templatePath = path.join(__dirname, 'tools', 'template.html');
 const template = fs.readFileSync(templatePath, 'utf8');
 const baseUrl = 'https://azhai-six.vercel.app';
 
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
 tools.forEach(toolId => {
     const seo = toolSEO[toolId] || {title:'Tool',desc:'',keywords:''};
     const toolUrl = baseUrl + '/tools/' + toolId + '.html';
-    const toolName = seo.title.split(' - ')[0];
-
     let html = template;
 
-    // Inject static <title>
-    html = html.replace(
-        '<title id="page-title">Tool - Free AI Text Tools</title>',
-        '<title id="page-title">' + escapeAttr(seo.title) + '</title>'
-    );
+    html = html.replace('<title id="page-title">Tool - Free AI Text Tools</title>',
+        '<title id="page-title">'+esc(seo.title)+'</title>');
+    html = html.replace('<meta id="meta-desc" name="description" content="">',
+        '<meta id="meta-desc" name="description" content="'+esc(seo.desc)+'">');
+    html = html.replace('<meta id="meta-keywords" name="keywords" content="">',
+        '<meta id="meta-keywords" name="keywords" content="'+esc(seo.keywords)+'">');
+    html = html.replace('<link rel="canonical" id="canonical-link" href="">',
+        '<link rel="canonical" id="canonical-link" href="'+toolUrl+'">');
+    html = html.replace('<meta property="og:title" id="og-title" content="">',
+        '<meta property="og:title" id="og-title" content="'+esc(seo.title)+'">');
+    html = html.replace('<meta property="og:description" id="og-desc" content="">',
+        '<meta property="og:description" id="og-desc" content="'+esc(seo.desc)+'">');
+    html = html.replace('<meta property="og:url" id="og-url" content="">',
+        '<meta property="og:url" id="og-url" content="'+toolUrl+'">');
+    html = html.replace('<meta name="twitter:title" id="tw-title" content="">',
+        '<meta name="twitter:title" id="tw-title" content="'+esc(seo.title)+'">');
+    html = html.replace('<meta name="twitter:description" id="tw-desc" content="">',
+        '<meta name="twitter:description" id="tw-desc" content="'+esc(seo.desc)+'">');
 
-    // Inject static meta description
-    html = html.replace(
-        '<meta id="meta-desc" content="">',
-        '<meta id="meta-desc" content="' + escapeAttr(seo.desc) + '">'
-    );
-
-    // Inject static meta keywords
-    html = html.replace(
-        '<meta id="meta-keywords" content="">',
-        '<meta id="meta-keywords" content="' + escapeAttr(seo.keywords) + '">'
-    );
-
-    // Inject static canonical URL
-    html = html.replace(
-        '<link rel="canonical" id="canonical-link" href="">',
-        '<link rel="canonical" id="canonical-link" href="' + toolUrl + '">'
-    );
-
-    // Inject static OG tags
-    html = html.replace(
-        '<meta property="og:title" id="og-title" content="">',
-        '<meta property="og:title" id="og-title" content="' + escapeAttr(seo.title) + '">'
-    );
-    html = html.replace(
-        '<meta property="og:description" id="og-desc" content="">',
-        '<meta property="og:description" id="og-desc" content="' + escapeAttr(seo.desc) + '">'
-    );
-    html = html.replace(
-        '<meta property="og:url" id="og-url" content="">',
-        '<meta property="og:url" id="og-url" content="' + toolUrl + '">'
-    );
-
-    // Inject static Twitter tags
-    html = html.replace(
-        '<meta name="twitter:card" content="summary">',
-        '<meta name="twitter:card" content="summary_large_image">'
-    );
-
-    
-    // Fix 4.4: Conditionally load marked.js (only for markdown tools)
     if (toolId === 'markdown-editor' || toolId === 'markdown-preview') {
         html = html.replace('</head>', '<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>\n</head>');
     }
+
     const filePath = path.join(__dirname, 'tools', toolId + '.html');
     fs.writeFileSync(filePath, html, 'utf8');
     console.log('Created: tools/' + toolId + '.html');
 });
 
-console.log('\nBuild complete! ' + tools.length + ' tool pages generated with static meta tags.');
-
-function escapeAttr(s) {
-    return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
+console.log('\nBuild complete! ' + tools.length + ' tool pages generated.');

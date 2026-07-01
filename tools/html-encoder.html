@@ -1,905 +1,440 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta id="meta-title" content="Tool">
-<meta id="meta-desc" content="Encode and decode HTML entities and special characters. Free online HTML encoder and decoder tool.">
-<meta id="meta-keywords" content="html encoder, html decode, html entities, encode html, html special characters">
-<meta name="robots" content="index, follow">
-<meta property="og:type" content="website">
-<meta property="og:title" id="og-title" content="HTML Encoder - Encode and Decode HTML Entities">
-<meta property="og:description" id="og-desc" content="Encode and decode HTML entities and special characters. Free online HTML encoder and decoder tool.">
-<meta property="og:url" id="og-url" content="https://azhai-six.vercel.app/tools/html-encoder.html">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title id="page-title">HTML Encoder - Escape HTML Entities</title>
+<meta id="meta-desc" name="description" content="Escape HTML special characters to entities. Free online HTML encoder.">
+<meta id="meta-keywords" name="keywords" content="html encoder, html entities, encode html">
+<meta name="robots" content="index,follow">
 <link rel="canonical" id="canonical-link" href="https://azhai-six.vercel.app/tools/html-encoder.html">
-<title id="page-title">HTML Encoder - Encode and Decode HTML Entities</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta property="og:title" id="og-title" content="HTML Encoder - Escape HTML Entities">
+<meta property="og:description" id="og-desc" content="Escape HTML special characters to entities. Free online HTML encoder.">
+<meta property="og:url" id="og-url" content="https://azhai-six.vercel.app/tools/html-encoder.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" id="tw-title" content="HTML Encoder - Escape HTML Entities">
+<meta name="twitter:description" id="tw-desc" content="Escape HTML special characters to entities. Free online HTML encoder.">
 <link rel="stylesheet" href="/css/style.css">
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,
-f);})(window,document,'script','dataLayer','GTM-KDTPKT4T');</script>
-<meta name="google-site-verification" content="6MsJ07hr52c91ZELOm9kIZmgvj0NOpWWM360VR2cG7A" />
 </head>
 <body>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDTPKT4T"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="#main-content" class="skip-link">Skip to main content</a>
-
-<header class="site-header" id="siteHeader">
+<header class="site-header">
 <div class="header-inner">
-    <a href="/" class="logo">
-        <div class="logo-icon">T</div>
-        <div>Free AI <strong>Text Tools</strong></div>
-    </a>
-    <nav class="nav" id="mainNav" aria-label="Main navigation">
-        <a href="/">Home</a>
-        <a href="/tools/" class="active">Tools</a>
-        <a href="/blog/">Blog</a>
-        <a href="/about.html">About</a>
-        <a href="/advertise.html">Advertise</a>
-    </nav>
-    <button class="mobile-menu" id="mobileMenu" aria-label="Toggle menu">&#9776;</button>
-    <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">&#9789;</button>
+<a href="/" class="site-logo"><div class="logo-mark">T</div>Free AI Text Tools</a>
+<nav class="nav">
+<a href="/" class="nav-link">Home</a>
+<a href="/tools/" class="nav-link">Tools</a>
+<a href="/blog/" class="nav-link">Blog</a>
+<a href="/tools/" class="nav-cta">All 37 Tools</a>
+<button class="theme-btn" onclick="App.toggleTheme()" aria-label="Toggle theme">&#9789;</button>
+</nav>
+<button class="menu-toggle" aria-label="Menu" onclick="App.toggleMenu()">&#9776;</button>
 </div>
 </header>
-
-<div class="ad-container top-banner">
-    <span class="ad-label">Advertisement</span>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+<main id="main-content">
+<div class="container">
+<div class="tool-header">
+<div class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a> <span>/</span> <span id="breadcrumbTool">Tool</span></div>
+<h1 id="toolTitle">Tool</h1>
+<p id="toolDesc"></p>
 </div>
-
-<main class="container" id="main-content" style="padding-top:1.25rem;padding-bottom:3rem">
-<nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb">
-    <a href="/">Home</a> <span class="breadcrumb-sep">â€º</span> <a href="/tools/">Tools</a> <span class="breadcrumb-sep">â€º</span> <span id="breadcrumb-tool">Tool</span>
-</nav>
-
 <div class="tool-layout">
 <div class="tool-main">
-    <h1 class="tool-title" id="tool-heading">Tool</h1>
-    <p class="tool-description" id="tool-description"></p>
-
-    <div class="tool-interface">
-        <div class="input-section">
-            <div class="input-header">
-                <label for="tool-input" class="input-label">Input Text</label>
-                <div class="input-actions">
-                    <button onclick="pasteInput()" class="btn-xs" title="Paste from clipboard">Paste</button>
-                    <button onclick="clearInput()" class="btn-xs" title="Clear input">Clear</button>
-                </div>
-            </div>
-            <textarea id="tool-input" class="tool-textarea" placeholder="Paste or type your text here..." rows="10"></textarea>
-            <div class="live-stats" id="live-stats">
-                <span id="stat-words">Words: 0</span>
-                <span id="stat-chars">Characters: 0</span>
-                <span id="stat-nospaces">No Spaces: 0</span>
-                <span id="stat-lines">Lines: 0</span>
-                <span id="stat-sentences">Sentences: 0</span>
-                <span id="stat-paragraphs">Paragraphs: 0</span>
-            </div>
-        </div>
-
-        <div class="tool-options" id="tool-options"></div>
-
-        <div class="action-bar">
-            <button onclick="copyInput()" class="btn btn-sm" title="Copy input text">Copy Input</button>
-            <button onclick="processCurrentTool()" class="btn btn-primary btn-lg" id="process-btn" title="Process text">Process</button>
-            <button onclick="copyResult()" class="btn btn-sm" title="Copy result">Copy Result</button>
-            <button onclick="downloadResult()" class="btn btn-sm" title="Download result">Download</button>
-        </div>
-
-        <div class="output-section">
-            <div class="output-header">
-                <label class="input-label">Output</label>
-                <div class="input-actions">
-                    <button onclick="copyResult()" class="btn-xs" title="Copy output">Copy</button>
-                    <button onclick="swapResult()" class="btn-xs" title="Swap input/output">Swap</button>
-                </div>
-            </div>
-            <div id="tool-output" class="tool-output" contenteditable="false"></div>
-        </div>
-    </div>
-
-    <div class="ad-container" style="margin:1.5rem 0">
-        <span class="ad-label">Advertisement</span>
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    </div>
-
-    <div class="seo-content card" id="seo-content"></div>
-
-    <div class="faq-section card" id="faq-section">
-        <h2 class="faq-title">Frequently Asked Questions</h2>
-        <div class="faq-list" id="faq-list"></div>
-    </div>
+<div class="tool-interface">
+<div class="tool-options" id="toolOptions"></div>
+<textarea class="tool-textarea" id="tool-input" placeholder="Paste or type your text here..."></textarea>
+<div class="action-bar">
+<button class="btn btn-primary" onclick="processCurrentTool()">&#9654; Process</button>
+<button class="btn btn-secondary btn-sm" onclick="clearTool()">Clear</button>
+<button class="btn btn-secondary btn-sm" onclick="copyOutput()">Copy</button>
+<button class="btn btn-secondary btn-sm" onclick="downloadResult()">Download</button>
 </div>
-
+<div class="tool-output" id="tool-output"></div>
+</div>
+</div>
 <aside class="tool-sidebar">
-    <div class="sidebar-card">
-        <h3>All 37 Tools</h3>
-        <ul class="sidebar-links">
-            <li><a href="/tools/word-counter.html" class="sidebar-link">Word Counter</a></li>
-            <li><a href="/tools/char-counter.html" class="sidebar-link">Character Counter</a></li>
-            <li><a href="/tools/case-converter.html" class="sidebar-link">Case Converter</a></li>
-            <li><a href="/tools/duplicate-remover.html" class="sidebar-link">Duplicate Remover</a></li>
-            <li><a href="/tools/line-sorter.html" class="sidebar-link">Line Sorter</a></li>
-            <li><a href="/tools/alpha-sorter.html" class="sidebar-link">Alphabetical Sorter</a></li>
-            <li><a href="/tools/text-reverser.html" class="sidebar-link">Text Reverser</a></li>
-            <li><a href="/tools/sentence-counter.html" class="sidebar-link">Sentence Counter</a></li>
-            <li><a href="/tools/paragraph-counter.html" class="sidebar-link">Paragraph Counter</a></li>
-            <li><a href="/tools/remove-spaces.html" class="sidebar-link">Remove Extra Spaces</a></li>
-            <li><a href="/tools/find-replace.html" class="sidebar-link">Find and Replace</a></li>
-            <li><a href="/tools/lorem-generator.html" class="sidebar-link">Lorem Generator</a></li>
-            <li><a href="/tools/word-frequency.html" class="sidebar-link">Word Frequency</a></li>
-            <li><a href="/tools/json-formatter.html" class="sidebar-link">JSON Formatter</a></li>
-            <li><a href="/tools/json-validator.html" class="sidebar-link">JSON Validator</a></li>
-            <li><a href="/tools/xml-formatter.html" class="sidebar-link">XML Formatter</a></li>
-            <li><a href="/tools/xml-validator.html" class="sidebar-link">XML Validator</a></li>
-            <li><a href="/tools/markdown-editor.html" class="sidebar-link">Markdown Editor</a></li>
-            <li><a href="/tools/markdown-preview.html" class="sidebar-link">Markdown Preview</a></li>
-            <li><a href="/tools/html-previewer.html" class="sidebar-link">HTML Previewer</a></li>
-            <li><a href="/tools/regex-tester.html" class="sidebar-link">Regex Tester</a></li>
-            <li><a href="/tools/hash-generator.html" class="sidebar-link">Hash Generator</a></li>
-            <li><a href="/tools/url-encoder.html" class="sidebar-link">URL Encoder</a></li>
-            <li><a href="/tools/url-decoder.html" class="sidebar-link">URL Decoder</a></li>
-            <li><a href="/tools/html-encoder.html" class="sidebar-link">HTML Encoder</a></li>
-            <li><a href="/tools/html-decoder.html" class="sidebar-link">HTML Decoder</a></li>
-            <li><a href="/tools/b64-encoder.html" class="sidebar-link">Base64 Encoder</a></li>
-            <li><a href="/tools/b64-decoder.html" class="sidebar-link">Base64 Decoder</a></li>
-            <li><a href="/tools/robots-txt.html" class="sidebar-link">Robots.txt Generator</a></li>
-            <li><a href="/tools/sitemap-gen.html" class="sidebar-link">Sitemap Generator</a></li>
-            <li><a href="/tools/meta-gen.html" class="sidebar-link">Meta Tag Generator</a></li>
-            <li><a href="/tools/og-generator.html" class="sidebar-link">OG Generator</a></li>
-            <li><a href="/tools/slug-generator.html" class="sidebar-link">Slug Generator</a></li>
-            <li><a href="/tools/meta-desc-gen.html" class="sidebar-link">Meta Description Gen</a></li>
-            <li><a href="/tools/canonical-gen.html" class="sidebar-link">Canonical Tag Gen</a></li>
-            <li><a href="/tools/keyword-density.html" class="sidebar-link">Keyword Density</a></li>
-            <li><a href="/tools/keyword-extract.html" class="sidebar-link">Keyword Extractor</a></li>
-        </ul>
-    </div>
-
-    <div class="sidebar-card sidebar-promo">
-        <h3>Pro Features Soon</h3>
-        <p>Batch processing, API access, advanced analytics.</p>
-        <a href="/advertise.html" class="btn btn-primary btn-sm">Learn More â†’</a>
-    </div>
-
-    <div class="sidebar-card">
-        <h3>Latest Posts</h3>
-        <div id="sidebar-blog"></div>
-    </div>
+<div class="sidebar-widget">
+<h3>About This Tool</h3>
+<p id="toolAbout"></p>
+</div>
+<div class="sidebar-widget">
+<h3>Related Tools</h3>
+<div id="relatedTools"></div>
+</div>
+<div class="sidebar-widget">
+<h3>FAQ</h3>
+<div id="toolFAQ"></div>
+</div>
 </aside>
 </div>
+</div>
 </main>
-
 <footer class="site-footer">
 <div class="container">
-    <div class="footer-grid">
-        <div class="footer-col">
-            <h4>Free AI Text Tools</h4>
-            <p>37 free AI-powered text and SEO utility tools. Fast, accurate, and works entirely in your browser.</p>
-        </div>
-        <div class="footer-col">
-            <h4>Text Tools</h4>
-            <a href="/tools/duplicate-remover.html">Duplicate Remover</a>
-            <a href="/tools/word-counter.html">Word Counter</a>
-            <a href="/tools/case-converter.html">Case Converter</a>
-            <a href="/tools/json-formatter.html">JSON Formatter</a>
-            <a href="/tools/">View All â†’</a>
-        </div>
-        <div class="footer-col">
-            <h4>SEO Tools</h4>
-            <a href="/tools/meta-gen.html">Meta Tag Generator</a>
-            <a href="/tools/og-generator.html">OG Generator</a>
-            <a href="/tools/robots-txt.html">Robots.txt Generator</a>
-            <a href="/tools/sitemap-gen.html">Sitemap Generator</a>
-        </div>
-        <div class="footer-col">
-            <h4>Company</h4>
-            <a href="/about.html">About Us</a>
-            <a href="/blog/">Blog</a>
-            <a href="/contact.html">Contact</a>
-            <a href="/advertise.html">Advertise</a>
-            <a href="/privacy-policy.html">Privacy</a>
-            <a href="/terms.html">Terms</a>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2026 Free AI Text Tools. All rights reserved.</p>
-    </div>
+<div class="footer-grid">
+<div class="footer-col">
+<a href="/" class="site-logo" style="color:inherit;margin-bottom:.5rem"><div class="logo-mark">T</div>Free AI Text Tools</a>
+<p>37 free online text tools. No sign-up needed.</p>
+</div>
+<div class="footer-col">
+<h4>Tools</h4>
+<a href="/tools/word-counter.html">Word Counter</a>
+<a href="/tools/case-converter.html">Case Converter</a>
+<a href="/tools/json-formatter.html">JSON Formatter</a>
+<a href="/tools/robots-txt.html">Robots.txt</a>
+</div>
+<div class="footer-col">
+<h4>SEO</h4>
+<a href="/tools/meta-gen.html">Meta Tags</a>
+<a href="/tools/keyword-density.html">Keyword Density</a>
+<a href="/tools/slug-generator.html">Slug Generator</a>
+<a href="/tools/sitemap-gen.html">Sitemap</a>
+</div>
+<div class="footer-col">
+<h4>Company</h4>
+<a href="/about.html">About</a>
+<a href="/blog/">Blog</a>
+<a href="/contact.html">Contact</a>
+<a href="/advertise.html">Advertise</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 Free AI Text Tools. All rights reserved.</p>
+</div>
 </div>
 </footer>
-
-<div id="appToast" class="toast" role="alert"></div>
-<div class="cookie-banner" id="cookie-consent">
-<p>We use cookies to improve your experience and serve personalized ads. <a href="/cookie-policy.html">Learn more</a></p>
+<div class="cookie-banner" id="cookieBanner">
+<p>We use cookies to improve your experience. <a href="/cookie-policy.html" style="color:inherit;text-decoration:underline">Learn more</a>.</p>
 <div class="btn-group">
-    <button class="btn btn-primary btn-sm" onclick="acceptCookies()">Accept</button>
-    <button class="btn btn-sm" onclick="rejectCookies()">Reject</button>
+<button class="btn btn-primary btn-sm" id="cookieAccept">Accept</button>
+<button class="btn btn-secondary btn-sm" id="cookieReject">Reject</button>
 </div>
 </div>
-
+<div class="toast" id="appToast"></div>
+<script src="/js/app.js"></script>
 <script>
-var toolSEO = {
-"word-counter":{title:"Word Counter - Free Online Word Count Tool",desc:"Count words, characters, lines, sentences and paragraphs instantly with our free online word counter tool. Fast, accurate, and easy to use.",keywords:"word counter, word count, word count tool, free word counter, online word count"},
-"char-counter":{title:"Character Counter - Free Online Character Count Tool",desc:"Count characters, words, and lines in your text with this free character counter tool. Supports character count with and without spaces.",keywords:"character counter, char count, character count tool, character count online"},
-"case-converter":{title:"Case Converter - Convert Text Case Online",desc:"Convert text between UPPERCASE, lowercase, Title Case, and Sentence case instantly. Free online case converter tool.",keywords:"case converter, text case, uppercase lowercase, title case, sentence case"},
-"duplicate-remover":{title:"Duplicate Line Remover - Remove Duplicate Lines",desc:"Remove duplicate lines from text instantly. Supports case-insensitive duplicate removal. Free online duplicate remover tool.",keywords:"duplicate remover, remove duplicates, remove duplicate lines, deduplicate text"},
-"line-sorter":{title:"Line Sorter - Sort Lines of Text Online",desc:"Sort lines of text alphabetically, reverse sort, or sort by length. Free online line sorting tool for any text.",keywords:"line sorter, sort lines, sort text lines, alphabetical sort"},
-"alpha-sorter":{title:"Alphabetical Sorter - Sort Text Alphabetically",desc:"Sort text lines in alphabetical order with options for case-insensitive and reverse sorting. Free online alphabetical sorter.",keywords:"alphabetical sorter, sort alphabetically, alphabetical sort tool, a-z sort"},
-"text-reverser":{title:"Text Reverser - Reverse Text Online",desc:"Reverse text by characters, words, or lines with one click. Free online text reverser tool that works instantly in your browser.",keywords:"text reverser, reverse text, backwards text, reverse words, reverse lines"},
-"sentence-counter":{title:"Sentence Counter - Count Sentences in Text",desc:"Count the number of sentences in any text. Free online sentence counter with accurate detection of sentence boundaries.",keywords:"sentence counter, count sentences, sentence count tool, how many sentences"},
-"paragraph-counter":{title:"Paragraph Counter - Count Paragraphs in Text",desc:"Count paragraphs in your text instantly. Free online paragraph counter tool that handles empty lines and spacing.",keywords:"paragraph counter, count paragraphs, paragraph count, how many paragraphs"},
-"find-replace":{title:"Find and Replace - Text Search and Replace Tool",desc:"Find and replace text in your content instantly. Supports case-sensitive search and regex. Free online find and replace tool.",keywords:"find and replace, search and replace, text replace, find replace tool"},
-"regex-tester":{title:"Regex Tester - Test Regular Expressions Online",desc:"Test and debug regular expressions with real-time matching. Free online regex tester with pattern highlighting and capture groups.",keywords:"regex tester, regular expression tester, regex test, regex online, pattern matching"},
-"markdown-preview":{title:"Markdown Preview - Live Markdown Editor",desc:"Write and preview Markdown in real-time with live HTML rendering. Free online Markdown editor and preview tool.",keywords:"markdown preview, markdown editor, markdown viewer, live markdown, markdown online"},
-"html-previewer":{title:"HTML Previewer - Live HTML Code Preview",desc:"Preview HTML code in real-time with live rendering. Free online HTML previewer for testing and debugging markup.",keywords:"html previewer, html preview, live html viewer, html code preview, render html"},
-"json-formatter":{title:"JSON Formatter - Format and Validate JSON Online",desc:"Format, validate, and beautify JSON data instantly. Free online JSON formatter with syntax validation and indentation.",keywords:"json formatter, format json, json beautifier, json validator, json pretty print"},
-"xml-formatter":{title:"XML Formatter - Format and Validate XML Online",desc:"Format and beautify XML data with proper indentation. Free online XML formatter and validator tool.",keywords:"xml formatter, format xml, xml beautifier, xml validator, xml pretty print"},
-"url-encoder":{title:"URL Encoder - Encode and Decode URLs Online",desc:"Encode and decode URLs and URL parameters instantly. Free online URL encoder and decoder tool.",keywords:"url encoder, url decode, percent encoding, url encode decode, encode url"},
-"url-decoder":{title:"URL Decoder - Decode URL Encoded Strings",desc:"Decode URL encoded strings back to readable text. Free online URL decoder tool for percent-encoded data.",keywords:"url decoder, decode url, percent decode, url decode online"},
-"html-encoder":{title:"HTML Encoder - Encode and Decode HTML Entities",desc:"Encode and decode HTML entities and special characters. Free online HTML encoder and decoder tool.",keywords:"html encoder, html decode, html entities, encode html, html special characters"},
-"html-decoder":{title:"HTML Decoder - Decode HTML Entities to Text",desc:"Decode HTML entities back to readable text. Free online HTML decoder for &amp; entities, &lt; tags, and more.",keywords:"html decoder, decode html, html entities decoder, unescape html"},
-"b64-encoder":{title:"Base64 Encoder - Encode Text to Base64 Online",desc:"Encode text to Base64 format instantly. Free online Base64 encoder for strings, URLs, and data.",keywords:"base64 encode, base64 encoder, encode base64, base64 convert"},
-"b64-decoder":{title:"Base64 Decoder - Decode Base64 to Text Online",desc:"Decode Base64 encoded strings back to original text. Free online Base64 decoder tool.",keywords:"base64 decode, base64 decoder, decode base64, base64 to text"},
-"hash-generator":{title:"Hash Generator - Generate MD5 SHA1 SHA256 Hashes",desc:"Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from any text. Free online hash generator tool.",keywords:"hash generator, md5 hash, sha1 hash, sha256 hash, hash calculator"},
-"lorem-generator":{title:"Lorem Ipsum Generator - Generate Dummy Text",desc:"Generate Lorem Ipsum placeholder text with custom paragraphs and words. Free online Lorem Ipsum generator.",keywords:"lorem generator, lorem ipsum, dummy text, placeholder text, filler text"},
-"word-frequency":{title:"Word Frequency Counter - Count Word Occurrences",desc:"Analyze word frequency and count occurrences in your text. Free online word frequency counter and text analyzer.",keywords:"word frequency, word count, word occurrences, text analysis, frequency counter"},
-"keyword-density":{title:"Keyword Density Checker - Analyze Keyword Usage",desc:"Check keyword density in your text with percentage breakdown. Free online keyword density analyzer for SEO.",keywords:"keyword density, keyword density checker, keyword analysis, seo keyword density"},
-"keyword-extract":{title:"Keyword Extractor - Extract Keywords from Text",desc:"Extract top keywords and phrases from any text for SEO analysis. Free online keyword extraction tool.",keywords:"keyword extractor, extract keywords, keyword analysis, text keywords"},
-"slug-generator":{title:"URL Slug Generator - Create SEO-Friendly Slugs",desc:"Generate clean, SEO-friendly URL slugs from any text. Free online slug generator with automatic formatting.",keywords:"slug generator, url slug, seo slug, permalink generator, clean url"},
-"meta-desc-gen":{title:"Meta Description Generator - Create Meta Descriptions",desc:"Generate optimized meta descriptions for SEO from your content. Free online meta description generator tool.",keywords:"meta description generator, meta description, seo description, meta tag generator"},
-"canonical-gen":{title:"Canonical URL Generator - Generate Canonical Tags",desc:"Generate canonical URL tags for SEO optimization. Free online canonical tag generator for duplicate content prevention.",keywords:"canonical url, canonical tag, canonical generator, seo canonical, duplicate content"},
-"og-generator":{title:"Open Graph Tag Generator - Create OG Meta Tags",desc:"Generate Open Graph meta tags for social media sharing. Free online OG tag generator for Facebook, Twitter, and more.",keywords:"open graph, og tags, og meta, social media tags, facebook meta tags"},
-"meta-gen":{title:"Meta Tag Generator - Generate SEO Meta Tags",desc:"Generate complete HTML meta tags for SEO optimization. Free online meta tag generator with title, description, keywords, and Open Graph.",keywords:"meta tag generator, meta tags, seo meta, html meta tags, meta tag creator"},
-"robots-txt":{title:"Robots.txt Generator - Create Robots.txt File",desc:"Generate robots.txt file for your website with proper crawl directives. Free online robots.txt generator tool.",keywords:"robots.txt, robots.txt generator, crawl rules, sitemap, robots file"},
-"sitemap-gen":{title:"Sitemap Generator - Create XML Sitemap",desc:"Generate XML sitemaps for your website to improve search engine indexing. Free online sitemap generator tool.",keywords:"sitemap generator, xml sitemap, sitemap creator, search engine sitemap, seo sitemap"}
+(function(){
+'use strict';
+var m=location.pathname.match(/\/tools\/(.+)\.html/);
+if(!m)return;
+var tid=m[1];
+var tool=App.getToolById(tid);
+if(!tool){document.getElementById('toolTitle').textContent='Tool Not Found';return;}
+document.getElementById('page-title').textContent=tool.name+' - Free AI Text Tools';
+document.getElementById('breadcrumbTool').textContent=tool.name;
+document.getElementById('toolTitle').textContent=tool.name;
+document.getElementById('toolDesc').textContent=tool.desc;
+document.title=tool.name+' - Free AI Text Tools';
+
+function ga(){var a={'word-counter':'Count words, characters, lines, sentences, and paragraphs in your text.','char-counter':'Character counts with and without spaces. See byte size instantly.','sentence-counter':'Count sentences by detecting punctuation marks (. ! ?).','paragraph-counter':'Count paragraphs by detecting empty line breaks.','word-frequency':'Analyze word occurrence frequency and distribution.','case-converter':'UPPERCASE, lowercase, Title Case, Sentence case, tOGGLE cASE.','remove-spaces':'Remove leading, trailing, and extra whitespace from text.','find-replace':'Search and replace text with regex support.','line-sorter':'Sort lines alphabetically in ascending or descending order.','alpha-sorter':'Sort lines alphabetically with strict A-Z ordering.','text-reverser':'Reverse text by characters, words, or lines.','duplicate-remover':'Remove duplicate lines from text.','lorem-generator':'Generate Lorem Ipsum placeholder text.','slug-generator':'Convert titles to URL-friendly slugs.','keyword-density':'Calculate keyword frequency and density percentage.','keyword-extract':'Extract the most frequent keywords from text.','meta-gen':'Generate complete HTML meta tag sets.','meta-desc-gen':'Generate SEO-optimized meta descriptions.','og-generator':'Generate Open Graph social media meta tags.','canonical-gen':'Generate canonical link tags for SEO.','robots-txt':'Generate robots.txt crawl directives.','sitemap-gen':'Generate XML sitemaps for search engines.','json-formatter':'Beautify and validate JSON data.','json-validator':'Validate JSON syntax and structure.','xml-formatter':'Pretty-print and indent XML documents.','xml-validator':'Validate XML structure and syntax.','markdown-editor':'Write Markdown with live HTML preview.','markdown-preview':'Convert Markdown to HTML output.','html-previewer':'Live HTML code preview in browser.','regex-tester':'Test regular expressions with match highlighting.','url-encoder':'Encode special characters for URLs.','url-decoder':'Decode percent-encoded URL strings.','html-encoder':'Escape HTML special characters to entities.','html-decoder':'Decode HTML entities back to characters.','b64-encoder':'Encode text to Base64 format.','b64-decoder':'Decode Base64 strings to text.','hash-generator':'Generate djb2 and FNV-1a hashes.'};
+document.getElementById('toolAbout').textContent=a[tid]||tool.desc;}
+
+function rb(){var R={'word-counter':['char-counter','sentence-counter','paragraph-counter'],'char-counter':['word-counter','remove-spaces'],'sentence-counter':['word-counter','paragraph-counter'],'paragraph-counter':['word-counter','sentence-counter'],'word-frequency':['keyword-density','keyword-extract'],'case-converter':['remove-spaces','slug-generator'],'remove-spaces':['case-converter','find-replace'],'find-replace':['remove-spaces','regex-tester'],'line-sorter':['alpha-sorter','duplicate-remover'],'alpha-sorter':['line-sorter','duplicate-remover'],'text-reverser':['reverse-words','reverse-lines'],'duplicate-remover':['line-sorter','alpha-sorter'],'lorem-generator':['word-counter','slug-generator'],'slug-generator':['url-encoder','case-converter'],'keyword-density':['keyword-extract','meta-gen'],'keyword-extract':['keyword-density','meta-gen'],'meta-gen':['meta-desc-gen','og-generator'],'meta-desc-gen':['meta-gen','og-generator'],'og-generator':['meta-gen','canonical-gen'],'canonical-gen':['robots-txt','sitemap-gen'],'robots-txt':['sitemap-gen','canonical-gen'],'sitemap-gen':['robots-txt','canonical-gen'],'json-formatter':['json-validator','xml-formatter'],'json-validator':['json-formatter','xml-validator'],'xml-formatter':['xml-validator','json-formatter'],'xml-validator':['xml-formatter','json-validator'],'markdown-editor':['markdown-preview','html-previewer'],'markdown-preview':['markdown-editor','html-previewer'],'html-previewer':['html-encoder','markdown-editor'],'regex-tester':['find-replace','html-encoder'],'url-encoder':['url-decoder','html-encoder'],'url-decoder':['url-encoder','html-decoder'],'html-encoder':['html-decoder','url-encoder'],'html-decoder':['html-encoder','url-decoder'],'b64-encoder':['b64-decoder','url-encoder'],'b64-decoder':['b64-encoder','html-decoder'],'hash-generator':['b64-encoder','slug-generator']};
+var rel=R[tid]||[];var rh='';
+rel.forEach(function(rid){var rt=App.getToolById(rid);if(rt)rh+='<a href="/tools/'+rt.id+'.html" class="related-link">'+rt.name+' &rarr;</a>';});
+document.getElementById('relatedTools').innerHTML=rh;}
+
+function ffaq(){var F={'word-counter':[{q:'How accurate is this tool?',a:'Very accurate. It uses whitespace splitting and punctuation detection for precise counts.'},{q:'Does it count numbers as words?',a:'Yes. Any whitespace-separated token counts as a word.'}],'char-counter':[{q:'With or without spaces?',a:'Both. The tool shows character counts including and excluding whitespace.'}],'case-converter':[{q:'What cases are supported?',a:'UPPERCASE, lowercase, Title Case, Sentence case, and toggleCase.'}],'json-formatter':[{q:'What if my JSON is invalid?',a:'The tool shows a detailed error message with line and position info.'},{q:'Can I format minified JSON?',a:'Yes. Paste any JSON and it will be beautified.'}],'xml-formatter':[{q:'Does it validate XML too?',a:'It validates and pretty-prints. Use XML Validator for strict validation.'}],'markdown-editor':[{q:'What Markdown syntax is supported?',a:'Full CommonMark: headings, bold, italic, lists, links, images, code blocks, tables.'},{q:'Can I export the HTML?',a:'Yes. Use the Copy or Download buttons.'}],'meta-gen':[{q:'What tags are generated?',a:'Title, description, keywords, author, OG tags, Twitter tags, and viewport.'}],'robots-txt':[{q:'What is robots.txt?',a:'A file that tells search engine crawlers which pages to crawl and which to skip.'}],'keyword-density':[{q:'How is density calculated?',a:'(keyword count / total words) x 100 = density percentage.'}],'hash-generator':[{q:'What hash algorithms?',a:'djb2 and FNV-1a. Both are fast, non-cryptographic hash functions.'}],'b64-encoder':[{q:'What is Base64?',a:'A binary-to-text encoding scheme that represents data using ASCII characters.'}]};
+var tf=F[tid]||[];var fh='';
+tf.forEach(function(f){fh+='<details class="faq-item"><summary class="faq-question">'+f.q+' <span>&#9660;</span></summary><div class="faq-answer"><p>'+f.a+'</p></div></details>';});
+document.getElementById('toolFAQ').innerHTML=fh;}
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function fmtSz(n){if(n<1024)return n+' B';if(n<1048576)return(n/1024).toFixed(1)+' KB';return(n/1048576).toFixed(1)+' MB';}
+function countWords(t){return t.trim()?t.trim().split(/\s+/).length:0;}
+function countChars(t){return t.length;}
+function countCharsNoSpace(t){return t.replace(/\s/g,'').length;}
+function countSentences(t){var m=t.match(/[.!?]+[\s\n]*/g);return m?m.length:0;}
+function countParagraphs(t){return t.trim()?t.trim().split(/\n\s*\n/).length:0;}
+function lines(t){return t.split('\n');}
+
+var OPT='';
+switch(tid){
+case'case-converter':
+OPT='<div class="tool-option"><label>Mode:</label><select id="opt-case" onchange="convertCase(this.value)"><option value="upper">UPPERCASE</option><option value="lower">lowercase</option><option value="title">Title Case</option><option value="sentence">Sentence case</option><option value="toggle">tOGGLE cASE</option></select></div>';break;
+case'line-sorter':case'alpha-sorter':
+OPT='<div class="tool-option"><label>Order:</label><select id="opt-sort"><option value="asc">Ascending</option><option value="desc">Descending</option></select></div>';break;
+case'text-reverser':
+OPT='<div class="tool-option"><label>Mode:</label><select id="opt-reverse"><option value="chars">Characters</option><option value="words">Words</option><option value="lines">Lines</option></select></div>';break;
+case'duplicate-remover':
+OPT='<div class="tool-option"><label><input type="checkbox" id="opt-ci" checked> Case-insensitive comparison</label></div>';break;
+case'keyword-density':case'keyword-extract':
+OPT='<div class="tool-option"><label>Focus keyword:</label><input type="text" id="opt-kw" placeholder="optional specific keyword" style="width:200px"></div>';break;
+case'meta-gen':
+OPT='<div class="tool-option"><label>Title:</label><input type="text" id="opt-mt" placeholder="Page title"></div><div class="tool-option"><label>Description:</label><input type="text" id="opt-md" placeholder="Page description"></div><div class="tool-option"><label>Keywords:</label><input type="text" id="opt-mk" placeholder="keyword1, keyword2"></div><div class="tool-option"><label>Author:</label><input type="text" id="opt-ma" placeholder="Author name"></div>';break;
+case'meta-desc-gen':
+OPT='<div class="tool-option"><label>Target keyword:</label><input type="text" id="opt-dk" placeholder="primary keyword"></div>';break;
+case'og-generator':
+OPT='<div class="tool-option"><label>Title:</label><input type="text" id="opt-ot" placeholder="OG title"></div><div class="tool-option"><label>Description:</label><input type="text" id="opt-od" placeholder="OG description"></div><div class="tool-option"><label>Image URL:</label><input type="url" id="opt-oi" placeholder="https://example.com/image.jpg"></div>';break;
+case'canonical-gen':
+OPT='<div class="tool-option"><label>Page URL:</label><input type="url" id="opt-cu" placeholder="https://example.com/page" style="width:100%"></div>';break;
+case'robots-txt':
+OPT='<div class="tool-option"><label>User-agent:</label><input type="text" id="opt-ru" value="*" style="width:80px"></div><div class="tool-option"><label>Crawl-delay (sec):</label><input type="number" id="opt-rc" placeholder="10" style="width:80px"></div><div class="tool-option"><label>Disallow paths:</label><textarea id="opt-rd" placeholder="/admin/&#10;/private/" style="width:100%;min-height:60px;font-family:monospace;font-size:.8rem"></textarea></div><div class="tool-option"><label>Sitemap URL:</label><input type="url" id="opt-rs" placeholder="https://example.com/sitemap.xml" style="width:100%"></div>';break;
+case'sitemap-gen':
+OPT='<div class="tool-option"><label>Page URLs (one per line):</label><textarea id="opt-su" placeholder="https://example.com/&#10;https://example.com/about&#10;https://example.com/contact" style="width:100%;min-height:100px;font-family:monospace;font-size:.8rem"></textarea></div>';break;
+case'json-formatter':
+OPT='<div class="tool-option"><label>Indent:</label><select id="opt-ji"><option value="2">2 spaces</option><option value="4">4 spaces</option><option value="tab">Tab</option></select></div>';break;
+case'hash-generator':
+OPT='<div class="tool-option"><label>Algorithm:</label><select id="opt-ha"><option value="djb2">djb2</option><option value="fnv">FNV-1a</option><option value="both" selected>Both</option></select></div>';break;
+case'lorem-generator':
+OPT='<div class="tool-option"><label>Paragraphs:</label><input type="number" id="opt-lc" value="3" min="1" max="20" style="width:60px"></div>';break;
+case'find-replace':
+OPT='<div class="tool-option"><label>Find:</label><input type="text" id="opt-f" placeholder="search text" style="width:180px"></div><div class="tool-option"><label>Replace:</label><input type="text" id="opt-rp" placeholder="replacement" style="width:180px"></div><div class="tool-option"><label><input type="checkbox" id="opt-ci"> Case-insensitive</label> <label><input type="checkbox" id="opt-rx"> Regex</label></div>';break;
+case'regex-tester':
+OPT='<div class="tool-option"><label>Pattern:</label><input type="text" id="opt-rp2" placeholder="[a-z]+" style="width:250px;font-family:monospace"></div><div class="tool-option"><label>Flags:</label><input type="text" id="opt-rf" value="gi" style="width:60px"></div>';break;
+case'markdown-editor':
+OPT='<div class="tool-option"><span style="font-size:.8rem;color:var(--text-secondary)">Write Markdown on the left, see live HTML preview on the right.</span></div>';break;
+}
+
+document.getElementById('toolOptions').innerHTML=OPT;
+
+var PLACEHOLDERS={'word-counter':'Paste or type your text here...','char-counter':'Paste or type your text here...','sentence-counter':'Paste or type your text here...','paragraph-counter':'Paste or type your text here...','word-frequency':'Paste article text to analyze word frequency...','keyword-density':'Paste article text to analyze keyword density...','keyword-extract':'Paste article text to extract keywords from...','meta-gen':'Paste your page content here to generate meta tags...','meta-desc-gen':'Paste your page content here to generate a meta description...','slug-generator':'Enter a title to convert to a URL slug...','markdown-editor':'# Hello World\n\n**Bold text** and *italic text*\n\n- Item one\n- Item two\n\n> A blockquote\n\n```js\nconsole.log("hello");\n```','html-previewer':'<h1>Hello World</h1>\n<p>This is a <strong>live preview</strong>.</p>\n<ul>\n  <li>Item 1</li>\n  <li>Item 2</li>\n</ul>','b64-encoder':'Enter text to encode to Base64...','b64-decoder':'Paste Base64 string to decode...','url-encoder':'Enter URL or text to encode...','url-decoder':'Enter percent-encoded URL to decode...','html-encoder':'Enter HTML to escape entities...','html-decoder':'Enter HTML entities to decode...','hash-generator':'Enter text to generate hashes...','lorem-generator':'Click Process to generate Lorem Ipsum text...'};
+var ph=PLACEHOLDERS[tid]||'Paste or type your text here...';
+document.getElementById('tool-input').placeholder=ph;
+
+function cv(mode){
+var t=document.getElementById('tool-input').value;
+if(!t)return;
+var r='';
+switch(mode){
+case'upper':r=t.toUpperCase();break;
+case'lower':r=t.toLowerCase();break;
+case'title':r=t.replace(/\w\S*/g,function(w){return w.charAt(0).toUpperCase()+w.slice(1).toLowerCase();});break;
+case'sentence':r=t.toLowerCase().replace(/(^\s*\w|[.!?]\s+\w)/g,function(c){return c.toUpperCase();});break;
+case'toggle':r=t.split('').map(function(c){return c===c.toUpperCase()?c.toLowerCase():c.toUpperCase();}).join('');break;
+}
+document.getElementById('tool-output').innerHTML='<div class="output-content"><pre>'+esc(r)+'</pre></div>';
+}
+window.convertCase=cv;
+
+window.processCurrentTool=function(){
+var input=document.getElementById('tool-input').value;
+var out=document.getElementById('tool-output');
+if(!input.trim()&&tid!=='lorem-generator'){out.innerHTML='<p style="color:var(--text-secondary)">Please enter some text.</p>';return;}
+try{
+var result='';
+switch(tid){
+case'word-counter':
+var wc=countWords(input),cc=countChars(input),cns=countCharsNoSpace(input),sc=countSentences(input),pc=countParagraphs(input),lc=lines(input).length;
+result='<div class="stats-grid"><div class="stat-card"><div class="stat-number">'+wc+'</div><div class="stat-label">Words</div></div><div class="stat-card"><div class="stat-number">'+cc+'</div><div class="stat-label">Characters</div></div><div class="stat-card"><div class="stat-number">'+cns+'</div><div class="stat-label">No Spaces</div></div><div class="stat-card"><div class="stat-number">'+sc+'</div><div class="stat-label">Sentences</div></div><div class="stat-card"><div class="stat-number">'+pc+'</div><div class="stat-label">Paragraphs</div></div><div class="stat-card"><div class="stat-number">'+lc+'</div><div class="stat-label">Lines</div></div></div>';break;
+case'char-counter':
+result='<div class="stats-grid"><div class="stat-card"><div class="stat-number">'+countChars(input)+'</div><div class="stat-label">Total</div></div><div class="stat-card"><div class="stat-number">'+countCharsNoSpace(input)+'</div><div class="stat-label">No Spaces</div></div><div class="stat-card"><div class="stat-number">'+(input.match(/\s/g)||[]).length+'</div><div class="stat-label">Spaces</div></div><div class="stat-card"><div class="stat-number">'+fmtSz(new Blob([input]).size)+'</div><div class="stat-label">Size</div></div></div>';break;
+case'sentence-counter':
+result='<div class="stats-grid"><div class="stat-card"><div class="stat-number">'+countSentences(input)+'</div><div class="stat-label">Sentences</div></div><div class="stat-card"><div class="stat-number">'+countWords(input)+'</div><div class="stat-label">Words</div></div><div class="stat-card"><div class="stat-number">'+(countWords(input)/Math.max(countSentences(input),1)).toFixed(1)+'</div><div class="stat-label">Avg Words/Sentence</div></div></div>';break;
+case'paragraph-counter':
+result='<div class="stats-grid"><div class="stat-card"><div class="stat-number">'+countParagraphs(input)+'</div><div class="stat-label">Paragraphs</div></div><div class="stat-card"><div class="stat-number">'+countWords(input)+'</div><div class="stat-label">Words</div></div><div class="stat-card"><div class="stat-number">'+(countWords(input)/Math.max(countParagraphs(input),1)).toFixed(1)+'</div><div class="stat-label">Avg Words/Paragraph</div></div></div>';break;
+case'word-frequency':
+var ws=input.toLowerCase().match(/\b[a-z']+\b/g)||{};
+var freq={};Object.keys(ws).forEach(function(k){var w=ws[k];freq[w]=(freq[w]||0)+1;});
+var sorted=Object.keys(freq).sort(function(a,b){return freq[b]-freq[a];}).slice(0,30);
+var total=countWords(input);
+var tbl='<table class="result-table"><thead><tr><th>Word</th><th>Count</th><th>Frequency</th></tr></thead><tbody>';
+sorted.forEach(function(w){tbl+='<tr><td>'+esc(w)+'</td><td>'+freq[w]+'</td><td>'+(freq[w]/total*100).toFixed(1)+'%</td></tr>';});
+tbl+='</tbody></table>';
+result=tbl;break;
+case'case-converter':
+cv(document.getElementById('opt-case').value);return;
+case'remove-spaces':
+result=input.replace(/[ \t]+/g,' ').replace(/^\s+|\s+$/gm,'').replace(/\n\s*\n/g,'\n\n');break;
+case'find-replace':
+var findT=document.getElementById('opt-f').value;
+var repT=document.getElementById('opt-rp').value;
+var ci=document.getElementById('opt-ci').checked;
+var rx=document.getElementById('opt-rx').checked;
+if(!findT){out.innerHTML='<p style="color:var(--text-secondary)">Enter text to find.</p>';return;}
+if(rx){var fl=ci?'gi':'g';var re=new RegExp(findT,fl);result=input.replace(re,repT);}
+else{var flags=ci?'gi':'g';result=input.replace(new RegExp(findT.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),flags),repT);}
+break;
+case'line-sorter':case'alpha-sorter':
+var asc=document.getElementById('opt-sort').value==='asc';
+var sl=lines(input).filter(function(l){return l.trim();});
+if(tid==='alpha-sorter')sl.sort();else sl.sort();
+if(!asc)sl.reverse();
+result=sl.join('\n');break;
+case'text-reverser':
+var mode=document.getElementById('opt-reverse').value;
+if(mode==='chars')result=input.split('').reverse().join('');
+else if(mode==='words')result=input.split(/\s+/).reverse().join(' ');
+else result=lines(input).reverse().join('\n');
+break;
+case'duplicate-remover':
+var ci2=document.getElementById('opt-ci').checked;
+var seen={};var deduped=[];
+lines(input).forEach(function(l){var k=ci2?l.toLowerCase().trim():l.trim();if(k&&!seen[k]){seen[k]=1;deduped.push(l);}});
+result=deduped.join('\n');break;
+case'lorem-generator':
+var pc2=parseInt(document.getElementById('opt-lc').value)||3;
+var lp=['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.','Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.','Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula ut dictum pharetra, nisi nunc fringilla magna, in commodo elit erat nec turpis.','Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Faucibus in ornare quam viverra orci sagittis eu volutpat. Condimentum ultrices velit aliquam.','Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.','Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.','Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.','At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.','Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.'];
+var r2=[];for(var i=0;i<pc2;i++)r2.push(lp[i%lp.length]);
+result=r2.join('\n\n');break;
+case'slug-generator':
+result=input.toLowerCase().trim().replace(/[^\w\s-]/g,'').replace(/[\s_]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');break;
+case'keyword-density':
+case'keyword-extract':
+var wk=input.toLowerCase().match(/\b[a-z']+\b/g)||{};
+var f2={};Object.keys(wk).forEach(function(k){var w=wk[k];f2[w]=(f2[w]||0)+1;});
+var stopWords={'the':1,'a':1,'an':1,'and':1,'or':1,'but':1,'in':1,'on':1,'at':1,'to':1,'for':1,'of':1,'with':1,'by':1,'is':1,'was':1,'are':1,'were':1,'been':1,'be':1,'have':1,'has':1,'had':1,'do':1,'does':1,'did':1,'will':1,'would':1,'could':1,'should':1,'may':1,'might':1,'shall':1,'can':1,'this':1,'that':1,'these':1,'those':1,'it':1,'its':1,'from':1,'as':1,'if':1,'than':1,'not':1,'no':1,'so':1,'up':1,'out':1,'about':1,'into':1,'over':1,'after':1,'all':1,'also':1,'how':1,'many':1,'some':1,'then':1,'more':1,'very':1,'just':1,'now':1};
+var totalW=countWords(input);
+var kw=document.getElementById('opt-kw')?document.getElementById('opt-kw').value.trim().toLowerCase():'';
+var freq2={};Object.keys(f2).forEach(function(w){if(!stopWords[w]&&f2[w]>1)freq2[w]=f2[w];});
+var sorted2=Object.keys(freq2).sort(function(a,b){return freq2[b]-freq2[a];});
+if(kw){sorted2=sorted2.filter(function(w){return w.indexOf(kw)!==-1;});}
+sorted2=sorted2.slice(0,20);
+var tb='<table class="result-table"><thead><tr><th>Keyword</th><th>Count</th><th>Density</th></tr></thead><tbody>';
+sorted2.forEach(function(w){tb+='<tr><td>'+esc(w)+'</td><td>'+freq2[w]+'</td><td>'+(freq2[w]/totalW*100).toFixed(2)+'%</td></tr>';});
+tb+='</tbody></table><p style="font-size:.8rem;color:var(--text-secondary)">Total words: '+totalW+'</p>';
+result=tb;break;
+case'meta-gen':
+var ti=document.getElementById('opt-mt').value;
+var de=document.getElementById('opt-md').value;
+var ke=document.getElementById('opt-mk').value;
+var au=document.getElementById('opt-ma').value;
+var meta='<span class="hl-tag">&lt;title&gt;</span>'+esc(ti)+'<span class="hl-tag">&lt;/title&gt;</span>\n';
+meta+='<span class="hl-tag">&lt;meta</span> <span class="hl-attr">name</span>=<span class="hl-str">"description"</span> <span class="hl-attr">content</span>=<span class="hl-str">"'+esc(de)+'"</span><span class="hl-tag">&gt;</span>\n';
+if(ke)meta+='<span class="hl-tag">&lt;meta</span> <span class="hl-attr">name</span>=<span class="hl-str">"keywords"</span> <span class="hl-attr">content</span>=<span class="hl-str">"'+esc(ke)+'"</span><span class="hl-tag">&gt;</span>\n';
+if(au)meta+='<span class="hl-tag">&lt;meta</span> <span class="hl-attr">name</span>=<span class="hl-str">"author"</span> <span class="hl-attr">content</span>=<span class="hl-str">"'+esc(au)+'"</span><span class="hl-tag">&gt;</span>\n';
+meta+='<span class="hl-tag">&lt;meta</span> <span class="hl-attr">property</span>=<span class="hl-str">"og:title"</span> <span class="hl-attr">content</span>=<span class="hl-str">"'+esc(ti)+'"</span><span class="hl-tag">&gt;</span>\n';
+meta+='<span class="hl-tag">&lt;meta</span> <span class="hl-attr">property</span>=<span class="hl-str">"og:description"</span> <span class="hl-attr">content</span>=<span class="hl-str">"'+esc(de)+'"</span><span class="hl-tag">&gt;</span>\n';
+meta+='<span class="hl-tag">&lt;meta</span> <span class="hl-attr">name</span>=<span class="hl-str">"twitter:card"</span> <span class="hl-attr">content</span>=<span class="hl-str">"summary_large_image"</span><span class="hl-tag">&gt;</span>';
+result='<div class="code-block"><pre>'+meta+'</pre></div>';break;
+case'meta-desc-gen':
+var kw2=document.getElementById('opt-dk')?document.getElementById('opt-dk').value:'';
+var words=input.trim().split(/\s+/).slice(0,40).join(' ');
+var desc=words+(words.length>=150?'...':'');
+result='<div class="output-content"><p><strong>Meta Description:</strong></p><p>'+esc(desc)+'</p><p style="font-size:.8rem;color:var(--text-secondary)">Length: '+desc.length+' characters (recommended: 150-160)</p></div>';break;
+case'og-generator':
+var ot=document.getElementById('opt-ot').value;
+var od=document.getElementById('opt-od').value;
+var oi=document.getElementById('opt-oi').value;
+var og='<span class="hl-tag">&lt;meta</span> <span class="hl-attr">property</span>=<span class="hl-str">"og:title"</span> <span class="hl-attr">content</span>=<span class="hl-str">"'+esc(ot)+'"</span><span class="hl-tag">&gt;</span>\n';
+og+='<span class="hl-tag">&lt;meta</span> <span class="hl-attr">property</span>=<span class="hl-str">"og:description"</span> <span class="hl-attr">content</span>=<span class="hl-str">"'+esc(od)+'"</span><span class="hl-tag">&gt;</span>\n';
+og+='<span class="hl-tag">&lt;meta</span> <span class="hl-attr">property</span>=<span class="hl-str">"og:type"</span> <span class="hl-attr">content</span>=<span class="hl-str">"website"</span><span class="hl-tag">&gt;</span>\n';
+if(oi)og+='<span class="hl-tag">&lt;meta</span> <span class="hl-attr">property</span>=<span class="hl-str">"og:image"</span> <span class="hl-attr">content</span>=<span class="hl-str">"'+esc(oi)+'"</span><span class="hl-tag">&gt;</span>';
+result='<div class="code-block"><pre>'+og+'</pre></div>';break;
+case'canonical-gen':
+var cu=document.getElementById('opt-cu').value;
+if(!cu){out.innerHTML='<p style="color:var(--text-secondary)">Enter a page URL.</p>';return;}
+result='<div class="code-block"><pre><span class="hl-tag">&lt;link</span> <span class="hl-attr">rel</span>=<span class="hl-str">"canonical"</span> <span class="hl-attr">href</span>=<span class="hl-str">"'+esc(cu)+'"</span><span class="hl-tag">&gt;</span></pre></div>';break;
+case'robots-txt':
+var ua=document.getElementById('opt-ru').value||'*';
+var cd=document.getElementById('opt-rc').value;
+var rd=document.getElementById('opt-rd').value;
+var rs=document.getElementById('opt-rs').value;
+var rt='User-agent: '+ua+'\n';
+if(cd)rt+='Crawl-delay: '+cd+'\n';
+rt+='\n';
+if(rd){rd.split('\n').forEach(function(l){if(l.trim())rt+='Disallow: '+l.trim()+'\n';});}
+rt+='\nSitemap: '+(rs||'https://example.com/sitemap.xml');
+result='<div class="code-block"><pre>'+esc(rt)+'</pre></div>';break;
+case'sitemap-gen':
+var su=document.getElementById('opt-su').value;
+var urls=su.split('\n').filter(function(u){return u.trim();});
+var xml='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+urls.forEach(function(u){xml+='  <url>\n    <loc>'+esc(u.trim())+'</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n';});
+xml+='</urlset>';
+result='<div class="code-block"><pre>'+xml+'</pre></div>';break;
+case'json-formatter':
+var ind=document.getElementById('opt-ji').value;
+var indent=ind==='tab'?'  ':parseInt(ind)||2;
+try{var parsed=JSON.parse(input);result='<div class="code-block"><pre>'+esc(JSON.stringify(parsed,null,indent))+'</pre></div>';}
+catch(e){result='<p style="color:var(--accent)">JSON Error: '+esc(e.message)+'</p>';}
+break;
+case'json-validator':
+try{JSON.parse(input);result='<p style="color:var(--accent)">&#10003; Valid JSON</p><p style="font-size:.8rem;color:var(--text-secondary)">The JSON is syntactically correct.</p>';}
+catch(e){result='<p style="color:#dc2626">&#10007; Invalid JSON</p><p style="font-size:.8rem;color:var(--text-secondary)">'+esc(e.message)+'</p>';}
+break;
+case'xml-formatter':
+try{
+var xf=input.replace(/>\s*</g,'>\n<').split('\n');
+var xd=0;var xf2=[];
+xf.forEach(function(l){l=l.trim();if(!l)return;if(l.match(/^<\/.+>$/))xd--;
+xf2.push('  '.repeat(Math.max(xd,0))+l);
+if(l.match(/^<[^\/][^>]*[^\/]>$/)&&!l.match(/^<(meta|link|br|hr|img|input)[^>]*>$/))xd++;});
+result='<div class="code-block"><pre>'+esc(xf2.join('\n'))+'</pre></div>';
+}catch(e){result='<p style="color:var(--accent)">XML Error: '+esc(e.message)+'</p>';}
+break;
+case'xml-validator':
+var xv=input.trim();
+if(!xv.startsWith('<')){result='<p style="color:#dc2626">&#10007; Not valid XML</p>';}
+else{var xtags=(xv.match(/<\/?[^>]+>/g)||[]);var xstack=[];
+xtags.forEach(function(t){if(t.match(/^<[^\/]/)){var tn=t.match(/<(\w+)/);if(tn)xstack.push(tn[1]);}
+else if(t.match(/^<\//)){var tn2=t.match(/<\/(\w+)/);if(tn2&&xstack.length&&xstack[xstack.length-1]===tn2[1])xstack.pop();}});
+result=xstack.length===0?'<p style="color:var(--accent)">&#10003; Valid XML</p>':'<p style="color:#dc2626">&#10007; Invalid XML - unclosed tags</p>';}
+break;
+case'markdown-editor':
+var mdLib=window.marked;
+if(mdLib&&mdLib.parse){result='<div class="output-content" style="padding:1rem">'+mdLib.parse(input)+'</div>';}
+else{result='<div class="output-content"><pre>'+esc(input)+'</pre></div>';}
+break;
+case'markdown-preview':
+var mdLib2=window.marked;
+if(mdLib2&&mdLib2.parse){result='<div class="output-content" style="padding:1rem">'+mdLib2.parse(input)+'</div>';}
+else{result='<div class="output-content"><pre>'+esc(input)+'</pre></div>';}
+break;
+case'html-previewer':
+result='<div class="output-content" style="padding:0"><iframe srcdoc="'+esc(input)+'" style="width:100%;min-height:400px;border:1px solid var(--border);border-radius:8px"></iframe></div>';break;
+case'regex-tester':
+var rp=document.getElementById('opt-rp2').value;
+var rf=document.getElementById('opt-rf').value;
+if(!rp){out.innerHTML='<p style="color:var(--text-secondary)">Enter a regex pattern.</p>';return;}
+try{
+var rre=new RegExp(rp,rf);
+var matches=[];
+var rm;
+while((rm=rre.exec(input))!==null){matches.push({match:rm[0],index:rm.index,length:rm[0].length});if(!rf.includes('g'))break;}
+var highlighted=input;
+matches.slice().reverse().forEach(function(m){highlighted=highlighted.substring(0,m.index)+'<mark>'+esc(m.match)+'</mark>'+highlighted.substring(m.index+m.length);});
+result='<div class="output-content"><div style="padding:1rem;border:1px solid var(--border);border-radius:8px;margin-bottom:.5rem">'+highlighted+'</div><p style="font-size:.8rem;color:var(--text-secondary)">'+matches.length+' match(es) found</p></div>';
+}catch(e){result='<p style="color:var(--accent)">Regex Error: '+esc(e.message)+'</p>';}
+break;
+case'url-encoder':
+result='<div class="code-block"><pre>'+esc(encodeURIComponent(input))+'</pre></div>';break;
+case'url-decoder':
+try{result='<div class="output-content"><pre>'+esc(decodeURIComponent(input))+'</pre></div>';}
+catch(e){result='<p style="color:var(--accent)">Error: '+esc(e.message)+'</p>';}
+break;
+case'html-encoder':
+result='<div class="code-block"><pre>'+esc(esc(input))+'</pre></div>';break;
+case'html-decoder':
+var tmp=document.createElement('div');tmp.innerHTML=input;result='<div class="output-content"><pre>'+esc(tmp.textContent)+'</pre></div>';break;
+case'b64-encoder':
+try{result='<div class="code-block"><pre>'+esc(btoa(unescape(encodeURIComponent(input))))+'</pre></div>';}
+catch(e){result='<p style="color:var(--accent)">Error: '+esc(e.message)+'</p>';}
+break;
+case'b64-decoder':
+try{result='<div class="output-content"><pre>'+esc(decodeURIComponent(escape(atob(input))))+'</pre></div>';}
+catch(e){result='<p style="color:var(--accent)">Invalid Base64: '+esc(e.message)+'</p>';}
+break;
+case'hash-generator':
+var ha=document.getElementById('opt-ha').value;
+function djb2(s){var h=5381;for(var i=0;i<s.length;i++){h=((h<<5)+h)+s.charCodeAt(i);h=h&h;}return(h>>>0).toString(16);}
+function fnv(s){var h=2166136261;for(var i=0;i<s.length;i++){h=h^s.charCodeAt(i);h=(h*16777619)>>>0;}return h.toString(16);}
+result='<div class="output-content">';
+if(ha==='djb2'||ha==='both')result+='<p><strong>djb2:</strong> '+djb2(input)+'</p>';
+if(ha==='fnv'||ha==='both')result+='<p><strong>FNV-1a:</strong> '+fnv(input)+'</p>';
+result+='</div>';break;
+default:
+result='<p style="color:var(--text-secondary)">Processing not available for this tool.</p>';
+}
+if(typeof result==='string')out.innerHTML='<div class="output-content">'+result+'</div>';
+}catch(err){out.innerHTML='<p style="color:var(--accent)">Error: '+esc(err.message)+'</p>';}
 };
-var toolFAQs = {
-"word-counter":{title:"Word Counter FAQs",items:[
-{q:"How does the word counter work?",a:"The word counter splits your text by whitespace to count individual words. It handles multiple spaces, tabs, and line breaks automatically."},
-{q:"Does it count words correctly across languages?",a:"Yes, the word counter works with most languages. It counts any sequence of characters separated by whitespace as a word."},
-{q:"What counts as a paragraph?",a:"A paragraph is defined as any block of text separated by one or more blank lines."},
-{q:"Is my text stored on your servers?",a:"No. All processing happens in your browser. Your text is never sent to any server."}
-]},
-"json-formatter":{title:"JSON Formatter FAQs",items:[
-{q:"What if my JSON is invalid?",a:"The JSON formatter will detect syntax errors and display an error message indicating the position and nature of the problem."},
-{q:"Can I minify JSON with this tool?",a:"Yes. The formatter provides both beautified (indented) and minified (compressed) output options."},
-{q:"How large can the JSON be?",a:"The tool can handle JSON files of several megabytes, though very large files may take a moment to format."},
-{q:"Does it handle nested objects?",a:"Yes, the formatter properly handles arbitrarily deep nested objects and arrays with correct indentation."}
-]},
-"meta-gen":{title:"Meta Tag Generator FAQs",items:[
-{q:"What meta tags does this generator create?",a:"The generator creates title, description, keywords, author, viewport, and Open Graph meta tags."},
-{q:"How long should a meta description be?",a:"For optimal SEO, meta descriptions should be between 150-160 characters."},
-{q:"Are meta keywords still important for SEO?",a:"While major search engines largely ignore meta keywords, they can still be useful for internal site search."},
-{q:"Can I copy the generated code directly?",a:"Yes, the generated HTML can be copied directly and pasted into your page's head section."}
-]},
-"keyword-density":{title:"Keyword Density FAQs",items:[
-{q:"What is keyword density?",a:"Keyword density is the percentage of times a keyword appears in your text compared to the total word count."},
-{q:"What is the ideal keyword density?",a:"Most SEO experts recommend a keyword density of 1-2%."},
-{q:"Does this tool work with long-tail keywords?",a:"Yes, the tool can analyze both single keywords and multi-word phrases of any length."},
-{q:"How is density calculated?",a:"Density = (Number of times keyword appears / Total word count) x 100."}
-]},
-"slug-generator":{title:"URL Slug FAQs",items:[
-{q:"What is a URL slug?",a:"A URL slug is the part of a URL that identifies a specific page. For example, in example.com/my-page, 'my-page' is the slug."},
-{q:"Why are short slugs better?",a:"Short, descriptive slugs are easier for users to read and remember, and they're preferred by search engines."},
-{q:"Should I use hyphens or underscores?",a:"Search engines treat hyphens as word separators, making them preferred for slugs."},
-{q:"Can slugs contain special characters?",a:"The generator removes all special characters and spaces, creating clean slugs with only lowercase letters, numbers, and hyphens."}
-]},
-"meta-desc-gen":{title:"Meta Description FAQs",items:[
-{q:"How does the generator create descriptions?",a:"The generator analyzes your content and extracts the most relevant sentences and keywords."},
-{q:"What makes a good meta description?",a:"A good meta description is concise (150-160 chars), includes target keywords, and has a clear call-to-action."},
-{q:"Should every page have a unique meta description?",a:"Yes, every page should have a unique meta description that accurately reflects its content."},
-{q:"Can I edit the generated description?",a:"Absolutely. The generator provides a starting point that you can customize."}
-]},
-"canonical-gen":{title:"Canonical URL FAQs",items:[
-{q:"What is a canonical URL?",a:"A canonical URL is the preferred version of a webpage when multiple URLs serve similar or identical content."},
-{q:"When do I need a canonical tag?",a:"You need canonical tags when the same content is accessible via multiple URLs."},
-{q:"Can a canonical point to a different domain?",a:"Yes, cross-domain canonicals are valid when content is syndicated or republished."},
-{q:"What happens if I don't use canonical tags?",a:"Without canonical tags, search engines may treat duplicate pages as separate, splitting your ranking signals."}
-]},
-"og-generator":{title:"Open Graph FAQs",items:[
-{q:"What are Open Graph tags?",a:"Open Graph tags are meta tags that control how your content appears when shared on social media."},
-{q:"Which Open Graph tags are required?",a:"The minimum required tags are og:title, og:type, og:image, and og:url."},
-{q:"What image size should I use for OG?",a:"Use images that are at least 1200x630 pixels with a 1.91:1 aspect ratio."},
-{q:"Do Open Graph tags work on Twitter?",a:"Twitter uses its own tags but falls back to Open Graph tags if Twitter-specific tags aren't present."}
-]},
-"robots-txt":{title:"Robots.txt FAQs",items:[
-{q:"What is robots.txt?",a:"Robots.txt is a text file at the root of your website that tells search engine crawlers which pages to crawl."},
-{q:"Where should I put robots.txt?",a:"The robots.txt file must be placed at the root of your website (e.g., example.com/robots.txt)."},
-{q:"Can robots.txt block all crawlers?",a:"Yes, using User-agent: * with Disallow: / will block all crawlers."},
-{q:"Does robots.txt prevent indexing?",a:"Robots.txt only prevents crawling, not indexing. Pages can still be indexed if other pages link to them."}
-]},
-"sitemap-gen":{title:"Sitemap FAQs",items:[
-{q:"What is an XML sitemap?",a:"An XML sitemap is a file that lists all URLs on your website, helping search engines discover and index your pages."},
-{q:"How many URLs can a sitemap contain?",a:"A single sitemap can contain up to 50,000 URLs and must not exceed 50MB uncompressed."},
-{q:"How often should I update my sitemap?",a:"You should update your sitemap whenever you add, remove, or significantly modify pages."},
-{q:"Where should I place the sitemap?",a:"Place the sitemap at the root of your website and reference it in robots.txt."}
-]},
-"default":{title:"Tool FAQs",items:[
-{q:"Is this tool free to use?",a:"Yes, this tool is completely free to use with no limitations."},
-{q:"Is my data stored on your servers?",a:"No. All processing is done locally in your browser. Your data is never sent to any server."},
-{q:"Can I use this tool offline?",a:"Once the page is loaded, the tool functions work offline."},
-{q:"Are there any usage limits?",a:"There are no usage limits. Use the tool as many times as you need."}
-]}
-};
-var toolContent = {
-"word-counter":{about:"Word Counter Tool",desc:"Our Word Counter tool provides instant and accurate text analysis for writers, students, and professionals. Paste your text into the input area above to get a comprehensive breakdown including word count, character count, sentence count, paragraph count, and line count. The stats update in real-time as you type."},
-"json-formatter":{about:"JSON Formatter Tool",desc:"Format, validate, and beautify your JSON data. Paste your JSON string and instantly get a properly indented, readable format. The tool validates your JSON syntax and highlights any errors."},
-"meta-gen":{about:"Meta Tag Generator Tool",desc:"Generate comprehensive HTML meta tags for your web pages. Enter your page title, description, keywords, author, and Open Graph image URL to get a complete set of meta tags."},
-"default":{about:"About This Tool",desc:"This free online tool helps you process and transform text directly in your browser. All processing happens locally â€” your text is never sent to any server. Use the input area above to paste or type your text, configure any options, and click Process to see results instantly."}
-};
-var toolSchema = {
-"word-counter":{"@context":"https://schema.org","@type":"WebApplication",name:"Word Counter",description:"Count words, characters, lines, sentences and paragraphs instantly.",url:"https://azhai-six.vercel.app/tools/word-counter.html",applicationCategory:"UtilityApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"char-counter":{"@context":"https://schema.org","@type":"WebApplication",name:"Character Counter",description:"Count characters with and without spaces instantly.",url:"https://azhai-six.vercel.app/tools/char-counter.html",applicationCategory:"UtilityApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"sentence-counter":{"@context":"https://schema.org","@type":"WebApplication",name:"Sentence Counter",description:"Count sentences in any text accurately.",url:"https://azhai-six.vercel.app/tools/sentence-counter.html",applicationCategory:"UtilityApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"paragraph-counter":{"@context":"https://schema.org","@type":"WebApplication",name:"Paragraph Counter",description:"Count paragraphs by empty line breaks.",url:"https://azhai-six.vercel.app/tools/paragraph-counter.html",applicationCategory:"UtilityApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"duplicate-remover":{"@context":"https://schema.org","@type":"WebApplication",name:"Duplicate Line Remover",description:"Remove duplicate lines from text instantly.",url:"https://azhai-six.vercel.app/tools/duplicate-remover.html",applicationCategory:"UtilityApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"case-converter":{"@context":"https://schema.org","@type":"WebApplication",name:"Case Converter",description:"Convert text between UPPERCASE, lowercase, Title Case and Sentence case.",url:"https://azhai-six.vercel.app/tools/case-converter.html",applicationCategory:"UtilityApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"remove-spaces":{"@context":"https://schema.org","@type":"WebApplication",name:"Remove Extra Spaces",description:"Clean double spaces and extra line breaks from text.",url:"https://azhai-six.vercel.app/tools/remove-spaces.html",applicationCategory:"UtilityApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"line-sorter":{"@context":"https://schema.org","@type":"WebApplication",name:"Line Sorter",description:"Sort lines of text alphabetically or in reverse order.",url:"https://azhai-six.vercel.app/tools/line-sorter.html",applicationCategory:"UtilityApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"alpha-sorter":{"@context":"https://schema.org","@type":"WebApplication",name:"Alphabetical Sorter",description:"Sort text lines in alphabetical order with case-insensitive option.",url:"https://azhai-six.vercel.app/tools/alpha-sorter.html",applicationCategory:"UtilityApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"text-reverser":{"@context":"https://schema.org","@type":"WebApplication",name:"Text Reverser",description:"Reverse text by characters, words, or lines.",url:"https://azhai-six.vercel.app/tools/text-reverser.html",applicationCategory:"UtilityApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"find-replace":{"@context":"https://schema.org","@type":"WebApplication",name:"Find and Replace",description:"Search and replace text with case-sensitive option.",url:"https://azhai-six.vercel.app/tools/find-replace.html",applicationCategory:"UtilityApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"regex-tester":{"@context":"https://schema.org","@type":"WebApplication",name:"Regex Tester",description:"Test regular expressions with live match results.",url:"https://azhai-six.vercel.app/tools/regex-tester.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"word-frequency":{"@context":"https://schema.org","@type":"WebApplication",name:"Word Frequency Counter",description:"Count word occurrences and analyze frequency in text.",url:"https://azhai-six.vercel.app/tools/word-frequency.html",applicationCategory:"UtilityApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"url-encoder":{"@context":"https://schema.org","@type":"WebApplication",name:"URL Encoder",description:"Encode special characters in URLs instantly.",url:"https://azhai-six.vercel.app/tools/url-encoder.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"url-decoder":{"@context":"https://schema.org","@type":"WebApplication",name:"URL Decoder",description:"Decode URL-encoded strings back to readable text.",url:"https://azhai-six.vercel.app/tools/url-decoder.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"html-encoder":{"@context":"https://schema.org","@type":"WebApplication",name:"HTML Encoder",description:"Escape HTML entities and special characters.",url:"https://azhai-six.vercel.app/tools/html-encoder.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"html-decoder":{"@context":"https://schema.org","@type":"WebApplication",name:"HTML Decoder",description:"Decode HTML entities back to readable text.",url:"https://azhai-six.vercel.app/tools/html-decoder.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"b64-encoder":{"@context":"https://schema.org","@type":"WebApplication",name:"Base64 Encoder",description:"Encode text to Base64 format instantly.",url:"https://azhai-six.vercel.app/tools/b64-encoder.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"b64-decoder":{"@context":"https://schema.org","@type":"WebApplication",name:"Base64 Decoder",description:"Decode Base64 strings back to original text.",url:"https://azhai-six.vercel.app/tools/b64-decoder.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"hash-generator":{"@context":"https://schema.org","@type":"WebApplication",name:"Hash Generator",description:"Generate simple text hashes from any input.",url:"https://azhai-six.vercel.app/tools/hash-generator.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"lorem-generator":{"@context":"https://schema.org","@type":"WebApplication",name:"Lorem Ipsum Generator",description:"Generate Lorem Ipsum placeholder text with custom paragraphs.",url:"https://azhai-six.vercel.app/tools/lorem-generator.html",applicationCategory:"UtilityApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"json-formatter":{"@context":"https://schema.org","@type":"WebApplication",name:"JSON Formatter",description:"Format, validate, and beautify JSON data instantly.",url:"https://azhai-six.vercel.app/tools/json-formatter.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"json-validator":{"@context":"https://schema.org","@type":"WebApplication",name:"JSON Validator",description:"Validate JSON syntax and detect errors.",url:"https://azhai-six.vercel.app/tools/json-validator.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"xml-formatter":{"@context":"https://schema.org","@type":"WebApplication",name:"XML Formatter",description:"Format and beautify XML data with proper indentation.",url:"https://azhai-six.vercel.app/tools/xml-formatter.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"xml-validator":{"@context":"https://schema.org","@type":"WebApplication",name:"XML Validator",description:"Validate XML structure and detect errors.",url:"https://azhai-six.vercel.app/tools/xml-validator.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"markdown-editor":{"@context":"https://schema.org","@type":"WebApplication",name:"Markdown Editor",description:"Write Markdown with live HTML preview.",url:"https://azhai-six.vercel.app/tools/markdown-editor.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"markdown-preview":{"@context":"https://schema.org","@type":"WebApplication",name:"Markdown Previewer",description:"Preview Markdown as rendered HTML in real-time.",url:"https://azhai-six.vercel.app/tools/markdown-preview.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"html-previewer":{"@context":"https://schema.org","@type":"WebApplication",name:"HTML Previewer",description:"Preview HTML code with live rendering in an iframe.",url:"https://azhai-six.vercel.app/tools/html-previewer.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"robots-txt":{"@context":"https://schema.org","@type":"WebApplication",name:"Robots.txt Generator",description:"Generate robots.txt file with proper crawl directives.",url:"https://azhai-six.vercel.app/tools/robots-txt.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"sitemap-gen":{"@context":"https://schema.org","@type":"WebApplication",name:"Sitemap Generator",description:"Generate XML sitemaps for search engine indexing.",url:"https://azhai-six.vercel.app/tools/sitemap-gen.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"meta-gen":{"@context":"https://schema.org","@type":"WebApplication",name:"Meta Tag Generator",description:"Generate complete HTML meta tags for SEO.",url:"https://azhai-six.vercel.app/tools/meta-gen.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"og-generator":{"@context":"https://schema.org","@type":"WebApplication",name:"Open Graph Generator",description:"Generate Open Graph meta tags for social media sharing.",url:"https://azhai-six.vercel.app/tools/og-generator.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"slug-generator":{"@context":"https://schema.org","@type":"WebApplication",name:"Slug Generator",description:"Generate SEO-friendly URL slugs from any text.",url:"https://azhai-six.vercel.app/tools/slug-generator.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"meta-desc-gen":{"@context":"https://schema.org","@type":"WebApplication",name:"Meta Description Generator",description:"Generate optimized meta descriptions under 160 characters.",url:"https://azhai-six.vercel.app/tools/meta-desc-gen.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"canonical-gen":{"@context":"https://schema.org","@type":"WebApplication",name:"Canonical Tag Generator",description:"Generate canonical link tags for SEO.",url:"https://azhai-six.vercel.app/tools/canonical-gen.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"keyword-density":{"@context":"https://schema.org","@type":"WebApplication",name:"Keyword Density Checker",description:"Check keyword density percentage in your text.",url:"https://azhai-six.vercel.app/tools/keyword-density.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}},
-"keyword-extract":{"@context":"https://schema.org","@type":"WebApplication",name:"Keyword Extractor",description:"Extract top keywords from any text for SEO analysis.",url:"https://azhai-six.vercel.app/tools/keyword-extract.html",applicationCategory:"DeveloperApplication",operatingSystem:"Any",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}}
-};
 
-function renderToolOptions(toolId) {
-    var opts = document.getElementById('tool-options');
-    var html = '';
-    switch(toolId) {
-        case 'duplicate-remover':
-            html = '<label class="checkbox-label"><input type="checkbox" id="opt-caseinsensitive"> Case-insensitive removal</label>';
-            break;
-        case 'line-sorter':
-            html = '<label class="checkbox-label"><input type="checkbox" id="opt-reverse"> Reverse sort order</label>';
-            break;
-        case 'alpha-sorter':
-            html = '<label class="checkbox-label"><input type="checkbox" id="opt-caseinsensitive"> Case-insensitive</label><label class="checkbox-label"><input type="checkbox" id="opt-reverse"> Reverse order</label>';
-            break;
-        case 'text-reverser':
-            html = '<div class="radio-group"><label class="radio-label"><input type="radio" name="revtype" value="chars" checked> Characters</label><label class="radio-label"><input type="radio" name="revtype" value="words"> Words</label><label class="radio-label"><input type="radio" name="revtype" value="lines"> Lines</label></div>';
-            break;
-        case 'case-converter':
-            html = '<div class="case-buttons"><button onclick="convertCase(\'upper\')" class="btn btn-sm">UPPERCASE</button><button onclick="convertCase(\'lower\')" class="btn btn-sm">lowercase</button><button onclick="convertCase(\'title\')" class="btn btn-sm">Title Case</button><button onclick="convertCase(\'sentence\')" class="btn btn-sm">Sentence case</button></div>';
-            break;
-        case 'meta-desc-gen':
-        var mdInput = document.getElementById('tool-input').value.trim();
-        var mdKw = document.getElementById('opt-mdkeyword');
-        var mdKeyword = mdKw ? mdKw.value.trim() : '';
-        if (!mdInput) { showToast('Please enter some text.'); return; }
-        var mdSentences = mdInput.match(/[^.!?]+[.!?]+/g);
-        var mdDesc = mdSentences && mdSentences.length ? mdSentences[0].trim() : mdInput.substring(0, 155);
-        if (mdDesc.length > 160) mdDesc = mdDesc.substring(0, 157) + '...';
-        if (mdKeyword && mdDesc.length < 150 && mdDesc.toLowerCase().indexOf(mdKeyword.toLowerCase()) === -1) {
-            mdDesc = mdDesc.replace(/\.$/, '') + ' ' + mdKeyword + '.';
-        }
-        if (mdDesc.length > 160) mdDesc = mdDesc.substring(0, 157) + '...';
-        var mdOut = '<title>' + escapeHTML(document.title.split(' - ')[0]) + '</title>\n<meta name="description" content="' + escapeHTML(mdDesc) + '">';
-        if (mdKeyword) mdOut += '\n<meta name="keywords" content="' + escapeHTML(mdKeyword) + '">';
-        output.textContent = mdOut;
-        showToast('Meta description generated!');
-        return;
-    case 'keyword-density':
-            html = '<label class="input-label" for="opt-keyword">Enter keyword or phrase:</label><input type="text" id="opt-keyword" class="tool-input" placeholder="Enter keyword...">';
-            break;
-        case 'slug-generator':
-            html = '<p style="color:var(--text-secondary);font-size:.85rem">Paste any text above and click Process to generate a clean URL slug.</p>';
-            break;
-        case 'meta-desc-gen':
-            html = '<label class="input-label" for="opt-mdkeyword">Enter keyword or topic:</label><input type="text" id="opt-mdkeyword" class="tool-input" placeholder="Enter main keyword...">';
-            break;
-        case 'canonical-gen':
-            html = '<label class="input-label" for="opt-curl">Enter your page URL:</label><input type="url" id="opt-curl" class="tool-input" placeholder="https://example.com/your-page">';
-            break;
-        case 'og-generator':
-            html = '<div class="form-grid"><label>Title:<input type="text" id="opt-ogtitle" class="tool-input" placeholder="Page title"></label><label>Description:<textarea id="opt-ogdesc" class="tool-input" rows="2" placeholder="Page description"></textarea></label><label>URL:<input type="url" id="opt-ogurl" class="tool-input" placeholder="https://example.com/page"></label><label>Image URL:<input type="url" id="opt-ogimg" class="tool-input" placeholder="https://example.com/image.jpg"></label><label>Type:<select id="opt-ogtype" class="tool-input"><option value="website">Website</option><option value="article">Article</option><option value="product">Product</option></select></label></div><button onclick="generateOG()" class="btn btn-primary" style="margin-top:.5rem">Generate OG Tags</button>';
-            break;
-        case 'canonical-gen':
-        var cu = document.getElementById('opt-curl');
-        var curl = cu ? cu.value.trim() : '';
-        if (!curl) { showToast('Please enter a URL.'); return; }
-        if (!/^https?:\/\//i.test(curl)) curl = 'https://' + curl;
-        output.textContent = '<link rel="canonical" href="' + curl + '">';
-        showToast('Canonical tag generated!');
-        return;
-    case 'meta-gen':
-            html = '<div class="form-grid"><label>Title:<input type="text" id="opt-mgtitle" class="tool-input" placeholder="Page title"></label><label>Description:<textarea id="opt-mgdesc" class="tool-input" rows="2" placeholder="Page description"></textarea></label><label>Keywords:<input type="text" id="opt-mgkeywords" class="tool-input" placeholder="keyword1, keyword2"></label><label>Author:<input type="text" id="opt-mgauthor" class="tool-input" placeholder="Author name"></label><label>OG Image:<input type="url" id="opt-mgimg" class="tool-input" placeholder="https://example.com/image.jpg"></label></div><button onclick="generateMetaTags()" class="btn btn-primary" style="margin-top:.5rem">Generate Meta Tags</button>';
-            break;
-        case 'robots-txt':
-            html = '<div class="form-grid"><label>User-agent:<input type="text" id="opt-rua" class="tool-input" value="*" placeholder="*"></label><label>Crawl Delay:<input type="number" id="opt-rcd" class="tool-input" placeholder="10"></label><label>Disallow paths:<textarea id="opt-rdisallow" class="tool-input" rows="2" placeholder="/admin/\n/private/"></textarea></label><label>Sitemap URL:<input type="url" id="opt-rsitemap" class="tool-input" placeholder="https://example.com/sitemap.xml"></label></div><button onclick="generateRobots()" class="btn btn-primary" style="margin-top:.5rem">Generate robots.txt</button>';
-            break;
-        case 'sitemap-gen':
-            html = '<label class="input-label" for="opt-urls">Enter URLs (one per line):</label><textarea id="opt-urls" class="tool-textarea" rows="6" placeholder="https://example.com/\nhttps://example.com/about\nhttps://example.com/contact"></textarea><button onclick="generateSitemap()" class="btn btn-primary" style="margin-top:.5rem">Generate Sitemap</button>';
-            break;
-        case 'find-replace':
-            html = '<div class="form-grid"><label>Find:<input type="text" id="opt-find" class="tool-input" placeholder="Text to find"></label><label>Replace:<input type="text" id="opt-replace" class="tool-input" placeholder="Replace with"></label></div><label class="checkbox-label" style="margin-top:.4rem"><input type="checkbox" id="opt-casesensitive"> Case-sensitive search</label>';
-            break;
-        case 'regex-tester':
-            html = '<div class="form-grid"><label>Pattern:<input type="text" id="opt-regex" class="tool-input" placeholder="Regular expression pattern"></label><label>Flags:<input type="text" id="opt-regexflags" class="tool-input" value="gi" placeholder="gi"></label></div>';
-            break;
-    }
-    opts.innerHTML = html;
-}
+window.clearTool=function(){document.getElementById('tool-input').value='';document.getElementById('tool-output').innerHTML='';};
+window.copyOutput=function(){var t=document.getElementById('tool-output').innerText;if(!t){App.toast('Nothing to copy');return;}navigator.clipboard.writeText(t).then(function(){App.toast('Copied!');}).catch(function(){App.toast('Failed');});};
+window.downloadResult=function(){var t=document.getElementById('tool-output').innerText;if(!t){App.toast('Nothing to download');return;}var ext={json:'json',xml:'xml',markdown:'md',html:'html',regex:'txt'}[tid]||'txt';
+var blob=new Blob([t],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=tid+'-output.'+ext;a.click();URL.revokeObjectURL(a.href);};
 
-function processCurrentTool() {
-try {
-    var path = window.location.pathname;
-    var match = path.match(/\/tools\/([a-z0-9-]+)\.html$/);
-    var toolId = match ? match[1] : '';
-    var input = document.getElementById('tool-input').value;
-    var output = document.getElementById('tool-output');
-    if (!input) { showToast('Please enter some text to process.'); return; }
-    if (toolId === 'markdown-preview') {
-        try {
-            output.innerHTML = (typeof marked !== 'undefined') ? marked.parse(input) : (function(){var h=input.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');h=h.replace(/^### (.+)$/gm,'<h3>$1</h3>').replace(/^## (.+)$/gm,'<h2>$1</h2>').replace(/^# (.+)$/gm,'<h1>$1</h1>');h=h.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>');h=h.replace(/`(.+?)`/g,'<code>$1</code>');h=h.replace(/^\- (.+)$/gm,'<li>$1</li>');h=h.replace(/^> (.+)$/gm,'<blockquote>$1</blockquote>');h=h.replace(/^---$/gm,'<hr>');h=h.replace(/\[(.+?)\]\((.+?)\)/g,'<a href="$2" target="_blank">$1</a>');var lines=h.split('\n');var out=[],inP=false;var blockRe=/^<(h[1-6]|li|blockquote|hr|ul|ol|pre|table)/;lines.forEach(function(line){if(blockRe.test(line)){if(inP){out.push('</p>');inP=false;}out.push(line);}else if(line.trim()===''){if(inP){out.push('</p>');inP=false;}}else{if(!inP){out.push('<p>');inP=true;}out.push(line);}});if(inP)out.push('</p>');return out.join('\n');})()
-        } catch(e) { output.textContent = 'Error rendering markdown: ' + e.message; }
-        return;
-    }
-    if (toolId === 'keyword-density') {
-        var kw = document.getElementById('opt-keyword');
-        var keyword = kw ? kw.value.toLowerCase().trim() : '';
-        if (!keyword) { showToast('Please enter a keyword to analyze.'); return; }
-        var words = input.toLowerCase().match(/\b[\w'-]+\b/g) || [];
-        var total = words.length;
-        var count = 0;
-        if (keyword.indexOf(' ') !== -1) {
-                var kwRegex = new RegExp(keyword.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\words.forEach(function(w) { if (w === keyword) count++; });'), 'gi');
-                var kwMatches = input.toLowerCase().match(kwRegex);
-                count = kwMatches ? kwMatches.length : 0;
-            } else {
-                words.forEach(function(w) { if (w === keyword) count++; });
-            }
-        var density = total ? ((count / total) * 100).toFixed(2) : 0;
-        output.innerHTML = '<table class="results-table"><tr><th>Keyword</th><th>Count</th><th>Total Words</th><th>Density</th></tr><tr><td>' + escapeHTML(keyword) + '</td><td>' + count + '</td><td>' + total + '</td><td>' + density + '%</td></tr></table>';
-        return;
-    }
-    if (toolId === 'keyword-extract') {
-        var words = input.toLowerCase().match(/\b[\w'-]+\b/g) || [];
-        var total = words.length;
-        var freq = {};
-        var stopWords = {'the':1,'a':1,'an':1,'and':1,'or':1,'but':1,'in':1,'on':1,'at':1,'to':1,'for':1,'of':1,'with':1,'by':1,'is':1,'are':1,'was':1,'were':1,'be':1,'been':1,'being':1,'have':1,'has':1,'had':1,'do':1,'does':1,'did':1,'will':1,'would':1,'could':1,'should':1,'may':1,'might':1,'shall':1,'can':1,'this':1,'that':1,'these':1,'those':1,'it':1,'its':1,'i':1,'me':1,'my':1,'we':1,'our':1,'you':1,'your':1,'he':1,'him':1,'his':1,'she':1,'her':1,'they':1,'them':1,'their':1,'what':1,'which':1,'who':1,'whom':1,'how':1,'when':1,'where':1,'why':1};
-        words.forEach(function(w) { if (w.length > 2 && !stopWords[w]) freq[w] = (freq[w] || 0) + 1; });
-        var sorted = Object.keys(freq).sort(function(a,b){return freq[b]-freq[a];}).slice(0,30);
-        var html = '<table class="results-table"><tr><th>Keyword</th><th>Count</th><th>Density</th></tr>';
-        sorted.forEach(function(kw) {
-            var d = total ? ((freq[kw]/total)*100).toFixed(2) : 0;
-            html += '<tr><td>'+escapeHTML(kw)+'</td><td>'+freq[kw]+'</td><td>'+d+'%</td></tr>';
-        });
-        html += '</table>';
-        output.innerHTML = html;
-        return;
-    }
-    if (toolId === 'word-frequency') {
-        var words = input.toLowerCase().match(/\b[\w'-]+\b/g) || [];
-        var freq = {};
-        words.forEach(function(w) { freq[w] = (freq[w] || 0) + 1; });
-        var sorted = Object.keys(freq).sort(function(a,b){return freq[b]-freq[a];}).slice(0,50);
-        var html = '<table class="results-table"><tr><th>Word</th><th>Count</th></tr>';
-        sorted.forEach(function(w) { html += '<tr><td>'+escapeHTML(w)+'</td><td>'+freq[w]+'</td></tr>'; });
-        html += '</table>';
-        output.innerHTML = html;
-        return;
-    }
-    if (toolId === 'json-formatter') {
-        try { output.textContent = JSON.stringify(JSON.parse(input), null, 2); }
-        catch(e) { output.textContent = 'Error: ' + e.message; }
-        return;
-    }
-    if (toolId === 'json-validator') {
-        try { JSON.parse(input); output.textContent = 'Valid JSON\n\nThe input is properly formatted JSON.'; }
-        catch(e) { output.textContent = 'Invalid JSON\n\nError: ' + e.message; }
-        return;
-    }
-    if (toolId === 'xml-formatter') {
-        try {
-            var lines = input.replace(/(>)\s*(<)/g, '$1\n$2').split('\n');
-            var f = '', ind = 0;
-            lines.forEach(function(l) {
-                l = l.trim(); if (!l) return;
-                if (l.match(/^<\//)) ind--;
-                f += '  '.repeat(Math.max(0, ind)) + l + '\n';
-                if (l.match(/^<[^\/?]/) && !l.match(/\/>$/)) ind++;
-            });
-            output.textContent = f.trim();
-        } catch(e) { output.textContent = 'Error: ' + e.message; }
-        return;
-    }
-    if (toolId === 'xml-validator') {
-        try {
-            var p = new DOMParser();
-            var d = p.parseFromString(input, 'text/xml');
-            if (d.querySelector('parsererror'))
-                output.textContent = 'Invalid XML\n\n' + d.querySelector('parsererror').textContent.substring(0, 300);
-            else output.textContent = 'Valid XML';
-        } catch(e) { output.textContent = 'Error: ' + e.message; }
-        return;
-    }
-    if (toolId === 'hash-generator') {
-        var hash = 0;
-        for (var i = 0; i < input.length; i++) { var ch = input.charCodeAt(i); hash = ((hash << 5) - hash) + ch; hash = hash & hash; }
-        output.textContent = 'Simple Hash: ' + Math.abs(hash).toString(16) + '\n\nNote: For cryptographic hashes (MD5, SHA-256), use a dedicated library.';
-        return;
-    }
-    if (toolId === 'find-replace') {
-        var find = document.getElementById('opt-find');
-        var repl = document.getElementById('opt-replace');
-        var cs = document.getElementById('opt-casesensitive');
-        if (!find || !find.value) { showToast('Enter text to find.'); return; }
-        var flags = cs && cs.checked ? 'g' : 'gi';
-        var escaped = find.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        var count = (input.match(new RegExp(escaped, flags)) || []).length;
-        var result = input.replace(new RegExp(escaped, flags), repl ? repl.value : '');
-        output.textContent = result + '\n\n---\n' + count + ' replacement(s) made.';
-        return;
-    }
-    if (toolId === 'regex-tester') {
-        var pat = document.getElementById('opt-regex');
-        var flagsEl = document.getElementById('opt-regexflags');
-        if (!pat || !pat.value) { showToast('Enter a regex pattern.'); return; }
-        try {
-            var regex = new RegExp(pat.value, flagsEl ? flagsEl.value : 'gi');
-            var matches = input.match(regex);
-            var html = '<strong>Pattern:</strong> /' + escapeHTML(pat.value) + '/' + (flagsEl ? flagsEl.value : 'gi') + '\n\n';
-            if (matches) {
-                html += '<strong>Matches found:</strong> ' + matches.length + '\n\n';
-                html += '<table class="results-table"><tr><th>#</th><th>Match</th></tr>';
-                matches.slice(0, 100).forEach(function(m, i) {
-                    html += '<tr><td>' + (i + 1) + '</td><td>' + escapeHTML(m) + '</td></tr>';
-                });
-                html += '</table>';
-                if (matches.length > 100) html += '\n<p style="color:var(--text-tertiary);font-size:.8rem;margin-top:.5rem">Showing first 100 of ' + matches.length + ' matches.</p>';
-            } else {
-                html += 'No matches found.';
-            }
-            output.innerHTML = html;
-        } catch(e) {
-            output.textContent = 'Invalid regex: ' + e.message;
-        }
-        return;
-    }
-    if (toolId === 'html-previewer') {
-        output.innerHTML = '<iframe srcdoc="' + escapeHTML(input).replace(/"/g, '&quot;') + '" style="width:100%;min-height:300px;border:1px solid var(--border);border-radius:var(--radius);background:#ffffff"></iframe>';
-        return;
-    }
-    if (toolId === 'markdown-editor') {
-        output.innerHTML = input.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/^### (.+)$/gm, '<h3>$1</h3>').replace(/^## (.+)$/gm, '<h2>$1</h2>').replace(/^# (.+)$/gm, '<h1>$1</h1>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>').replace(/`(.+?)`/g, '<code>$1</code>').replace(/^\- (.+)$/gm, '<li>$1</li>').replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>').replace(/^---$/gm, '<hr>').replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank">$1</a>').replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
-        return;
-    }
-    var result = defaultProcess(toolId, input);
-    if (result !== undefined) output.textContent = result;
-} catch(e) {
-    var out = document.getElementById('tool-output');
-    if(out) out.textContent = 'Error: ' + e.message;
-    showToast('An error occurred: ' + e.message);
-}
-}
+ga();rb();ffaq();
 
-function defaultProcess(toolId, input) {
-    var lines = input.split('\n');
-    switch(toolId) {
-        case 'char-counter': return 'Characters: ' + input.length + '\nCharacters (no spaces): ' + input.replace(/\s/g, '').length;
-        case 'word-counter': return 'Words: ' + input.split(/\s+/).filter(function(w){return w.length>0;}).length;
-        case 'sentence-counter': return 'Sentences: ' + input.split(/[.!?]+/).filter(function(s){return s.trim().length>0;}).length;
-        case 'paragraph-counter': return 'Paragraphs: ' + input.split(/\n\s*\n/).filter(function(p){return p.trim().length>0;}).length;
-        case 'duplicate-remover':
-            var ci = document.getElementById('opt-caseinsensitive');
-            var seen = {};
-            var result = [];
-            lines.forEach(function(line) {
-                var key = ci && ci.checked ? line.toLowerCase() : line;
-                if (!seen[key]) { seen[key] = true; result.push(line); }
-            });
-            return result.join('\n');
-        case 'line-sorter':
-            var rev = document.getElementById('opt-reverse');
-            var sorted = lines.slice().sort();
-            if (rev && rev.checked) sorted.reverse();
-            return sorted.join('\n');
-        case 'alpha-sorter':
-            var ci = document.getElementById('opt-caseinsensitive');
-            var rv = document.getElementById('opt-reverse');
-            var sorted = lines.slice().sort(function(a,b) {
-                if (ci && ci.checked) { a=a.toLowerCase(); b=b.toLowerCase(); }
-                return a < b ? -1 : a > b ? 1 : 0;
-            });
-            if (rv && rv.checked) sorted.reverse();
-            return sorted.join('\n');
-        case 'text-reverser':
-            var type = document.querySelector('input[name="revtype"]:checked');
-            var mode = type ? type.value : 'chars';
-            if (mode === 'chars') return input.split('').reverse().join('');
-            if (mode === 'words') return input.split(/\s+/).reverse().join(' ');
-            if (mode === 'lines') return lines.reverse().join('\n');
-            return input;
-        case 'url-encoder': return encodeURIComponent(input);
-        case 'url-decoder':
-            try { return decodeURIComponent(input); }
-            catch(e) { return 'Error: Invalid URL-encoded string'; }
-        case 'html-encoder': return input.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
-        case 'html-decoder': var el = document.createElement('div'); el.innerHTML = input; return el.textContent;
-        case 'b64-encoder': return btoa(unescape(encodeURIComponent(input)));
-        case 'b64-decoder':
-            try { return decodeURIComponent(escape(atob(input.trim()))); }
-            catch(e) { return 'Error: Invalid Base64 string'; }
-        case 'slug-generator': return input.toLowerCase().trim().replace(/[^\w\s-]/g,'').replace(/[\s_]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
-        case 'lorem-generator':
-            var paras = Math.max(1, Math.min(20, parseInt(input) || 3));
-            var lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
-            var result = [];
-            for (var i = 0; i < paras; i++) result.push(lorem);
-            return result.join('\n\n');
-        case 'remove-spaces': return input.replace(/[ \t]+/g, ' ').replace(/ *\n */g, '\n').trim();
-        default: return 'Processing complete. Check the output for results.';
-    }
+if(tid==='markdown-editor'){
+var input=document.getElementById('tool-input');
+var output=document.getElementById('tool-output');
+function preview(){if(window.marked&&window.marked.parse){output.innerHTML='<div class="output-content" style="padding:1rem">'+window.marked.parse(input.value)+'</div>';}}
+input.addEventListener('input',preview);preview();
 }
-
-function escapeHTML(str) {
-    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
-}
-function generateOG() {
-    var t = document.getElementById('opt-ogtitle').value;
-    var d = document.getElementById('opt-ogdesc').value;
-    var u = document.getElementById('opt-ogurl').value;
-    var img = document.getElementById('opt-ogimg').value;
-    var tp = document.getElementById('opt-ogtype').value;
-    var out = '<meta property="og:type" content="' + escapeHTML(tp) + '">\n<meta property="og:title" content="' + escapeHTML(t) + '">\n<meta property="og:description" content="' + escapeHTML(d) + '">\n<meta property="og:url" content="' + escapeHTML(u) + '">\n<meta property="og:image" content="' + escapeHTML(img) + '">';
-    document.getElementById('tool-output').textContent = out;
-    showToast('Open Graph tags generated!');
-}
-function generateMetaTags() {
-    var t = document.getElementById('opt-mgtitle').value;
-    var d = document.getElementById('opt-mgdesc').value;
-    var kw = document.getElementById('opt-mgkeywords').value;
-    var auth = document.getElementById('opt-mgauthor').value;
-    var img = document.getElementById('opt-mgimg').value;
-    var out = '<title>' + escapeHTML(t) + '</title>\n<meta name="description" content="' + escapeHTML(d) + '">\n<meta name="keywords" content="' + escapeHTML(kw) + '">\n<meta name="author" content="' + escapeHTML(auth) + '">\n<meta property="og:title" content="' + escapeHTML(t) + '">\n<meta property="og:description" content="' + escapeHTML(d) + '">\n<meta property="og:image" content="' + escapeHTML(img) + '">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">';
-    document.getElementById('tool-output').textContent = out;
-    showToast('Meta tags generated!');
-}
-function generateRobots() {
-    var ua = document.getElementById('opt-rua').value.trim() || '*';
-    var cd = escapeHTML(document.getElementById('opt-rcd').value);
-    var dis = document.getElementById('opt-rdisallow').value;
-    var sm = escapeHTML(document.getElementById('opt-rsitemap').value);
-    var out = '';
-    if (ua !== '*') {
-        out += 'User-agent: ' + ua + '\n';
-        if (cd) out += 'Crawl-delay: ' + cd + '\n';
-        out += '\n';
-    }
-    out += 'User-agent: *\n';
-    if (dis) {
-        var paths = dis.split('\n').filter(function(p){return p.trim();});
-        paths.forEach(function(p) { out += 'Disallow: ' + escapeHTML(p.trim()) + '\n'; });
-    }
-    out += 'Allow: /\n';
-    if (sm) out += '\nSitemap: ' + sm;
-    document.getElementById('tool-output').textContent = out;
-    showToast('robots.txt generated!');
-}
-function generateSitemap() {
-    var urls = document.getElementById('opt-urls').value.split('\n').filter(function(u){return u.trim();});
-    var out = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
-    var today = new Date().toISOString().split('T')[0];
-    urls.forEach(function(url) {
-        out += '  <url>\n    <loc>' + escapeHTML(url.trim()) + '</loc>\n    <lastmod>' + today + '</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n';
-    });
-    out += '</urlset>';
-    document.getElementById('tool-output').textContent = out;
-    showToast('XML sitemap generated!');
-}
-function convertCase(type) {
-    var ta = document.getElementById('tool-input');
-    var text = ta.value;
-    switch(type) {
-        case 'upper': ta.value = text.toUpperCase(); break;
-        case 'lower': ta.value = text.toLowerCase(); break;
-        case 'title': ta.value = text.replace(/\w\S*/g, function(w){return w.charAt(0).toUpperCase()+w.substr(1).toLowerCase();}); break;
-        case 'sentence': ta.value = text.toLowerCase().replace(/(^\s*\w|[.!?]\s+\w)/g, function(w){return w.toUpperCase();}); break;
-    }
-    updateStats();
-    showToast('Text converted to ' + type + ' case!');
-}
-function pasteInput() {
-    navigator.clipboard.readText().then(function(text) {
-        document.getElementById('tool-input').value = text;
-        updateStats();
-        showToast('Text pasted!');
-    }).catch(function() { showToast('Unable to paste. Please use Ctrl+V.'); });
-}
-function clearInput() {
-    document.getElementById('tool-input').value = '';
-    document.getElementById('tool-output').textContent = '';
-    updateStats();
-    showToast('Cleared!');
-}
-function copyInput() {
-    var text = document.getElementById('tool-input').value;
-    if (!text) { showToast('Nothing to copy.'); return; }
-    navigator.clipboard.writeText(text).then(function() { showToast('Input copied!'); });
-}
-function copyResult() {
-    var el = document.getElementById('tool-output');
-    var text = el.textContent || el.innerText;
-    if (!text) { showToast('Nothing to copy.'); return; }
-    navigator.clipboard.writeText(text).then(function() { showToast('Result copied!'); });
-}
-function swapResult() {
-    var inp = document.getElementById('tool-input');
-    var out = document.getElementById('tool-output');
-    var temp = inp.value;
-    inp.value = out.textContent || out.innerText;
-    out.textContent = temp;
-    updateStats();
-    showToast('Text swapped!');
-}
-function downloadResult() {
-    var el = document.getElementById('tool-output');
-    var text = el.textContent || el.innerText;
-    if (!text) { showToast('Nothing to download.'); return; }
-    var toolId = location.pathname.match(/\/tools\/(.+)\.html/);
-    toolId = toolId ? toolId[1] : '';
-    var ext = 'txt', mime = 'text/plain';
-    if (toolId === 'json-formatter' || toolId === 'json-validator') { ext = 'json'; mime = 'application/json'; }
-    else if (toolId === 'xml-formatter' || toolId === 'xml-validator' || toolId === 'sitemap-gen') { ext = 'xml'; mime = 'application/xml'; }
-    else if (toolId === 'html-previewer') { ext = 'html'; mime = 'text/html'; }
-    else if (toolId === 'markdown-editor' || toolId === 'markdown-preview') { ext = 'md'; mime = 'text/markdown'; }
-    else if (toolId === 'meta-gen' || toolId === 'og-generator' || toolId === 'meta-desc-gen' || toolId === 'canonical-gen') { ext = 'html'; mime = 'text/html'; }
-    var blob = new Blob([text], {type: mime});
-    var a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = toolId ? toolId + '.' + ext : 'result.txt';
-    a.click();
-    URL.revokeObjectURL(a.href);
-    showToast('Downloaded!');
-}
-function updateStats() {
-    var text = document.getElementById('tool-input').value;
-    var words = text.trim() ? text.trim().split(/\s+/).length : 0;
-    var chars = text.length;
-    var noSpaces = text.replace(/\s/g, '').length;
-    var lines = text ? text.split('\n').length : 0;
-    var sentences = text.split(/[.!?]+/).filter(function(s){return s.trim().length>0;}).length;
-    var paragraphs = text.split(/\n\s*\n/).filter(function(p){return p.trim().length>0;}).length;
-    if (!text) paragraphs = 0;
-    document.getElementById('stat-words').textContent = 'Words: ' + words;
-    document.getElementById('stat-chars').textContent = 'Characters: ' + chars;
-    document.getElementById('stat-nospaces').textContent = 'No Spaces: ' + noSpaces;
-    document.getElementById('stat-lines').textContent = 'Lines: ' + lines;
-    document.getElementById('stat-sentences').textContent = 'Sentences: ' + sentences;
-    document.getElementById('stat-paragraphs').textContent = 'Paragraphs: ' + paragraphs;
-}
-function showToast(msg) {
-    var t = document.getElementById('appToast');
-    if(!t) t = document.getElementById('toast');
-    if(!t) return;
-    t.textContent = msg;
-    t.classList.add('show');
-    setTimeout(function() { t.classList.remove('show'); }, 2500);
-}
-function acceptCookies() {
-    var el = document.getElementById('cookie-consent');
-    if(el) el.style.display = 'none';
-    localStorage.setItem('attCookies', 'accepted');
-}
-function rejectCookies() {
-    var el = document.getElementById('cookie-consent');
-    if(el) el.style.display = 'none';
-    localStorage.setItem('attCookies', 'rejected');
-}
-function initToolPage() {
-    var path = window.location.pathname;
-    var match = path.match(/\/tools\/([a-z0-9-]+)\.html$/);
-    var toolId = match ? match[1] : '';
-    var seo = toolSEO[toolId] || {title:'Tool',desc:'',keywords:''};
-    var content = toolContent[toolId] || toolContent['default'];
-    var faqs = toolFAQs[toolId] || toolFAQs['default'];
-    document.getElementById('page-title').textContent = seo.title;
-    document.getElementById('meta-title').setAttribute('content', seo.title);
-    document.getElementById('meta-desc').setAttribute('content', seo.desc);
-    document.getElementById('meta-keywords').setAttribute('content', seo.keywords);
-    document.getElementById('og-title').setAttribute('content', seo.title);
-    document.getElementById('og-desc').setAttribute('content', seo.desc);
-    document.getElementById('og-url').setAttribute('content', window.location.href);
-    document.getElementById('canonical-link').setAttribute('href', window.location.href);
-    document.getElementById('breadcrumb-tool').textContent = seo.title.split(' - ')[0];
-    document.getElementById('tool-heading').textContent = seo.title.split(' - ')[0];
-    document.getElementById('tool-description').textContent = seo.desc;
-    document.getElementById('seo-content').innerHTML = '<h2>' + escapeHTML(content.about) + '</h2><p>' + escapeHTML(content.desc) + '</p>';
-    var faqHtml = '';
-    if (faqs && faqs.items && faqs.items.length) {
-        faqHtml = '';
-        faqs.items.forEach(function(item) {
-            faqHtml += '<details class="faq-item"><summary class="faq-question">' + escapeHTML(item.q) + ' <span>â–¼</span></summary><div class="faq-answer"><p>' + escapeHTML(item.a) + '</p></div></details>';
-        });
-    }
-    document.getElementById('faq-list').innerHTML = faqHtml;
-    var blogPosts = [
-        {slug:'ultimate-guide-seo-text-tools',title:'The Ultimate Guide to Free SEO Text Tools in 2026',category:'SEO Tools',date:'2026-06-20'},
-        {slug:'how-to-write-perfect-meta-descriptions',title:'How to Write Perfect Meta Descriptions',category:'SEO Tips',date:'2026-06-18'},
-        {slug:'json-formatting-best-practices',title:'JSON Formatting Best Practices for Developers',category:'Development',date:'2026-06-15'},
-        {slug:'markdown-for-bloggers',title:'Markdown for Bloggers: A Complete Beginner Guide',category:'Blogging',date:'2026-06-12'},
-        {slug:'understanding-canonical-tags-seo',title:'Understanding Canonical Tags: The Complete SEO Guide',category:'SEO Tips',date:'2026-06-10'},
-        {slug:'open-graph-tags-social-media',title:'Open Graph Tags: Get Perfect Social Media Previews',category:'Social Media',date:'2026-06-08'}
-    ];
-    var sidebarBlog = document.getElementById('sidebar-blog');
-    if (sidebarBlog) {
-        sidebarBlog.innerHTML = blogPosts.slice(0,3).map(function(p){
-            return '<a href="/blog/' + p.slug + '.html" class="sidebar-link"><span class="sidebar-link-meta">' + p.category + ' Â· ' + p.date + '</span>' + p.title + '</a>';
-        }).join('');
-    }
-    renderToolOptions(toolId);
-    var schema = toolSchema[toolId];
-    if (schema) {
-        var script = document.createElement('script');
-        script.type = 'application/ld+json';
-        script.textContent = JSON.stringify(schema);
-        document.head.appendChild(script);
-    }
-    if (!localStorage.getItem('attCookies')) {
-        document.getElementById('cookie-consent').style.display = 'flex';
-    } else {
-        document.getElementById('cookie-consent').style.display = 'none';
-    }
-    document.getElementById('tool-input').addEventListener('input', updateStats);
-    updateStats();
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    var savedTheme = localStorage.getItem('attTheme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    initToolPage();
-    var header = document.getElementById('siteHeader');
-    if(header) {
-        window.addEventListener('scroll', function(){
-            if(window.scrollY > 10) header.classList.add('scrolled');
-            else header.classList.remove('scrolled');
-        });
-    }
-    var themeBtn = document.getElementById('themeToggle');
-    if(themeBtn) {
-        themeBtn.textContent = savedTheme === 'dark' ? '\u2600' : '\u263E';
-        themeBtn.addEventListener('click', function(){
-            var current = document.documentElement.getAttribute('data-theme');
-            var next = current === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', next);
-            localStorage.setItem('attTheme', next);
-            themeBtn.textContent = next === 'dark' ? '\u2600' : '\u263E';
-        });
-    }
-    var mm = document.getElementById('mobileMenu');
-    var nav = document.getElementById('mainNav');
-    if(mm && nav) mm.addEventListener('click', function(){ nav.classList.toggle('open'); });
-});
+})();
 </script>
 </body>
 </html>

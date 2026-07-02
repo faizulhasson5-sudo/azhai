@@ -58,6 +58,8 @@ const toolSEO = {
 const templatePath = path.join(__dirname, 'tools', 'template.html');
 const template = fs.readFileSync(templatePath, 'utf8');
 const baseUrl = 'https://azhai-six.vercel.app';
+const outDir = path.join(__dirname, 'public', 'tools');
+fs.mkdirSync(outDir, { recursive: true });
 
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
@@ -89,9 +91,9 @@ tools.forEach(toolId => {
         html = html.replace('</head>', '<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>\n</head>');
     }
 
-    const filePath = path.join(__dirname, 'tools', toolId + '.html');
+    const filePath = path.join(outDir, toolId + '.html');
     fs.writeFileSync(filePath, html, 'utf8');
-    console.log('Created: tools/' + toolId + '.html');
+    console.log('Created: public/tools/' + toolId + '.html');
 });
 
 console.log('\nBuild complete! ' + tools.length + ' tool pages generated.');

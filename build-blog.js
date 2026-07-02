@@ -26,6 +26,8 @@ function esc(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').re
 const templatePath = path.join(__dirname, 'blog', 'template.html');
 const template = fs.readFileSync(templatePath, 'utf8');
 const baseUrl = 'https://azhai-six.vercel.app';
+const outDir = path.join(__dirname, 'public', 'blog');
+fs.mkdirSync(outDir, { recursive: true });
 
 posts.forEach(post => {
     const postUrl = baseUrl + '/blog/' + post.slug + '.html';
@@ -57,9 +59,9 @@ posts.forEach(post => {
     html = html.replace(/id="blogImage"[^>]*>/,'id="blogImage" src="'+esc(post.image)+'" alt="'+esc(post.title)+'" class="blog-hero-img">');
     html = html.replace('id="blogContent">','id="blogContent">'+(blogContents[post.slug]||''));
 
-    const filePath = path.join(__dirname, 'blog', post.slug + '.html');
+    const filePath = path.join(outDir, post.slug + '.html');
     fs.writeFileSync(filePath, html, 'utf8');
-    console.log('Created: blog/' + post.slug + '.html');
+    console.log('Created: public/blog/' + post.slug + '.html');
 });
 
 console.log('\nBlog build complete! ' + posts.length + ' posts generated.');

@@ -267,6 +267,7 @@
         var bh='';
         App.blogPosts.slice(0,3).forEach(function(p){
           bh+='<a href="/blog/'+esc(p.slug)+'.html" class="blog-card">';
+          if(p.image)bh+='<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" class="blog-card-img" loading="lazy">';
           bh+='<span class="card-cat">'+esc(p.category)+'</span>';
           bh+='<h3>'+esc(p.title)+'</h3>';
           bh+='<p>'+esc(p.excerpt)+'</p>';

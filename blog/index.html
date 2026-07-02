@@ -86,6 +86,7 @@ var grid=document.getElementById('blogGrid');
 var h='';
 App.blogPosts.forEach(function(p){
 h+='<a href="/blog/'+esc(p.slug)+'.html" class="blog-card">';
+if(p.image)h+='<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" class="blog-card-img" loading="lazy">';
 h+='<span class="card-cat">'+esc(p.category)+'</span>';
 h+='<h3>'+esc(p.title)+'</h3>';
 h+='<p>'+esc(p.excerpt)+'</p><span class="blog-meta">'+esc(p.readTime)+'</span></a>';

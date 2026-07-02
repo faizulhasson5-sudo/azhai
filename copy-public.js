@@ -41,5 +41,6 @@ for (const f of otherFiles) {
 // Copy blog feed
 fs.mkdirSync(path.join(dst, 'blog'), { recursive: true });
 fs.copyFileSync(path.join(src, 'blog', 'feed.xml'), path.join(dst, 'blog', 'feed.xml'));
+fs.copyFileSync(path.join(src, 'blog', 'index.html'), path.join(dst, 'blog', 'index.html'));
 
 console.log('Static files copied to public/');

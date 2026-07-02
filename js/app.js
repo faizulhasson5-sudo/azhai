@@ -1,6 +1,7 @@
 ﻿/* ============================================================
-   Free AI Text Tools — Core Application v4
-   Icons · Favorites · Auto-suggest · Feedback
+   Free AI Text Tools — Core Application v3
+   All bugs fixed · localStorage guards · Proper icons
+   GA behind consent · Fixed focus · Fixed dark contrast
    ============================================================ */
 
 (function(){
@@ -79,34 +80,6 @@ App.initCookieConsent=function(){
   });
 };
 
-/* ---- Category Icons (SVG) ---- */
-App.icons={
-  counters:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>',
-  text:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/><path d="M12 18h.01"/></svg>',
-  converters:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>',
-  cleaners:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 18 8-8"/><path d="m6 6 8 8"/><circle cx="12" cy="12" r="10"/></svg>',
-  seo:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="m11 8-2 6h4l-2 6"/></svg>',
-  code:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>'
-};
-App.catLabels={counters:'Counters',text:'Text',converters:'Converters',cleaners:'Cleaners',seo:'SEO',code:'Code'};
-
-App.getIcon=function(cat){return App.icons[cat]||App.icons.text;};
-
-/* ---- Favorites ---- */
-App.getFavorites=function(){
-  try{return JSON.parse(lsGet('attFavs')||'[]');}catch(e){return [];}
-};
-App.toggleFav=function(id){
-  if(!id)return false;
-  var favs=App.getFavorites();
-  var idx=favs.indexOf(id);
-  if(idx===-1){favs.push(id);App.toast('Added to favorites');}
-  else{favs.splice(idx,1);App.toast('Removed from favorites');}
-  lsSet('attFavs',JSON.stringify(favs));
-  return idx===-1;
-};
-App.isFav=function(id){return App.getFavorites().indexOf(id)!==-1;};
-
 /* ---- Tools Data ---- */
 App.tools=[
 {id:'word-counter',name:'Word Counter',cat:'counters',desc:'Count words, characters, and lines'},
@@ -173,58 +146,9 @@ App.blogPosts=[
 {slug:'open-graph-tags-social-media',title:'Open Graph Tags: Get Perfect Social Media Previews',excerpt:'Master Open Graph meta tags to ensure your content looks amazing when shared on social media.',category:'Social Media',date:'2026-06-08',readTime:'5 min',image:'/blog/images/open-graph-tags.jpg'}
 ];
 
-/* ---- Feedback System ---- */
-App.initFeedback=function(){
-  var fab=document.getElementById('feedbackFab');
-  var overlay=document.getElementById('feedbackOverlay');
-  if(!fab||!overlay)return;
-
-  var type='bug';
-  var typeBtns=overlay.querySelectorAll('.feedback-type-btn');
-  typeBtns.forEach(function(btn){
-    btn.addEventListener('click',function(){
-      typeBtns.forEach(function(b){b.classList.remove('active');});
-      btn.classList.add('active');
-      type=btn.getAttribute('data-type');
-    });
-  });
-
-  function openModal(){overlay.classList.add('open');var firstInput=overlay.querySelector('textarea');if(firstInput)firstInput.focus();}
-  function closeModal(){overlay.classList.remove('open');}
-
-  fab.addEventListener('click',openModal);
-  overlay.addEventListener('click',function(e){if(e.target===overlay)closeModal();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&overlay.classList.contains('open'))closeModal();});
-
-  var submitBtn=document.getElementById('feedbackSubmit');
-  if(submitBtn){
-    submitBtn.addEventListener('click',function(){
-      var msg=document.getElementById('feedbackMessage');
-      var email=document.getElementById('feedbackEmail');
-      var text=msg?msg.value.trim():'';
-      if(!text){App.toast('Please enter a message');return;}
-      var entry={type:type,message:text,email:email?email.value.trim():'',page:location.pathname,time:new Date().toISOString()};
-      var queue=App.getFeedbackQueue();
-      queue.push(entry);
-      lsSet('attFeedback',JSON.stringify(queue));
-      closeModal();
-      if(msg)msg.value='';
-      if(email)email.value='';
-      App.toast('Thank you! Feedback submitted.');
-    });
-  }
-
-  var closeBtn=document.getElementById('feedbackClose');
-  if(closeBtn)closeBtn.addEventListener('click',closeModal);
-};
-App.getFeedbackQueue=function(){
-  try{return JSON.parse(lsGet('attFeedback')||'[]');}catch(e){return [];}
-};
-
 /* ---- Init ---- */
 document.addEventListener('DOMContentLoaded',function(){
   App.initCookieConsent();
-  App.initFeedback();
 
   /* Header scroll shadow */
   var header=document.querySelector('.site-header');
@@ -234,7 +158,7 @@ document.addEventListener('DOMContentLoaded',function(){
     onScroll();
   }
 
-  /* Theme button init */
+  /* Theme button init - read from DOM to avoid stale variable */
   var btn=document.querySelector('.theme-btn');
   if(btn){
     var currentTheme=document.documentElement.getAttribute('data-theme');

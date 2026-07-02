@@ -21,9 +21,6 @@
 <meta name="twitter:image" content="https://azhai-six.vercel.app/og-image.png">
 <meta name="theme-color" content="#c2410c">
 <link rel="stylesheet" href="/css/style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<script id="schema-article" type="application/ld+json"></script>
 <script>
 (function(){
   try {
@@ -57,7 +54,7 @@
 <div class="blog-meta">
 <span id="blogDate"></span> <span id="blogCategory"></span>
 </div>
-<img id="blogImage" class="blog-hero-img" style="display:none">
+<img id="blogImage" src="" alt="" class="blog-hero-img">
 <div class="blog-content" id="blogContent"></div>
 </article>
 <div class="blog-sidebar">
@@ -103,15 +100,6 @@ if(!m)return;
 var slug=m[1];
 var post=typeof App!=='undefined'&&App.blogPosts?App.blogPosts.find(function(p){return p.slug===slug;}):null;
 document.getElementById('breadcrumbPost').textContent=post?post.title:slug.replace(/-/g,' ');
-
-/* Article Schema */
-if(post){
-var articleSchema={"@context":"https://schema.org","@type":"Article","headline":post.title,"description":post.excerpt,"datePublished":post.date,"author":{"@type":"Organization","name":"Free AI Text Tools"},"publisher":{"@type":"Organization","name":"Free AI Text Tools","logo":{"@type":"ImageObject","url":"https://azhai-six.vercel.app/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://azhai-six.vercel.app/blog/"+slug+".html"}};
-if(post.image)articleSchema.image="https://azhai-six.vercel.app"+post.image;
-var asEl=document.getElementById('schema-article');
-if(asEl)asEl.textContent=JSON.stringify(articleSchema);
-}
-
 if(typeof App!=='undefined'&&App.blogPosts){
 var sb=document.getElementById('sidebarBlog');
 var other=App.blogPosts.filter(function(p){return p.slug!==slug;}).slice(0,3);

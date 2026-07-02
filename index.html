@@ -322,7 +322,7 @@
             io.unobserve(entry.target);
           }
         });
-      },{threshold:0.1});
+      },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
       reveals.forEach(function(el){io.observe(el);});
     } else {
       reveals.forEach(function(el){el.classList.add('visible');});
@@ -338,12 +338,12 @@
             var target=parseInt(el.getAttribute('data-count'),10);
             if(isNaN(target)){sio.unobserve(el);return;}
             var current=0;
-            var step=Math.max(1,Math.ceil(target/30));
+            var step=Math.max(1,Math.ceil(target/40));
             var timer=setInterval(function(){
               current+=step;
               if(current>=target){current=target;clearInterval(timer);}
               el.textContent=current;
-            },30);
+            },25);
             sio.unobserve(el);
           }
         });

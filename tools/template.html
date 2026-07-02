@@ -66,6 +66,10 @@
 </div>
 <div class="tool-output" id="tool-output"></div>
 </div>
+<div class="tool-blog-section" id="toolBlogSection" style="margin-top:24px;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)">
+<h3 style="font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-3);margin-bottom:14px">From the Blog</h3>
+<div id="toolBlogPosts" style="display:grid;grid-template-columns:1fr 1fr;gap:16px"></div>
+</div>
 </div>
 <aside class="tool-sidebar">
 <div class="sidebar-widget">
@@ -460,6 +464,12 @@ window.downloadResult=function(){var t=document.getElementById('tool-output').in
 var blob=new Blob([t],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=tid+'-output.'+ext;a.click();setTimeout(function(){URL.revokeObjectURL(a.href);},1000);};
 
 ga();rb();ffaq();
+if(typeof App!=='undefined'&&App.blogPosts&&App.blogPosts.length){
+var posts=App.blogPosts.slice().sort(function(){return 0.5-Math.random();}).slice(0,2);
+var bh='';
+posts.forEach(function(p){bh+='<a href="/blog/'+esc(p.slug)+'.html" style="display:block;text-decoration:none;color:inherit;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color 0.2s" onmouseover="this.style.borderColor=\'var(--accent)\'" onmouseout="this.style.borderColor=\'var(--border)\'">'+(p.image?'<img src="'+esc(p.image)+'" alt="" style="width:100%;height:140px;object-fit:cover;display:block">':'')+'<div style="padding:14px"><div style="font-size:.75rem;color:var(--accent);font-weight:700;margin-bottom:4px">'+esc(p.category)+'</div><div style="font-size:.9rem;font-weight:600;color:var(--text);line-height:1.4">'+esc(p.title)+'</div><div style="font-size:.8rem;color:var(--text-3);margin-top:4px">'+esc(p.readTime)+'</div></div></a>';});
+document.getElementById('toolBlogPosts').innerHTML=bh;
+}
 
 if(tid==='markdown-editor'){
 var input=document.getElementById('tool-input');

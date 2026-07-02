@@ -12,10 +12,21 @@
 <meta property="og:description" id="og-desc" content="Sort text lines in strict alphabetical order. Free online alphabetical sorter.">
 <meta property="og:url" id="og-url" content="https://azhai-six.vercel.app/tools/alpha-sorter.html">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://azhai-six.vercel.app/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" id="tw-title" content="Alphabetical Sorter - Sort Text A-Z">
 <meta name="twitter:description" id="tw-desc" content="Sort text lines in strict alphabetical order. Free online alphabetical sorter.">
+<meta name="twitter:image" content="https://azhai-six.vercel.app/og-image.png">
+<meta name="theme-color" content="#c2410c">
 <link rel="stylesheet" href="/css/style.css">
+<script>
+(function(){
+  try {
+    var t = localStorage.getItem('attTheme');
+    if (t) document.documentElement.setAttribute('data-theme', t);
+  } catch(e) {}
+})();
+</script>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -98,13 +109,19 @@
 <a href="/contact.html">Contact</a>
 <a href="/advertise.html">Advertise</a>
 </div>
+<div class="footer-col">
+<h4>Legal</h4>
+<a href="/privacy-policy.html">Privacy Policy</a>
+<a href="/terms.html">Terms of Service</a>
+<a href="/cookie-policy.html">Cookie Policy</a>
+</div>
 </div>
 <div class="footer-bottom">
 <p>&copy; 2026 Free AI Text Tools. All rights reserved.</p>
 </div>
 </div>
 </footer>
-<div class="cookie-banner" id="cookieBanner" role="alert" aria-live="polite">
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent">
 <p>🍪 We use cookies for ads &amp; analytics. <a href="/cookie-policy.html">Learn more</a></p>
 <div class="btn-group">
 <button class="btn btn-primary btn-sm" id="cookieAccept">Accept</button>
@@ -116,6 +133,7 @@
 <script>
 (function(){
 'use strict';
+if(typeof App==='undefined'||!App.getToolById)return;
 var m=location.pathname.match(/\/tools\/(.+)\.html/);
 if(!m)return;
 var tid=m[1];
@@ -130,14 +148,14 @@ document.title=tool.name+' - Free AI Text Tools';
 function ga(){var a={'word-counter':'Count words, characters, lines, sentences, and paragraphs in your text.','char-counter':'Character counts with and without spaces. See byte size instantly.','sentence-counter':'Count sentences by detecting punctuation marks (. ! ?).','paragraph-counter':'Count paragraphs by detecting empty line breaks.','word-frequency':'Analyze word occurrence frequency and distribution.','case-converter':'UPPERCASE, lowercase, Title Case, Sentence case, tOGGLE cASE.','remove-spaces':'Remove leading, trailing, and extra whitespace from text.','find-replace':'Search and replace text with regex support.','line-sorter':'Sort lines alphabetically in ascending or descending order.','alpha-sorter':'Sort lines alphabetically with strict A-Z ordering.','text-reverser':'Reverse text by characters, words, or lines.','duplicate-remover':'Remove duplicate lines from text.','lorem-generator':'Generate Lorem Ipsum placeholder text.','slug-generator':'Convert titles to URL-friendly slugs.','keyword-density':'Calculate keyword frequency and density percentage.','keyword-extract':'Extract the most frequent keywords from text.','meta-gen':'Generate complete HTML meta tag sets.','meta-desc-gen':'Generate SEO-optimized meta descriptions.','og-generator':'Generate Open Graph social media meta tags.','canonical-gen':'Generate canonical link tags for SEO.','robots-txt':'Generate robots.txt crawl directives.','sitemap-gen':'Generate XML sitemaps for search engines.','json-formatter':'Beautify and validate JSON data.','json-validator':'Validate JSON syntax and structure.','xml-formatter':'Pretty-print and indent XML documents.','xml-validator':'Validate XML structure and syntax.','markdown-editor':'Write Markdown with live HTML preview.','markdown-preview':'Convert Markdown to HTML output.','html-previewer':'Live HTML code preview in browser.','regex-tester':'Test regular expressions with match highlighting.','url-encoder':'Encode special characters for URLs.','url-decoder':'Decode percent-encoded URL strings.','html-encoder':'Escape HTML special characters to entities.','html-decoder':'Decode HTML entities back to characters.','b64-encoder':'Encode text to Base64 format.','b64-decoder':'Decode Base64 strings to text.','hash-generator':'Generate djb2 and FNV-1a hashes.'};
 document.getElementById('toolAbout').textContent=a[tid]||tool.desc;}
 
-function rb(){var R={'word-counter':['char-counter','sentence-counter','paragraph-counter'],'char-counter':['word-counter','remove-spaces'],'sentence-counter':['word-counter','paragraph-counter'],'paragraph-counter':['word-counter','sentence-counter'],'word-frequency':['keyword-density','keyword-extract'],'case-converter':['remove-spaces','slug-generator'],'remove-spaces':['case-converter','find-replace'],'find-replace':['remove-spaces','regex-tester'],'line-sorter':['alpha-sorter','duplicate-remover'],'alpha-sorter':['line-sorter','duplicate-remover'],'text-reverser':['reverse-words','reverse-lines'],'duplicate-remover':['line-sorter','alpha-sorter'],'lorem-generator':['word-counter','slug-generator'],'slug-generator':['url-encoder','case-converter'],'keyword-density':['keyword-extract','meta-gen'],'keyword-extract':['keyword-density','meta-gen'],'meta-gen':['meta-desc-gen','og-generator'],'meta-desc-gen':['meta-gen','og-generator'],'og-generator':['meta-gen','canonical-gen'],'canonical-gen':['robots-txt','sitemap-gen'],'robots-txt':['sitemap-gen','canonical-gen'],'sitemap-gen':['robots-txt','canonical-gen'],'json-formatter':['json-validator','xml-formatter'],'json-validator':['json-formatter','xml-validator'],'xml-formatter':['xml-validator','json-formatter'],'xml-validator':['xml-formatter','json-validator'],'markdown-editor':['markdown-preview','html-previewer'],'markdown-preview':['markdown-editor','html-previewer'],'html-previewer':['html-encoder','markdown-editor'],'regex-tester':['find-replace','html-encoder'],'url-encoder':['url-decoder','html-encoder'],'url-decoder':['url-encoder','html-decoder'],'html-encoder':['html-decoder','url-encoder'],'html-decoder':['html-encoder','url-decoder'],'b64-encoder':['b64-decoder','url-encoder'],'b64-decoder':['b64-encoder','html-decoder'],'hash-generator':['b64-encoder','slug-generator']};
+function rb(){var R={'word-counter':['char-counter','sentence-counter','paragraph-counter'],'char-counter':['word-counter','remove-spaces'],'sentence-counter':['word-counter','paragraph-counter'],'paragraph-counter':['word-counter','sentence-counter'],'word-frequency':['keyword-density','keyword-extract'],'case-converter':['remove-spaces','slug-generator'],'remove-spaces':['case-converter','find-replace'],'find-replace':['remove-spaces','regex-tester'],'line-sorter':['alpha-sorter','duplicate-remover'],'alpha-sorter':['line-sorter','duplicate-remover'],'text-reverser':['duplicate-remover','line-sorter'],'duplicate-remover':['line-sorter','alpha-sorter'],'lorem-generator':['word-counter','slug-generator'],'slug-generator':['url-encoder','case-converter'],'keyword-density':['keyword-extract','meta-gen'],'keyword-extract':['keyword-density','meta-gen'],'meta-gen':['meta-desc-gen','og-generator'],'meta-desc-gen':['meta-gen','og-generator'],'og-generator':['meta-gen','canonical-gen'],'canonical-gen':['robots-txt','sitemap-gen'],'robots-txt':['sitemap-gen','canonical-gen'],'sitemap-gen':['robots-txt','canonical-gen'],'json-formatter':['json-validator','xml-formatter'],'json-validator':['json-formatter','xml-validator'],'xml-formatter':['xml-validator','json-formatter'],'xml-validator':['xml-formatter','json-validator'],'markdown-editor':['markdown-preview','html-previewer'],'markdown-preview':['markdown-editor','html-previewer'],'html-previewer':['html-encoder','markdown-editor'],'regex-tester':['find-replace','html-encoder'],'url-encoder':['url-decoder','html-encoder'],'url-decoder':['url-encoder','html-decoder'],'html-encoder':['html-decoder','url-encoder'],'html-decoder':['html-encoder','url-decoder'],'b64-encoder':['b64-decoder','url-encoder'],'b64-decoder':['b64-encoder','html-decoder'],'hash-generator':['b64-encoder','slug-generator']};
 var rel=R[tid]||[];var rh='';
-rel.forEach(function(rid){var rt=App.getToolById(rid);if(rt)rh+='<a href="/tools/'+rt.id+'.html" class="related-link">'+rt.name+' &rarr;</a>';});
+rel.forEach(function(rid){var rt=App.getToolById(rid);if(rt)rh+='<a href="/tools/'+esc(rt.id)+'.html" class="related-link">'+esc(rt.name)+' &rarr;</a>';});
 document.getElementById('relatedTools').innerHTML=rh;}
 
 function ffaq(){var F={'word-counter':[{q:'How accurate is this tool?',a:'Very accurate. It uses whitespace splitting and punctuation detection for precise counts.'},{q:'Does it count numbers as words?',a:'Yes. Any whitespace-separated token counts as a word.'}],'char-counter':[{q:'With or without spaces?',a:'Both. The tool shows character counts including and excluding whitespace.'}],'case-converter':[{q:'What cases are supported?',a:'UPPERCASE, lowercase, Title Case, Sentence case, and toggleCase.'}],'json-formatter':[{q:'What if my JSON is invalid?',a:'The tool shows a detailed error message with line and position info.'},{q:'Can I format minified JSON?',a:'Yes. Paste any JSON and it will be beautified.'}],'xml-formatter':[{q:'Does it validate XML too?',a:'It validates and pretty-prints. Use XML Validator for strict validation.'}],'markdown-editor':[{q:'What Markdown syntax is supported?',a:'Full CommonMark: headings, bold, italic, lists, links, images, code blocks, tables.'},{q:'Can I export the HTML?',a:'Yes. Use the Copy or Download buttons.'}],'meta-gen':[{q:'What tags are generated?',a:'Title, description, keywords, author, OG tags, Twitter tags, and viewport.'}],'robots-txt':[{q:'What is robots.txt?',a:'A file that tells search engine crawlers which pages to crawl and which to skip.'}],'keyword-density':[{q:'How is density calculated?',a:'(keyword count / total words) x 100 = density percentage.'}],'hash-generator':[{q:'What hash algorithms?',a:'djb2 and FNV-1a. Both are fast, non-cryptographic hash functions.'}],'b64-encoder':[{q:'What is Base64?',a:'A binary-to-text encoding scheme that represents data using ASCII characters.'}]};
 var tf=F[tid]||[];var fh='';
-tf.forEach(function(f){fh+='<details class="faq-item"><summary class="faq-question">'+f.q+' <span>&#9660;</span></summary><div class="faq-answer"><p>'+f.a+'</p></div></details>';});
+tf.forEach(function(f){fh+='<details class="faq-item"><summary class="faq-question">'+esc(f.q)+' <span>&#9660;</span></summary><div class="faq-answer"><p>'+esc(f.a)+'</p></div></details>';});
 document.getElementById('toolFAQ').innerHTML=fh;}
 
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
@@ -225,7 +243,7 @@ result='<div class="stats-grid"><div class="stat-card"><div class="stat-number">
 case'paragraph-counter':
 result='<div class="stats-grid"><div class="stat-card"><div class="stat-number">'+countParagraphs(input)+'</div><div class="stat-label">Paragraphs</div></div><div class="stat-card"><div class="stat-number">'+countWords(input)+'</div><div class="stat-label">Words</div></div><div class="stat-card"><div class="stat-number">'+(countWords(input)/Math.max(countParagraphs(input),1)).toFixed(1)+'</div><div class="stat-label">Avg Words/Paragraph</div></div></div>';break;
 case'word-frequency':
-var ws=input.toLowerCase().match(/\b[a-z']+\b/g)||{};
+var ws=input.toLowerCase().match(/\b[a-z']+\b/g)||[];
 var freq={};Object.keys(ws).forEach(function(k){var w=ws[k];freq[w]=(freq[w]||0)+1;});
 var sorted=Object.keys(freq).sort(function(a,b){return freq[b]-freq[a];}).slice(0,30);
 var total=countWords(input);
@@ -249,7 +267,7 @@ break;
 case'line-sorter':case'alpha-sorter':
 var asc=document.getElementById('opt-sort').value==='asc';
 var sl=lines(input).filter(function(l){return l.trim();});
-if(tid==='alpha-sorter')sl.sort();else sl.sort();
+if(tid==='alpha-sorter')sl.sort(function(a,b){return a.localeCompare(b,'en',{sensitivity:'base'});});else sl.sort();
 if(!asc)sl.reverse();
 result=sl.join('\n');break;
 case'text-reverser':
@@ -272,7 +290,7 @@ case'slug-generator':
 result=input.toLowerCase().trim().replace(/[^\w\s-]/g,'').replace(/[\s_]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');break;
 case'keyword-density':
 case'keyword-extract':
-var wk=input.toLowerCase().match(/\b[a-z']+\b/g)||{};
+var wk=input.toLowerCase().match(/\b[a-z']+\b/g)||[];
 var f2={};Object.keys(wk).forEach(function(k){var w=wk[k];f2[w]=(f2[w]||0)+1;});
 var stopWords={'the':1,'a':1,'an':1,'and':1,'or':1,'but':1,'in':1,'on':1,'at':1,'to':1,'for':1,'of':1,'with':1,'by':1,'is':1,'was':1,'are':1,'were':1,'been':1,'be':1,'have':1,'has':1,'had':1,'do':1,'does':1,'did':1,'will':1,'would':1,'could':1,'should':1,'may':1,'might':1,'shall':1,'can':1,'this':1,'that':1,'these':1,'those':1,'it':1,'its':1,'from':1,'as':1,'if':1,'than':1,'not':1,'no':1,'so':1,'up':1,'out':1,'about':1,'into':1,'over':1,'after':1,'all':1,'also':1,'how':1,'many':1,'some':1,'then':1,'more':1,'very':1,'just':1,'now':1};
 var totalW=countWords(input);
@@ -299,10 +317,19 @@ meta+='<span class="hl-tag">&lt;meta</span> <span class="hl-attr">property</span
 meta+='<span class="hl-tag">&lt;meta</span> <span class="hl-attr">name</span>=<span class="hl-str">"twitter:card"</span> <span class="hl-attr">content</span>=<span class="hl-str">"summary_large_image"</span><span class="hl-tag">&gt;</span>';
 result='<div class="code-block"><pre>'+meta+'</pre></div>';break;
 case'meta-desc-gen':
-var kw2=document.getElementById('opt-dk')?document.getElementById('opt-dk').value:'';
-var words=input.trim().split(/\s+/).slice(0,40).join(' ');
-var desc=words+(words.length>=150?'...':'');
-result='<div class="output-content"><p><strong>Meta Description:</strong></p><p>'+esc(desc)+'</p><p style="font-size:.8rem;color:var(--text-2)">Length: '+desc.length+' characters (recommended: 150-160)</p></div>';break;
+var kw2=document.getElementById('opt-dk')?document.getElementById('opt-dk').value.trim():'';
+var sentences=input.replace(/\s+/g,' ').split(/[.!?]+/).filter(function(s){return s.trim().length>10;});
+var desc='';
+if(kw2){
+  var kwLower=kw2.toLowerCase();
+  var kwSentence=sentences.find(function(s){return s.toLowerCase().indexOf(kwLower)!==-1;});
+  if(kwSentence)desc=kwSentence.trim();
+}
+if(!desc&&sentences.length>0)desc=sentences[0].trim();
+if(desc.length>155)desc=desc.substring(0,152).replace(/\s+\S*$/,'')+'...';
+if(kw2&&desc.toLowerCase().indexOf(kw2.toLowerCase())===-1)desc=kw2+' - '+desc;
+if(desc.length>160)desc=desc.substring(0,157).replace(/\s+\S*$/,'')+'...';
+result='<div class="output-content"><p><strong>Meta Description:</strong></p><p>'+esc(desc)+'</p><p style="font-size:.8rem;color:var(--text-2)">Length: '+desc.length+' characters (recommended: 150-160)</p>'+(kw2?'<p style="font-size:.8rem;color:var(--text-2)">Target keyword: '+esc(kw2)+'</p>':'')+'</div>';break;
 case'og-generator':
 var ot=document.getElementById('opt-ot').value;
 var od=document.getElementById('opt-od').value;
@@ -364,16 +391,16 @@ result=xstack.length===0?'<p style="color:var(--success)">&#10003; Valid XML</p>
 break;
 case'markdown-editor':
 var mdLib=window.marked;
-if(mdLib&&mdLib.parse){result='<div class="output-content" style="padding:1rem">'+mdLib.parse(input)+'</div>';}
+if(mdLib&&mdLib.parse){result='<div class="output-content" style="padding:1rem">'+esc(mdLib.parse(input))+'</div>';}
 else{result='<div class="output-content"><pre>'+esc(input)+'</pre></div>';}
 break;
 case'markdown-preview':
 var mdLib2=window.marked;
-if(mdLib2&&mdLib2.parse){result='<div class="output-content" style="padding:1rem">'+mdLib2.parse(input)+'</div>';}
+if(mdLib2&&mdLib2.parse){result='<div class="output-content" style="padding:1rem">'+esc(mdLib2.parse(input))+'</div>';}
 else{result='<div class="output-content"><pre>'+esc(input)+'</pre></div>';}
 break;
 case'html-previewer':
-result='<div class="output-content" style="padding:0"><iframe srcdoc="'+esc(input)+'" style="width:100%;min-height:400px;border:1px solid var(--border);border-radius:var(--radius)"></iframe></div>';break;
+result='<div class="output-content" style="padding:0"><iframe srcdoc="'+esc(input)+'" sandbox="allow-scripts" style="width:100%;min-height:400px;border:1px solid var(--border);border-radius:var(--radius)"></iframe></div>';break;
 case'regex-tester':
 var rp=document.getElementById('opt-rp2').value;
 var rf=document.getElementById('opt-rf').value;
@@ -383,8 +410,8 @@ var rre=new RegExp(rp,rf);
 var matches=[];
 var rm;
 while((rm=rre.exec(input))!==null){matches.push({match:rm[0],index:rm.index,length:rm[0].length});if(!rf.includes('g'))break;}
-var highlighted=input;
-matches.slice().reverse().forEach(function(m){highlighted=highlighted.substring(0,m.index)+'<mark style="background:rgba(108,60,224,0.15);color:var(--accent);padding:2px 4px;border-radius:4px">'+esc(m.match)+'</mark>'+highlighted.substring(m.index+m.length);});
+var highlighted=esc(input);
+matches.slice().reverse().forEach(function(m){var idx=highlighted.indexOf(esc(m.match),0);if(idx===-1)idx=highlighted.indexOf(esc(m.match).substring(0,20),0);if(idx!==-1){var end=idx+esc(m.match).length;highlighted=highlighted.substring(0,idx)+'<mark style="background:rgba(108,60,224,0.15);color:var(--accent);padding:2px 4px;border-radius:4px">'+esc(m.match)+'</mark>'+highlighted.substring(end);}});
 result='<div class="output-content"><div style="padding:1rem;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:.5rem">'+highlighted+'</div><p style="font-size:.8rem;color:var(--text-2)">'+matches.length+' match(es) found</p></div>';
 }catch(e){result='<p style="color:var(--accent)">Regex Error: '+esc(e.message)+'</p>';}
 break;
@@ -417,21 +444,21 @@ result+='</div>';break;
 default:
 result='<p style="color:var(--text-2)">Processing not available for this tool.</p>';
 }
-if(typeof result==='string')out.innerHTML='<div class="output-content">'+result+'</div>';
+if(typeof result==='string')out.innerHTML=result;
 }catch(err){out.innerHTML='<p style="color:var(--danger)">Error: '+esc(err.message)+'</p>';}
 };
 
 window.clearTool=function(){document.getElementById('tool-input').value='';document.getElementById('tool-output').innerHTML='';};
 window.copyOutput=function(){var t=document.getElementById('tool-output').innerText;if(!t){App.toast('Nothing to copy');return;}navigator.clipboard.writeText(t).then(function(){App.toast('Copied!');}).catch(function(){App.toast('Failed');});};
-window.downloadResult=function(){var t=document.getElementById('tool-output').innerText;if(!t){App.toast('Nothing to download');return;}var ext={json:'json',xml:'xml',markdown:'md',html:'html',regex:'txt'}[tid]||'txt';
-var blob=new Blob([t],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=tid+'-output.'+ext;a.click();URL.revokeObjectURL(a.href);};
+window.downloadResult=function(){var t=document.getElementById('tool-output').innerText;if(!t){App.toast('Nothing to download');return;}var ext={json:'json',xml:'xml',markdown:'md',html:'html',regex:'txt',css:'css',csv:'csv'}[tid]||'txt';
+var blob=new Blob([t],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=tid+'-output.'+ext;a.click();setTimeout(function(){URL.revokeObjectURL(a.href);},1000);};
 
 ga();rb();ffaq();
 
 if(tid==='markdown-editor'){
 var input=document.getElementById('tool-input');
 var output=document.getElementById('tool-output');
-function preview(){if(window.marked&&window.marked.parse){output.innerHTML='<div class="output-content" style="padding:1rem">'+window.marked.parse(input.value)+'</div>';}}
+function preview(){if(window.marked&&window.marked.parse){output.innerHTML='<div class="output-content" style="padding:1rem">'+esc(window.marked.parse(input.value))+'</div>';}}
 input.addEventListener('input',preview);preview();
 }
 })();

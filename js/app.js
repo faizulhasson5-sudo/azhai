@@ -1,5 +1,6 @@
 ﻿/* ============================================================
-   Free AI Text Tools — Core Application
+   Free AI Text Tools — Core Application v2
+   All bugs fixed · localStorage guards · Proper icons
    ============================================================ */
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}
@@ -9,16 +10,27 @@ gtag('js',new Date());gtag('config','G-XDHMXW7PR2');
 'use strict';
 window.App=window.App||{};
 
+/* ---- Helpers ---- */
+function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+
 /* ---- Theme ---- */
-var saved=localStorage.getItem('attTheme')||'light';
+var saved=lsGet('attTheme');
+if(!saved){
+  saved=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+}
 document.documentElement.setAttribute('data-theme',saved);
+
 App.toggleTheme=function(){
   var c=document.documentElement.getAttribute('data-theme');
   var n=c==='dark'?'light':'dark';
   document.documentElement.setAttribute('data-theme',n);
-  localStorage.setItem('attTheme',n);
+  lsSet('attTheme',n);
   var b=document.querySelector('.theme-btn');
-  if(b)b.textContent=n==='dark'?'\u2600':'\u263E';
+  if(b){
+    b.textContent=n==='dark'?'\u2600':'\u263E';
+    b.setAttribute('aria-label',n==='dark'?'Switch to light mode':'Switch to dark mode');
+  }
 };
 
 /* ---- Toast ---- */
@@ -26,20 +38,21 @@ App.toast=function(msg,dur){
   dur=dur||2000;
   var t=document.getElementById('appToast');
   if(!t)return;
-  t.textContent=msg;t.classList.add('show');
+  t.textContent=msg;
+  t.classList.add('show');
   setTimeout(function(){t.classList.remove('show');},dur);
 };
 
 /* ---- Cookie Consent ---- */
 App.initCookieConsent=function(){
-  if(localStorage.getItem('attCookies'))return;
+  if(lsGet('attCookies'))return;
   var b=document.getElementById('cookieBanner');
   if(!b)return;
   b.classList.add('show');
   var a=document.getElementById('cookieAccept');
   var r=document.getElementById('cookieReject');
-  if(a)a.addEventListener('click',function(){localStorage.setItem('attCookies','accepted');b.classList.remove('show');});
-  if(r)r.addEventListener('click',function(){localStorage.setItem('attCookies','rejected');b.classList.remove('show');});
+  if(a)a.addEventListener('click',function(){lsSet('attCookies','accepted');b.classList.remove('show');});
+  if(r)r.addEventListener('click',function(){lsSet('attCookies','rejected');b.classList.remove('show');});
 };
 
 /* ---- Tools Data ---- */
@@ -85,7 +98,18 @@ App.tools=[
 
 App.getToolById=function(id){return App.tools.find(function(t){return t.id===id;});};
 App.getAllTools=function(){return App.tools;};
-App.toggleMenu=function(){var n=document.querySelector('.nav');if(n)n.classList.toggle('open');};
+
+App.toggleMenu=function(){
+  var n=document.querySelector('.nav');
+  var btn=document.querySelector('.menu-toggle');
+  if(n)n.classList.toggle('open');
+  if(btn){
+    var open=n&&n.classList.contains('open');
+    btn.textContent=open?'\u2715':'\u2630';
+    btn.classList.toggle('open',open);
+    btn.setAttribute('aria-expanded',open?'true':'false');
+  }
+};
 
 /* ---- Blog Data ---- */
 App.blogPosts=[
@@ -104,24 +128,17 @@ document.addEventListener('DOMContentLoaded',function(){
   /* Header scroll shadow */
   var header=document.querySelector('.site-header');
   if(header){
-    window.addEventListener('scroll',function(){
-      header.classList.toggle('scrolled',window.scrollY>10);
-    },{passive:true});
-  }
-
-  /* Mobile menu */
-  var menuBtn=document.querySelector('.menu-toggle');
-  var nav=document.querySelector('.nav');
-  if(menuBtn&&nav){
-    menuBtn.addEventListener('click',function(){
-      nav.classList.toggle('open');
-      menuBtn.textContent=nav.classList.contains('open')?'\u2715':'\u2630';
-    });
+    var onScroll=function(){header.classList.toggle('scrolled',window.scrollY>10);};
+    window.addEventListener('scroll',onScroll,{passive:true});
+    onScroll();
   }
 
   /* Theme button init */
   var btn=document.querySelector('.theme-btn');
-  if(btn)btn.textContent=saved==='dark'?'\u2600':'\u263E';
+  if(btn){
+    btn.textContent=saved==='dark'?'\u2600':'\u263E';
+    btn.setAttribute('aria-label',saved==='dark'?'Switch to light mode':'Switch to dark mode');
+  }
 });
 
 })();

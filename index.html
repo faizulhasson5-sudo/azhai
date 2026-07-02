@@ -170,7 +170,55 @@
       </details>
     </section>
 
+    <!-- Contact -->
+    <section class="contact-section reveal" aria-labelledby="contact-heading" style="text-align:center;padding:60px 0 20px">
+      <h2 id="contact-heading">Get in Touch</h2>
+      <p class="section-sub">Have questions, feedback, or partnership inquiries? We'd love to hear from you.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px">
+        <button type="button" class="btn btn-primary" onclick="document.getElementById('modal-email').style.display='flex'">&#9993; Email Us</button>
+        <button type="button" class="btn btn-secondary" onclick="document.getElementById('modal-bug').style.display='flex'">&#128027; Report a Bug</button>
+        <button type="button" class="btn btn-secondary" onclick="document.getElementById('modal-partner').style.display='flex'">&#129309; Partnerships</button>
+      </div>
+    </section>
+
   </main>
+
+  <!-- Email Modal -->
+  <div id="modal-email" class="modal-overlay" onclick="if(event.target===this)this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;padding:20px">
+    <div style="background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);padding:32px;max-width:420px;width:100%;position:relative">
+      <button type="button" onclick="document.getElementById('modal-email').style.display='none'" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--text-3)">&#10005;</button>
+      <h3 style="margin-bottom:12px;color:var(--text)">&#9993; Email Us</h3>
+      <p style="font-size:.9rem;color:var(--text-2);margin-bottom:16px">For general inquiries, reach us at:</p>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <a href="mailto:faizulhasson5@gmail.com" style="font-size:.95rem;color:var(--accent);font-weight:600;text-decoration:none;word-break:break-all">faizulhasson5@gmail.com</a>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="navigator.clipboard.writeText('faizulhasson5@gmail.com');App.toast('Copied!')">Copy</button>
+      </div>
+      <p style="font-size:.8rem;color:var(--text-3);margin-top:12px">We typically respond within 48 hours during business days.</p>
+    </div>
+  </div>
+
+  <!-- Bug Report Modal -->
+  <div id="modal-bug" class="modal-overlay" onclick="if(event.target===this)this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;padding:20px">
+    <div style="background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);padding:32px;max-width:420px;width:100%;position:relative">
+      <button type="button" onclick="document.getElementById('modal-bug').style.display='none'" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--text-3)">&#10005;</button>
+      <h3 style="margin-bottom:12px;color:var(--text)">&#128027; Report a Bug</h3>
+      <p style="font-size:.9rem;color:var(--text-2);margin-bottom:16px">Found a bug or have a feature request? Open an issue on our GitHub repository.</p>
+      <a href="https://github.com/faizulhasson5-sudo/azhai/issues" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-block;text-decoration:none">Open GitHub Issue &#8599;</a>
+    </div>
+  </div>
+
+  <!-- Partnership Modal -->
+  <div id="modal-partner" class="modal-overlay" onclick="if(event.target===this)this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;padding:20px">
+    <div style="background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);padding:32px;max-width:420px;width:100%;position:relative">
+      <button type="button" onclick="document.getElementById('modal-partner').style.display='none'" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--text-3)">&#10005;</button>
+      <h3 style="margin-bottom:12px;color:var(--text)">&#129309; Partnerships</h3>
+      <p style="font-size:.9rem;color:var(--text-2);margin-bottom:16px">Interested in advertising or partnerships? Visit our Advertise page for details, or email us directly.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="/advertise.html" class="btn btn-primary" style="text-decoration:none">Advertise Page</a>
+        <a href="mailto:faizulhasson5@gmail.com" class="btn btn-secondary" style="text-decoration:none">Email Us</a>
+      </div>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <div class="container">

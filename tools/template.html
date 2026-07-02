@@ -495,7 +495,7 @@ if(typeof result==='string')out.innerHTML=result;
 window.clearTool=function(){document.getElementById('tool-input').value='';document.getElementById('tool-output').innerHTML='';};
 window.copyOutput=function(){var t=document.getElementById('tool-output').innerText;if(!t){App.toast('Nothing to copy');return;}navigator.clipboard.writeText(t).then(function(){App.toast('Copied!');}).catch(function(){App.toast('Failed');});};
 window.downloadResult=function(){var t=document.getElementById('tool-output').innerText;if(!t){App.toast('Nothing to download');return;}var ext={'json-formatter':'json','json-validator':'json','xml-formatter':'xml','xml-validator':'xml','markdown-editor':'md','markdown-preview':'md','html-previewer':'html','regex-tester':'txt','hash-generator':'txt','b64-encoder':'txt','b64-decoder':'txt','url-encoder':'txt','url-decoder':'txt','html-encoder':'html','html-decoder':'html','css':'css','csv':'csv'}[tid]||'txt';
-var blob=new Blob([t],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=tid+'-output.'+ext;a.click();setTimeout(function(){URL.revokeObjectURL(a.href);},1000);};
+var blob=new Blob([t],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=tid+'-output.'+ext;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(a.href);},1000);};
 
 ga();rb();ffaq();
 

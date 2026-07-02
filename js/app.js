@@ -81,12 +81,12 @@ App.initCookieConsent=function(){
 
 /* ---- Category Icons (SVG) ---- */
 App.icons={
-  counters:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>',
-  text:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/><path d="M12 18h.01"/></svg>',
-  converters:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>',
-  cleaners:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 18 8-8"/><path d="m6 6 8 8"/><circle cx="12" cy="12" r="10"/></svg>',
-  seo:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="m11 8-2 6h4l-2 6"/></svg>',
-  code:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>'
+  counters:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>',
+  text:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/><path d="M12 18h.01"/></svg>',
+  converters:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>',
+  cleaners:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 18 8-8"/><path d="m6 6 8 8"/><circle cx="12" cy="12" r="10"/></svg>',
+  seo:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="m11 8-2 6h4l-2 6"/></svg>',
+  code:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>'
 };
 App.catLabels={counters:'Counters',text:'Text',converters:'Converters',cleaners:'Cleaners',seo:'SEO',code:'Code'};
 
@@ -97,6 +97,7 @@ App.getFavorites=function(){
   try{return JSON.parse(lsGet('attFavs')||'[]');}catch(e){return [];}
 };
 App.toggleFav=function(id){
+  if(!id)return false;
   var favs=App.getFavorites();
   var idx=favs.indexOf(id);
   if(idx===-1){favs.push(id);App.toast('Added to favorites');}
@@ -186,7 +187,6 @@ App.initOffline=function(){
 App.initFeedback=function(){
   var fab=document.getElementById('feedbackFab');
   var overlay=document.getElementById('feedbackOverlay');
-  var modal=document.getElementById('feedbackModal');
   if(!fab||!overlay)return;
 
   var type='bug';
@@ -199,8 +199,12 @@ App.initFeedback=function(){
     });
   });
 
-  fab.addEventListener('click',function(){overlay.classList.add('open');});
-  overlay.addEventListener('click',function(e){if(e.target===overlay)overlay.classList.remove('open');});
+  function openModal(){overlay.classList.add('open');var firstInput=overlay.querySelector('textarea');if(firstInput)firstInput.focus();}
+  function closeModal(){overlay.classList.remove('open');}
+
+  fab.addEventListener('click',openModal);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeModal();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&overlay.classList.contains('open'))closeModal();});
 
   var submitBtn=document.getElementById('feedbackSubmit');
   if(submitBtn){
@@ -213,7 +217,7 @@ App.initFeedback=function(){
       var queue=App.getFeedbackQueue();
       queue.push(entry);
       lsSet('attFeedback',JSON.stringify(queue));
-      overlay.classList.remove('open');
+      closeModal();
       if(msg)msg.value='';
       if(email)email.value='';
       App.toast('Thank you! Feedback submitted.');
@@ -221,7 +225,7 @@ App.initFeedback=function(){
   }
 
   var closeBtn=document.getElementById('feedbackClose');
-  if(closeBtn)closeBtn.addEventListener('click',function(){overlay.classList.remove('open');});
+  if(closeBtn)closeBtn.addEventListener('click',closeModal);
 };
 App.getFeedbackQueue=function(){
   try{return JSON.parse(lsGet('attFeedback')||'[]');}catch(e){return [];}

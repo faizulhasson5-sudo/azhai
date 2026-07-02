@@ -51,7 +51,7 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Free AI Text Tools",
-    "url": "https://azhai-six.vercel.app",
+    "url": "https://azhai-six.vercel.app/",
     "logo": "https://azhai-six.vercel.app/og-image.png",
     "description": "37+ free online text tools for writers, developers, and SEO professionals."
   }
@@ -79,6 +79,7 @@
   </header>
 
   <main id="main-content">
+    <noscript><div style="text-align:center;padding:40px;color:var(--text-2)">Please enable JavaScript to use this site.</div></noscript>
 
     <!-- HERO -->
     <section class="hero">
@@ -99,7 +100,7 @@
       <div class="stat"><div class="stat-num" data-count="37">0</div><div class="stat-label">Free Tools</div></div>
       <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Client-Side</div></div>
       <div class="stat"><div class="stat-num">0</div><div class="stat-label">Sign-Ups</div></div>
-      <div class="stat"><div class="stat-num">8</div><div class="stat-label">Usage</div></div>
+      <div class="stat"><div class="stat-num">6</div><div class="stat-label">Blog Posts</div></div>
     </section>
 
     <!-- Favorites -->
@@ -120,7 +121,7 @@
           <p>Count words, sort text, change case, remove duplicates � all in your browser.</p>
         </div>
       </div>
-      <div class="tool-grid" id="textTools"></div>
+      <div class="tool-grid" id="textTools"><noscript><p style="color:var(--text-3);padding:20px">Enable JavaScript to see tools.</p></noscript></div>
     </section>
 
     <!-- Converters -->
@@ -329,6 +330,7 @@
         fh+='<span class="card-cat">'+esc(t.cat)+'</span>';
         fh+='<h3>'+esc(t.name)+'</h3>';
         fh+='<p>'+esc(t.desc)+'</p>';
+        fh+='<span class="card-arrow">\u2192</span>';
         fh+='</a>';
       });
       grid.innerHTML=fh;

@@ -57,12 +57,15 @@ self.addEventListener('fetch', function(event) {
     event.respondWith(
       fetch(event.request).then(function(response) {
         var clone = response.clone();
-        caches.open(CACHE_NAME).then(function(cache) {
-          cache.put(event.request, clone);
+        return caches.open(CACHE_NAME).then(function(cache) {
+          return cache.put(event.request, clone);
+        }).then(function() {
+          return response;
         });
-        return response;
       }).catch(function() {
-        return caches.match(event.request);
+        return caches.match(event.request).then(function(cached) {
+          return cached || new Response('<!DOCTYPE html><html><head><title>Offline</title></head><body><h1>You are offline</h1><p>Please check your internet connection and try again.</p></body></html>', {headers: {'Content-Type': 'text/html'}});
+        });
       })
     );
     return;
@@ -75,8 +78,10 @@ self.addEventListener('fetch', function(event) {
       return fetch(event.request).then(function(response) {
         if (response.ok) {
           var clone = response.clone();
-          caches.open(CACHE_NAME).then(function(cache) {
-            cache.put(event.request, clone);
+          return caches.open(CACHE_NAME).then(function(cache) {
+            return cache.put(event.request, clone);
+          }).then(function() {
+            return response;
           });
         }
         return response;

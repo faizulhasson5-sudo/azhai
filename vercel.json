@@ -1,4 +1,8 @@
 {
+  "framework": null,
+  "buildCommand": "node build.js && node build-blog.js",
+  "outputDirectory": ".",
+  "installCommand": "npm install",
   "headers": [
     {
       "source": "/(.*)",

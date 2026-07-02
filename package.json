@@ -7,5 +7,7 @@
     "build:tools": "node build.js",
     "build:blog": "node build-blog.js"
   },
-  "private": true
+  "private": true,
+  "buildCommand": "node build.js && node build-blog.js",
+  "outputDirectory": "."
 }

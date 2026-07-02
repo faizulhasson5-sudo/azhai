@@ -2,5 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /build.js
 Disallow: /build-blog.js
+Disallow: /tools/template.html
+Disallow: /blog/template.html
 
 Sitemap: https://azhai-six.vercel.app/sitemap.xml

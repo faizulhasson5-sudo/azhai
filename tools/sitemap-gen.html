@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
@@ -11,6 +11,9 @@
 <meta property="og:title" id="og-title" content="Sitemap Generator - Create XML Sitemap">
 <meta property="og:description" id="og-desc" content="Generate XML sitemaps for search engine indexing. Free online sitemap generator.">
 <meta property="og:url" id="og-url" content="https://azhai-six.vercel.app/tools/sitemap-gen.html">
+<meta property="og:site_name" content="Free AI Text Tools">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Free AI Text Tools Blog" href="/blog/feed.xml">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://azhai-six.vercel.app/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -32,15 +35,15 @@
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <header class="site-header">
 <div class="header-inner">
-<a href="/" class="site-logo"><span class="logo-mark">⚡</span> Free AI Text Tools</a>
+<a href="/" class="site-logo"><span class="logo-mark">?</span> Free AI Text Tools</a>
 <nav class="nav">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link active">Tools</a>
 <a href="/blog/" class="nav-link">Blog</a>
 <a href="/tools/" class="nav-cta">All 37 Tools</a>
-<button class="theme-btn" onclick="App.toggleTheme()" aria-label="Toggle theme">&#9789;</button>
+<button type="button" class="theme-btn" onclick="App.toggleTheme()" aria-label="Toggle theme">&#9789;</button>
 </nav>
-<button class="menu-toggle" aria-label="Menu" onclick="App.toggleMenu()">&#9776;</button>
+<button type="button" class="menu-toggle" aria-label="Menu" onclick="App.toggleMenu()">&#9776;</button>
 </div>
 </header>
 <main id="main-content">
@@ -56,10 +59,10 @@
 <div class="tool-options" id="toolOptions"></div>
 <textarea class="tool-textarea" id="tool-input" placeholder="Paste or type your text here..."></textarea>
 <div class="action-bar">
-<button class="btn btn-primary" onclick="processCurrentTool()">&#9654; Process</button>
-<button class="btn btn-secondary btn-sm" onclick="clearTool()">Clear</button>
-<button class="btn btn-secondary btn-sm" onclick="copyOutput()">Copy</button>
-<button class="btn btn-secondary btn-sm" onclick="downloadResult()">Download</button>
+<button type="button" class="btn btn-primary" onclick="processCurrentTool()">&#9654; Process</button>
+<button type="button" class="btn btn-secondary btn-sm" onclick="clearTool()">Clear</button>
+<button type="button" class="btn btn-secondary btn-sm" onclick="copyOutput()">Copy</button>
+<button type="button" class="btn btn-secondary btn-sm" onclick="downloadResult()">Download</button>
 </div>
 <div class="tool-output" id="tool-output"></div>
 </div>
@@ -85,7 +88,7 @@
 <div class="container">
 <div class="footer-grid">
 <div class="footer-col">
-<a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">⚡</span> Free AI Text Tools</a>
+<a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">?</span> Free AI Text Tools</a>
 <p style="font-size:13px;color:var(--text-3)">37+ free online text tools. No sign-up needed. Your data stays in your browser.</p>
 </div>
 <div class="footer-col">
@@ -122,10 +125,10 @@
 </div>
 </footer>
 <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent">
-<p>🍪 We use cookies for ads &amp; analytics. <a href="/cookie-policy.html">Learn more</a></p>
+<p>?? We use cookies for analytics &amp; preferences. <a href="/cookie-policy.html">Learn more</a></p>
 <div class="btn-group">
-<button class="btn btn-primary btn-sm" id="cookieAccept">Accept</button>
-<button class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button>
+<button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button>
+<button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button>
 </div>
 </div>
 <div class="toast" id="appToast"></div>
@@ -158,7 +161,7 @@ var tf=F[tid]||[];var fh='';
 tf.forEach(function(f){fh+='<details class="faq-item"><summary class="faq-question">'+esc(f.q)+' <span>&#9660;</span></summary><div class="faq-answer"><p>'+esc(f.a)+'</p></div></details>';});
 document.getElementById('toolFAQ').innerHTML=fh;}
 
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function fmtSz(n){if(n<1024)return n+' B';if(n<1048576)return(n/1024).toFixed(1)+' KB';return(n/1048576).toFixed(1)+' MB';}
 function countWords(t){return t.trim()?t.trim().split(/\s+/).length:0;}
 function countChars(t){return t.length;}
@@ -391,12 +394,12 @@ result=xstack.length===0?'<p style="color:var(--success)">&#10003; Valid XML</p>
 break;
 case'markdown-editor':
 var mdLib=window.marked;
-if(mdLib&&mdLib.parse){result='<div class="output-content" style="padding:1rem">'+esc(mdLib.parse(input))+'</div>';}
+if(mdLib&&mdLib.parse){result='<div class="output-content" style="padding:1rem">'+mdLib.parse(input)+'</div>';}
 else{result='<div class="output-content"><pre>'+esc(input)+'</pre></div>';}
 break;
 case'markdown-preview':
 var mdLib2=window.marked;
-if(mdLib2&&mdLib2.parse){result='<div class="output-content" style="padding:1rem">'+esc(mdLib2.parse(input))+'</div>';}
+if(mdLib2&&mdLib2.parse){result='<div class="output-content" style="padding:1rem">'+mdLib2.parse(input)+'</div>';}
 else{result='<div class="output-content"><pre>'+esc(input)+'</pre></div>';}
 break;
 case'html-previewer':
@@ -458,7 +461,7 @@ ga();rb();ffaq();
 if(tid==='markdown-editor'){
 var input=document.getElementById('tool-input');
 var output=document.getElementById('tool-output');
-function preview(){if(window.marked&&window.marked.parse){output.innerHTML='<div class="output-content" style="padding:1rem">'+esc(window.marked.parse(input.value))+'</div>';}}
+function preview(){if(window.marked&&window.marked.parse){output.innerHTML='<div class="output-content" style="padding:1rem">'+window.marked.parse(input.value)+'</div>';}}
 input.addEventListener('input',preview);preview();
 }
 })();

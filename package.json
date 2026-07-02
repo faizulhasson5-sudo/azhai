@@ -1,0 +1,11 @@
+{
+  "name": "free-ai-text-tools",
+  "version": "1.0.0",
+  "description": "37+ free online text tools for writers, developers, and SEO professionals",
+  "scripts": {
+    "build": "node build.js && node build-blog.js",
+    "build:tools": "node build.js",
+    "build:blog": "node build-blog.js"
+  },
+  "private": true
+}

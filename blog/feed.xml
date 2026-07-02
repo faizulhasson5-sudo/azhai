@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>Free AI Text Tools Blog</title>
+<link>https://azhai-six.vercel.app/blog/</link>
+<description>Guides, tutorials, and tips for using free online text tools.</description>
+<language>en</language>
+<atom:link href="https://azhai-six.vercel.app/blog/feed.xml" rel="self" type="application/rss+xml"/>
+<item>
+  <title>The Ultimate Guide to Free SEO Text Tools in 2026</title>
+  <link>https://azhai-six.vercel.app/blog/ultimate-guide-seo-text-tools.html</link>
+  <pubDate>Fri, 20 Jun 2026 00:00:00 GMT</pubDate>
+  <description>Discover how free online SEO tools can boost your content strategy, improve rankings, and save hours of manual work.</description>
+</item>
+<item>
+  <title>How to Write Perfect Meta Descriptions That Get Clicks</title>
+  <link>https://azhai-six.vercel.app/blog/how-to-write-perfect-meta-descriptions.html</link>
+  <pubDate>Wed, 18 Jun 2026 00:00:00 GMT</pubDate>
+  <description>Learn the art of crafting compelling meta descriptions that improve CTR and boost your search rankings.</description>
+</item>
+<item>
+  <title>JSON Formatting Best Practices for Developers</title>
+  <link>https://azhai-six.vercel.app/blog/json-formatting-best-practices.html</link>
+  <pubDate>Sun, 15 Jun 2026 00:00:00 GMT</pubDate>
+  <description>Master JSON formatting, validation, and optimization with practical examples and free online tools.</description>
+</item>
+<item>
+  <title>Markdown for Bloggers: A Complete Beginner Guide</title>
+  <link>https://azhai-six.vercel.app/blog/markdown-for-bloggers.html</link>
+  <pubDate>Thu, 12 Jun 2026 00:00:00 GMT</pubDate>
+  <description>Learn how to write beautiful blog posts using Markdown syntax with our live preview editor.</description>
+</item>
+<item>
+  <title>Understanding Canonical Tags: The Complete SEO Guide</title>
+  <link>https://azhai-six.vercel.app/blog/understanding-canonical-tags-seo.html</link>
+  <pubDate>Tue, 10 Jun 2026 00:00:00 GMT</pubDate>
+  <description>Learn how canonical tags prevent duplicate content issues and consolidate your SEO ranking signals.</description>
+</item>
+<item>
+  <title>Open Graph Tags: Get Perfect Social Media Previews</title>
+  <link>https://azhai-six.vercel.app/blog/open-graph-tags-social-media.html</link>
+  <pubDate>Sun, 08 Jun 2026 00:00:00 GMT</pubDate>
+  <description>Master Open Graph meta tags to ensure your content looks amazing when shared on social media.</description>
+</item>
+</channel>
+</rss>

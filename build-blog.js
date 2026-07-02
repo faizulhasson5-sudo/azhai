@@ -45,6 +45,9 @@ posts.forEach(post => {
         '<meta name="twitter:title" id="tw-title" content="'+esc(post.title)+'">');
     html = html.replace('<meta name="twitter:description" id="tw-desc" content="">',
         '<meta name="twitter:description" id="tw-desc" content="'+esc(post.desc)+'">');
+    html = html.replace(/<meta property="og:image" content="[^"]*">/,'<meta property="og:image" content="https://azhai-six.vercel.app'+post.image+'">');
+    html = html.replace(/<meta name="twitter:image" content="[^"]*">/,'<meta name="twitter:image" content="https://azhai-six.vercel.app'+post.image+'">');
+    html = html.replace('</head>','<meta property="article:published_time" content="'+post.date+'">\n<meta property="article:section" content="'+post.category+'">\n</head>');
 
     html = html.replace(/id="blogTitle">[^<]*/,'id="blogTitle">'+esc(post.title));
     html = html.replace(/id="blogDate">[^<]*/,'id="blogDate">'+esc(post.date));

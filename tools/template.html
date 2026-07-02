@@ -22,6 +22,10 @@
 <meta name="twitter:image" content="https://azhai-six.vercel.app/og-image.png">
 <meta name="theme-color" content="#c2410c">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script id="schema-webapp" type="application/ld+json"></script>
+<script id="schema-faq" type="application/ld+json"></script>
 <script>
 (function(){
   try {
@@ -82,6 +86,15 @@
 </div>
 </aside>
 </div>
+<!-- Expanded Content Section -->
+<div class="tool-content-section" id="toolContentSection">
+<h2 id="guideTitle">How to Use This Tool</h2>
+<div id="toolGuide"></div>
+<h3>Use Cases</h3>
+<div class="use-case-grid" id="toolUseCases"></div>
+<h3>Tips &amp; Tricks</h3>
+<div id="toolTips"></div>
+</div>
 </div>
 </main>
 <footer class="site-footer">
@@ -132,6 +145,30 @@
 </div>
 </div>
 <div class="toast" id="appToast"></div>
+<div class="offline-banner" id="offlineBanner" role="alert">You are currently offline. Some features may be unavailable.</div>
+<button type="button" class="feedback-fab" id="feedbackFab" aria-label="Send feedback" title="Send feedback">💬</button>
+<div class="feedback-overlay" id="feedbackOverlay">
+<div class="feedback-modal" id="feedbackModal">
+<h2>Send Feedback</h2>
+<p>Report a bug or request a new feature.</p>
+<div class="feedback-type-toggle">
+<button type="button" class="feedback-type-btn active" data-type="bug">🐛 Bug Report</button>
+<button type="button" class="feedback-type-btn" data-type="feature">✨ Feature Request</button>
+</div>
+<div class="feedback-field">
+<label for="feedbackMessage">Message *</label>
+<textarea id="feedbackMessage" placeholder="Describe the issue or your idea..." required></textarea>
+</div>
+<div class="feedback-field">
+<label for="feedbackEmail">Email (optional)</label>
+<input type="email" id="feedbackEmail" placeholder="your@email.com">
+</div>
+<div class="feedback-actions">
+<button type="button" class="btn btn-secondary btn-sm" id="feedbackClose">Cancel</button>
+<button type="button" class="btn btn-primary btn-sm" id="feedbackSubmit">Submit</button>
+</div>
+</div>
+</div>
 <script src="/js/app.js"></script>
 <script>
 (function(){
@@ -460,6 +497,81 @@ window.downloadResult=function(){var t=document.getElementById('tool-output').in
 var blob=new Blob([t],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=tid+'-output.'+ext;a.click();setTimeout(function(){URL.revokeObjectURL(a.href);},1000);};
 
 ga();rb();ffaq();
+
+/* ---- Expanded Content (Phase 4) ---- */
+var GUIDES={
+'word-counter':{steps:[{t:'Paste or type your text',d:'Enter your text in the textarea above.'},{t:'Click Process',d:'The tool instantly counts words, characters, lines, and paragraphs.'},{t:'Review the results',d:'See detailed statistics including word count, character count, and more.'}],use:[{t:'Academic Writing',d:'Check essay word counts before submission.'},{t:'Content Marketing',d:'Ensure blog posts meet length requirements.'},{t:'Social Media',d:'Stay within character limits for tweets and posts.']}  ,tips:[{t:'Tip: Real-time counting',d:'Results update as you type — no need to click Process repeatedly.'},{t:'Tip: Copy for sharing',d:'Use the Copy button to grab stats for reports or client updates.']},
+'char-counter':{steps:[{t:'Enter your text',d:'Type or paste content into the textarea.'},{t:'View character counts',d:'See counts with and without spaces instantly.'},{t:'Check byte size',d:'The tool shows approximate byte size for UTF-8 encoding.'}],use:[{t:'Copywriting',d:'Stay within ad character limits (Google Ads, Facebook).'},{t:'Coding',d:'Verify string lengths for form validation.'},{t:'API Testing',d:'Check payload sizes before sending requests.']}  ,tips:[{t:'Tip: Unicode support',d:'Handles emojis, accented characters, and non-Latin scripts correctly.'},{t:'Tip: No spaces mode',d:'Use without-spaces count for code string length checks.']},
+'sentence-counter':{steps:[{t:'Paste your text',d:'Enter paragraphs or articles into the textarea.'},{t:'Count sentences',d:'The tool detects sentence boundaries by punctuation (. ! ?).'},{t:'Analyze readability',d:'Use sentence count with word count for readability analysis.']}],use:[{t:'Editing',d:'Check sentence density for readability improvements.'},{t:'Translation',d:'Track sentence counts across language versions.']}  ,tips:[{t:'Tip: Combine with word count',d:'Words-per-sentence ratio indicates reading difficulty.']},
+'paragraph-counter':{steps:[{t:'Paste your text',d:'Enter your document into the textarea.'},{t:'Count paragraphs',d:'Paragraphs are detected by empty line breaks.'},{t:'Review structure',d:'Use paragraph count to assess document organization.']}],use:[{t:'Document Layout',d:'Plan page breaks based on paragraph counts.'},{t:'Content Planning',d:'Ensure consistent section lengths across articles.']}  ,tips:[{t:'Tip: Double-line spacing',d:'Ensure paragraphs are separated by blank lines for accurate counting.']},
+'word-frequency':{steps:[{t:'Paste your text',d:'Enter the text you want to analyze.'},{t:'Click Process',d:'The tool counts each word and sorts by frequency.'},{t:'Review word distribution',d:'See the most and least common words in your text.']}],use:[{t:'SEO Analysis',d:'Identify keyword density and over-optimization.'},{t:'Content Editing',d:'Find overused words for replacement suggestions.'}],tips:[{t:'Tip: Compare with competitors',d:'Analyze competitor content to find keyword gaps.']},
+'case-converter':{steps:[{t:'Paste your text',d:'Enter text that needs case conversion.'},{t:'Select case type',d:'Choose from UPPER, lower, Title, Sentence, or tOGGLE.'},{t:'Get converted text',d:'The converted text appears instantly in the output.'}],use:[{t:'Formatting Headings',d:'Convert titles to Title Case for consistency.'},{t:'Data Cleaning',d:'Normalize case for database entries or CSV imports.'}],tips:[{t:'Tip: Toggle case',d:'Use tOGGLE cASE to quickly fix accidentally locked Caps Lock.']},
+'remove-spaces':{steps:[{t:'Paste your text',d:'Enter text with extra whitespace.'},{t:'Click Process',d:'Leading, trailing, and double spaces are removed.'},{t:'Copy clean text',d:'Use the Copy button to grab the cleaned text.']}],use:[{t:'Data Import',d:'Clean CSV data before importing into spreadsheets.'},{t:'Code Formatting',d:'Remove trailing whitespace from code snippets.'}],tips:[{t:'Tip: Preserves paragraphs',d:'Multiple blank lines are collapsed but paragraph breaks stay.']},
+'find-replace':{steps:[{t:'Paste your text',d:'Enter the text you want to modify.'},{t:'Enter search and replace terms',d:'Type the word to find and its replacement.'},{t:'Execute replacement',d:'Click Replace All to update all occurrences at once.']}],use:[{t:'Batch Editing',d:'Rename terms across large documents instantly.'},{t:'Localization',d:'Swap region-specific terms for different audiences.'}],tips:[{t:'Tip: Regex mode',d:'Enable regex for pattern-based search and replace.']},
+'line-sorter':{steps:[{t:'Paste your lines',d:'Enter one item per line in the textarea.'},{t:'Choose sort order',d:'Select Ascending (A-Z) or Descending (Z-A).'},{t:'Click Process',d:'Lines are sorted and displayed in the output.'}],use:[{t:'Alphabetical Lists',d:'Sort names, cities, or terms alphabetically.'},{t:'Data Processing',d:'Order log entries or data records.']}],tips:[{t:'Tip: Remove duplicates first',d:'Use Duplicate Remover before sorting for clean results.']},
+'alpha-sorter':{steps:[{t:'Paste your lines',d:'Enter items to sort, one per line.'},{t:'Choose order',d:'Select ascending or descending.'},{t:'Get sorted output',d:'Strict A-Z alphabetical ordering applied.']}],use:[{t:'Glossary Building',d:'Sort terms for reference documents.'},{t:'Playlist Organization',d:'Alphabetize song or artist names.']}],tips:[{t:'Tip: Case handling',d:'Sorting is case-insensitive by default.']},
+'text-reverser':{steps:[{t:'Paste your text',d:'Enter the text to reverse.'},{t:'Choose reversal mode',d:'Select Characters, Words, or Lines.'},{t:'Click Process',d:'Text is reversed according to your selection.']}],use:[{t:'Data obfuscation',d:'Reverse text for puzzle or game creation.'},{t:'Palindrome testing',d:'Check if text reads the same backwards.']}],tips:[{t:'Tip: Reverse words',d:'Word reversal keeps character order within each word.']},
+'duplicate-remover':{steps:[{t:'Paste your text',d:'Enter text with potential duplicate lines.'},{t:'Click Process',d:'Duplicate lines are removed automatically.'},{t:'Review unique lines',d:'Only unique lines remain in the output.'}],use:[{t:'List Cleanup',d:'Remove duplicates from shopping lists or inventories.'},{t:'Data Deduplication',d:'Clean duplicate entries from datasets.']}],tips:[{t:'Tip: Case-insensitive',d:'Enable case-insensitive mode to catch "Hello" and "hello" as duplicates.']},
+'lorem-generator':{steps:[{t:'Set paragraph count',d:'Choose how many paragraphs to generate.'},{t:'Click Generate',d:'Lorem Ipsum placeholder text is created.'},{t:'Copy the text',d:'Paste into your design or development project.']}],use:[{t:'Web Design',d:'Fill layouts with realistic-looking text.'},{t:'Prototyping',d:'Add content structure before final copy is ready.']}],tips:[{t:'Tip: Vary lengths',d:'Generate different paragraph counts for different layout sections.']},
+'slug-generator':{steps:[{t:'Enter your title',d:'Type or paste the page title.'},{t:'Click Generate',d:'A URL-friendly slug is created instantly.'},{t:'Copy the slug',d:'Use in your URLs for SEO-friendly links.']}],use:[{t:'Blog Posts',d:'Create clean URLs for articles.'},{t:'E-commerce',d:'Generate product page URLs from titles.']}],tips:[{t:'Tip: Keep it short',d:'Remove stop words (a, the, and) from slugs for cleaner URLs.']},
+'keyword-density':{steps:[{t:'Paste your text',d:'Enter the article or page content.'},{t:'Optionally enter focus keyword',d:'Specify a keyword to check its exact density.'},{t:'Analyze results',d:'See keyword frequency, density percentage, and distribution.']}],use:[{t:'SEO Auditing',d:'Ensure target keyword density is optimal (1-3%).'},{t:'Content Optimization',d:'Identify over-optimized or under-optimized content.']}],tips:[{t:'Tip: Optimal density',d:'Aim for 1-2% keyword density for most search engines.']},
+'keyword-extract':{steps:[{t:'Paste your text',d:'Enter the content to analyze.'},{t:'Click Process',d:'Top keywords are extracted by frequency.'},{t:'Review keyword list',d:'See the most relevant terms for SEO purposes.']}],use:[{t:'Content Planning',d:'Find trending topics from competitor content.'},{t:'Tag Generation',d:'Auto-generate tags for blog posts.']}],tips:[{t:'Tip: Combine with density',d:'Use Keyword Density tool for focused keyword analysis.']},
+'meta-gen':{steps:[{t:'Enter page title',d:'Type your page title (50-60 characters ideal).'},{t:'Enter description and keywords',d:'Add meta description (150-160 chars) and target keywords.'},{t:'Copy generated tags',d:'Get complete HTML meta tag code ready to paste.']}],use:[{t:'New Pages',d:'Generate meta tags for every new page you create.'},{t:'SEO Audits',d:'Quickly create updated meta tags for existing pages.']}],tips:[{t:'Tip: Character limits',d:'Keep titles under 60 characters and descriptions under 160 for best display.']},
+'meta-desc-gen':{steps:[{t:'Enter target keyword',d:'Type the primary keyword for the page.'},{t:'Add context',d:'Provide a brief summary of the page content.'},{t:'Generate description',d:'Get an optimized meta description ready to use.']}],use:[{t:'Blog Posts',d:'Generate compelling descriptions for every article.'},{t:'Product Pages',d:'Create unique descriptions for e-commerce listings.']}],tips:[{t:'Tip: Include a call to action',d:'Phrases like "Learn more" or "Discover" improve click-through rates.']},
+'og-generator':{steps:[{t:'Enter page details',d:'Provide title, description, and image URL.'},{t:'Click Generate',d:'Open Graph meta tags are created.'},{t:'Copy the tags',d:'Paste into your HTML head section.']}],use:[{t:'Social Sharing',d:'Ensure your links look great on Facebook, Twitter, and LinkedIn.'},{t:'Content Marketing',d:'Control how your content appears when shared.']}],tips:[{t:'Tip: Image dimensions',d:'Use 1200x630px images for optimal social media display.']},
+'canonical-gen':{steps:[{t:'Enter page URL',d:'Type the canonical URL for this page.'},{t:'Click Generate',d:'A canonical link tag is created.'},{t:'Add to your HTML',d:'Paste the tag in your page head section.']}],use:[{t:'Duplicate Prevention',d:'Tell search engines which version of similar pages to index.'},{t:'Parameter Handling',d:'Consolidate ranking signals for URL parameters.']}],tips:[{t:'Tip: Use absolute URLs',d:'Canonical tags should always use full absolute URLs.']},
+'robots-txt':{steps:[{t:'Set crawl rules',d:'Choose which paths to allow or disallow.'},{t:'Add sitemap URL',d:'Include your sitemap location.'},{t:'Generate file',d:'Get a valid robots.txt file ready to deploy.']}],use:[{t:'Site Launch',d:'Control crawler access during development or staging.'},{t:'Resource Protection',d:'Block sensitive directories from indexing.']}],tips:[{t:'Tip: Test before deploying',d:'Use Google Search Console to validate your robots.txt.']},
+'sitemap-gen':{steps:[{t:'Enter page URLs',d:'List all the pages on your site.'},{t:'Set priorities',d:'Assign priority and change frequency for each URL.'},{t:'Generate XML',d:'Get a valid sitemap.xml file.']}],use:[{t:'New Sites',d:'Create a sitemap for search engine discovery.'},{t:'Large Sites',d:'Generate sitemaps for sites with hundreds of pages.']}],tips:[{t:'Tip: Submit to Google',d:'Always submit your sitemap via Google Search Console.']},
+'json-formatter':{steps:[{t:'Paste JSON data',d:'Enter minified or unformatted JSON.'},{t:'Click Process',d:'JSON is beautified with proper indentation.'},{t:'Copy formatted JSON',d:'Use the Copy button for clean, readable output.']}],use:[{t:'API Development',d:'Format API responses for debugging.'},{t:'Config Files',d:'Clean up minified configuration files.']}],tips:[{t:'Tip: Validate first',d:'Use JSON Validator if your JSON has syntax errors.']},
+'json-validator':{steps:[{t:'Paste JSON data',d:'Enter the JSON you want to validate.'},{t:'Click Validate',d:'The tool checks for syntax errors.'},{t:'Review results',d:'See line numbers and error details if invalid.']}],use:[{t:'Debugging',d:'Find syntax errors in JSON configurations.'},{t:'Data Review',d:'Verify API response format before processing.']}],tips:[{t:'Tip: Common errors',d:'Missing commas and trailing commas are the most frequent JSON errors.']},
+'xml-formatter':{steps:[{t:'Paste XML data',d:'Enter your XML document.'},{t:'Click Process',d:'XML is pretty-printed with proper indentation.'},{t:'Copy formatted XML',d:'Get clean, readable XML output.']}],use:[{t:'Config Files',d:'Format XML configuration files for readability.'},{t:'SOAP APIs',d:'Format XML request and response bodies.']}],tips:[{t:'Tip: Handle namespaces',d:'The formatter preserves XML namespace declarations.']},
+'xml-validator':{steps:[{t:'Paste XML data',d:'Enter your XML document.'},{t:'Click Validate',d:'Check for well-formedness and structure errors.'},{t:'Review results',d:'See detailed error messages with line numbers.']}],use:[{t:'Data Exchange',d:'Validate XML before processing in pipelines.'},{t:'Schema Compliance',d:'Verify XML follows expected structure.']}],tips:[{t:'Tip: Well-formed vs valid',d:'Well-formed means syntactically correct; valid means it matches a schema.']},
+'markdown-editor':{steps:[{t:'Write Markdown',d:'Type Markdown syntax in the left panel.'},{t:'See live preview',d:'The right panel shows rendered HTML in real-time.'},{t:'Copy HTML',d:'Use Copy to grab the rendered HTML output.']}],use:[{t:'Blog Writing',d:'Write posts in Markdown with immediate visual feedback.'},{t:'Documentation',d:'Create README files and docs with Markdown syntax.']}],tips:[{t:'Tip: Use the preview',d:'Split your screen to see both source and rendered output.']},
+'markdown-preview':{steps:[{t:'Paste Markdown',d:'Enter Markdown source code.'},{t:'View rendered output',d:'HTML rendering appears instantly.'},{t:'Copy HTML',d:'Grab the rendered HTML for use elsewhere.']}],use:[{t:'Content Migration',d:'Preview Markdown before converting to HTML.'},{t:'Email Templates',d:'Preview Markdown-formatted emails.']}],tips:[{t:'Tip: Supports GFM',d:'GitHub Flavored Markdown tables, task lists, and strikethrough are supported.']},
+'html-previewer':{steps:[{t:'Enter HTML code',d:'Type or paste HTML markup.'},{t:'See live preview',d:'Rendered output appears in real-time.'},{t:'Debug layout',d:'Identify rendering issues visually.']}],use:[{t:'Web Development',d:'Test HTML snippets without a full development environment.'},{t:'Email Design',d:'Preview HTML email templates.']}],tips:[{t:'Tip: Embed CSS',d:'Add style tags directly to see styled output.']},
+'regex-tester':{steps:[{t:'Enter your regex pattern',d:'Type the regular expression in the pattern field.'},{t:'Enter test string',d:'Type or paste the text to match against.'},{t:'See matches',d:'Matching groups are highlighted in the output.']}],use:[{t:'Pattern Validation',d:'Test regex patterns before using in code.'},{t:'Data Extraction',d:'Verify patterns for scraping or parsing tasks.']}],tips:[{t:'Tip: Use groups',d:'Parentheses create capture groups for extracted data.']},
+'url-encoder':{steps:[{t:'Enter text or URL',d:'Type the string to encode.'},{t:'Click Encode',d:'Special characters are URL-encoded (%XX).'},{t:'Copy result',d:'Use the encoded string in URLs or parameters.']}],use:[{t:'API Development',d:'Encode parameters for URL query strings.'},{t:'Web Scraping',d:'Encode search queries for URL construction.']}],tips:[{t:'Tip: When to encode',d:'Always encode user input before adding to URLs.']},
+'url-decoder':{steps:[{t:'Enter encoded URL',d:'Paste a URL-encoded string.'},{t:'Click Decode',d:'Encoded characters are converted back to readable text.'},{t:'Copy result',d:'Get the decoded string.']}],use:[{t:'Debugging',d:'Decode URLs to inspect query parameters.'},{t:'Data Processing',d:'Decode encoded form submissions.']}],tips:[{t:'Tip: Double encoding',d:'If text looks still encoded, it may be double-encoded. Decode again.']},
+'html-encoder':{steps:[{t:'Enter HTML code',d:'Type or paste HTML that needs escaping.'},{t:'Click Encode',d:'Special characters are converted to HTML entities.'},{t:'Copy result',d:'Safe to display as plain text.']}],use:[{t:'Security',d:'Escape user input to prevent XSS attacks.'},{t:'Display Code',d:'Show HTML as plain text on web pages.']}],tips:[{t:'Tip: XSS prevention',d:'Always encode user-supplied HTML before displaying.']},
+'html-decoder':{steps:[{t:'Enter encoded text',d:'Paste HTML entity-encoded text.'},{t:'Click Decode',d:'Entities are converted back to HTML characters.'},{t:'Copy result',d:'Get the decoded HTML.']}],use:[{t:'Content Processing',d:'Decode escaped HTML from databases or APIs.'},{t:'Template Rendering',d:'Convert stored entities back to HTML.']}],tips:[{t:'Tip: Entity types',d:'Handles named entities (&amp;) and numeric entities (&#65;).']},
+'b64-encoder':{steps:[{t:'Enter text',d:'Type or paste the text to encode.'},{t:'Click Encode',d:'Text is converted to Base64 representation.'},{t:'Copy result',d:'Use the Base64 string in your application.']}],use:[{t:'Data Transmission',d:'Encode binary data for text-based protocols.'},{t:'Embedding',d:'Embed small images or data in HTML/CSS.']}],tips:[{t:'Tip: Not encryption',d:'Base64 is encoding, not encryption. It provides no security.']},
+'b64-decoder':{steps:[{t:'Enter Base64 string',d:'Paste the Base64-encoded text.'},{t:'Click Decode',d:'Base64 is converted back to original text.'},{t:'Copy result',d:'Get the decoded output.']}],use:[{t:'Data Recovery',d:'Decode Base64-encoded API responses.'},{t:'Credential Parsing',d:'Decode Basic Auth headers.']}],tips:[{t:'Tip: Validate input',d:'Invalid Base64 will throw an error. Check for missing padding.']},
+'hash-generator':{steps:[{t:'Enter text',d:'Type or paste the text to hash.'},{t:'Select algorithm',d:'Choose djb2, FNV-1a, or both.'},{t:'Get hash values',d:'See the generated hash output.']}],use:[{t:'Cache Busting',d:'Generate unique hashes for file versioning.'},{t:'Checksum Verification',d:'Quick integrity checks for text data.']}],tips:[{t:'Tip: Not cryptographic',d:'These are fast non-crypto hashes. For security, use SHA-256.']}
+};
+
+var g=GUIDES[tid];
+if(g){
+var gh='<ol class="step-list">';
+g.steps.forEach(function(s){gh+='<li><strong>'+esc(s.t)+'</strong> — '+esc(s.d)+'</li>';});
+gh+='</ol>';
+document.getElementById('toolGuide').innerHTML=gh;
+
+if(g.use){
+var uh='';
+g.use.forEach(function(u){uh+='<div class="use-case-card"><h4>'+esc(u.t)+'</h4><p>'+esc(u.d)+'</p></div>';});
+document.getElementById('toolUseCases').innerHTML=uh;
+}
+
+if(g.tips){
+var th='';
+g.tips.forEach(function(tp){th+='<div class="tip-box"><strong>'+esc(tp.t)+'</strong><p>'+esc(tp.d)+'</p></div>';});
+document.getElementById('toolTips').innerHTML=th;
+}
+} else {
+document.getElementById('toolContentSection').style.display='none';
+}
+
+/* ---- Schema Injection (Phase 5) ---- */
+/* WebApplication and BreadcrumbList are injected by build.js */
+/* FAQPage is injected here client-side since it depends on ffaq() data */
+var faqData=F[tid];
+if(faqData&&faqData.length){
+var faqSchema={"@context":"https://schema.org","@type":"FAQPage","mainEntity":faqData.map(function(f){return{"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}};})};
+var fsScript=document.createElement('script');
+fsScript.type='application/ld+json';
+fsScript.textContent=JSON.stringify(faqSchema);
+document.head.appendChild(fsScript);
+}
 
 if(tid==='markdown-editor'){
 var input=document.getElementById('tool-input');

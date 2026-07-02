@@ -91,6 +91,32 @@ tools.forEach(toolId => {
         html = html.replace('</head>', '<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>\n</head>');
     }
 
+    // Inject WebApplication schema
+    const webappSchema = JSON.stringify({
+        "@context":"https://schema.org","@type":"WebApplication",
+        "name":seo.title.split(' - ')[0],
+        "url":toolUrl,
+        "description":seo.desc,
+        "applicationCategory":"UtilitiesApplication",
+        "operatingSystem":"Any",
+        "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+        "browserRequirements":"Requires a modern web browser"
+    });
+    html = html.replace('<script id="schema-webapp" type="application/ld+json"></script>',
+        '<script type="application/ld+json">'+webappSchema+'</script>');
+
+    // Inject BreadcrumbList schema
+    const breadcrumbSchema = JSON.stringify({
+        "@context":"https://schema.org","@type":"BreadcrumbList",
+        "itemListElement":[
+            {"@type":"ListItem","position":1,"name":"Home","item":baseUrl+"/"},
+            {"@type":"ListItem","position":2,"name":"Tools","item":baseUrl+"/tools/"},
+            {"@type":"ListItem","position":3,"name":seo.title.split(' - ')[0],"item":toolUrl}
+        ]
+    });
+    html = html.replace('<script id="schema-faq" type="application/ld+json"></script>',
+        '<script type="application/ld+json">'+breadcrumbSchema+'</script>');
+
     const filePath = path.join(outDir, toolId + '.html');
     fs.writeFileSync(filePath, html, 'utf8');
     console.log('Created: public/tools/' + toolId + '.html');

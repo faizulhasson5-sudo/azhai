@@ -21,6 +21,8 @@
   <meta name="theme-color" content="#c2410c">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>?</text></svg>">
   <link rel="alternate" type="application/rss+xml" title="Free AI Text Tools Blog" href="/blog/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <script>
     (function(){
@@ -42,6 +44,16 @@
       "target": "https://azhai-six.vercel.app/tools/?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Free AI Text Tools",
+    "url": "https://azhai-six.vercel.app",
+    "logo": "https://azhai-six.vercel.app/og-image.png",
+    "description": "37+ free online text tools for writers, developers, and SEO professionals."
   }
   </script>
 </head>
@@ -74,9 +86,9 @@
       <div class="hero-content">
         <span class="hero-eyebrow">37+ Free Online Tools</span>
         <h1>Write, Convert &amp; Optimize<br>Without Limits</h1>
-        <p class="hero-sub">Word counters, text formatters, SEO analyzers, code tools � all client-side, no login required.</p>
+        <p class="hero-sub">Word counters, text formatters, SEO analyzers, code tools - all client-side, no login required.</p>
         <div class="hero-search">
-          <input type="search" id="heroSearch" placeholder="Search tools�" aria-label="Search tools" autocomplete="off">
+          <input type="search" id="heroSearch" placeholder="Search tools..." aria-label="Search tools" autocomplete="off">
           <div class="hero-search-results" id="heroResults"></div>
         </div>
       </div>
@@ -88,6 +100,15 @@
       <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Client-Side</div></div>
       <div class="stat"><div class="stat-num">0</div><div class="stat-label">Sign-Ups</div></div>
       <div class="stat"><div class="stat-num">8</div><div class="stat-label">Usage</div></div>
+    </section>
+
+    <!-- Favorites -->
+    <section class="favorites-section" id="favoritesSection" aria-labelledby="favs-heading">
+      <div class="container">
+        <h2 id="favs-heading">Your Favorite Tools</h2>
+        <p class="section-sub">Quick access to the tools you use most.</p>
+        <div class="tool-grid" id="favoritesGrid"></div>
+      </div>
     </section>
 
     <!-- Text Tools -->
@@ -225,8 +246,36 @@
   <!-- Toast -->
   <div class="toast" id="appToast" aria-live="polite"></div>
 
+  <!-- Offline Banner -->
+  <div class="offline-banner" id="offlineBanner" role="alert">You are currently offline. Some features may be unavailable.</div>
+
   <!-- Back to Top -->
-  <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">?</button>
+  <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <!-- Feedback -->
+  <button type="button" class="feedback-fab" id="feedbackFab" aria-label="Send feedback" title="Send feedback">💬</button>
+  <div class="feedback-overlay" id="feedbackOverlay">
+    <div class="feedback-modal" id="feedbackModal">
+      <h2>Send Feedback</h2>
+      <p>Report a bug or request a new feature.</p>
+      <div class="feedback-type-toggle">
+        <button type="button" class="feedback-type-btn active" data-type="bug">🐛 Bug Report</button>
+        <button type="button" class="feedback-type-btn" data-type="feature">✨ Feature Request</button>
+      </div>
+      <div class="feedback-field">
+        <label for="feedbackMessage">Message *</label>
+        <textarea id="feedbackMessage" placeholder="Describe the issue or your idea..." required></textarea>
+      </div>
+      <div class="feedback-field">
+        <label for="feedbackEmail">Email (optional)</label>
+        <input type="email" id="feedbackEmail" placeholder="your@email.com">
+      </div>
+      <div class="feedback-actions">
+        <button type="button" class="btn btn-secondary btn-sm" id="feedbackClose">Cancel</button>
+        <button type="button" class="btn btn-primary btn-sm" id="feedbackSubmit">Submit</button>
+      </div>
+    </div>
+  </div>
 
   <script src="/js/app.js"></script>
   <script>
@@ -247,6 +296,8 @@
       var h='';
       items.forEach(function(t){
         h+='<a href="/tools/'+esc(t.id)+'.html" class="tool-card" data-cat="'+esc(t.cat)+'">';
+        h+='<div class="card-icon" data-cat="'+esc(t.cat)+'">'+App.getIcon(t.cat)+'</div>';
+        h+='<button type="button" class="fav-btn'+(App.isFav(t.id)?' active':'')+'" data-fav="'+esc(t.id)+'" aria-label="Toggle favorite" onclick="event.preventDefault();event.stopPropagation();App.toggleFav(\''+esc(t.id)+'');this.classList.toggle(\'active\');renderFavs();">'+(App.isFav(t.id)?'❤':'♡')+'</button>';
         h+='<span class="card-cat">'+esc(t.cat)+'</span>';
         h+='<h3>'+esc(t.name)+'</h3>';
         h+='<p>'+esc(t.desc)+'</p>';
@@ -259,6 +310,30 @@
     renderGrid('convertTools',cats.converters.concat(cats.cleaners));
     renderGrid('seoTools',cats.seo);
     renderGrid('codeTools',cats.code);
+
+    // Favorites
+    function renderFavs(){
+      var favs=App.getFavorites();
+      var sec=document.getElementById('favoritesSection');
+      var grid=document.getElementById('favoritesGrid');
+      if(!sec||!grid)return;
+      if(!favs.length){sec.classList.remove('has-favs');return;}
+      sec.classList.add('has-favs');
+      var fh='';
+      favs.forEach(function(fid){
+        var t=App.getToolById(fid);
+        if(!t)return;
+        fh+='<a href="/tools/'+esc(t.id)+'.html" class="tool-card" data-cat="'+esc(t.cat)+'">';
+        fh+='<div class="card-icon" data-cat="'+esc(t.cat)+'">'+App.getIcon(t.cat)+'</div>';
+        fh+='<button type="button" class="fav-btn active" data-fav="'+esc(t.id)+'" aria-label="Remove favorite" onclick="event.preventDefault();event.stopPropagation();App.toggleFav(\''+esc(t.id)+'');this.classList.toggle(\'active\');renderFavs();this.innerHTML=App.isFav(\''+esc(t.id)+'\')?\'❤\':\'♡\';">❤</button>';
+        fh+='<span class="card-cat">'+esc(t.cat)+'</span>';
+        fh+='<h3>'+esc(t.name)+'</h3>';
+        fh+='<p>'+esc(t.desc)+'</p>';
+        fh+='</a>';
+      });
+      grid.innerHTML=fh;
+    }
+    renderFavs();
 
     // Populate blog preview
     if(App.blogPosts){
@@ -278,12 +353,14 @@
       }
     }
 
-    // Hero search
+    // Hero search with keyboard navigation
     var si=document.getElementById('heroSearch');
     var sr=document.getElementById('heroResults');
+    var activeIdx=-1;
     if(si&&sr){
       si.addEventListener('input',function(){
         var q=this.value.toLowerCase().trim();
+        activeIdx=-1;
         if(!q){sr.classList.remove('open');return;}
         var matched=tools.filter(function(t){
           return t.name.toLowerCase().indexOf(q)!==-1||t.id.indexOf(q)!==-1||t.desc.toLowerCase().indexOf(q)!==-1||t.cat.indexOf(q)!==-1;
@@ -292,10 +369,12 @@
           sr.innerHTML='<div class="no-results">No tools found for "'+esc(q)+'"</div>';
         } else {
           var rh='';
-          matched.forEach(function(t){
-            rh+='<a href="/tools/'+esc(t.id)+'.html">';
+          matched.forEach(function(t,i){
+            rh+='<a href="/tools/'+esc(t.id)+'.html" data-idx="'+i+'">';
+            rh+='<span class="sr-icon">'+App.getIcon(t.cat)+'</span>';
             rh+='<span class="sr-cat">'+esc(t.cat)+'</span>';
             rh+='<span>'+esc(t.name)+'</span>';
+            rh+='<span class="sr-desc">'+esc(t.desc)+'</span>';
             rh+='</a>';
           });
           sr.innerHTML=rh;
@@ -303,9 +382,23 @@
         sr.classList.add('open');
       });
       si.addEventListener('keydown',function(e){
-        if(e.key==='Enter'){
-          var q=this.value.trim();
-          if(q)window.location.href='/tools/?q='+encodeURIComponent(q);
+        var links=sr.querySelectorAll('a');
+        if(e.key==='ArrowDown'){
+          e.preventDefault();
+          activeIdx=Math.min(activeIdx+1,links.length-1);
+          links.forEach(function(l,i){l.classList.toggle('active',i===activeIdx);});
+          if(links[activeIdx])links[activeIdx].scrollIntoView({block:'nearest'});
+        } else if(e.key==='ArrowUp'){
+          e.preventDefault();
+          activeIdx=Math.max(activeIdx-1,0);
+          links.forEach(function(l,i){l.classList.toggle('active',i===activeIdx);});
+          if(links[activeIdx])links[activeIdx].scrollIntoView({block:'nearest'});
+        } else if(e.key==='Enter'){
+          e.preventDefault();
+          if(activeIdx>=0&&links[activeIdx])links[activeIdx].click();
+          else{var q=this.value.trim();if(q)window.location.href='/tools/?q='+encodeURIComponent(q);}
+        } else if(e.key==='Escape'){
+          sr.classList.remove('open');
         }
       });
       document.addEventListener('click',function(e){

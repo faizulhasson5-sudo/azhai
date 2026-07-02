@@ -727,13 +727,260 @@ a:hover { color: var(--accent-hover); }
   html { scroll-behavior: auto; }
 }
 
-/* ---- Responsive ---- */
+/* ============================================================
+   PHASE 1: Typography & System Preferences
+   ============================================================ */
+@supports (color-scheme: light dark) {
+  :root { color-scheme: light dark; }
+}
+@media (prefers-contrast: high) {
+  :root {
+    --border: #999;
+    --border-hover: #666;
+    --text-3: #333;
+  }
+  [data-theme="dark"] {
+    --border: #666;
+    --border-hover: #999;
+    --text-3: #ccc;
+  }
+}
+
+/* ============================================================
+   PHASE 2: Category Icons
+   ============================================================ */
+.card-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 10px;
+  font-size: 16px;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tool-card:hover .card-icon { transform: scale(1.1); }
+.card-icon[data-cat="counters"] { background: rgba(194,65,12,0.1); color: var(--cat-counters); }
+.card-icon[data-cat="text"] { background: rgba(37,99,235,0.1); color: var(--cat-text); }
+.card-icon[data-cat="converters"],
+.card-icon[data-cat="cleaners"] { background: rgba(124,58,237,0.1); color: var(--cat-convert); }
+.card-icon[data-cat="seo"] { background: rgba(21,128,61,0.1); color: var(--cat-seo); }
+.card-icon[data-cat="code"] { background: rgba(217,119,6,0.1); color: var(--cat-code); }
+[data-theme="dark"] .card-icon[data-cat="counters"] { background: rgba(251,146,60,0.15); }
+[data-theme="dark"] .card-icon[data-cat="text"] { background: rgba(96,165,250,0.15); }
+[data-theme="dark"] .card-icon[data-cat="converters"],
+[data-theme="dark"] .card-icon[data-cat="cleaners"] { background: rgba(167,139,250,0.15); }
+[data-theme="dark"] .card-icon[data-cat="seo"] { background: rgba(74,222,128,0.15); }
+[data-theme="dark"] .card-icon[data-cat="code"] { background: rgba(251,191,36,0.15); }
+
+/* ============================================================
+   PHASE 3: Favorites & Enhanced Cards
+   ============================================================ */
+.tool-card { position: relative; }
+.fav-btn {
+  position: absolute; top: 12px; right: 12px;
+  width: 28px; height: 28px;
+  border: none; background: transparent;
+  cursor: pointer; font-size: 16px;
+  color: var(--text-3);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+.fav-btn:hover { background: var(--bg-warm); color: var(--accent); }
+.fav-btn.active { color: #ef4444; }
+.fav-btn.active:hover { background: rgba(239,68,68,0.1); }
+.tool-card .card-arrow { top: 12px; right: 44px; }
+
+.favorites-section { margin-bottom: 40px; display: none; }
+.favorites-section.has-favs { display: block; }
+.favorites-section h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 4px; }
+
+.filter-pill[data-cat="favorites"] { border-style: dashed; }
+
+/* Auto-suggest enhancements */
+.hero-search-results a.active { background: var(--accent-light); }
+.hero-search-results .sr-icon { font-size: 14px; width: 20px; text-align: center; }
+.hero-search-results .sr-desc { font-size: 11px; color: var(--text-3); margin-left: auto; }
+
+/* ============================================================
+   PHASE 4: Expanded Tool Content
+   ============================================================ */
+.tool-content-section {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.tool-content-section h2 {
+  font-size: 20px; font-weight: 800;
+  letter-spacing: -0.01em; margin-bottom: 14px;
+  color: var(--text);
+}
+.tool-content-section h3 {
+  font-size: 16px; font-weight: 700;
+  margin: 20px 0 8px; color: var(--text);
+}
+.tool-content-section p {
+  font-size: 14px; color: var(--text-2); line-height: 1.7;
+  margin-bottom: 10px;
+}
+.tool-content-section ul, .tool-content-section ol {
+  padding-left: 20px; margin-bottom: 12px;
+}
+.tool-content-section li {
+  font-size: 14px; color: var(--text-2); line-height: 1.7;
+  margin-bottom: 4px;
+}
+.step-list { list-style: none; padding: 0; counter-reset: steps; }
+.step-list li {
+  counter-increment: steps;
+  padding: 12px 12px 12px 48px;
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+}
+.step-list li::before {
+  content: counter(steps);
+  position: absolute; left: 12px; top: 12px;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--accent); color: var(--accent-text);
+  font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.step-list li strong { color: var(--text); }
+.use-case-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px; margin-bottom: 16px;
+}
+.use-case-card {
+  padding: 14px;
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.use-case-card h4 {
+  font-size: 13px; font-weight: 700; margin-bottom: 4px; color: var(--text);
+}
+.use-case-card p { font-size: 12px; color: var(--text-3); line-height: 1.5; margin: 0; }
+.tip-box {
+  padding: 14px 16px;
+  background: var(--accent-light);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin-bottom: 12px;
+}
+.tip-box strong { color: var(--accent); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+.tip-box p { margin: 4px 0 0; font-size: 13px; color: var(--text-2); }
+
+/* ============================================================
+   PHASE 6: PWA Offline Banner
+   ============================================================ */
+.offline-banner {
+  position: fixed; top: var(--header-h); left: 0; right: 0;
+  background: #f59e0b; color: #1a1612;
+  text-align: center; padding: 8px;
+  font-size: 13px; font-weight: 600;
+  z-index: 9998;
+  transform: translateY(-100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.offline-banner.show { transform: translateY(0); }
+
+/* ============================================================
+   PHASE 7: Feedback System
+   ============================================================ */
+.feedback-fab {
+  position: fixed; bottom: 80px; right: 24px;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--surface); color: var(--text-2);
+  border: 1px solid var(--border);
+  cursor: pointer; font-size: 20px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 998;
+}
+.feedback-fab:hover {
+  background: var(--accent); color: var(--accent-text);
+  border-color: var(--accent); transform: scale(1.1);
+}
+.feedback-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 10000;
+  display: none; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.feedback-overlay.open { display: flex; }
+.feedback-modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  max-width: 440px; width: 100%;
+  max-height: 80vh; overflow-y: auto;
+}
+.feedback-modal h2 {
+  font-size: 18px; font-weight: 800; margin-bottom: 4px;
+}
+.feedback-modal p {
+  font-size: 13px; color: var(--text-3); margin-bottom: 16px;
+}
+.feedback-type-toggle {
+  display: flex; gap: 6px; margin-bottom: 16px;
+}
+.feedback-type-btn {
+  flex: 1; padding: 8px;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: transparent; color: var(--text-3);
+  font-size: 13px; font-weight: 600; font-family: var(--font);
+  cursor: pointer; transition: all 0.2s;
+}
+.feedback-type-btn.active {
+  background: var(--accent); color: var(--accent-text);
+  border-color: var(--accent);
+}
+.feedback-field { margin-bottom: 12px; }
+.feedback-field label {
+  display: block; font-size: 12px; font-weight: 600;
+  color: var(--text-2); margin-bottom: 4px;
+}
+.feedback-field textarea,
+.feedback-field input {
+  width: 100%; padding: 10px 12px;
+  border: 1px solid var(--border); border-radius: 8px;
+  font-size: 13px; font-family: var(--font);
+  background: var(--bg); color: var(--text);
+  outline: none; transition: border-color 0.15s;
+  resize: vertical;
+}
+.feedback-field textarea { min-height: 100px; }
+.feedback-field textarea:focus,
+.feedback-field input:focus { border-color: var(--accent); }
+.feedback-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 16px; }
+
+/* ============================================================
+   PHASE 8: Performance & Containment
+   ============================================================ */
+.tool-grid { contain: layout style; }
+.blog-grid { contain: layout style; }
+.stats-bar { contain: layout style; }
+.tool-card img, .blog-card img { aspect-ratio: 16/9; width: 100%; object-fit: cover; }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
 @media (max-width: 1024px) {
   .tool-layout { grid-template-columns: 1fr; }
   .tool-sidebar { position: static; }
   .blog-layout { grid-template-columns: 1fr; }
   .blog-sidebar { position: static; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .favorites-section .tool-grid { grid-template-columns: 1fr 1fr; }
+  .feedback-fab { bottom: 70px; right: 16px; }
 }
 @media (max-width: 768px) {
   :root { --header-h: 52px; }
@@ -766,6 +1013,8 @@ a:hover { color: var(--accent-hover); }
   .tool-header h1 { font-size: 22px; }
   .action-bar { flex-wrap: wrap; }
   .action-bar .btn { flex: 1; justify-content: center; }
+  .use-case-grid { grid-template-columns: 1fr; }
+  .favorites-section .tool-grid { grid-template-columns: 1fr; }
 }
 @media print {
   .site-header, .site-footer, .cookie-banner, .back-to-top, .tool-sidebar,

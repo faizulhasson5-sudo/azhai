@@ -36,7 +36,7 @@ fs.mkdirSync(path.join(dst, 'tools'), { recursive: true });
 fs.copyFileSync(path.join(src, 'tools', 'index.html'), path.join(dst, 'tools', 'index.html'));
 
 // Copy other static files
-const otherFiles = ['sitemap.xml', 'robots.txt', 'og-image.png', 'manifest.json', 'sw.js'];
+const otherFiles = ['sitemap.xml', 'robots.txt', 'og-image.png'];
 for (const f of otherFiles) {
   const sp = path.join(src, f);
   if (fs.existsSync(sp)) fs.copyFileSync(sp, path.join(dst, f));

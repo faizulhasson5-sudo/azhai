@@ -1,6 +1,6 @@
 ﻿/* ============================================================
    Free AI Text Tools — Core Application v4
-   Icons · Favorites · Auto-suggest · Feedback · PWA · Offline
+   Icons · Favorites · Auto-suggest · Feedback
    ============================================================ */
 
 (function(){
@@ -173,16 +173,6 @@ App.blogPosts=[
 {slug:'open-graph-tags-social-media',title:'Open Graph Tags: Get Perfect Social Media Previews',excerpt:'Master Open Graph meta tags to ensure your content looks amazing when shared on social media.',category:'Social Media',date:'2026-06-08',readTime:'5 min',image:'/blog/images/open-graph-tags.jpg'}
 ];
 
-/* ---- Offline Detection ---- */
-App.initOffline=function(){
-  var banner=document.getElementById('offlineBanner');
-  if(!banner)return;
-  function update(){banner.classList.toggle('show',!navigator.onLine);}
-  window.addEventListener('online',update);
-  window.addEventListener('offline',update);
-  update();
-};
-
 /* ---- Feedback System ---- */
 App.initFeedback=function(){
   var fab=document.getElementById('feedbackFab');
@@ -231,19 +221,10 @@ App.getFeedbackQueue=function(){
   try{return JSON.parse(lsGet('attFeedback')||'[]');}catch(e){return [];}
 };
 
-/* ---- PWA Service Worker ---- */
-App.initSW=function(){
-  if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('/sw.js').catch(function(){});
-  }
-};
-
 /* ---- Init ---- */
 document.addEventListener('DOMContentLoaded',function(){
   App.initCookieConsent();
-  App.initOffline();
   App.initFeedback();
-  App.initSW();
 
   /* Header scroll shadow */
   var header=document.querySelector('.site-header');

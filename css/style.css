@@ -872,20 +872,6 @@ a:hover { color: var(--accent-hover); }
 .tip-box p { margin: 4px 0 0; font-size: 13px; color: var(--text-2); }
 
 /* ============================================================
-   PHASE 6: PWA Offline Banner
-   ============================================================ */
-.offline-banner {
-  position: fixed; top: var(--header-h); left: 0; right: 0;
-  background: #f59e0b; color: #1a1612;
-  text-align: center; padding: 8px;
-  font-size: 13px; font-weight: 600;
-  z-index: 9998;
-  transform: translateY(-100%);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.offline-banner.show { transform: translateY(0); }
-
-/* ============================================================
    PHASE 7: Feedback System
    ============================================================ */
 .feedback-fab {
@@ -1018,7 +1004,7 @@ a:hover { color: var(--accent-hover); }
   .site-header, .site-footer, .cookie-banner, .back-to-top, .tool-sidebar,
   .blog-sidebar, .hero, .action-bar, .theme-btn, .menu-toggle, .hero-search,
   .filter-pills, .tools-search, .blog-preview, .faq-section,
-  .feedback-fab, .feedback-overlay, .offline-banner, .toast, .favorites-section { display: none !important; }
+  .feedback-fab, .feedback-overlay, .toast, .favorites-section { display: none !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
   body { background: #fff; color: #000; }
   .tool-layout, .blog-layout { grid-template-columns: 1fr; }

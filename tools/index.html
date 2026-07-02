@@ -120,12 +120,13 @@ var html='';
 filtered.forEach(function(t){
 html+='<a href="/tools/'+esc(t.id)+'.html" class="tool-card" data-cat="'+esc(t.cat)+'">';
 html+='<div class="card-icon" data-cat="'+esc(t.cat)+'">'+App.getIcon(t.cat)+'</div>';
-html+='<button type="button" class="fav-btn'+(App.isFav(t.id)?' active':'')+'" data-fav="'+esc(t.id)+'" aria-label="Toggle favorite" onclick="event.preventDefault();event.stopPropagation();App.toggleFav(\''+esc(t.id)+'');render(search.value.toLowerCase());">'+(App.isFav(t.id)?'❤':'♡')+'</button>';
+html+='<button type="button" class="fav-btn'+(App.isFav(t.id)?' active':'')+'" data-fav="'+esc(t.id)+'" aria-label="Toggle favorite" onclick="event.preventDefault();event.stopPropagation();App.toggleFav(\''+esc(t.id)+'\');window.render(document.getElementById(\'toolSearch\').value.toLowerCase());">'+(App.isFav(t.id)?'❤':'♡')+'</button>';
 html+='<span class="card-cat">'+esc(t.cat)+'</span>';
 html+='<h3>'+esc(t.name)+'</h3><p>'+esc(t.desc)+'</p><span class="card-arrow">\u2192</span></a>';
 });
 if(grid)grid.innerHTML=html||'<p style="color:var(--text-3)">No tools found.</p>';
 }
+window.render=render;
 render(urlQ?urlQ.toLowerCase():'');
 
 if(search){
@@ -157,7 +158,7 @@ render(q);
 search.addEventListener('keydown',function(e){
 var links=suggestions?suggestions.querySelectorAll('a'):[];
 if(e.key==='ArrowDown'){e.preventDefault();activeIdx=Math.min(activeIdx+1,links.length-1);links.forEach(function(l,i){l.classList.toggle('active',i===activeIdx);});}
-else if(e.key==='ArrowUp'){e.preventDefault();activeIdx=Math.max(activeIdx-1,0);links.forEach(function(l,i){l.classList.toggle('active',i===activeIdx);});}
+else if(e.key==='ArrowUp'){e.preventDefault();activeIdx=Math.max(activeIdx-1,-1);links.forEach(function(l,i){l.classList.toggle('active',i===activeIdx);});}
 else if(e.key==='Enter'){e.preventDefault();if(activeIdx>=0&&links[activeIdx])links[activeIdx].click();else render(this.value.toLowerCase());}
 else if(e.key==='Escape'){if(suggestions)suggestions.classList.remove('open');}
 });

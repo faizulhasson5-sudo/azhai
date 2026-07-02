@@ -31,6 +31,10 @@ for (const f of htmlFiles) {
   fs.copyFileSync(path.join(src, f), path.join(dst, f));
 }
 
+// Copy tools/index.html
+fs.mkdirSync(path.join(dst, 'tools'), { recursive: true });
+fs.copyFileSync(path.join(src, 'tools', 'index.html'), path.join(dst, 'tools', 'index.html'));
+
 // Copy other static files
 const otherFiles = ['sitemap.xml', 'robots.txt', 'og-image.png', 'manifest.json', 'sw.js'];
 for (const f of otherFiles) {

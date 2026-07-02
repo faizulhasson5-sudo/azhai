@@ -325,7 +325,7 @@
         if(!t)return;
         fh+='<a href="/tools/'+esc(t.id)+'.html" class="tool-card" data-cat="'+esc(t.cat)+'">';
         fh+='<div class="card-icon" data-cat="'+esc(t.cat)+'">'+App.getIcon(t.cat)+'</div>';
-        fh+='<button type="button" class="fav-btn active" data-fav="'+esc(t.id)+'" aria-label="Remove favorite" onclick="event.preventDefault();event.stopPropagation();App.toggleFav(\''+esc(t.id)+'');this.classList.toggle(\'active\');renderFavs();this.innerHTML=App.isFav(\''+esc(t.id)+'\')?\'❤\':\'♡\';">❤</button>';
+        fh+='<button type="button" class="fav-btn active" data-fav="'+esc(t.id)+'" aria-label="Remove favorite" onclick="event.preventDefault();event.stopPropagation();App.toggleFav(\''+esc(t.id)+'\');window.renderFavs();">❤</button>';
         fh+='<span class="card-cat">'+esc(t.cat)+'</span>';
         fh+='<h3>'+esc(t.name)+'</h3>';
         fh+='<p>'+esc(t.desc)+'</p>';
@@ -333,6 +333,7 @@
       });
       grid.innerHTML=fh;
     }
+    window.renderFavs=renderFavs;
     renderFavs();
 
     // Populate blog preview
@@ -390,7 +391,7 @@
           if(links[activeIdx])links[activeIdx].scrollIntoView({block:'nearest'});
         } else if(e.key==='ArrowUp'){
           e.preventDefault();
-          activeIdx=Math.max(activeIdx-1,0);
+          activeIdx=Math.max(activeIdx-1,-1);
           links.forEach(function(l,i){l.classList.toggle('active',i===activeIdx);});
           if(links[activeIdx])links[activeIdx].scrollIntoView({block:'nearest'});
         } else if(e.key==='Enter'){

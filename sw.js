@@ -1,27 +1,33 @@
 /* ============================================================
-   Free AI Text Tools — Service Worker v1
+   Free AI Text Tools — Service Worker v2
    Cache-First for static assets, Network-First for pages
+   Fixed: individual cache.put, skipWaiting/claim inside waitUntil
    ============================================================ */
 
-var CACHE_NAME = 'att-v1';
+var CACHE_NAME = 'att-v2';
 var STATIC_ASSETS = [
   '/',
   '/css/style.css',
   '/js/app.js',
-  '/tools/',
-  '/blog/',
-  '/about.html',
-  '/contact.html',
   '/manifest.json'
 ];
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function(cache) {
-      return cache.addAll(STATIC_ASSETS);
+      return Promise.all(
+        STATIC_ASSETS.map(function(url) {
+          return fetch(url).then(function(response) {
+            if (response.ok) return cache.put(url, response);
+          }).catch(function() {
+            /* skip individual failures */
+          });
+        })
+      );
+    }).then(function() {
+      return self.skipWaiting();
     })
   );
-  self.skipWaiting();
 });
 
 self.addEventListener('activate', function(event) {
@@ -31,9 +37,10 @@ self.addEventListener('activate', function(event) {
         names.filter(function(name) { return name !== CACHE_NAME; })
              .map(function(name) { return caches.delete(name); })
       );
+    }).then(function() {
+      return self.clients.claim();
     })
   );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', function(event) {
@@ -50,7 +57,9 @@ self.addEventListener('fetch', function(event) {
     event.respondWith(
       fetch(event.request).then(function(response) {
         var clone = response.clone();
-        caches.open(CACHE_NAME).then(function(cache) { cache.put(event.request, clone); });
+        caches.open(CACHE_NAME).then(function(cache) {
+          cache.put(event.request, clone);
+        });
         return response;
       }).catch(function() {
         return caches.match(event.request);
@@ -66,7 +75,9 @@ self.addEventListener('fetch', function(event) {
       return fetch(event.request).then(function(response) {
         if (response.ok) {
           var clone = response.clone();
-          caches.open(CACHE_NAME).then(function(cache) { cache.put(event.request, clone); });
+          caches.open(CACHE_NAME).then(function(cache) {
+            cache.put(event.request, clone);
+          });
         }
         return response;
       });

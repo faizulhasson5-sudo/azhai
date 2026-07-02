@@ -1,6 +1,8 @@
 ﻿const fs = require('fs');
 const path = require('path');
 
+try {
+
 const posts = [
 {slug:'ultimate-guide-seo-text-tools',title:'The Ultimate Guide to Free SEO Text Tools in 2026',desc:'Discover how free online SEO tools can boost your content strategy, improve rankings, and save hours.',category:'SEO Tools',date:'2026-06-20',readTime:'8 min',image:'/blog/images/ultimate-guide-seo-text-tools.jpg'},
 {slug:'how-to-write-perfect-meta-descriptions',title:'How to Write Perfect Meta Descriptions That Get Clicks',desc:'Learn the art of crafting compelling meta descriptions that improve CTR and boost search rankings.',category:'SEO Tips',date:'2026-06-18',readTime:'6 min',image:'/blog/images/meta-descriptions.jpg'},
@@ -19,7 +21,7 @@ const blogContents = {
 'open-graph-tags-social-media':'<h2>Why Open Graph Tags Matter</h2><p>Open Graph tags control how your content appears when shared on social media.</p><h2>Essential OG Tags</h2><p>og:title, og:description, og:image, og:url, and og:type are the must-haves.</p><h2>Image Specifications</h2><p>Use 1200x630px for the best results across all platforms.</p>'
 };
 
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
 const templatePath = path.join(__dirname, 'blog', 'template.html');
 const template = fs.readFileSync(templatePath, 'utf8');
@@ -52,7 +54,7 @@ posts.forEach(post => {
     html = html.replace(/id="blogTitle">[^<]*/,'id="blogTitle">'+esc(post.title));
     html = html.replace(/id="blogDate">[^<]*/,'id="blogDate">'+esc(post.date));
     html = html.replace(/id="blogCategory">[^<]*/,'id="blogCategory">'+esc(post.category));
-    html = html.replace(/id="blogImage"[^>]*>/,'id="blogImage" src="'+esc(post.image)+'" alt="'+esc(post.title)+'">');
+    html = html.replace(/id="blogImage"[^>]*>/,'id="blogImage" src="'+esc(post.image)+'" alt="'+esc(post.title)+'" class="blog-hero-img">');
     html = html.replace('id="blogContent">','id="blogContent">'+(blogContents[post.slug]||''));
 
     const filePath = path.join(__dirname, 'blog', post.slug + '.html');
@@ -61,3 +63,5 @@ posts.forEach(post => {
 });
 
 console.log('\nBlog build complete! ' + posts.length + ' posts generated.');
+
+} catch(err) { console.error('Blog build failed:', err.message); process.exit(1); }

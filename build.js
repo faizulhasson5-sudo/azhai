@@ -1,6 +1,8 @@
 ﻿const fs = require('fs');
 const path = require('path');
 
+try {
+
 const tools = [
     'word-counter','char-counter','sentence-counter','paragraph-counter','word-frequency',
     'case-converter','remove-spaces','find-replace','line-sorter','alpha-sorter',
@@ -57,7 +59,7 @@ const templatePath = path.join(__dirname, 'tools', 'template.html');
 const template = fs.readFileSync(templatePath, 'utf8');
 const baseUrl = 'https://azhai-six.vercel.app';
 
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
 tools.forEach(toolId => {
     const seo = toolSEO[toolId] || {title:'Tool',desc:'',keywords:''};
@@ -93,3 +95,5 @@ tools.forEach(toolId => {
 });
 
 console.log('\nBuild complete! ' + tools.length + ' tool pages generated.');
+
+} catch(err) { console.error('Build failed:', err.message); process.exit(1); }

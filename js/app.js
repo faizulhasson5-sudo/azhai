@@ -48,6 +48,10 @@ App.initAnalytics=function(){
   if(lsGet('attCookies')!=='accepted')return;
   if(window._gaInitialized)return;
   window._gaInitialized=true;
+  var s=document.createElement('script');
+  s.async=true;
+  s.src='https://www.googletagmanager.com/gtag/js?id=G-XDHMXW7PR2';
+  document.head.appendChild(s);
   window.dataLayer=window.dataLayer||[];
   function gtag(){dataLayer.push(arguments);}
   gtag('js',new Date());

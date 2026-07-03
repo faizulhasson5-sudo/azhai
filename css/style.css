@@ -1,59 +1,59 @@
 ﻿/* ============================================================
-   FREE AI TEXT TOOLS — Editorial Image Design v2
-   Warm cream · Burnt orange · Large backgrounds · Bold type
+   FREE AI TEXT TOOLS — Trust & Productivity Design
+   Deep navy · Electric blue · Professional SaaS aesthetic
    All bugs fixed · Dark mode · Blog sidebar · Scroll reveal
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=DM+Mono:wght@400;500&display=swap');
 
 :root {
-  --bg: #faf8f5;
-  --bg-warm: #f3efe8;
+  --bg: #f8fafc;
+  --bg-warm: #f1f5f9;
   --surface: #ffffff;
-  --border: #e8e2da;
-  --border-hover: #d4ccc1;
-  --text: #1a1612;
-  --text-2: #5c534a;
-  --text-3: #6b6560;
-  --accent: #c2410c;
-  --accent-hover: #9a3412;
-  --accent-light: #fff7ed;
-  --accent-bg: #fed7aa;
-  --success: #15803d;
-  --danger: #b91c1c;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --text: #0f172a;
+  --text-2: #475569;
+  --text-3: #64748b;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-light: #eff6ff;
+  --accent-bg: #dbeafe;
+  --success: #16a34a;
+  --danger: #dc2626;
   --radius: 12px;
   --header-h: 60px;
   --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --mono: 'DM Mono', monospace;
-  --cat-counters: #c2410c;
-  --cat-text: #2563eb;
-  --cat-convert: #7c3aed;
-  --cat-seo: #15803d;
+  --cat-counters: #2563eb;
+  --cat-text: #7c3aed;
+  --cat-convert: #0891b2;
+  --cat-seo: #16a34a;
   --cat-code: #d97706;
   --accent-text: #ffffff;
 }
 
 [data-theme="dark"] {
-  --bg: #1a1612;
-  --bg-warm: #231f1a;
-  --surface: #2a2520;
-  --border: #3d362f;
-  --border-hover: #5a5049;
-  --text: #f5f0eb;
-  --text-2: #c4bdb5;
-  --text-3: #a8a09a;
-  --accent: #fb923c;
-  --accent-hover: #f97316;
-  --accent-light: #431407;
-  --accent-bg: #7c2d12;
+  --bg: #0f172a;
+  --bg-warm: #1e293b;
+  --surface: #1e293b;
+  --border: #334155;
+  --border-hover: #475569;
+  --text: #f1f5f9;
+  --text-2: #94a3b8;
+  --text-3: #64748b;
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+  --accent-light: #1e3a5f;
+  --accent-bg: #1e3a5f;
   --success: #4ade80;
   --danger: #f87171;
-  --cat-counters: #fb923c;
-  --cat-text: #60a5fa;
-  --cat-convert: #a78bfa;
+  --cat-counters: #60a5fa;
+  --cat-text: #a78bfa;
+  --cat-convert: #22d3ee;
   --cat-seo: #4ade80;
   --cat-code: #fbbf24;
-  --accent-text: #1a1612;
+  --accent-text: #0f172a;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -160,18 +160,19 @@ a:hover { color: var(--accent-hover); }
   display: flex; align-items: center;
   overflow: hidden;
   margin-bottom: 48px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
 }
 .hero-bg {
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
   background: url('https://picsum.photos/id/180/1200/600') center/cover no-repeat;
-  filter: brightness(0.4);
+  filter: brightness(0.15);
 }
 .hero-bg::after {
   content: '';
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
-  background: linear-gradient(135deg, rgba(194,65,12,0.3), rgba(26,22,18,0.7));
+  background: linear-gradient(135deg, rgba(15,23,42,0.6), rgba(30,41,59,0.8));
 }
 .hero-content {
   position: relative; z-index: 2;
@@ -477,7 +478,7 @@ a:hover { color: var(--accent-hover); }
   white-space: pre-wrap; word-break: break-all;
   margin: 0;
 }
-.hl-tag { color: #fb923c; }
+.hl-tag { color: #3b82f6; }
 .hl-attr { color: #a8a29e; }
 .hl-str { color: #86efac; }
 

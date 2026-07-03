@@ -12,7 +12,8 @@ const tools = [
     'json-formatter','json-validator','xml-formatter','xml-validator',
     'markdown-editor','markdown-preview','html-previewer','regex-tester',
     'url-encoder','url-decoder','html-encoder','html-decoder',
-    'b64-encoder','b64-decoder','hash-generator'
+    'b64-encoder','b64-decoder','hash-generator',
+    'hreflang-gen','schema-gen','faq-schema-gen','article-schema-gen','breadcrumb-schema-gen'
 ];
 
 const toolSEO = {
@@ -52,7 +53,12 @@ const toolSEO = {
 "html-decoder":{title:"HTML Decoder - Decode HTML Entities",desc:"Decode HTML entities back to readable text. Free online HTML decoder.",keywords:"html decoder, decode html, unescape html"},
 "b64-encoder":{title:"Base64 Encoder - Encode Text to Base64",desc:"Encode text to Base64 format instantly. Free online Base64 encoder.",keywords:"base64 encode, base64 encoder, encode base64"},
 "b64-decoder":{title:"Base64 Decoder - Decode Base64 to Text",desc:"Decode Base64 strings back to original text. Free online Base64 decoder.",keywords:"base64 decode, base64 decoder, decode base64"},
-"hash-generator":{title:"Hash Generator - Generate Text Hashes",desc:"Generate djb2 and FNV-1a hashes from text. Free online hash generator.",keywords:"hash generator, djb2, fnv1a, text hash"}
+"hash-generator":{title:"Hash Generator - Generate Text Hashes",desc:"Generate djb2 and FNV-1a hashes from text. Free online hash generator.",keywords:"hash generator, djb2, fnv1a, text hash"},
+"hreflang-gen":{title:"Hreflang Tag Generator - Multilingual SEO Tags",desc:"Generate hreflang link tags for multilingual websites. Free online hreflang generator for SEO.",keywords:"hreflang generator, hreflang tag, multilingual seo, international seo"},
+"schema-gen":{title:"Schema Markup Generator - JSON-LD Structured Data",desc:"Generate JSON-LD structured data for Articles, FAQs, Breadcrumbs, Products, and Local Businesses. Free online schema generator.",keywords:"schema generator, json-ld, structured data, schema markup, rich results"},
+"faq-schema-gen":{title:"FAQ Schema Generator - FAQ Structured Data",desc:"Generate FAQ structured data for Google rich results. Free online FAQ schema generator.",keywords:"faq schema, faq structured data, faq rich results, faq json-ld"},
+"article-schema-gen":{title:"Article Schema Generator - Article Structured Data",desc:"Generate Article structured data for blog posts and news. Free online article schema generator.",keywords:"article schema, article structured data, blog schema, news schema"},
+"breadcrumb-schema-gen":{title:"Breadcrumb Schema Generator - Breadcrumb Structured Data",desc:"Generate BreadcrumbList structured data for site navigation. Free online breadcrumb schema generator.",keywords:"breadcrumb schema, breadcrumb structured data, navigation schema, breadcrumb json-ld"}
 };
 
 const templatePath = path.join(__dirname, 'tools', 'template.html');

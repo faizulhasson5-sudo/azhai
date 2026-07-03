@@ -118,7 +118,12 @@ App.tools=[
 {id:'html-decoder',name:'HTML Decoder',cat:'code',desc:'Decode HTML entities'},
 {id:'b64-encoder',name:'Base64 Encoder',cat:'code',desc:'Encode text to Base64'},
 {id:'b64-decoder',name:'Base64 Decoder',cat:'code',desc:'Decode Base64 strings'},
-{id:'hash-generator',name:'Hash Generator',cat:'code',desc:'Generate simple text hashes'}
+{id:'hash-generator',name:'Hash Generator',cat:'code',desc:'Generate simple text hashes'},
+{id:'hreflang-gen',name:'Hreflang Generator',cat:'seo',desc:'Generate hreflang tags for multilingual sites'},
+{id:'schema-gen',name:'Schema Generator',cat:'seo',desc:'Generate structured data JSON-LD markup'},
+{id:'faq-schema-gen',name:'FAQ Schema Generator',cat:'seo',desc:'Generate FAQ structured data for rich results'},
+{id:'article-schema-gen',name:'Article Schema Generator',cat:'seo',desc:'Generate article structured data markup'},
+{id:'breadcrumb-schema-gen',name:'Breadcrumb Schema Generator',cat:'seo',desc:'Generate breadcrumb structured data'}
 ];
 
 App.getToolById=function(id){return App.tools.find(function(t){return t.id===id;});};

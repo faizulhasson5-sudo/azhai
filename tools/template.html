@@ -107,7 +107,7 @@
 <div class="footer-grid">
 <div class="footer-col">
 <a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">?</span> Free AI Text Tools</a>
-<p style="font-size:13px;color:var(--text-3)">37+ free online text tools. No sign-up needed. Your data stays in your browser.</p>
+<p style="font-size:13px;color:var(--text-3)">42+ free online text tools. No sign-up needed. Your data stays in your browser.</p>
 </div>
 <div class="footer-col">
 <h4>Tools</h4>
@@ -166,10 +166,15 @@ document.getElementById('toolTitle').textContent=tool.name;
 document.getElementById('toolDesc').textContent=tool.desc;
 document.title=tool.name+' - Free AI Text Tools';
 
-function ga(){var a={'word-counter':'Count words, characters, lines, sentences, and paragraphs in your text.','char-counter':'Character counts with and without spaces. See byte size instantly.','sentence-counter':'Count sentences by detecting punctuation marks (. ! ?).','paragraph-counter':'Count paragraphs by detecting empty line breaks.','word-frequency':'Analyze word occurrence frequency and distribution.','case-converter':'UPPERCASE, lowercase, Title Case, Sentence case, tOGGLE cASE.','remove-spaces':'Remove leading, trailing, and extra whitespace from text.','find-replace':'Search and replace text with regex support.','line-sorter':'Sort lines alphabetically in ascending or descending order.','alpha-sorter':'Sort lines alphabetically with strict A-Z ordering.','text-reverser':'Reverse text by characters, words, or lines.','duplicate-remover':'Remove duplicate lines from text.','lorem-generator':'Generate Lorem Ipsum placeholder text.','slug-generator':'Convert titles to URL-friendly slugs.','keyword-density':'Calculate keyword frequency and density percentage.','keyword-extract':'Extract the most frequent keywords from text.','meta-gen':'Generate complete HTML meta tag sets.','meta-desc-gen':'Generate SEO-optimized meta descriptions.','og-generator':'Generate Open Graph social media meta tags.','canonical-gen':'Generate canonical link tags for SEO.','robots-txt':'Generate robots.txt crawl directives.','sitemap-gen':'Generate XML sitemaps for search engines.','json-formatter':'Beautify and validate JSON data.','json-validator':'Validate JSON syntax and structure.','xml-formatter':'Pretty-print and indent XML documents.','xml-validator':'Validate XML structure and syntax.','markdown-editor':'Write Markdown with live HTML preview.','markdown-preview':'Convert Markdown to HTML output.','html-previewer':'Live HTML code preview in browser.','regex-tester':'Test regular expressions with match highlighting.','url-encoder':'Encode special characters for URLs.','url-decoder':'Decode percent-encoded URL strings.','html-encoder':'Escape HTML special characters to entities.','html-decoder':'Decode HTML entities back to characters.','b64-encoder':'Encode text to Base64 format.','b64-decoder':'Decode Base64 strings to text.','hash-generator':'Generate djb2 and FNV-1a hashes.'};
+function ga(){var a={'word-counter':'Count words, characters, lines, sentences, and paragraphs in your text.','char-counter':'Character counts with and without spaces. See byte size instantly.','sentence-counter':'Count sentences by detecting punctuation marks (. ! ?).','paragraph-counter':'Count paragraphs by detecting empty line breaks.','word-frequency':'Analyze word occurrence frequency and distribution.','case-converter':'UPPERCASE, lowercase, Title Case, Sentence case, tOGGLE cASE.','remove-spaces':'Remove leading, trailing, and extra whitespace from text.','find-replace':'Search and replace text with regex support.','line-sorter':'Sort lines alphabetically in ascending or descending order.','alpha-sorter':'Sort lines alphabetically with strict A-Z ordering.','text-reverser':'Reverse text by characters, words, or lines.','duplicate-remover':'Remove duplicate lines from text.','lorem-generator':'Generate Lorem Ipsum placeholder text.','slug-generator':'Convert titles to URL-friendly slugs.','keyword-density':'Calculate keyword frequency and density percentage.','keyword-extract':'Extract the most frequent keywords from text.','meta-gen':'Generate complete HTML meta tag sets.','meta-desc-gen':'Generate SEO-optimized meta descriptions.','og-generator':'Generate Open Graph social media meta tags.','canonical-gen':'Generate canonical link tags for SEO.','robots-txt':'Generate robots.txt crawl directives.','sitemap-gen':'Generate XML sitemaps for search engines.','json-formatter':'Beautify and validate JSON data.','json-validator':'Validate JSON syntax and structure.','xml-formatter':'Pretty-print and indent XML documents.','xml-validator':'Validate XML structure and syntax.','markdown-editor':'Write Markdown with live HTML preview.','markdown-preview':'Convert Markdown to HTML output.','html-previewer':'Live HTML code preview in browser.','regex-tester':'Test regular expressions with match highlighting.','url-encoder':'Encode special characters for URLs.','url-decoder':'Decode percent-encoded URL strings.','html-encoder':'Escape HTML special characters to entities.','html-decoder':'Decode HTML entities back to characters.','b64-encoder':'Encode text to Base64 format.','b64-decoder':'Decode Base64 strings to text.','hash-generator':'Generate djb2 and FNV-1a hashes.',
+'hreflang-gen':'Generate hreflang link tags for multilingual website SEO.',
+'schema-gen':'Generate JSON-LD structured data markup for search engines.',
+'faq-schema-gen':'Generate FAQ structured data for Google rich results.',
+'article-schema-gen':'Generate article structured data for blog posts and news.',
+'breadcrumb-schema-gen':'Generate breadcrumb structured data for navigation.'};
 document.getElementById('toolAbout').textContent=a[tid]||tool.desc;}
 
-function rb(){var R={'word-counter':['char-counter','sentence-counter','paragraph-counter'],'char-counter':['word-counter','remove-spaces'],'sentence-counter':['word-counter','paragraph-counter'],'paragraph-counter':['word-counter','sentence-counter'],'word-frequency':['keyword-density','keyword-extract'],'case-converter':['remove-spaces','slug-generator'],'remove-spaces':['case-converter','find-replace'],'find-replace':['remove-spaces','regex-tester'],'line-sorter':['alpha-sorter','duplicate-remover'],'alpha-sorter':['line-sorter','duplicate-remover'],'text-reverser':['duplicate-remover','line-sorter'],'duplicate-remover':['line-sorter','alpha-sorter'],'lorem-generator':['word-counter','slug-generator'],'slug-generator':['url-encoder','case-converter'],'keyword-density':['keyword-extract','meta-gen'],'keyword-extract':['keyword-density','meta-gen'],'meta-gen':['meta-desc-gen','og-generator'],'meta-desc-gen':['meta-gen','og-generator'],'og-generator':['meta-gen','canonical-gen'],'canonical-gen':['robots-txt','sitemap-gen'],'robots-txt':['sitemap-gen','canonical-gen'],'sitemap-gen':['robots-txt','canonical-gen'],'json-formatter':['json-validator','xml-formatter'],'json-validator':['json-formatter','xml-validator'],'xml-formatter':['xml-validator','json-formatter'],'xml-validator':['xml-formatter','json-validator'],'markdown-editor':['markdown-preview','html-previewer'],'markdown-preview':['markdown-editor','html-previewer'],'html-previewer':['html-encoder','markdown-editor'],'regex-tester':['find-replace','html-encoder'],'url-encoder':['url-decoder','html-encoder'],'url-decoder':['url-encoder','html-decoder'],'html-encoder':['html-decoder','url-encoder'],'html-decoder':['html-encoder','url-decoder'],'b64-encoder':['b64-decoder','url-encoder'],'b64-decoder':['b64-encoder','html-decoder'],'hash-generator':['b64-encoder','slug-generator']};
+function rb(){var R={'word-counter':['char-counter','sentence-counter','paragraph-counter'],'char-counter':['word-counter','remove-spaces'],'sentence-counter':['word-counter','paragraph-counter'],'paragraph-counter':['word-counter','sentence-counter'],'word-frequency':['keyword-density','keyword-extract'],'case-converter':['remove-spaces','slug-generator'],'remove-spaces':['case-converter','find-replace'],'find-replace':['remove-spaces','regex-tester'],'line-sorter':['alpha-sorter','duplicate-remover'],'alpha-sorter':['line-sorter','duplicate-remover'],'text-reverser':['duplicate-remover','line-sorter'],'duplicate-remover':['line-sorter','alpha-sorter'],'lorem-generator':['word-counter','slug-generator'],'slug-generator':['url-encoder','case-converter'],'keyword-density':['keyword-extract','meta-gen'],'keyword-extract':['keyword-density','meta-gen'],'meta-gen':['meta-desc-gen','og-generator'],'meta-desc-gen':['meta-gen','og-generator'],'og-generator':['meta-gen','canonical-gen'],'canonical-gen':['robots-txt','sitemap-gen'],'robots-txt':['sitemap-gen','canonical-gen'],'sitemap-gen':['robots-txt','canonical-gen'],'json-formatter':['json-validator','xml-formatter'],'json-validator':['json-formatter','xml-validator'],'xml-formatter':['xml-validator','json-formatter'],'xml-validator':['xml-formatter','json-validator'],'markdown-editor':['markdown-preview','html-previewer'],'markdown-preview':['markdown-editor','html-previewer'],'html-previewer':['html-encoder','markdown-editor'],'regex-tester':['find-replace','html-encoder'],'url-encoder':['url-decoder','html-encoder'],'url-decoder':['url-encoder','html-decoder'],'html-encoder':['html-decoder','url-encoder'],'html-decoder':['html-encoder','url-decoder'],'b64-encoder':['b64-decoder','url-encoder'],'b64-decoder':['b64-encoder','html-decoder'],'hash-generator':['b64-encoder','slug-generator'],'hreflang-gen':['sitemap-gen','canonical-gen'],'schema-gen':['faq-schema-gen','article-schema-gen','breadcrumb-schema-gen'],'faq-schema-gen':['schema-gen','meta-gen'],'article-schema-gen':['schema-gen','og-generator'],'breadcrumb-schema-gen':['schema-gen','sitemap-gen']};
 var rel=R[tid]||[];var rh='';
 rel.forEach(function(rid){var rt=App.getToolById(rid);if(rt)rh+='<a href="/tools/'+esc(rt.id)+'.html" class="related-link">'+esc(rt.name)+' &rarr;</a>';});
 document.getElementById('relatedTools').innerHTML=rh;}
@@ -224,6 +229,16 @@ case'regex-tester':
 OPT='<div class="tool-option"><label>Pattern:</label><input type="text" id="opt-rp2" placeholder="[a-z]+" style="width:250px;font-family:var(--mono)" maxlength="200"></div><div class="tool-option"><label>Flags:</label><input type="text" id="opt-rf" value="gi" style="width:60px" maxlength="10"></div>';break;
 case'markdown-editor':
 OPT='<div class="tool-option"><span style="font-size:.8rem;color:var(--text-2)">Write Markdown on the left, see live HTML preview on the right.</span></div>';break;
+case'hreflang-gen':
+OPT='<div class="tool-option"><label>Default language:</label><input type="text" id="opt-hl" value="en" style="width:60px"></div><div class="tool-option"><label>Alternate URLs (one per line, format: lang|url):</label><textarea id="opt-hlu" placeholder="es|https://example.com/es/&#10;fr|https://example.com/fr/&#10;de|https://example.com/de/" style="width:100%;min-height:80px;font-family:var(--mono);font-size:.8rem"></textarea></div>';break;
+case'schema-gen':
+OPT='<div class="tool-option"><label>Schema type:</label><select id="opt-st"><option value="article">Article</option><option value="faq">FAQ</option><option value="breadcrumb">Breadcrumb</option><option value="product">Product</option><option value="localbusiness">Local Business</option></select></div>';break;
+case'faq-schema-gen':
+OPT='<div class="tool-option"><span style="font-size:.8rem;color:var(--text-2)">Enter Q&A pairs below. Separate with blank lines.</span></div><div class="tool-option"><label>Pairs (Q and A on separate lines):</label><textarea id="opt-faq" placeholder="What is your return policy?&#10;We offer a 30-day money-back guarantee.&#10;&#10;How do I contact support?&#10;Email us at support@example.com" style="width:100%;min-height:120px;font-family:var(--mono);font-size:.8rem"></textarea></div>';break;
+case'article-schema-gen':
+OPT='<div class="tool-option"><label>Headline:</label><input type="text" id="opt-ah" placeholder="Article headline"></div><div class="tool-option"><label>Author:</label><input type="text" id="opt-aa" placeholder="Author name"></div><div class="tool-option"><label>Date Published:</label><input type="date" id="opt-ad"></div><div class="tool-option"><label>Image URL:</label><input type="url" id="opt-ai" placeholder="https://example.com/image.jpg" style="width:100%"></div>';break;
+case'breadcrumb-schema-gen':
+OPT='<div class="tool-option"><label>Breadcrumb items (one per line, format: label|url):</label><textarea id="opt-bc" placeholder="Home|https://example.com/&#10;Blog|https://example.com/blog/&#10;Current Page|https://example.com/blog/post" style="width:100%;min-height:80px;font-family:var(--mono);font-size:.8rem"></textarea></div>';break;
 }
 
 document.getElementById('toolOptions').innerHTML=OPT;
@@ -465,6 +480,44 @@ result='<div class="output-content">';
 if(ha==='djb2'||ha==='both')result+='<p><strong>djb2:</strong> '+djb2(input)+'</p>';
 if(ha==='fnv'||ha==='both')result+='<p><strong>FNV-1a:</strong> '+fnv(input)+'</p>';
 result+='</div>';break;
+case'hreflang-gen':
+var hlDef=document.getElementById('opt-hl').value.trim()||'en';
+var hlLines=document.getElementById('opt-hlu').value.split('\n').filter(function(l){return l.trim();});
+var hl='<span class="hl-tag">&lt;link</span> <span class="hl-attr">rel</span>=<span class="hl-str">"alternate"</span> <span class="hl-attr">hreflang</span>=<span class="hl-str">"'+esc(hlDef)+'"</span> <span class="hl-attr">href</span>=<span class="hl-str">"'+esc(input.trim())+'"</span><span class="hl-tag">&gt;</span>';
+hlLines.forEach(function(l){var p=l.split('|');if(p.length===2)hl+='\n<span class="hl-tag">&lt;link</span> <span class="hl-attr">rel</span>=<span class="hl-str">"alternate"</span> <span class="hl-attr">hreflang</span>=<span class="hl-str">"'+esc(p[0].trim())+'"</span> <span class="hl-attr">href</span>=<span class="hl-str">"'+esc(p[1].trim())+'"</span><span class="hl-tag">&gt;</span>';});
+hl+='\n<span class="hl-tag">&lt;link</span> <span class="hl-attr">rel</span>=<span class="hl-str">"alternate"</span> <span class="hl-attr">hreflang</span>=<span class="hl-str">"x-default"</span> <span class="hl-attr">href</span>=<span class="hl-str">"'+esc(input.trim())+'"</span><span class="hl-tag">&gt;</span>';
+result='<div class="code-block"><pre>'+hl+'</pre></div>';break;
+case'schema-gen':
+var st=document.getElementById('opt-st').value;
+var sdBase={'@context':'https://schema.org','@type':st==='localbusiness'?'LocalBusiness':st==='product'?'Product':st.charAt(0).toUpperCase()+st.slice(1)};
+if(st==='article'){sdBase.headline=input.trim();sdBase.datePublished=new Date().toISOString().slice(0,10);}
+else if(st==='product'){sdBase.name=input.trim();sdBase.offers={'@type':'Offer','price':'0','priceCurrency':'USD'};}
+else if(st==='localbusiness'){sdBase.name=input.trim();sdBase.url=input.trim();}
+result='<div class="code-block"><pre>'+esc(JSON.stringify(sdBase,null,2))+'</pre></div><p style="font-size:.8rem;color:var(--text-2);margin-top:8px">Copy this JSON-LD and paste it in a <code>&lt;script type="application/ld+json"&gt;</code> tag in your page head.</p>';break;
+case'faq-schema-gen':
+var faqInput=document.getElementById('opt-faq').value.trim();
+if(!faqInput){out.innerHTML='<p style="color:var(--text-2)">Enter Q&A pairs.</p>';return;}
+var faqPairs=faqInput.split(/\n\s*\n/);
+var faqEntities=[];
+faqPairs.forEach(function(pair){var lines=pair.split('\n').filter(function(l){return l.trim();});if(lines.length>=2){faqEntities.push({'@type':'Question','name':lines[0].trim(),acceptedAnswer:{'@type':'Answer',text:lines.slice(1).join(' ').trim()}});}});
+var faqSchema={'@context':'https://schema.org','@type':'FAQPage','mainEntity':faqEntities};
+result='<div class="code-block"><pre>'+esc(JSON.stringify(faqSchema,null,2))+'</pre></div><p style="font-size:.8rem;color:var(--text-2);margin-top:8px">'+faqEntities.length+' FAQ pairs generated. Paste in a <code>&lt;script type="application/ld+json"&gt;</code> tag.</p>';break;
+case'article-schema-gen':
+var ah=document.getElementById('opt-ah').value.trim()||input.trim();
+var aa=document.getElementById('opt-aa').value.trim()||'Author';
+var ad=document.getElementById('opt-ad').value||new Date().toISOString().slice(0,10);
+var ai=document.getElementById('opt-ai').value.trim();
+var artSchema={'@context':'https://schema.org','@type':'Article','headline':ah,'author':{'@type':'Person','name':aa},'datePublished':ad,'dateModified':ad};
+if(ai)artSchema.image=ai;
+result='<div class="code-block"><pre>'+esc(JSON.stringify(artSchema,null,2))+'</pre></div><p style="font-size:.8rem;color:var(--text-2);margin-top:8px">Paste this in a <code>&lt;script type="application/ld+json"&gt;</code> tag in your article page.</p>';break;
+case'breadcrumb-schema-gen':
+var bcInput=document.getElementById('opt-bc').value.trim();
+if(!bcInput){out.innerHTML='<p style="color:var(--text-2)">Enter breadcrumb items.</p>';return;}
+var bcItems=bcInput.split('\n').filter(function(l){return l.trim();});
+var bcList=[];
+bcItems.forEach(function(item,i){var p=item.split('|');if(p.length===2)bcList.push({'@type':'ListItem','position':i+1,'name':p[0].trim(),'item':p[1].trim()});});
+var bcSchema={'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':bcList};
+result='<div class="code-block"><pre>'+esc(JSON.stringify(bcSchema,null,2))+'</pre></div><p style="font-size:.8rem;color:var(--text-2);margin-top:8px">'+bcList.length+' breadcrumb items. Paste in a <code>&lt;script type="application/ld+json"&gt;</code> tag.</p>';break;
 default:
 result='<p style="color:var(--text-2)">Processing not available for this tool.</p>';
 }
@@ -558,7 +611,12 @@ var guides={
 'html-decoder':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Decode HTML entities back to readable characters. Supports all standard entities including numeric references.</p>',
 'b64-encoder':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Encode text to Base64 format with full UTF-8 support. Useful for data transmission, email encoding, and embedding binary data in text.</p>',
 'b64-decoder':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Decode Base64 strings back to plain text. Handles UTF-8 encoded data correctly. Shows error messages for invalid input.</p>',
-'hash-generator':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate djb2 and FNV-1a hashes from any text. Fast, non-cryptographic hash functions suitable for checksums and data integrity verification.</p>'
+'hash-generator':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate djb2 and FNV-1a hashes from any text. Fast, non-cryptographic hash functions suitable for checksums and data integrity verification.</p>',
+'hreflang-gen':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate hreflang link tags to tell search engines which language version of a page to show users. Essential for multilingual websites targeting different countries and languages.</p>',
+'schema-gen':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate JSON-LD structured data markup for Articles, FAQs, Breadcrumbs, Products, and Local Businesses. Helps search engines understand your content for rich results.</p>',
+'faq-schema-gen':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate FAQ structured data that enables rich result snippets in Google search. Enter question-answer pairs separated by blank lines to create valid schema markup.</p>',
+'article-schema-gen':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate Article structured data for blog posts and news articles. Includes headline, author, and date properties that help Google understand and display your content.</p>',
+'breadcrumb-schema-gen':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate BreadcrumbList structured data that shows navigation path in search results. Helps users and search engines understand your site hierarchy.</p>'
 };
 if(guides[tid]){
 document.getElementById('seoGuideContent').innerHTML=guides[tid];
@@ -586,7 +644,12 @@ var workflows={
 'b64-decoder':'<a href="/tools/b64-encoder.html" class="related-link">Encode Base64 &rarr;</a><a href="/tools/url-encoder.html" class="related-link">Encode URL &rarr;</a>',
 'word-counter':'<a href="/tools/char-counter.html" class="related-link">Count Characters &rarr;</a><a href="/tools/word-frequency.html" class="related-link">Analyze Word Frequency &rarr;</a>',
 'case-converter':'<a href="/tools/slug-generator.html" class="related-link">Create URL Slug &rarr;</a><a href="/tools/remove-spaces.html" class="related-link">Clean Text &rarr;</a>',
-'find-replace':'<a href="/tools/regex-tester.html" class="related-link">Test Regex &rarr;</a><a href="/tools/duplicate-remover.html" class="related-link">Remove Duplicates &rarr;</a>'
+'find-replace':'<a href="/tools/regex-tester.html" class="related-link">Test Regex &rarr;</a><a href="/tools/duplicate-remover.html" class="related-link">Remove Duplicates &rarr;</a>',
+'hreflang-gen':'<a href="/tools/sitemap-gen.html" class="related-link">Generate Sitemap &rarr;</a><a href="/tools/canonical-gen.html" class="related-link">Add Canonical Tag &rarr;</a>',
+'schema-gen':'<a href="/tools/faq-schema-gen.html" class="related-link">FAQ Schema &rarr;</a><a href="/tools/article-schema-gen.html" class="related-link">Article Schema &rarr;</a><a href="/tools/breadcrumb-schema-gen.html" class="related-link">Breadcrumb Schema &rarr;</a>',
+'faq-schema-gen':'<a href="/tools/schema-gen.html" class="related-link">Other Schemas &rarr;</a><a href="/tools/meta-gen.html" class="related-link">Meta Tags &rarr;</a>',
+'article-schema-gen':'<a href="/tools/schema-gen.html" class="related-link">Other Schemas &rarr;</a><a href="/tools/og-generator.html" class="related-link">OG Tags &rarr;</a>',
+'breadcrumb-schema-gen':'<a href="/tools/schema-gen.html" class="related-link">Other Schemas &rarr;</a><a href="/tools/sitemap-gen.html" class="related-link">Generate Sitemap &rarr;</a>'
 };
 if(workflows[tid]){
 document.getElementById('workflowLinks').innerHTML=workflows[tid];
@@ -630,7 +693,12 @@ var schemaFAQs={
 'html-decoder':[{q:'What entities does it decode?',a:'All standard HTML entities including &amp; &lt; &gt; &quot; &#39; and numeric references.'},{q:'Will it decode malicious code?',a:'It converts entities to text only. The output is not executed as HTML.'}],
 'b64-encoder':[{q:'What is Base64?',a:'A binary-to-text encoding scheme that represents data using ASCII characters.'},{q:'Can I encode unicode text?',a:'Yes. The tool handles UTF-8 encoding before Base64 conversion.'}],
 'b64-decoder':[{q:'What if the input is not valid Base64?',a:'The tool shows an error message. Ensure your input contains only valid Base64 characters.'},{q:'Will it decode binary data?',a:'It decodes to text. Binary data may not display correctly in the output.'}],
-'hash-generator':[{q:'What hash algorithms?',a:'djb2 and FNV-1a. Both are fast, non-cryptographic hash functions.'},{q:'Can I use these for passwords?',a:'No. These are simple hashes for checksums. Use bcrypt or SHA-256 for passwords.'}]
+'hash-generator':[{q:'What hash algorithms?',a:'djb2 and FNV-1a. Both are fast, non-cryptographic hash functions.'},{q:'Can I use these for passwords?',a:'No. These are simple hashes for checksums. Use bcrypt or SHA-256 for passwords.'}],
+'hreflang-gen':[{q:'What is hreflang?',a:'Hreflang is an HTML attribute that tells search engines which language version of a page to show users based on their location and language preference.'},{q:'Do I need hreflang for a single-language site?',a:'No. Hreflang is only needed for multilingual or multi-regional websites with content in different languages.'}],
+'schema-gen':[{q:'What is structured data?',a:'Structured data is a standardized format for providing information about a page and classifying its content. It helps search engines understand your content for rich results.'},{q:'Which schema type should I use?',a:'Choose based on your content: Article for blog posts, FAQ for question-answer pages, Breadcrumb for navigation, Product for e-commerce, Local Business for physical locations.'}],
+'faq-schema-gen':[{q:'What are FAQ rich results?',a:'FAQ rich results show expandable Q&A pairs directly in Google search results, increasing visibility and click-through rates.'},{q:'How many FAQs can I include?',a:'You can include as many as you want, but Google typically shows 2-3 FAQ rich results per page in search.'}],
+'article-schema-gen':[{q:'Why use Article schema?',a:'Article structured data helps Google understand your content type, display it in Top Stories carousel, and show enhanced search results with publication dates.'},{q:'What fields are required?',a:'headline, author, and datePublished are the minimum required properties for Article schema.'}],
+'breadcrumb-schema-gen':[{q:'What is breadcrumb schema?',a:'Breadcrumb structured data tells search engines the hierarchical structure of your site, displaying navigation path in search results.'},{q:'How many levels should I include?',a:'Include all levels from the homepage to the current page. Typically 3-5 levels deep.'}]
 };
 if(schemaFAQs[tid]){
 var sd={'@context':'https://schema.org','@type':'FAQPage','mainEntity':schemaFAQs[tid].map(function(f){return{'@type':'Question','name':f.q,'acceptedAnswer':{'@type':'Answer','text':f.a}};})};

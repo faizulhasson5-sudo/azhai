@@ -94,6 +94,8 @@
 <script>
 (function(){
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function lsGet(k){try{return JSON.parse(localStorage.getItem(k));}catch(e){return null;}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
 var m=location.pathname.match(/\/blog\/(.+)\.html/);
 if(!m)return;
 var slug=m[1];
@@ -105,6 +107,9 @@ var other=App.blogPosts.filter(function(p){return p.slug!==slug;}).slice(0,3);
 var h='';other.forEach(function(p){h+='<a href="/blog/'+esc(p.slug)+'.html" class="related-link">'+esc(p.title)+' &rarr;</a>';});
 sb.innerHTML=h;
 }
+var views=lsGet('attBlogViews')||{};
+views[slug]=(views[slug]||0)+1;
+lsSet('attBlogViews',views);
 })();
 </script>
 <script>

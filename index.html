@@ -308,12 +308,15 @@
     renderGrid('seoTools',cats.seo);
     renderGrid('codeTools',cats.code);
 
-    // Populate blog preview
+    // Populate blog preview (4 most viewed)
     if(App.blogPosts){
       var bp=document.getElementById('blogPreview');
       if(bp){
+        function lsGet(k){try{return JSON.parse(localStorage.getItem(k));}catch(e){return null;}}
+        var views=lsGet('attBlogViews')||{};
+        var sorted=App.blogPosts.slice().sort(function(a,b){return (views[b.slug]||0)-(views[a.slug]||0);});
         var bh='';
-        App.blogPosts.slice(0,3).forEach(function(p){
+        sorted.slice(0,4).forEach(function(p){
           bh+='<a href="/blog/'+esc(p.slug)+'.html" class="blog-card">';
           if(p.image)bh+='<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" class="blog-card-img" loading="lazy">';
           bh+='<span class="card-cat">'+esc(p.category)+'</span>';

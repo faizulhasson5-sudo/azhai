@@ -149,6 +149,14 @@
 <button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button>
 </div>
 </div>
+<div class="bottom-sheet" id="bottomSheet">
+<div class="action-bar">
+<button type="button" class="btn btn-primary" onclick="processCurrentTool()">&#9654; Process</button>
+<button type="button" class="btn btn-secondary btn-sm" onclick="clearTool()">Clear</button>
+<button type="button" class="btn btn-secondary btn-sm" id="bottomCopyBtn" onclick="copyOutput()">Copy</button>
+<button type="button" class="btn btn-secondary btn-sm" onclick="downloadResult()">Download</button>
+</div>
+</div>
 <div class="toast" id="appToast"></div>
 <script src="/js/app.js"></script>
 <script>
@@ -526,7 +534,7 @@ if(typeof result==='string')out.innerHTML=result;
 };
 
 window.clearTool=function(){document.getElementById('tool-input').value='';document.getElementById('tool-output').innerHTML='';};
-window.copyOutput=function(){var t=document.getElementById('tool-output').innerText;if(!t){App.toast('Nothing to copy');return;}navigator.clipboard.writeText(t).then(function(){App.toast('Copied!');}).catch(function(){App.toast('Failed');});};
+window.copyOutput=function(){var t=document.getElementById('tool-output').innerText;if(!t){App.toast('Nothing to copy');return;}navigator.clipboard.writeText(t).then(function(){App.toast('Copied!');var cb=document.getElementById('bottomCopyBtn');if(cb){cb.textContent='✓ Copied';cb.classList.add('btn-copy-success');setTimeout(function(){cb.textContent='Copy';cb.classList.remove('btn-copy-success');},1500);}}).catch(function(){App.toast('Failed');});};
 window.downloadResult=function(){var t=document.getElementById('tool-output').innerText;if(!t){App.toast('Nothing to download');return;}var ext={'json-formatter':'json','json-validator':'json','xml-formatter':'xml','xml-validator':'xml','markdown-editor':'md','markdown-preview':'md','html-previewer':'html','regex-tester':'txt','hash-generator':'txt','b64-encoder':'txt','b64-decoder':'txt','url-encoder':'txt','url-decoder':'txt','html-encoder':'html','html-decoder':'html','css':'css','csv':'csv'}[tid]||'txt';
 var blob=new Blob([t],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=tid+'-output.'+ext;a.click();setTimeout(function(){URL.revokeObjectURL(a.href);},1000);};
 

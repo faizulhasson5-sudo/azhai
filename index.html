@@ -99,7 +99,11 @@
           <p>Count words, sort text, change case, remove duplicates � all in your browser.</p>
         </div>
       </div>
-      <div class="tool-grid" id="textTools"></div>
+      <div class="carousel-wrap">
+        <button type="button" class="carousel-arrow left" onclick="scrollCarousel(this,-1)" aria-label="Scroll left">&#8249;</button>
+        <div class="carousel" id="textTools"></div>
+        <button type="button" class="carousel-arrow right" onclick="scrollCarousel(this,1)" aria-label="Scroll right">&#8250;</button>
+      </div>
     </section>
 
     <!-- Converters -->
@@ -111,7 +115,11 @@
           <p>Convert between formats, encode data, and clean up your text.</p>
         </div>
       </div>
-      <div class="tool-grid" id="convertTools"></div>
+      <div class="carousel-wrap">
+        <button type="button" class="carousel-arrow left" onclick="scrollCarousel(this,-1)" aria-label="Scroll left">&#8249;</button>
+        <div class="carousel" id="convertTools"></div>
+        <button type="button" class="carousel-arrow right" onclick="scrollCarousel(this,1)" aria-label="Scroll right">&#8250;</button>
+      </div>
     </section>
 
     <!-- SEO Tools -->
@@ -123,7 +131,11 @@
           <p>Analyze keywords, generate meta tags, create sitemaps � boost your rankings.</p>
         </div>
       </div>
-      <div class="tool-grid" id="seoTools"></div>
+      <div class="carousel-wrap">
+        <button type="button" class="carousel-arrow left" onclick="scrollCarousel(this,-1)" aria-label="Scroll left">&#8249;</button>
+        <div class="carousel" id="seoTools"></div>
+        <button type="button" class="carousel-arrow right" onclick="scrollCarousel(this,1)" aria-label="Scroll right">&#8250;</button>
+      </div>
     </section>
 
     <!-- Code Tools -->
@@ -135,7 +147,11 @@
           <p>Format JSON, validate XML, encode Base64, generate hashes � developer essentials.</p>
         </div>
       </div>
-      <div class="tool-grid" id="codeTools"></div>
+      <div class="carousel-wrap">
+        <button type="button" class="carousel-arrow left" onclick="scrollCarousel(this,-1)" aria-label="Scroll left">&#8249;</button>
+        <div class="carousel" id="codeTools"></div>
+        <button type="button" class="carousel-arrow right" onclick="scrollCarousel(this,1)" aria-label="Scroll right">&#8250;</button>
+      </div>
     </section>
 
     <!-- Blog Preview -->
@@ -307,6 +323,12 @@
     renderGrid('convertTools',cats.converters.concat(cats.cleaners));
     renderGrid('seoTools',cats.seo);
     renderGrid('codeTools',cats.code);
+
+    window.scrollCarousel=function(btn,dir){
+      var wrap=btn.closest('.carousel-wrap');
+      var carousel=wrap.querySelector('.carousel');
+      carousel.scrollBy({left:dir*260,behavior:'smooth'});
+    };
 
     // Populate blog preview (4 most viewed)
     if(App.blogPosts){

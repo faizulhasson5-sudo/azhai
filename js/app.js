@@ -123,7 +123,8 @@ App.tools=[
 {id:'schema-gen',name:'Schema Generator',cat:'seo',desc:'Generate structured data JSON-LD markup'},
 {id:'faq-schema-gen',name:'FAQ Schema Generator',cat:'seo',desc:'Generate FAQ structured data for rich results'},
 {id:'article-schema-gen',name:'Article Schema Generator',cat:'seo',desc:'Generate article structured data markup'},
-{id:'breadcrumb-schema-gen',name:'Breadcrumb Schema Generator',cat:'seo',desc:'Generate breadcrumb structured data'}
+{id:'breadcrumb-schema-gen',name:'Breadcrumb Schema Generator',cat:'seo',desc:'Generate breadcrumb structured data'},
+{id:'smart-text-lab',name:'Smart Text Lab',cat:'text',desc:'All-in-one workspace with live stats and quick actions'}
 ];
 
 App.getToolById=function(id){return App.tools.find(function(t){return t.id===id;});};

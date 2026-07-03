@@ -39,6 +39,7 @@
 <nav class="nav">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link active">Tools</a>
+<a href="/tools/smart-text-lab.html" class="nav-link">Smart Lab</a>
 <a href="/blog/" class="nav-link">Blog</a>
 <button type="button" class="theme-btn" onclick="App.toggleTheme()" aria-label="Toggle theme">&#9789;</button>
 </nav>
@@ -62,9 +63,11 @@
 <textarea class="tool-textarea" id="tool-input" placeholder="Paste or type your text here..."></textarea>
 <div class="action-bar">
 <button type="button" class="btn btn-primary" onclick="processCurrentTool()">&#9654; Process</button>
+<button type="button" class="btn btn-secondary btn-sm" onclick="smartClean()" title="Smart Clean: trim, fix spacing, remove duplicate lines">⚡ Clean</button>
 <button type="button" class="btn btn-secondary btn-sm" onclick="clearTool()">Clear</button>
 <button type="button" class="btn btn-secondary btn-sm" onclick="copyOutput()">Copy</button>
 <button type="button" class="btn btn-secondary btn-sm" onclick="downloadResult()">Download</button>
+<label class="btn btn-secondary btn-sm" style="cursor:pointer;margin:0" title="Upload CSV/TXT file">Upload<input type="file" accept=".csv,.txt,.tsv" style="display:none" onchange="uploadToolFile(this)"></label>
 </div>
 <div class="tool-output" id="tool-output"></div>
 </div>
@@ -77,6 +80,10 @@
 <div class="sidebar-widget" id="recentWidget" style="display:none">
 <h3>Recently Used</h3>
 <div id="recentToolsList"></div>
+</div>
+<div class="sidebar-widget" id="historyWidget" style="display:none">
+<h3>History <button type="button" onclick="clearToolHistory()" style="float:right;background:none;border:none;color:var(--text-3);cursor:pointer;font-size:.75rem">Clear</button></h3>
+<div id="toolHistory"></div>
 </div>
 <div class="sidebar-widget">
 <h3>About This Tool</h3>
@@ -107,7 +114,7 @@
 <div class="footer-grid">
 <div class="footer-col">
 <a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">?</span> Free AI Text Tools</a>
-<p style="font-size:13px;color:var(--text-3)">42+ free online text tools. No sign-up needed. Your data stays in your browser.</p>
+<p style="font-size:13px;color:var(--text-3)">43+ free online text tools. No sign-up needed. Your data stays in your browser.</p>
 </div>
 <div class="footer-col">
 <h4>Tools</h4>
@@ -537,6 +544,60 @@ window.clearTool=function(){document.getElementById('tool-input').value='';docum
 window.copyOutput=function(){var t=document.getElementById('tool-output').innerText;if(!t){App.toast('Nothing to copy');return;}navigator.clipboard.writeText(t).then(function(){App.toast('Copied!');var cb=document.getElementById('bottomCopyBtn');if(cb){cb.textContent='✓ Copied';cb.classList.add('btn-copy-success');setTimeout(function(){cb.textContent='Copy';cb.classList.remove('btn-copy-success');},1500);}}).catch(function(){App.toast('Failed');});};
 window.downloadResult=function(){var t=document.getElementById('tool-output').innerText;if(!t){App.toast('Nothing to download');return;}var ext={'json-formatter':'json','json-validator':'json','xml-formatter':'xml','xml-validator':'xml','markdown-editor':'md','markdown-preview':'md','html-previewer':'html','regex-tester':'txt','hash-generator':'txt','b64-encoder':'txt','b64-decoder':'txt','url-encoder':'txt','url-decoder':'txt','html-encoder':'html','html-decoder':'html','css':'css','csv':'csv'}[tid]||'txt';
 var blob=new Blob([t],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=tid+'-output.'+ext;a.click();setTimeout(function(){URL.revokeObjectURL(a.href);},1000);};
+
+/* ---- Smart Clean ---- */
+window.smartClean=function(){
+var inp=document.getElementById('tool-input');
+var t=inp.value;if(!t)return;
+var before=t;
+t=t.replace(/[ \t]+/g,' ').replace(/^\s+|\s+$/gm,'').replace(/\n{3,}/g,'\n\n');
+t=t.replace(/\s+([.,;:!?])/g,'$1').replace(/([.,;:!?])\s+/g,'$1 ');
+inp.value=t;
+saveToolHistory('Smart Clean',before,t);
+App.toast('Smart Clean applied');
+};
+
+/* ---- File Upload ---- */
+window.uploadToolFile=function(el){
+var file=el.files[0];if(!file)return;
+var reader=new FileReader();
+reader.onload=function(e){document.getElementById('tool-input').value=e.target.result;};
+reader.readAsText(file);el.value='';
+};
+
+/* ---- Tool History ---- */
+function saveToolHistory(action,before,after){
+var h=lsGet('attToolHistory')||[];
+h.unshift({tool:tid,action:action,preview:before.substring(0,40)+(before.length>40?'...':''),fullResult:after,time:Date.now()});
+if(h.length>10)h.pop();
+lsSet('attToolHistory',h);
+renderToolHistory();
+}
+function renderToolHistory(){
+var h=lsGet('attToolHistory')||[];
+var toolHistory=h.filter(function(i){return i.tool===tid;});
+var w=document.getElementById('historyWidget');
+var el=document.getElementById('toolHistory');
+if(!toolHistory.length){w.style.display='none';return;}
+w.style.display='block';
+var html='';
+toolHistory.slice(0,5).forEach(function(item,i){
+var diff=Date.now()-item.time;
+var ago=diff<60000?'just now':diff<3600000?Math.floor(diff/60000)+'m ago':diff<86400000?Math.floor(diff/3600000)+'h ago':Math.floor(diff/86400000)+'d ago';
+html+='<div style="padding:6px 0;border-bottom:1px solid var(--border);font-size:.8rem;cursor:pointer" onclick="restoreToolHistory(\''+esc(item.preview)+'\')" title="Click to view">';
+html+='<span style="color:var(--accent);font-weight:600">'+esc(item.action)+'</span> <span style="color:var(--text-3);font-size:.7rem">'+ago+'</span>';
+html+='</div>';
+});
+el.innerHTML=html;
+}
+window.restoreToolHistory=function(preview){
+App.toast('Preview: '+preview);
+};
+window.clearToolHistory=function(){
+var h=lsGet('attToolHistory')||[];
+h=h.filter(function(i){return i.tool!==tid;});
+lsSet('attToolHistory',h);renderToolHistory();
+};
 
 ga();rb();ffaq();
 

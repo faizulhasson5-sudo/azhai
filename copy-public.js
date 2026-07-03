@@ -46,5 +46,6 @@ fs.copyFileSync(path.join(src, 'blog', 'index.html'), path.join(dst, 'blog', 'in
 // Copy tools listing page
 fs.mkdirSync(path.join(dst, 'tools'), { recursive: true });
 fs.copyFileSync(path.join(src, 'tools', 'index.html'), path.join(dst, 'tools', 'index.html'));
+fs.copyFileSync(path.join(src, 'tools', 'smart-text-lab.html'), path.join(dst, 'tools', 'smart-text-lab.html'));
 
 console.log('Static files copied to public/');

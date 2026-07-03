@@ -49,7 +49,10 @@
 <div class="container">
 <div class="tool-header">
 <div class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a> <span>/</span> <span id="breadcrumbTool">Tool</span></div>
-<h1 id="toolTitle">Tool</h1>
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+<h1 id="toolTitle" style="margin:0">Tool</h1>
+<button type="button" id="favBtn" onclick="toggleFav()" style="background:none;border:1px solid var(--border);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:.85rem;color:var(--text-3);transition:all .2s;display:none" aria-label="Add to favorites">&#9734; Favorite</button>
+</div>
 <p id="toolDesc"></p>
 </div>
 <div class="tool-layout">
@@ -71,13 +74,25 @@
 </div>
 </div>
 <aside class="tool-sidebar">
+<div class="sidebar-widget" id="recentWidget" style="display:none">
+<h3>Recently Used</h3>
+<div id="recentToolsList"></div>
+</div>
 <div class="sidebar-widget">
 <h3>About This Tool</h3>
 <p id="toolAbout"></p>
 </div>
+<div class="sidebar-widget" id="seoGuideWidget" style="display:none">
+<h3>How to Use</h3>
+<div id="seoGuideContent"></div>
+</div>
 <div class="sidebar-widget">
 <h3>Related Tools</h3>
 <div id="relatedTools"></div>
+</div>
+<div class="sidebar-widget">
+<h3>Quick Workflow</h3>
+<div id="workflowLinks"></div>
 </div>
 <div class="sidebar-widget">
 <h3>FAQ</h3>
@@ -463,6 +478,165 @@ window.downloadResult=function(){var t=document.getElementById('tool-output').in
 var blob=new Blob([t],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=tid+'-output.'+ext;a.click();setTimeout(function(){URL.revokeObjectURL(a.href);},1000);};
 
 ga();rb();ffaq();
+
+/* ---- Favorites & Recently Used ---- */
+function lsGet(k){try{return JSON.parse(localStorage.getItem(k));}catch(e){return null;}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+
+var favBtn=document.getElementById('favBtn');
+favBtn.style.display='inline-block';
+var favs=lsGet('attFavs')||[];
+function updateFavBtn(){
+var isFav=favs.indexOf(tid)!==-1;
+favBtn.innerHTML=isFav?'&#9733; Favorited':'&#9734; Favorite';
+favBtn.style.borderColor=isFav?'var(--accent)':'var(--border)';
+favBtn.style.color=isFav?'var(--accent)':'var(--text-3)';
+}
+updateFavBtn();
+window.toggleFav=function(){
+var idx=favs.indexOf(tid);
+if(idx===-1){favs.unshift(tid);if(favs.length>12)favs.pop();}else{favs.splice(idx,1);}
+lsSet('attFavs',favs);
+updateFavBtn();
+App.toast(favs.indexOf(tid)!==-1?'Added to favorites':'Removed from favorites');
+};
+
+var recents=lsGet('attRecent')||[];
+recents=recents.filter(function(r){return r!==tid;});
+recents.unshift(tid);
+if(recents.length>10)recents.pop();
+lsSet('attRecent',recents);
+
+function renderSidebarList(listEl,sectionEl,ids){
+if(!ids||!ids.length){sectionEl.style.display='none';return;}
+sectionEl.style.display='block';
+var h='';
+ids.slice(0,6).forEach(function(rid){
+if(rid===tid)return;
+var rt=App.getToolById(rid);
+if(rt)h+='<a href="/tools/'+esc(rt.id)+'.html" style="display:block;padding:6px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);font-size:.85rem;transition:color .2s" onmouseover="this.style.color=\'var(--accent)\'" onmouseout="this.style.color=\'var(--text)\'">'+esc(rt.name)+'</a>';
+});
+listEl.innerHTML=h||'<p style="font-size:.85rem;color:var(--text-3)">No other tools used yet.</p>';
+}
+renderSidebarList(document.getElementById('recentToolsList'),document.getElementById('recentWidget'),recents);
+
+/* ---- SEO Guide Content ---- */
+var guides={
+'word-counter':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">The Word Counter tool instantly counts words, characters, sentences, paragraphs, and lines in any text. Simply paste your content and click Process. It is essential for meeting word limits in essays, articles, blog posts, and academic papers. The tool works entirely in your browser, ensuring your text remains private.</p>',
+'char-counter':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">The Character Counter helps you stay within character limits for tweets, meta descriptions, SMS messages, and social media posts. It shows total characters, characters without spaces, and file size in bytes. Paste your text to get instant results.</p>',
+'sentence-counter':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Count sentences in any document using punctuation detection. This tool helps analyze readability and writing complexity by showing sentence count and average words per sentence. Shorter sentences improve readability for web content.</p>',
+'paragraph-counter':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Count paragraphs by detecting empty line breaks in your text. Useful for checking document structure and ensuring proper formatting. The tool also shows word count and average words per paragraph.</p>',
+'word-frequency':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Analyze word frequency to identify the most used terms in your content. This helps with SEO keyword analysis, content optimization, and checking for overused words. Results are sorted from most to least frequent.</p>',
+'case-converter':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Convert text between UPPERCASE, lowercase, Title Case, Sentence case, and toggleCase instantly. Essential for formatting headlines, captions, and standardizing text across documents.</p>',
+'remove-spaces':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Clean up text by removing leading, trailing, and extra whitespace. Collapses multiple blank lines and removes unnecessary spaces. Ideal for cleaning copied text and formatting content.</p>',
+'find-replace':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Search and replace text with support for regex patterns. Useful for batch-editing documents, renaming variables in code, and correcting repeated mistakes across large texts.</p>',
+'line-sorter':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Sort lines of text alphabetically in ascending or descending order. Filters out blank lines automatically. Great for organizing lists, data, and log entries.</p>',
+'alpha-sorter':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Strict alphabetical sorting with locale-aware ordering. Handles special characters and accented letters correctly. Use this for precise A-Z sorting of names, terms, or data.</p>',
+'text-reverser':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Reverse text by characters, words, or lines. Useful for debugging, creating puzzles, and testing text processing algorithms.</p>',
+'duplicate-remover':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Remove duplicate lines from text while preserving order. Supports case-insensitive comparison. Essential for cleaning data sets, email lists, and removing redundant entries.</p>',
+'lorem-generator':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate Lorem Ipsum placeholder text for design mockups and prototypes. Choose 1 to 20 paragraphs of standard Latin text to fill your layouts.</p>',
+'slug-generator':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Convert any title or heading into a URL-friendly slug. Removes special characters, converts spaces to hyphens, and lowercases everything. Essential for SEO-friendly URLs.</p>',
+'keyword-density':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Calculate keyword frequency and density percentage in your content. Filters out common stop words to show meaningful keywords. Helps optimize content for target search terms.</p>',
+'keyword-extract':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Extract the most frequent keywords from any text. Ranks terms by occurrence, excluding stop words. Use this for topic analysis and content planning.</p>',
+'meta-gen':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate complete HTML meta tag sets including title, description, keywords, OG tags, and Twitter cards. Copy the output directly into your page head for full SEO coverage.</p>',
+'meta-desc-gen':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate SEO-optimized meta descriptions from your content. The tool extracts key sentences and warns if the description exceeds the 160-character limit for search results.</p>',
+'og-generator':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate Open Graph meta tags for perfect social media previews on Facebook, Twitter, and LinkedIn. Include title, description, and image URL for maximum engagement.</p>',
+'canonical-gen':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate canonical link tags to prevent duplicate content issues. Tells search engines which URL is the preferred version of your page, consolidating ranking signals.</p>',
+'robots-txt':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate robots.txt crawl directives for search engine bots. Control which pages to crawl and which to skip. Include crawl delay and sitemap references.</p>',
+'sitemap-gen':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate XML sitemaps listing all your pages for search engine discovery. Enter one URL per line and get a valid sitemap that helps Google index your content faster.</p>',
+'json-formatter':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Beautify and validate JSON data with customizable indentation (2 spaces, 4 spaces, or tabs). Instantly formats minified JSON into readable, structured output.</p>',
+'json-validator':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Validate JSON syntax and structure. Shows exact error messages with line and position info for quick debugging. Ensures your data is properly formatted.</p>',
+'xml-formatter':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Pretty-print and indent XML documents with proper nesting. Handles self-closing tags and void elements correctly. Makes XML files readable and maintainable.</p>',
+'xml-validator':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Validate XML tag structure including proper nesting, closing tags, and self-closing elements. Catches syntax errors before deployment.</p>',
+'markdown-editor':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Write Markdown with live HTML preview using CommonMark syntax. Supports headings, bold, italic, lists, links, code blocks, and tables. Export the rendered HTML instantly.</p>',
+'markdown-preview':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Convert Markdown to HTML using Marked.js for fast, CommonMark-compliant rendering. Copy or download the output HTML for use in your projects.</p>',
+'html-previewer':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Preview HTML code in real-time within a sandboxed iframe. Safe testing environment that blocks external scripts. Perfect for testing snippets and layouts.</p>',
+'regex-tester':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Test regular expressions with live match highlighting. Supports all standard regex flags (g, i, m). See match positions and count instantly.</p>',
+'url-encoder':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Encode special characters for safe URL transmission. Converts spaces, ampersands, and non-ASCII characters to percent-encoded format.</p>',
+'url-decoder':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Decode percent-encoded URL strings back to readable text. Handles all standard encoding formats including UTF-8.</p>',
+'html-encoder':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Escape HTML special characters to entities. Converts &amp; &lt; &gt; &quot; and apostrophes to their safe entity equivalents for embedding in HTML.</p>',
+'html-decoder':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Decode HTML entities back to readable characters. Supports all standard entities including numeric references.</p>',
+'b64-encoder':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Encode text to Base64 format with full UTF-8 support. Useful for data transmission, email encoding, and embedding binary data in text.</p>',
+'b64-decoder':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Decode Base64 strings back to plain text. Handles UTF-8 encoded data correctly. Shows error messages for invalid input.</p>',
+'hash-generator':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate djb2 and FNV-1a hashes from any text. Fast, non-cryptographic hash functions suitable for checksums and data integrity verification.</p>'
+};
+if(guides[tid]){
+document.getElementById('seoGuideContent').innerHTML=guides[tid];
+document.getElementById('seoGuideWidget').style.display='block';
+}
+
+/* ---- Workflow Links ---- */
+var workflows={
+'keyword-extract':'<a href="/tools/meta-desc-gen.html" class="related-link">Generate Meta Description &rarr;</a><a href="/tools/slug-generator.html" class="related-link">Create URL Slug &rarr;</a><a href="/tools/keyword-density.html" class="related-link">Check Keyword Density &rarr;</a>',
+'keyword-density':'<a href="/tools/keyword-extract.html" class="related-link">Extract All Keywords &rarr;</a><a href="/tools/meta-desc-gen.html" class="related-link">Generate Meta Description &rarr;</a>',
+'meta-gen':'<a href="/tools/og-generator.html" class="related-link">Generate OG Tags &rarr;</a><a href="/tools/canonical-gen.html" class="related-link">Add Canonical Tag &rarr;</a>',
+'meta-desc-gen':'<a href="/tools/meta-gen.html" class="related-link">Full Meta Tag Set &rarr;</a><a href="/tools/og-generator.html" class="related-link">Generate OG Tags &rarr;</a>',
+'og-generator':'<a href="/tools/meta-gen.html" class="related-link">Full Meta Tag Set &rarr;</a><a href="/tools/canonical-gen.html" class="related-link">Add Canonical Tag &rarr;</a>',
+'slug-generator':'<a href="/tools/sitemap-gen.html" class="related-link">Generate Sitemap &rarr;</a><a href="/tools/robots-txt.html" class="related-link">Create Robots.txt &rarr;</a>',
+'json-formatter':'<a href="/tools/json-validator.html" class="related-link">Validate JSON &rarr;</a><a href="/tools/xml-formatter.html" class="related-link">Format XML &rarr;</a>',
+'json-validator':'<a href="/tools/json-formatter.html" class="related-link">Format JSON &rarr;</a><a href="/tools/xml-validator.html" class="related-link">Validate XML &rarr;</a>',
+'xml-formatter':'<a href="/tools/xml-validator.html" class="related-link">Validate XML &rarr;</a><a href="/tools/json-formatter.html" class="related-link">Format JSON &rarr;</a>',
+'xml-validator':'<a href="/tools/xml-formatter.html" class="related-link">Format XML &rarr;</a><a href="/tools/json-validator.html" class="related-link">Validate JSON &rarr;</a>',
+'markdown-editor':'<a href="/tools/html-previewer.html" class="related-link">Preview HTML &rarr;</a><a href="/tools/markdown-preview.html" class="related-link">Markdown to HTML &rarr;</a>',
+'markdown-preview':'<a href="/tools/markdown-editor.html" class="related-link">Edit Markdown &rarr;</a><a href="/tools/html-previewer.html" class="related-link">Preview HTML &rarr;</a>',
+'html-previewer':'<a href="/tools/html-encoder.html" class="related-link">Encode HTML &rarr;</a><a href="/tools/markdown-editor.html" class="related-link">Write Markdown &rarr;</a>',
+'url-encoder':'<a href="/tools/url-decoder.html" class="related-link">Decode URL &rarr;</a><a href="/tools/html-encoder.html" class="related-link">Encode HTML &rarr;</a>',
+'url-decoder':'<a href="/tools/url-encoder.html" class="related-link">Encode URL &rarr;</a><a href="/tools/html-decoder.html" class="related-link">Decode HTML &rarr;</a>',
+'b64-encoder':'<a href="/tools/b64-decoder.html" class="related-link">Decode Base64 &rarr;</a><a href="/tools/hash-generator.html" class="related-link">Generate Hash &rarr;</a>',
+'b64-decoder':'<a href="/tools/b64-encoder.html" class="related-link">Encode Base64 &rarr;</a><a href="/tools/url-encoder.html" class="related-link">Encode URL &rarr;</a>',
+'word-counter':'<a href="/tools/char-counter.html" class="related-link">Count Characters &rarr;</a><a href="/tools/word-frequency.html" class="related-link">Analyze Word Frequency &rarr;</a>',
+'case-converter':'<a href="/tools/slug-generator.html" class="related-link">Create URL Slug &rarr;</a><a href="/tools/remove-spaces.html" class="related-link">Clean Text &rarr;</a>',
+'find-replace':'<a href="/tools/regex-tester.html" class="related-link">Test Regex &rarr;</a><a href="/tools/duplicate-remover.html" class="related-link">Remove Duplicates &rarr;</a>'
+};
+if(workflows[tid]){
+document.getElementById('workflowLinks').innerHTML=workflows[tid];
+}
+
+/* ---- Schema.org FAQ ---- */
+var schemaFAQs={
+'word-counter':[{q:'How accurate is the word counter?',a:'Very accurate. It uses whitespace splitting and punctuation detection for precise counts of words, characters, sentences, and paragraphs.'},{q:'Does it count numbers as words?',a:'Yes. Any whitespace-separated token counts as a word, including numbers and alphanumeric strings.'}],
+'char-counter':[{q:'What is the difference between total and no-space characters?',a:'Total includes all characters including spaces and line breaks. No-space counts only visible characters for a accurate content length measure.'},{q:'How is file size calculated?',a:'File size is calculated using the UTF-8 byte length of the input text, shown in bytes, KB, or MB as appropriate.'}],
+'sentence-counter':[{q:'How are sentences detected?',a:'By punctuation marks (. ! ?). Each punctuation-terminated group counts as one sentence.'},{q:'What about abbreviations?',a:'Short abbreviations ending in periods (e.g., Dr. Mr.) may be counted as sentence boundaries.'}],
+'paragraph-counter':[{q:'How is a paragraph defined?',a:'A paragraph is any block of text separated by one or more empty lines.'},{q:'Does a single line count as a paragraph?',a:'Yes. Any non-empty text block separated by blank lines counts as one paragraph.'}],
+'word-frequency':[{q:'How is word frequency calculated?',a:'Each word is counted by splitting on whitespace. Frequencies are sorted from most to least common.'},{q:'Are stop words included?',a:'Yes. All words are counted by default. Use Keyword Density for stop-word filtering.'}],
+'case-converter':[{q:'What cases are supported?',a:'UPPERCASE, lowercase, Title Case, Sentence case, and toggleCase are all available.'}],
+'remove-spaces':[{q:'What types of spaces are removed?',a:'Leading, trailing, extra tabs/spaces within lines, and excess blank lines between paragraphs are all cleaned.'}],
+'find-replace':[{q:'Does it support regex?',a:'Yes. Enable the Regex checkbox to use regular expressions for advanced search patterns.'},{q:'Can I do case-insensitive replacement?',a:'Yes. Toggle the Case-insensitive option for case-free matching.'}],
+'line-sorter':[{q:'How are lines sorted?',a:'Lines are sorted alphabetically using Unicode ordering. Use the Order toggle for ascending or descending.'},{q:'Are blank lines included?',a:'Empty lines are filtered out before sorting.'}],
+'alpha-sorter':[{q:'What is the difference from Line Sorter?',a:'Alpha Sorter uses strict locale-aware A-Z ordering with proper handling of accented characters.'}],
+'text-reverser':[{q:'What can be reversed?',a:'Characters, words, or lines. Choose the mode from the dropdown.'},{q:'Does reversing words change spacing?',a:'Words are re-joined with single spaces regardless of original spacing.'}],
+'duplicate-remover':[{q:'How are duplicates detected?',a:'Line-by-line comparison. Enable case-insensitive mode to ignore case differences.'},{q:'Which duplicate is kept?',a:'The first occurrence is kept; subsequent duplicates are removed.'}],
+'lorem-generator':[{q:'Is this real Latin?',a:'Yes. Standard Lorem Ipsum text derived from Cicero\'s writings.'},{q:'How many paragraphs can I generate?',a:'Between 1 and 20 paragraphs.'}],
+'slug-generator':[{q:'What makes a good slug?',a:'Lowercase, hyphens instead of spaces, no special characters. The tool handles all of this automatically.'},{q:'Are numbers included?',a:'Yes. Numbers are preserved in the slug output.'}],
+'keyword-density':[{q:'How is density calculated?',a:'(keyword count / total words) x 100 = density percentage.'},{q:'What are stop words?',a:'Common words (the, a, is, in) filtered out to show meaningful keywords only.'}],
+'keyword-extract':[{q:'How are keywords ranked?',a:'By frequency. The most frequently occurring words (excluding stop words) appear first.'},{q:'Can I extract a specific keyword?',a:'Enter a keyword in the Focus field to check its density specifically.'}],
+'meta-gen':[{q:'What tags are generated?',a:'Title, description, keywords, author, OG tags, Twitter tags, and viewport.'},{q:'Are the tags SEO-friendly?',a:'Yes. Tags follow current best practices for search engines and social media.'}],
+'meta-desc-gen':[{q:'What is the ideal meta description length?',a:'150-160 characters. The tool warns if your description exceeds this limit.'},{q:'Does it include my target keyword?',a:'If a keyword is provided, the tool ensures it appears in the generated description.'}],
+'og-generator':[{q:'What are OG tags?',a:'Open Graph tags control how your content appears when shared on Facebook, Twitter, and other platforms.'},{q:'Do I need an image URL?',a:'An image is recommended for social sharing. Use at least 1200x630px for best results.'}],
+'canonical-gen':[{q:'What is a canonical tag?',a:'A canonical tag tells search engines which URL is the preferred version of a page.'},{q:'When should I use one?',a:'When similar content exists at multiple URLs or when URL parameters create duplicates.'}],
+'robots-txt':[{q:'What is robots.txt?',a:'A file that tells search engine crawlers which pages to crawl and which to skip.'},{q:'Will it block all crawlers?',a:'Only if you set Disallow: / for all user-agents. Use specific paths for selective blocking.'}],
+'sitemap-gen':[{q:'What is an XML sitemap?',a:'An XML file listing all your pages to help search engines discover and index your content.'},{q:'How many URLs can I add?',a:'No limit. Enter one URL per line and the tool generates a valid sitemap.'}],
+'json-formatter':[{q:'What if my JSON is invalid?',a:'The tool shows a detailed error message with line and position info.'},{q:'Can I format minified JSON?',a:'Yes. Paste any JSON and it will be beautified with proper indentation.'}],
+'json-validator':[{q:'What does it check?',a:'JSON syntax validity including brackets, commas, quotes, and nesting structure.'},{q:'What if my JSON is invalid?',a:'The tool shows the exact error message and position for debugging.'}],
+'xml-formatter':[{q:'Does it validate XML too?',a:'It validates and pretty-prints. Use XML Validator for strict validation.'},{q:'Can I change indent size?',a:'The tool uses standard 2-space indentation for clean, readable XML.'}],
+'xml-validator':[{q:'What does it check?',a:'XML tag structure including proper nesting, closing tags, and self-closing elements.'},{q:'Does it check attributes?',a:'It validates tag structure. Attribute syntax is checked as part of well-formed XML.'}],
+'markdown-editor':[{q:'What Markdown syntax is supported?',a:'Full CommonMark: headings, bold, italic, lists, links, images, code blocks, tables.'},{q:'Can I export the HTML?',a:'Yes. Use the Copy or Download buttons to get the rendered HTML.'}],
+'markdown-preview':[{q:'What rendering library is used?',a:'Marked.js for fast, CommonMark-compliant Markdown to HTML conversion.'},{q:'Can I copy the HTML output?',a:'Yes. The rendered HTML can be copied or downloaded via the action buttons.'}],
+'html-previewer':[{q:'Is it safe to preview HTML?',a:'Yes. The preview runs in a sandboxed iframe with no access to the parent page.'},{q:'Can I preview external resources?',a:'External scripts are blocked by the sandbox. Only basic HTML/CSS rendering works.'}],
+'regex-tester':[{q:'How do I use it?',a:'Enter a regex pattern and flags (g, i, m), then paste text to test matches.'},{q:'Why is my pattern not matching?',a:'Check your flags. Without the g flag, only the first match is shown.'}],
+'url-encoder':[{q:'What gets encoded?',a:'Special characters like spaces, &, ?, #, and non-ASCII characters are percent-encoded.'},{q:'Is it safe for full URLs?',a:'Yes. Paste a complete URL and it encodes all special characters properly.'}],
+'url-decoder':[{q:'What does it decode?',a:'Percent-encoded strings (%20, %3A, etc.) back to their readable form.'},{q:'What if the input is not encoded?',a:'The tool returns the input unchanged if no encoded characters are found.'}],
+'html-encoder':[{q:'What HTML entities are created?',a:'& becomes &amp;, < becomes &lt;, > becomes &gt;, " becomes &quot;, and \' becomes &#39;.'},{q:'Why would I need this?',a:'To safely display user input or code snippets in HTML without breaking the page.'}],
+'html-decoder':[{q:'What entities does it decode?',a:'All standard HTML entities including &amp; &lt; &gt; &quot; &#39; and numeric references.'},{q:'Will it decode malicious code?',a:'It converts entities to text only. The output is not executed as HTML.'}],
+'b64-encoder':[{q:'What is Base64?',a:'A binary-to-text encoding scheme that represents data using ASCII characters.'},{q:'Can I encode unicode text?',a:'Yes. The tool handles UTF-8 encoding before Base64 conversion.'}],
+'b64-decoder':[{q:'What if the input is not valid Base64?',a:'The tool shows an error message. Ensure your input contains only valid Base64 characters.'},{q:'Will it decode binary data?',a:'It decodes to text. Binary data may not display correctly in the output.'}],
+'hash-generator':[{q:'What hash algorithms?',a:'djb2 and FNV-1a. Both are fast, non-cryptographic hash functions.'},{q:'Can I use these for passwords?',a:'No. These are simple hashes for checksums. Use bcrypt or SHA-256 for passwords.'}]
+};
+if(schemaFAQs[tid]){
+var sd={'@context':'https://schema.org','@type':'FAQPage','mainEntity':schemaFAQs[tid].map(function(f){return{'@type':'Question','name':f.q,'acceptedAnswer':{'@type':'Answer','text':f.a}};})};
+var se=document.createElement('script');se.type='application/ld+json';se.text=JSON.stringify(sd);document.head.appendChild(se);
+}
+
 if(typeof App!=='undefined'&&App.blogPosts&&App.blogPosts.length){
 var posts=App.blogPosts.slice().sort(function(){return 0.5-Math.random();}).slice(0,2);
 var bh='';

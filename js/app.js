@@ -144,6 +144,7 @@ App.toggleMenu=function(){
 
 /* ---- Blog Data ---- */
 App.blogPosts=[
+{slug:'google-june-2026-spam-update',title:'Google June 2026 Spam Update: Complete Recovery & Strategy Guide',excerpt:'Google\'s June 2026 Spam Update is live. Learn what changed, who was affected, and exactly how to recover your rankings.',category:'SEO Analysis',date:'2026-07-04',readTime:'12 min',image:'/blog/images/google-spam-update-2026.jpg'},
 {slug:'ultimate-guide-seo-text-tools',title:'The Ultimate Guide to Free SEO Text Tools in 2026',excerpt:'Discover how free online SEO tools can boost your content strategy, improve rankings, and save hours of manual work.',category:'SEO Tools',date:'2026-06-20',readTime:'8 min',image:'/blog/images/ultimate-guide-seo-text-tools.jpg'},
 {slug:'how-to-write-perfect-meta-descriptions',title:'How to Write Perfect Meta Descriptions That Get Clicks',excerpt:'Learn the art of crafting compelling meta descriptions that improve CTR and boost your search rankings.',category:'SEO Tips',date:'2026-06-18',readTime:'6 min',image:'/blog/images/meta-descriptions.jpg'},
 {slug:'json-formatting-best-practices',title:'JSON Formatting Best Practices for Developers',excerpt:'Master JSON formatting, validation, and optimization with practical examples and free online tools.',category:'Development',date:'2026-06-15',readTime:'7 min',image:'/blog/images/json-formatting.jpg'},

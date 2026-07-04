@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0F172A"/>
+      <stop offset="100%" style="stop-color:#1E293B"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2563EB"/>
+      <stop offset="100%" style="stop-color:#3B82F6"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <circle cx="320" cy="80" r="60" fill="#2563EB" opacity="0.15"/>
+  <circle cx="80" cy="320" r="40" fill="#3B82F6" opacity="0.1"/>
+  <rect x="40" y="140" width="320" height="4" rx="2" fill="url(#accent)" opacity="0.6"/>
+  <rect x="40" y="160" width="240" height="4" rx="2" fill="#475569" opacity="0.4"/>
+  <rect x="40" y="180" width="280" height="4" rx="2" fill="#475569" opacity="0.3"/>
+  <text x="200" y="100" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">Google</text>
+  <text x="200" y="130" font-family="Arial,sans-serif" font-size="20" fill="#60A5FA" text-anchor="middle" font-weight="600">June 2026</text>
+  <text x="200" y="250" font-family="Arial,sans-serif" font-size="36" font-weight="bold" fill="white" text-anchor="middle">SPAM</text>
+  <text x="200" y="290" font-family="Arial,sans-serif" font-size="36" font-weight="bold" fill="#60A5FA" text-anchor="middle">UPDATE</text>
+  <rect x="120" y="310" width="160" height="3" rx="1.5" fill="#2563EB"/>
+  <text x="200" y="350" font-family="Arial,sans-serif" font-size="14" fill="#94A3B8" text-anchor="middle">Complete SEO Recovery Guide</text>
+</svg>

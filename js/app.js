@@ -144,6 +144,7 @@ App.toggleMenu=function(){
 
 /* ---- Blog Data ---- */
 App.blogPosts=[
+{slug:'google-ai-overview-spam-policy-2026',title:'Google\'s AI Overview Spam Policy: What Gets You Penalized in 2026',excerpt:'Google now treats AI Overview manipulation as spam. Learn what\'s banned, what still works, and how to stay compliant.',category:'Policy Update',date:'2026-07-02',readTime:'12 min',image:'/blog/images/google-ai-overview-spam-policy.svg'},
 {slug:'optimize-google-ai-overviews',title:'How to Optimize for Google AI Overviews: The Complete GEO Guide',excerpt:'Google AI Mode has 1B+ users. Learn how Generative Engine Optimization (GEO) can get your content cited in AI Overviews.',category:'SEO Strategy',date:'2026-07-03',readTime:'12 min',image:'/blog/images/optimize-ai-overviews.svg'},
 {slug:'google-june-2026-spam-update',title:'Google June 2026 Spam Update: Complete Recovery & Strategy Guide',excerpt:'Google\'s June 2026 Spam Update is live. Learn what changed, who was affected, and exactly how to recover your rankings.',category:'SEO Analysis',date:'2026-07-04',readTime:'12 min',image:'/blog/images/google-spam-update-2026.jpg'},
 {slug:'ultimate-guide-seo-text-tools',title:'The Ultimate Guide to Free SEO Text Tools in 2026',excerpt:'Discover how free online SEO tools can boost your content strategy, improve rankings, and save hours of manual work.',category:'SEO Tools',date:'2026-06-20',readTime:'8 min',image:'/blog/images/ultimate-guide-seo-text-tools.jpg'},

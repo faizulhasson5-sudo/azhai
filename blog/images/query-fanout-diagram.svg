@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fafafa"/>
+      <stop offset="100%" style="stop-color:#f0f0f0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg)" rx="8"/>
+  <text x="400" y="30" font-family="system-ui,-apple-system,sans-serif" font-size="18" font-weight="700" fill="#0a0a0a" text-anchor="middle">How Query Fan-Out Works in Google AI Mode</text>
+  <!-- Step 1: User Query -->
+  <rect x="30" y="60" width="160" height="90" fill="#fff" rx="8" stroke="#e5e7eb" stroke-width="1"/>
+  <rect x="30" y="60" width="160" height="32" fill="#2563eb" rx="8"/>
+  <rect x="30" y="84" width="160" height="8" fill="#2563eb"/>
+  <text x="110" y="82" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">Step 1: User Query</text>
+  <text x="110" y="112" font-family="system-ui,sans-serif" font-size="10" fill="#374151" text-anchor="middle">"best project management"</text>
+  <text x="110" y="128" font-family="system-ui,sans-serif" font-size="10" fill="#374151" text-anchor="middle">"tool for remote teams"</text>
+  <text x="110" y="144" font-family="system-ui,sans-serif" font-size="9" fill="#6b7280" text-anchor="middle">Complex, multi-intent query</text>
+  <!-- Arrow -->
+  <line x1="190" y1="105" x2="230" y2="105" stroke="#d1d5db" stroke-width="2"/>
+  <polygon points="230,100 240,105 230,110" fill="#d1d5db"/>
+  <!-- Step 2: Fan-Out -->
+  <rect x="240" y="45" width="160" height="120" fill="#fff" rx="8" stroke="#e5e7eb" stroke-width="1"/>
+  <rect x="240" y="45" width="160" height="32" fill="#7c3aed" rx="8"/>
+  <rect x="240" y="69" width="160" height="8" fill="#7c3aed"/>
+  <text x="320" y="67" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">Step 2: Fan-Out</text>
+  <text x="320" y="96" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">Sub-query A: "best PM tools"</text>
+  <text x="320" y="111" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">Sub-query B: "remote team PM"</text>
+  <text x="320" y="126" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">Sub-query C: "PM software pricing"</text>
+  <text x="320" y="141" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">Sub-query D: "PM features list"</text>
+  <text x="320" y="156" font-family="system-ui,sans-serif" font-size="9" fill="#6b7280" text-anchor="middle">Multiple parallel searches</text>
+  <!-- Arrow -->
+  <line x1="400" y1="105" x2="440" y2="105" stroke="#d1d5db" stroke-width="2"/>
+  <polygon points="440,100 450,105 440,110" fill="#d1d5db"/>
+  <!-- Step 3: Gather Results -->
+  <rect x="450" y="45" width="150" height="120" fill="#fff" rx="8" stroke="#e5e7eb" stroke-width="1"/>
+  <rect x="450" y="45" width="150" height="32" fill="#059669" rx="8"/>
+  <rect x="450" y="69" width="150" height="8" fill="#059669"/>
+  <text x="525" y="67" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">Step 3: Gather</text>
+  <text x="525" y="96" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">20+ sources retrieved</text>
+  <text x="525" y="111" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">Multiple SERPs merged</text>
+  <text x="525" y="126" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">Cross-referenced facts</text>
+  <text x="525" y="141" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">Authority signals weighed</text>
+  <text x="525" y="156" font-family="system-ui,sans-serif" font-size="9" fill="#6b7280" text-anchor="middle">Synthesized into one answer</text>
+  <!-- Arrow -->
+  <line x1="600" y1="105" x2="640" y2="105" stroke="#d1d5db" stroke-width="2"/>
+  <polygon points="640,100 650,105 640,110" fill="#d1d5db"/>
+  <!-- Step 4: AI Overview -->
+  <rect x="650" y="45" width="130" height="120" fill="#fff" rx="8" stroke="#e5e7eb" stroke-width="1"/>
+  <rect x="650" y="45" width="130" height="32" fill="#dc2626" rx="8"/>
+  <rect x="650" y="69" width="130" height="8" fill="#dc2626"/>
+  <text x="715" y="67" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">Step 4: Output</text>
+  <text x="715" y="96" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">AI Overview with</text>
+  <text x="715" y="111" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">citations from</text>
+  <text x="715" y="126" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">multiple sources</text>
+  <text x="715" y="141" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">answering all angles</text>
+  <text x="715" y="156" font-family="system-ui,sans-serif" font-size="9" fill="#6b7280" text-anchor="middle">Single comprehensive result</text>
+  <!-- Bottom section: What This Means for SEO -->
+  <rect x="30" y="195" width="740" height="185" fill="#fff" rx="8" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="400" y="225" font-family="system-ui,-apple-system,sans-serif" font-size="16" font-weight="700" fill="#0a0a0a" text-anchor="middle">What This Means for Your SEO Strategy</text>
+  <!-- 4 impact boxes -->
+  <rect x="50" y="245" width="165" height="120" fill="#eff6ff" rx="6" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="132" y="270" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">Cover All Angles</text>
+  <text x="132" y="288" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">Single pages must answer</text>
+  <text x="132" y="301" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">multiple sub-queries to be</text>
+  <text x="132" y="314" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">cited in AI Overviews</text>
+  <rect x="230" y="245" width="165" height="120" fill="#f0fdf4" rx="6" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="312" y="270" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#15803d" text-anchor="middle">Depth Over Breadth</text>
+  <text x="312" y="288" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">Comprehensive pages that</text>
+  <text x="312" y="301" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">cover a topic deeply rank</text>
+  <text x="312" y="314" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">better than thin content</text>
+  <rect x="410" y="245" width="165" height="120" fill="#fefce8" rx="6" stroke="#fde68a" stroke-width="1"/>
+  <text x="492" y="270" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#a16207" text-anchor="middle">Entity Clarity</text>
+  <text x="492" y="288" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">Clearly define entities and</text>
+  <text x="492" y="301" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">relationships so Google can</text>
+  <text x="492" y="314" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">match your content to queries</text>
+  <rect x="590" y="245" width="165" height="120" fill="#fdf2f8" rx="6" stroke="#fbcfe8" stroke-width="1"/>
+  <text x="672" y="270" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#be185d" text-anchor="middle">Structured Data</text>
+  <text x="672" y="288" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">Schema markup helps Google</text>
+  <text x="672" y="301" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">understand which sub-queries</text>
+  <text x="672" y="314" font-family="system-ui,sans-serif" font-size="9" fill="#374151" text-anchor="middle">your content answers</text>
+</svg>

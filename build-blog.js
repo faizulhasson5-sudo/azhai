@@ -46,20 +46,15 @@ fs.mkdirSync(outDir, { recursive: true });
 posts.forEach(post => {
   const content = blogContents[post.slug] || '<p>Content coming soon.</p>';
   const html = template
-    .replace('<h1 id="blogTitle"></h1>', '<h1 id="blogTitle">' + esc(post.title) + '</h1>')
-    .replace('<span id="blogDate"></span>', '<span id="blogDate">' + post.date + ' · ' + post.readTime + ' read</span>')
-    .replace('<span id="blogCategory"></span>', '<span id="blogCategory">' + esc(post.category) + '</span>')
-    .replace('<img id="blogImage" src="" alt="" class="blog-hero-img">', '<img id="blogImage" src="' + esc(post.image) + '" alt="' + esc(post.title) + '" class="blog-hero-img">')
-    .replace('<div class="blog-content" id="blogContent"></div>', '<div class="blog-content" id="blogContent">' + content + '</div>')
     .replace('<title id="page-title">Blog - Free AI Text Tools</title>', '<title id="page-title">' + esc(post.title) + ' - Free AI Text Tools</title>')
-    .replace('name="description" content=""', 'name="description" content="' + esc(post.desc) + '"')
-    .replace('href="" rel="canonical"', 'href="' + baseUrl + '/blog/' + post.slug + '.html" rel="canonical"')
-    .replace('content="" property="og:title"', 'content="' + esc(post.title) + '" property="og:title"')
-    .replace('content="" property="og:description"', 'content="' + esc(post.desc) + '" property="og:description"')
-    .replace('content="" property="og:url"', 'content="' + baseUrl + '/blog/' + post.slug + '.html" property="og:url"')
+    .replace('<meta id="meta-desc" name="description" content="">', '<meta id="meta-desc" name="description" content="' + esc(post.desc) + '">')
+    .replace('<link rel="canonical" id="canonical-link" href="">', '<link rel="canonical" id="canonical-link" href="' + baseUrl + '/blog/' + post.slug + '.html">')
+    .replace('<meta property="og:title" id="og-title" content="">', '<meta property="og:title" id="og-title" content="' + esc(post.title) + '">')
+    .replace('<meta property="og:description" id="og-desc" content="">', '<meta property="og:description" id="og-desc" content="' + esc(post.desc) + '">')
+    .replace('<meta property="og:url" id="og-url" content="">', '<meta property="og:url" id="og-url" content="' + baseUrl + '/blog/' + post.slug + '.html">')
     .replace('content="https://azhai-six.vercel.app/og-image.png" property="og:image"', 'content="' + baseUrl + esc(post.image) + '" property="og:image"')
-    .replace('content="" id="tw-title"', 'content="' + esc(post.title) + '" id="tw-title"')
-    .replace('content="" id="tw-desc"', 'content="' + esc(post.desc) + '" id="tw-desc"')
+    .replace('<meta name="twitter:title" id="tw-title" content="">', '<meta name="twitter:title" id="tw-title" content="' + esc(post.title) + '">')
+    .replace('<meta name="twitter:description" id="tw-desc" content="">', '<meta name="twitter:description" id="tw-desc" content="' + esc(post.desc) + '">')
     .replace('content="https://azhai-six.vercel.app/og-image.png" name="twitter:image"', 'content="' + baseUrl + esc(post.image) + '" name="twitter:image"');
   const outPath = path.join(outDir, post.slug + '.html');
   fs.writeFileSync(outPath, html, 'utf8');

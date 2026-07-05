@@ -152,7 +152,8 @@ App.blogPosts=[
 {slug:'json-formatting-best-practices',title:'JSON Formatting Best Practices for Developers',excerpt:'Master JSON formatting, validation, and optimization with practical examples and free online tools.',category:'Development',date:'2026-06-15',readTime:'7 min',image:'/blog/images/json-formatting.jpg'},
 {slug:'markdown-for-bloggers',title:'Markdown for Bloggers: A Complete Beginner Guide',excerpt:'Learn how to write beautiful blog posts using Markdown syntax with our live preview editor.',category:'Blogging',date:'2026-06-12',readTime:'5 min',image:'/blog/images/markdown-bloggers.jpg'},
 {slug:'understanding-canonical-tags-seo',title:'Understanding Canonical Tags: The Complete SEO Guide',excerpt:'Learn how canonical tags prevent duplicate content issues and consolidate your SEO ranking signals.',category:'SEO Tips',date:'2026-06-10',readTime:'6 min',image:'/blog/images/canonical-tags.jpg'},
-{slug:'open-graph-tags-social-media',title:'Open Graph Tags: Get Perfect Social Media Previews',excerpt:'Master Open Graph meta tags to ensure your content looks amazing when shared on social media.',category:'Social Media',date:'2026-06-08',readTime:'5 min',image:'/blog/images/open-graph-tags.jpg'}
+{slug:'open-graph-tags-social-media',title:'Open Graph Tags: Get Perfect Social Media Previews',excerpt:'Master Open Graph meta tags to ensure your content looks amazing when shared on social media.',category:'Social Media',date:'2026-06-08',readTime:'5 min',image:'/blog/images/open-graph-tags.jpg'},
+{slug:'eeat-2026-google-trust-guide',title:'E-E-A-T in 2026: How Google Now Decides Who to Trust',excerpt:'E-E-A-T has evolved from a page-level checklist into an entity verification system. Learn how Google AI Overviews evaluate trust and how to build real authority.',category:'SEO Strategy',date:'2026-07-05',readTime:'10 min',image:'/blog/images/eeat-2026-banner.svg'}
 ];
 
 /* ---- Init ---- */

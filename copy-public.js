@@ -38,10 +38,15 @@ for (const f of otherFiles) {
   if (fs.existsSync(sp)) fs.copyFileSync(sp, path.join(dst, f));
 }
 
-// Copy blog feed
+// Copy blog feed and standalone blog posts
 fs.mkdirSync(path.join(dst, 'blog'), { recursive: true });
 fs.copyFileSync(path.join(src, 'blog', 'feed.xml'), path.join(dst, 'blog', 'feed.xml'));
 fs.copyFileSync(path.join(src, 'blog', 'index.html'), path.join(dst, 'blog', 'index.html'));
+const standaloneBlogs = ['eeat-2026-google-trust-guide.html'];
+for (const b of standaloneBlogs) {
+  const bp = path.join(src, 'blog', b);
+  if (fs.existsSync(bp)) fs.copyFileSync(bp, path.join(dst, 'blog', b));
+}
 
 // Copy tools listing page
 fs.mkdirSync(path.join(dst, 'tools'), { recursive: true });

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fafafa"/>
+      <stop offset="100%" style="stop-color:#f0f0f0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg)" rx="8"/>
+  <!-- Title -->
+  <text x="400" y="40" font-family="system-ui,-apple-system,sans-serif" font-size="20" font-weight="700" fill="#0a0a0a" text-anchor="middle">How Google Detects AI vs Human Content</text>
+  <!-- Left column: AI Content -->
+  <rect x="40" y="70" width="340" height="300" fill="#fff" rx="8" stroke="#e5e7eb" stroke-width="1"/>
+  <rect x="40" y="70" width="340" height="44" fill="#fef2f2" rx="8"/>
+  <rect x="40" y="102" width="340" height="12" fill="#fef2f2"/>
+  <text x="210" y="98" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="700" fill="#dc2626" text-anchor="middle">AI-Generated Content</text>
+  <!-- AI flags -->
+  <text x="60" y="145" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#6b7280">&#10007; Uniform sentence length</text>
+  <text x="60" y="170" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#6b7280">&#10007; Predictable transitions</text>
+  <text x="60" y="195" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#6b7280">&#10007; Low perplexity scores</text>
+  <text x="60" y="220" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#6b7280">&#10007; No original research</text>
+  <text x="60" y="245" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#6b7280">&#10007; Generic examples</text>
+  <text x="60" y="270" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#6b7280">&#10007; Missing personal voice</text>
+  <text x="60" y="295" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#6b7280">&#10007; Overly structured format</text>
+  <text x="60" y="320" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#6b7280">&#10007; No typos or quirks</text>
+  <text x="60" y="345" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#6b7280">&#10007; Low burstiness</text>
+  <!-- Right column: Human Content -->
+  <rect x="420" y="70" width="340" height="300" fill="#fff" rx="8" stroke="#e5e7eb" stroke-width="1"/>
+  <rect x="420" y="70" width="340" height="44" fill="#f0fdf4" rx="8"/>
+  <rect x="420" y="102" width="340" height="12" fill="#f0fdf4"/>
+  <text x="590" y="98" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="700" fill="#16a34a" text-anchor="middle">Human-Written Content</text>
+  <!-- Human flags -->
+  <text x="440" y="145" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#374151">&#10003; Varied sentence rhythm</text>
+  <text x="440" y="170" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#374151">&#10003; Natural transitions</text>
+  <text x="440" y="195" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#374151">&#10003; High perplexity variety</text>
+  <text x="440" y="220" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#374151">&#10003; Original data &amp; insights</text>
+  <text x="440" y="245" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#374151">&#10003; Specific examples</text>
+  <text x="440" y="270" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#374151">&#10003; Distinctive voice</text>
+  <text x="440" y="295" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#374151">&#10003; Organic structure</text>
+  <text x="440" y="320" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#374151">&#10003; Natural imperfections</text>
+  <text x="440" y="345" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#374151">&#10003; High burstiness</text>
+</svg>

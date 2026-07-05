@@ -782,6 +782,7 @@ a:hover { color: var(--accent-hover); }
   .blog-content h2 { font-size: 18px; margin: 24px 0 10px; }
   .blog-content p { margin-bottom: 12px; }
   .blog-content img { width: 100%; border-radius: var(--radius); margin: 20px 0; max-height: none; }
+  #toolBlogPosts { grid-template-columns: 1fr !important; }
 }
 @media (max-width: 480px) {
   .hero h1 { font-size: 32px; }

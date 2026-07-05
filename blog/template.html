@@ -35,14 +35,14 @@
 <header class="site-header">
 <div class="header-inner">
 <a href="/" class="site-logo"><span class="logo-mark">⚡</span> Free AI Text Tools</a>
-<nav class="nav">
+<nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link">Tools</a>
 <a href="/tools/smart-text-lab.html" class="nav-link">Smart Lab</a>
 <a href="/blog/" class="nav-link active">Blog</a>
 <button type="button" class="theme-btn" onclick="App.toggleTheme()" aria-label="Toggle theme">🌙</button>
 </nav>
-<button type="button" class="menu-toggle" aria-label="Menu" onclick="App.toggleMenu()">☰</button>
+<button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" onclick="App.toggleMenu()">☰</button>
 </div>
 </header>
 <main id="main-content">
@@ -84,7 +84,7 @@
 </div>
 </footer>
 <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent">
-<p>?? We use cookies for analytics &amp; preferences. <a href="/cookie-policy.html">Learn more</a></p>
+<p>🍪 We use cookies for analytics &amp; preferences. <a href="/cookie-policy.html">Learn more</a></p>
 <div class="btn-group">
 <button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button>
 <button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button>

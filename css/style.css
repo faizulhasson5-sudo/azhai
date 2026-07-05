@@ -62,6 +62,7 @@ body {
   line-height: 1.65;
   color: var(--text);
   background: var(--bg);
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background 0.3s, color 0.3s;
@@ -122,11 +123,11 @@ a:hover { color: var(--accent-hover); }
 .nav-link.active { color: var(--text); font-weight: 600; }
 .nav-cta {
   margin-left: 6px; padding: 7px 16px;
-  background: var(--text); color: var(--bg) !important;
+  background: var(--text); color: var(--bg);
   border-radius: 6px; font-weight: 700; font-size: 13px;
   transition: opacity 0.15s;
 }
-.nav-cta:hover { opacity: 0.85; color: var(--bg) !important; }
+.nav-cta:hover { opacity: 0.85; color: var(--bg); }
 .theme-btn {
   width: 32px; height: 32px; border: 1px solid var(--border);
   background: transparent; border-radius: 6px;
@@ -193,6 +194,7 @@ a:hover { color: var(--accent-hover); }
   transition: border-color 0.15s;
 }
 .hero-search input:focus { border-color: var(--accent); }
+.hero-search input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .hero-search input::placeholder { color: #525252; }
 .hero-search::before {
   content: ''; position: absolute; left: 16px; top: 50%;
@@ -379,6 +381,9 @@ a:hover { color: var(--accent-hover); }
 }
 .tool-option select:focus,
 .tool-option input:focus { border-color: var(--accent); }
+.tool-option select:focus-visible,
+.tool-option input:focus-visible,
+.tool-option textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .tool-option textarea {
   padding: 7px 10px;
   border: 1px solid var(--border);
@@ -401,6 +406,7 @@ a:hover { color: var(--accent-hover); }
   transition: border-color 0.15s;
 }
 .tool-textarea:focus { border-color: var(--accent); }
+.tool-textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* ---- Actions ---- */
 .action-bar {
@@ -598,6 +604,7 @@ a:hover { color: var(--accent-hover); }
   transition: border-color 0.15s;
 }
 .tools-search input:focus { border-color: var(--accent); }
+.tools-search input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .filter-pills { display: flex; flex-wrap: wrap; gap: 6px; }
 .filter-pill {
   padding: 6px 14px;
@@ -718,7 +725,7 @@ a:hover { color: var(--accent-hover); }
   background: var(--surface);
   border-top: 1px solid var(--border);
   padding: 10px 16px;
-  z-index: 999;
+  z-index: 998;
 }
 .bottom-sheet .action-bar {
   margin: 0; padding: 0;

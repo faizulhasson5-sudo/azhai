@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
+try {
+
 const src = __dirname;
 const dst = path.join(__dirname, 'public');
 
@@ -18,9 +20,9 @@ function copyDir(s, d) {
 }
 
 // Copy static assets
-copyDir(path.join(src, 'css'), path.join(dst, 'css'));
-copyDir(path.join(src, 'js'), path.join(dst, 'js'));
-copyDir(path.join(src, 'blog', 'images'), path.join(dst, 'blog', 'images'));
+if (fs.existsSync(path.join(src, 'css'))) copyDir(path.join(src, 'css'), path.join(dst, 'css'));
+if (fs.existsSync(path.join(src, 'js'))) copyDir(path.join(src, 'js'), path.join(dst, 'js'));
+if (fs.existsSync(path.join(src, 'blog', 'images'))) copyDir(path.join(src, 'blog', 'images'), path.join(dst, 'blog', 'images'));
 
 // Copy static HTML files
 const htmlFiles = [
@@ -28,7 +30,8 @@ const htmlFiles = [
   'privacy-policy.html', 'terms.html', 'cookie-policy.html', '404.html'
 ];
 for (const f of htmlFiles) {
-  fs.copyFileSync(path.join(src, f), path.join(dst, f));
+  const sp = path.join(src, f);
+  if (fs.existsSync(sp)) fs.copyFileSync(sp, path.join(dst, f));
 }
 
 // Copy other static files
@@ -40,8 +43,10 @@ for (const f of otherFiles) {
 
 // Copy blog feed and standalone blog posts
 fs.mkdirSync(path.join(dst, 'blog'), { recursive: true });
-fs.copyFileSync(path.join(src, 'blog', 'feed.xml'), path.join(dst, 'blog', 'feed.xml'));
-fs.copyFileSync(path.join(src, 'blog', 'index.html'), path.join(dst, 'blog', 'index.html'));
+const blogFeed = path.join(src, 'blog', 'feed.xml');
+if (fs.existsSync(blogFeed)) fs.copyFileSync(blogFeed, path.join(dst, 'blog', 'feed.xml'));
+const blogIndex = path.join(src, 'blog', 'index.html');
+if (fs.existsSync(blogIndex)) fs.copyFileSync(blogIndex, path.join(dst, 'blog', 'index.html'));
 const standaloneBlogs = ['eeat-2026-google-trust-guide.html'];
 for (const b of standaloneBlogs) {
   const bp = path.join(src, 'blog', b);
@@ -50,7 +55,14 @@ for (const b of standaloneBlogs) {
 
 // Copy tools listing page
 fs.mkdirSync(path.join(dst, 'tools'), { recursive: true });
-fs.copyFileSync(path.join(src, 'tools', 'index.html'), path.join(dst, 'tools', 'index.html'));
-fs.copyFileSync(path.join(src, 'tools', 'smart-text-lab.html'), path.join(dst, 'tools', 'smart-text-lab.html'));
+const toolsIndex = path.join(src, 'tools', 'index.html');
+if (fs.existsSync(toolsIndex)) fs.copyFileSync(toolsIndex, path.join(dst, 'tools', 'index.html'));
+const smartLab = path.join(src, 'tools', 'smart-text-lab.html');
+if (fs.existsSync(smartLab)) fs.copyFileSync(smartLab, path.join(dst, 'tools', 'smart-text-lab.html'));
 
 console.log('Static files copied to public/');
+
+} catch(err) {
+  console.error('Copy error:', err.message);
+  process.exit(1);
+}

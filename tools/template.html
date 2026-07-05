@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
@@ -150,7 +150,7 @@
 </div>
 </footer>
 <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent">
-<p>?? We use cookies for analytics &amp; preferences. <a href="/cookie-policy.html">Learn more</a></p>
+<p>🍪 We use cookies for analytics &amp; preferences. <a href="/cookie-policy.html">Learn more</a></p>
 <div class="btn-group">
 <button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button>
 <button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button>
@@ -568,7 +568,7 @@ reader.readAsText(file);el.value='';
 /* ---- Tool History ---- */
 function saveToolHistory(action,before,after){
 var h=lsGet('attToolHistory')||[];
-h.unshift({tool:tid,action:action,preview:before.substring(0,40)+(before.length>40?'...':''),fullResult:after,time:Date.now()});
+h.unshift({tool:tid,action:action,preview:before.substring(0,40)+(before.length>40?'...':''),inputText:before,fullResult:after,time:Date.now()});
 if(h.length>10)h.pop();
 lsSet('attToolHistory',h);
 renderToolHistory();
@@ -584,14 +584,25 @@ var html='';
 toolHistory.slice(0,5).forEach(function(item,i){
 var diff=Date.now()-item.time;
 var ago=diff<60000?'just now':diff<3600000?Math.floor(diff/60000)+'m ago':diff<86400000?Math.floor(diff/3600000)+'h ago':Math.floor(diff/86400000)+'d ago';
-html+='<div style="padding:6px 0;border-bottom:1px solid var(--border);font-size:.8rem;cursor:pointer" onclick="restoreToolHistory(\''+esc(item.preview)+'\')" title="Click to view">';
+html+='<div style="padding:6px 0;border-bottom:1px solid var(--border);font-size:.8rem;cursor:pointer" onclick="restoreToolHistory('+i+')" title="Click to restore input">';
 html+='<span style="color:var(--accent);font-weight:600">'+esc(item.action)+'</span> <span style="color:var(--text-3);font-size:.7rem">'+ago+'</span>';
 html+='</div>';
 });
 el.innerHTML=html;
 }
-window.restoreToolHistory=function(preview){
-App.toast('Preview: '+preview);
+window.restoreToolHistory=function(idx){
+var h=lsGet('attToolHistory')||[];
+var toolHistory=h.filter(function(i){return i.tool===tid;});
+var item=toolHistory[idx];
+if(!item)return;
+var ta=document.querySelector('.tool-textarea')||document.querySelector('textarea');
+if(ta&&item.inputText){
+ta.value=item.inputText;
+ta.dispatchEvent(new Event('input'));
+App.toast('Input restored from: '+item.action);
+}else{
+App.toast('Could not restore input');
+}
 };
 window.clearToolHistory=function(){
 var h=lsGet('attToolHistory')||[];

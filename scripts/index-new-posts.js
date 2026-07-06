@@ -9,9 +9,11 @@ const auth = new google.auth.GoogleAuth({
 const indexing = google.indexing({version: 'v3', auth});
 
 const urls = [
-  'https://azhai-six.vercel.app/blog/find-trending-keywords-before-competitors.html',
-  'https://azhai-six.vercel.app/blog/query-fanout-vs-keywords.html',
-  'https://azhai-six.vercel.app/blog/long-tail-keyword-strategy-2026.html'
+  'https://azhai-six.vercel.app/blog/what-is-keyword-density.html',
+  'https://azhai-six.vercel.app/blog/free-seo-tools-small-business.html',
+  'https://azhai-six.vercel.app/blog/how-to-check-keyword-density.html',
+  'https://azhai-six.vercel.app/blog/seo-content-writing-guide.html',
+  'https://azhai-six.vercel.app/blog/how-to-write-meta-descriptions.html'
 ];
 
 async function requestIndexing(url) {

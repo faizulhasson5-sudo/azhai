@@ -67,7 +67,7 @@
 <button type="button" class="btn btn-secondary btn-sm" onclick="clearTool()">Clear</button>
 <button type="button" class="btn btn-secondary btn-sm" onclick="copyOutput()">Copy</button>
 <button type="button" class="btn btn-secondary btn-sm" onclick="downloadResult()">Download</button>
-<label class="btn btn-secondary btn-sm" style="cursor:pointer;margin:0" title="Upload CSV/TXT file">Upload<input type="file" accept=".csv,.txt,.tsv" style="display:none" onchange="uploadToolFile(this)"></label>
+<label class="btn btn-secondary btn-sm" style="cursor:pointer;margin:0" title="Upload CSV/TXT/PDF/DOCX file">Upload<input type="file" accept=".csv,.txt,.tsv,.pdf,.docx" style="display:none" onchange="uploadToolFile(this)"></label>
 </div>
 <div class="tool-output" id="tool-output"></div>
 </div>
@@ -114,7 +114,7 @@
 <div class="footer-grid">
 <div class="footer-col">
 <a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">⚡</span> Free AI Text Tools</a>
-<p style="font-size:13px;color:var(--text-3)">43+ free online text tools. No sign-up needed. Your data stays in your browser.</p>
+<p style="font-size:13px;color:var(--text-3)">45+ free online text tools. No sign-up needed. Your data stays in your browser.</p>
 </div>
 <div class="footer-col">
 <h4>Tools</h4>
@@ -122,6 +122,13 @@
 <a href="/tools/case-converter.html">Case Converter</a>
 <a href="/tools/json-formatter.html">JSON Formatter</a>
 <a href="/tools/robots-txt.html">Robots.txt</a>
+</div>
+<div class="footer-col">
+<h4>Converters</h4>
+<a href="/tools/pdf-to-word.html">PDF to Word</a>
+<a href="/tools/word-to-pdf.html">Word to PDF</a>
+<a href="/tools/url-encoder.html">URL Encoder</a>
+<a href="/tools/b64-encoder.html">Base64</a>
 </div>
 <div class="footer-col">
 <h4>SEO</h4>
@@ -186,10 +193,12 @@ function ga(){var a={'word-counter':'Count words, characters, lines, sentences, 
 'schema-gen':'Generate JSON-LD structured data markup for search engines.',
 'faq-schema-gen':'Generate FAQ structured data for Google rich results.',
 'article-schema-gen':'Generate article structured data for blog posts and news.',
-'breadcrumb-schema-gen':'Generate breadcrumb structured data for navigation.'};
+'breadcrumb-schema-gen':'Generate breadcrumb structured data for navigation.',
+'pdf-to-word':'Convert PDF files to editable Word documents. Extract text and create DOCX.',
+'word-to-pdf':'Convert Word documents to PDF. Read DOCX and generate printable output.'};
 document.getElementById('toolAbout').textContent=a[tid]||tool.desc;}
 
-function rb(){var R={'word-counter':['char-counter','sentence-counter','paragraph-counter'],'char-counter':['word-counter','remove-spaces'],'sentence-counter':['word-counter','paragraph-counter'],'paragraph-counter':['word-counter','sentence-counter'],'word-frequency':['keyword-density','keyword-extract'],'case-converter':['remove-spaces','slug-generator'],'remove-spaces':['case-converter','find-replace'],'find-replace':['remove-spaces','regex-tester'],'line-sorter':['alpha-sorter','duplicate-remover'],'alpha-sorter':['line-sorter','duplicate-remover'],'text-reverser':['duplicate-remover','line-sorter'],'duplicate-remover':['line-sorter','alpha-sorter'],'lorem-generator':['word-counter','slug-generator'],'slug-generator':['url-encoder','case-converter'],'keyword-density':['keyword-extract','meta-gen'],'keyword-extract':['keyword-density','meta-gen'],'meta-gen':['meta-desc-gen','og-generator'],'meta-desc-gen':['meta-gen','og-generator'],'og-generator':['meta-gen','canonical-gen'],'canonical-gen':['robots-txt','sitemap-gen'],'robots-txt':['sitemap-gen','canonical-gen'],'sitemap-gen':['robots-txt','canonical-gen'],'json-formatter':['json-validator','xml-formatter'],'json-validator':['json-formatter','xml-validator'],'xml-formatter':['xml-validator','json-formatter'],'xml-validator':['xml-formatter','json-validator'],'markdown-editor':['markdown-preview','html-previewer'],'markdown-preview':['markdown-editor','html-previewer'],'html-previewer':['html-encoder','markdown-editor'],'regex-tester':['find-replace','html-encoder'],'url-encoder':['url-decoder','html-encoder'],'url-decoder':['url-encoder','html-decoder'],'html-encoder':['html-decoder','url-encoder'],'html-decoder':['html-encoder','url-decoder'],'b64-encoder':['b64-decoder','url-encoder'],'b64-decoder':['b64-encoder','html-decoder'],'hash-generator':['b64-encoder','slug-generator'],'hreflang-gen':['sitemap-gen','canonical-gen'],'schema-gen':['faq-schema-gen','article-schema-gen','breadcrumb-schema-gen'],'faq-schema-gen':['schema-gen','meta-gen'],'article-schema-gen':['schema-gen','og-generator'],'breadcrumb-schema-gen':['schema-gen','sitemap-gen']};
+function rb(){var R={'word-counter':['char-counter','sentence-counter','paragraph-counter'],'char-counter':['word-counter','remove-spaces'],'sentence-counter':['word-counter','paragraph-counter'],'paragraph-counter':['word-counter','sentence-counter'],'word-frequency':['keyword-density','keyword-extract'],'case-converter':['remove-spaces','slug-generator'],'remove-spaces':['case-converter','find-replace'],'find-replace':['remove-spaces','regex-tester'],'line-sorter':['alpha-sorter','duplicate-remover'],'alpha-sorter':['line-sorter','duplicate-remover'],'text-reverser':['duplicate-remover','line-sorter'],'duplicate-remover':['line-sorter','alpha-sorter'],'lorem-generator':['word-counter','slug-generator'],'slug-generator':['url-encoder','case-converter'],'keyword-density':['keyword-extract','meta-gen'],'keyword-extract':['keyword-density','meta-gen'],'meta-gen':['meta-desc-gen','og-generator'],'meta-desc-gen':['meta-gen','og-generator'],'og-generator':['meta-gen','canonical-gen'],'canonical-gen':['robots-txt','sitemap-gen'],'robots-txt':['sitemap-gen','canonical-gen'],'sitemap-gen':['robots-txt','canonical-gen'],'json-formatter':['json-validator','xml-formatter'],'json-validator':['json-formatter','xml-validator'],'xml-formatter':['xml-validator','json-formatter'],'xml-validator':['xml-formatter','json-validator'],'markdown-editor':['markdown-preview','html-previewer'],'markdown-preview':['markdown-editor','html-previewer'],'html-previewer':['html-encoder','markdown-editor'],'regex-tester':['find-replace','html-encoder'],'url-encoder':['url-decoder','html-encoder'],'url-decoder':['url-encoder','html-decoder'],'html-encoder':['html-decoder','url-encoder'],'html-decoder':['html-encoder','url-decoder'],'b64-encoder':['b64-decoder','url-encoder'],'b64-decoder':['b64-encoder','html-decoder'],'hash-generator':['b64-encoder','slug-generator'],'hreflang-gen':['sitemap-gen','canonical-gen'],'schema-gen':['faq-schema-gen','article-schema-gen','breadcrumb-schema-gen'],'faq-schema-gen':['schema-gen','meta-gen'],'article-schema-gen':['schema-gen','og-generator'],'breadcrumb-schema-gen':['schema-gen','sitemap-gen'],'pdf-to-word':['word-to-pdf','hash-generator'],'word-to-pdf':['pdf-to-word','hash-generator']};
 var rel=R[tid]||[];var rh='';
 rel.forEach(function(rid){var rt=App.getToolById(rid);if(rt)rh+='<a href="/tools/'+esc(rt.id)+'.html" class="related-link">'+esc(rt.name)+' &rarr;</a>';});
 document.getElementById('relatedTools').innerHTML=rh;}
@@ -207,6 +216,27 @@ function countCharsNoSpace(t){return t.replace(/\s/g,'').length;}
 function countSentences(t){var m=t.match(/[.!?]+[\s\n]*/g);return m?m.length:0;}
 function countParagraphs(t){return t.trim()?t.trim().split(/\n\s*\n/).length:0;}
 function lines(t){return t.split('\n');}
+
+function createDocxFromText(text,baseName){
+var out=document.getElementById('tool-output');
+try{
+var paragraphs=text.split(/\n\n+/).filter(function(p){return p.trim();});
+var docChildren=paragraphs.map(function(p){
+return new docx.Paragraph({children:[new docx.TextRun({text:p.trim(),font:'Calibri',size:24})]});
+});
+var doc=new docx.Document({sections:[{properties:{},children:docChildren}]});
+docx.Packer.toBlob(doc).then(function(blob){
+var a=document.createElement('a');
+a.href=URL.createObjectURL(blob);
+a.download=baseName+'.docx';
+a.click();
+setTimeout(function(){URL.revokeObjectURL(a.href);},1000);
+out.innerHTML='<p style="color:var(--success)">&#10003; DOCX file downloaded!</p><p style="font-size:.8rem;color:var(--text-2)">'+paragraphs.length+' paragraphs extracted from PDF</p>';
+});
+}catch(err){
+out.innerHTML='<p style="color:var(--danger)">Error creating DOCX: '+esc(err.message)+'</p>';
+}
+}
 
 var OPT='';
 switch(tid){
@@ -281,7 +311,9 @@ window.processCurrentTool=function(){
 if(window.App&&App.trackToolUsage)App.trackToolUsage(tid);
 var input=document.getElementById('tool-input').value;
 var out=document.getElementById('tool-output');
-if(!input.trim()&&tid!=='lorem-generator'){out.innerHTML='<p style="color:var(--text-2)">Please enter some text.</p>';return;}
+if((tid==='pdf-to-word'||tid==='word-to-pdf')&&window._currentFile){
+/* File already loaded, trigger conversion */
+}else if(!input.trim()&&tid!=='lorem-generator'){out.innerHTML='<p style="color:var(--text-2)">Please enter some text.</p>';return;}
 try{
 var result='';
 switch(tid){
@@ -534,6 +566,58 @@ var bcList=[];
 bcItems.forEach(function(item,i){var p=item.split('|');if(p.length===2)bcList.push({'@type':'ListItem','position':i+1,'name':p[0].trim(),'item':p[1].trim()});});
 var bcSchema={'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':bcList};
 result='<div class="code-block"><pre>'+esc(JSON.stringify(bcSchema,null,2))+'</pre></div><p style="font-size:.8rem;color:var(--text-2);margin-top:8px">'+bcList.length+' breadcrumb items. Paste in a <code>&lt;script type="application/ld+json"&gt;</code> tag.</p>';break;
+case'pdf-to-word':
+var pdfFile=window._currentFile;
+if(!pdfFile){out.innerHTML='<p style="color:var(--text-2)">Please upload a PDF file using the Upload button.</p>';return;}
+out.innerHTML='<p style="color:var(--accent)">Reading PDF...</p>';
+var reader=new FileReader();
+reader.onload=function(e){
+var typedarray=new Uint8Array(e.target.result);
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+pdfjsLib.getDocument(typedarray).promise.then(function(pdf){
+var totalPages=pdf.numPages;
+var textParts=[];
+var loadPage=function(num){
+if(num>totalPages){
+var fullText=textParts.join('\n\n');
+createDocxFromText(fullText,pdfFile.name.replace(/\.pdf$/i,''));
+return;
+}
+pdf.getPage(num).then(function(page){
+page.getTextContent().then(function(content){
+var pageText=content.items.map(function(item){return item.str;}).join(' ');
+textParts.push(pageText);
+loadPage(num+1);
+});
+});
+};
+loadPage(1);
+}).catch(function(err){out.innerHTML='<p style="color:var(--danger)">Error reading PDF: '+esc(err.message)+'</p>';});
+};
+reader.readAsArrayBuffer(pdfFile);
+return;
+case'word-to-pdf':
+var docxFile=window._currentFile;
+if(!docxFile){out.innerHTML='<p style="color:var(--text-2)">Please upload a Word document using the Upload button.</p>';return;}
+out.innerHTML='<p style="color:var(--accent)">Converting Word document...</p>';
+var reader2=new FileReader();
+reader2.onload=function(e){
+var arrayBuffer=e.target.result;
+mammoth.convertToHtml({arrayBuffer:arrayBuffer}).then(function(result){
+var htmlContent=result.value;
+var warnings=result.messages;
+var iframe=document.createElement('iframe');
+iframe.style.cssText='width:100%;min-height:500px;border:1px solid var(--border);border-radius:var(--radius)';
+var printBtn='<div style="margin:12px 0"><button onclick="var iframe=document.querySelector(\'iframe\');if(iframe)iframe.contentWindow.print();" style="background:var(--accent);color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-size:.9rem">Print as PDF</button><span style="font-size:.8rem;color:var(--text-3);margin-left:12px">Use your browser print dialog to save as PDF</span></div>';
+var doc='<!DOCTYPE html><html><head><style>body{font-family:system-ui,sans-serif;max-width:800px;margin:0 auto;padding:40px;line-height:1.6;color:#1a1a1a}h1,h2,h3{margin-top:1.5em}p{margin:0.8em 0}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ddd;padding:8px;text-align:left}@media print{body{padding:20px}}</style></head><body>'+htmlContent+'</body></html>';
+iframe.srcdoc=doc;
+out.innerHTML=printBtn;
+out.appendChild(iframe);
+if(warnings.length>0)out.innerHTML+='<p style="font-size:.8rem;color:var(--text-3);margin-top:8px">'+warnings.length+' conversion note(s)</p>';
+}).catch(function(err){out.innerHTML='<p style="color:var(--danger)">Error converting document: '+esc(err.message)+'</p>';});
+};
+reader2.readAsArrayBuffer(docxFile);
+return;
 default:
 result='<p style="color:var(--text-2)">Processing not available for this tool.</p>';
 }
@@ -561,9 +645,15 @@ App.toast('Smart Clean applied');
 /* ---- File Upload ---- */
 window.uploadToolFile=function(el){
 var file=el.files[0];if(!file)return;
+window._currentFile=file;
+if(tid==='pdf-to-word'||tid==='word-to-pdf'){
+var out=document.getElementById('tool-output');
+out.innerHTML='<p style="color:var(--accent)">File loaded: '+esc(file.name)+' ('+fmtSz(file.size)+')</p><p style="font-size:.8rem;color:var(--text-3)">Click Process to convert.</p>';
+}else{
 var reader=new FileReader();
 reader.onload=function(e){document.getElementById('tool-input').value=e.target.result;};
-reader.readAsText(file);el.value='';
+reader.readAsText(file);}
+el.value='';
 };
 
 /* ---- Tool History ---- */
@@ -697,7 +787,9 @@ var guides={
 'schema-gen':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate JSON-LD structured data markup for Articles, FAQs, Breadcrumbs, Products, and Local Businesses. Helps search engines understand your content for rich results.</p>',
 'faq-schema-gen':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate FAQ structured data that enables rich result snippets in Google search. Enter question-answer pairs separated by blank lines to create valid schema markup.</p>',
 'article-schema-gen':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate Article structured data for blog posts and news articles. Includes headline, author, and date properties that help Google understand and display your content.</p>',
-'breadcrumb-schema-gen':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate BreadcrumbList structured data that shows navigation path in search results. Helps users and search engines understand your site hierarchy.</p>'
+'breadcrumb-schema-gen':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Generate BreadcrumbList structured data that shows navigation path in search results. Helps users and search engines understand your site hierarchy.</p>',
+'pdf-to-word':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Convert PDF files to editable Word documents. Upload your PDF, extract all text content, and download as a DOCX file. All processing happens in your browser — your files are never uploaded.</p>',
+'word-to-pdf':'<p style="font-size:.88rem;line-height:1.6;color:var(--text-2);margin:0">Convert Word documents to PDF. Upload your DOCX file, preview the content, and print as PDF using your browser. All processing happens locally — your files stay private.</p>'
 };
 if(guides[tid]){
 document.getElementById('seoGuideContent').innerHTML=guides[tid];
@@ -730,7 +822,9 @@ var workflows={
 'schema-gen':'<a href="/tools/faq-schema-gen.html" class="related-link">FAQ Schema &rarr;</a><a href="/tools/article-schema-gen.html" class="related-link">Article Schema &rarr;</a><a href="/tools/breadcrumb-schema-gen.html" class="related-link">Breadcrumb Schema &rarr;</a>',
 'faq-schema-gen':'<a href="/tools/schema-gen.html" class="related-link">Other Schemas &rarr;</a><a href="/tools/meta-gen.html" class="related-link">Meta Tags &rarr;</a>',
 'article-schema-gen':'<a href="/tools/schema-gen.html" class="related-link">Other Schemas &rarr;</a><a href="/tools/og-generator.html" class="related-link">OG Tags &rarr;</a>',
-'breadcrumb-schema-gen':'<a href="/tools/schema-gen.html" class="related-link">Other Schemas &rarr;</a><a href="/tools/sitemap-gen.html" class="related-link">Generate Sitemap &rarr;</a>'
+'breadcrumb-schema-gen':'<a href="/tools/schema-gen.html" class="related-link">Other Schemas &rarr;</a><a href="/tools/sitemap-gen.html" class="related-link">Generate Sitemap &rarr;</a>',
+'pdf-to-word':'<a href="/tools/word-to-pdf.html" class="related-link">Word to PDF &rarr;</a><a href="/tools/hash-generator.html" class="related-link">Hash Generator &rarr;</a>',
+'word-to-pdf':'<a href="/tools/pdf-to-word.html" class="related-link">PDF to Word &rarr;</a><a href="/tools/hash-generator.html" class="related-link">Hash Generator &rarr;</a>'
 };
 if(workflows[tid]){
 document.getElementById('workflowLinks').innerHTML=workflows[tid];
@@ -779,7 +873,11 @@ var schemaFAQs={
 'schema-gen':[{q:'What is structured data?',a:'Structured data is a standardized format for providing information about a page and classifying its content. It helps search engines understand your content for rich results.'},{q:'Which schema type should I use?',a:'Choose based on your content: Article for blog posts, FAQ for question-answer pages, Breadcrumb for navigation, Product for e-commerce, Local Business for physical locations.'}],
 'faq-schema-gen':[{q:'What are FAQ rich results?',a:'FAQ rich results show expandable Q&A pairs directly in Google search results, increasing visibility and click-through rates.'},{q:'How many FAQs can I include?',a:'You can include as many as you want, but Google typically shows 2-3 FAQ rich results per page in search.'}],
 'article-schema-gen':[{q:'Why use Article schema?',a:'Article structured data helps Google understand your content type, display it in Top Stories carousel, and show enhanced search results with publication dates.'},{q:'What fields are required?',a:'headline, author, and datePublished are the minimum required properties for Article schema.'}],
-'breadcrumb-schema-gen':[{q:'What is breadcrumb schema?',a:'Breadcrumb structured data tells search engines the hierarchical structure of your site, displaying navigation path in search results.'},{q:'How many levels should I include?',a:'Include all levels from the homepage to the current page. Typically 3-5 levels deep.'}]
+'breadcrumb-schema-gen':[{q:'What is breadcrumb schema?',a:'Breadcrumb structured data tells search engines the hierarchical structure of your site, displaying navigation path in search results.'},{q:'How many levels should I include?',a:'Include all levels from the homepage to the current page. Typically 3-5 levels deep.'}],
+'pdf-to-word':[{q:'Is my PDF data safe?',a:'Yes. All processing happens in your browser. Your files are never uploaded to any server.'},{q:'What text is extracted?',a:'The tool extracts all visible text from the PDF. It preserves paragraphs and line breaks.'}],
+'word-to-pdf':[{q:'Is my Word file safe?',a:'Yes. All processing happens in your browser. Your files are never uploaded to any server.'},{q:'How do I save as PDF?',a:'Click the Print as PDF button after conversion. Your browser print dialog lets you save as PDF.'}],
+'pdf-to-word':[{q:'Is my PDF data safe?',a:'Yes. All processing happens in your browser. Your files are never uploaded to any server.'},{q:'Does it preserve formatting?',a:'The tool extracts text content from the PDF. Basic formatting like paragraphs and line breaks are preserved. Complex layouts may need manual adjustment.'}],
+'word-to-pdf':[{q:'Is my Word file safe?',a:'Yes. All processing happens in your browser. Your files are never uploaded to any server.'},{q:'How do I save as PDF?',a:'After conversion, click the Print as PDF button. Your browser will open a print dialog where you can save the output as a PDF file.'}]
 };
 if(schemaFAQs[tid]){
 var sd={'@context':'https://schema.org','@type':'FAQPage','mainEntity':schemaFAQs[tid].map(function(f){return{'@type':'Question','name':f.q,'acceptedAnswer':{'@type':'Answer','text':f.a}};})};

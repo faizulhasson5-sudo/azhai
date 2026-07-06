@@ -13,7 +13,8 @@ const tools = [
     'markdown-editor','markdown-preview','html-previewer','regex-tester',
     'url-encoder','url-decoder','html-encoder','html-decoder',
     'b64-encoder','b64-decoder','hash-generator',
-    'hreflang-gen','schema-gen','faq-schema-gen','article-schema-gen','breadcrumb-schema-gen'
+    'hreflang-gen','schema-gen','faq-schema-gen','article-schema-gen','breadcrumb-schema-gen',
+    'pdf-to-word','word-to-pdf'
 ];
 
 const toolSEO = {
@@ -58,7 +59,9 @@ const toolSEO = {
 "schema-gen":{title:"Schema Markup Generator - JSON-LD Structured Data",desc:"Generate JSON-LD structured data for Articles, FAQs, Breadcrumbs, Products, and Local Businesses. Free online schema generator.",keywords:"schema generator, json-ld, structured data, schema markup, rich results"},
 "faq-schema-gen":{title:"FAQ Schema Generator - FAQ Structured Data",desc:"Generate FAQ structured data for Google rich results. Free online FAQ schema generator.",keywords:"faq schema, faq structured data, faq rich results, faq json-ld"},
 "article-schema-gen":{title:"Article Schema Generator - Article Structured Data",desc:"Generate Article structured data for blog posts and news. Free online article schema generator.",keywords:"article schema, article structured data, blog schema, news schema"},
-"breadcrumb-schema-gen":{title:"Breadcrumb Schema Generator - Breadcrumb Structured Data",desc:"Generate BreadcrumbList structured data for site navigation. Free online breadcrumb schema generator.",keywords:"breadcrumb schema, breadcrumb structured data, navigation schema, breadcrumb json-ld"}
+"breadcrumb-schema-gen":{title:"Breadcrumb Schema Generator - Breadcrumb Structured Data",desc:"Generate BreadcrumbList structured data for site navigation. Free online breadcrumb schema generator.",keywords:"breadcrumb schema, breadcrumb structured data, navigation schema, breadcrumb json-ld"},
+"pdf-to-word":{title:"PDF to Word Converter - Convert PDF to DOCX Online",desc:"Convert PDF files to editable Word documents instantly. Free online PDF to Word converter. No sign-up, no data upload.",keywords:"pdf to word, pdf to docx, convert pdf, pdf converter, pdf to document"},
+"word-to-pdf":{title:"Word to PDF Converter - Convert DOCX to PDF Online",desc:"Convert Word documents to PDF files instantly. Free online Word to PDF converter. No sign-up, no data upload.",keywords:"word to pdf, docx to pdf, convert word, word converter, docx to pdf"}
 };
 
 const templatePath = path.join(__dirname, 'tools', 'template.html');
@@ -111,7 +114,9 @@ const toolContent = {
 'schema-gen':{about:'Generate JSON-LD structured data for Articles, FAQs, Breadcrumbs, Products, and Local Businesses.',howTo:'Select schema type, fill in the fields, and click Generate. Copy the JSON-LD to your HTML.'},
 'faq-schema-gen':{about:'Generate FAQ structured data for Google rich results.',howTo:'Add your Q&A pairs and click Generate. Copy the FAQPage JSON-LD.'},
 'article-schema-gen':{about:'Generate Article structured data for blog posts and news.',howTo:'Enter article details and click Generate. Copy the Article JSON-LD.'},
-'breadcrumb-schema-gen':{about:'Generate BreadcrumbList structured data for site navigation.',howTo:'Add your breadcrumb levels and click Generate. Copy the BreadcrumbList JSON-LD.'}
+'breadcrumb-schema-gen':{about:'Generate BreadcrumbList structured data for site navigation.',howTo:'Add your breadcrumb levels and click Generate. Copy the BreadcrumbList JSON-LD.'},
+'pdf-to-word':{about:'Convert PDF files to editable Word documents. Extract text from PDF and create a downloadable DOCX file.',howTo:'Click Upload and select your PDF file. The tool extracts all text from the PDF. Click Download to save as a Word document. Your files never leave your browser.'},
+'word-to-pdf':{about:'Convert Word documents to PDF files. Read DOCX content and generate a printable PDF output.',howTo:'Click Upload and select your Word document. The tool converts it to HTML. Click Print as PDF to save as a PDF file. Your files never leave your browser.'}
 };
 
 tools.forEach(toolId => {
@@ -140,6 +145,18 @@ tools.forEach(toolId => {
 
     if (toolId === 'markdown-editor' || toolId === 'markdown-preview') {
         html = html.replace('</head>', '<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>\n</head>');
+    }
+
+    if (toolId === 'pdf-to-word') {
+        html = html.replace('</head>',
+            '<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js" defer></script>\n'+
+            '<script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.min.js" defer></script>\n'+
+            '<script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js" defer></script>\n</head>');
+    }
+
+    if (toolId === 'word-to-pdf') {
+        html = html.replace('</head>',
+            '<script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js" defer></script>\n</head>');
     }
 
     var tc = toolContent[toolId];

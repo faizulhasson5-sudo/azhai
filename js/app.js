@@ -175,6 +175,8 @@ App.tools=[
 {id:'faq-schema-gen',name:'FAQ Schema Generator',cat:'seo',desc:'Generate FAQ structured data for rich results'},
 {id:'article-schema-gen',name:'Article Schema Generator',cat:'seo',desc:'Generate article structured data markup'},
 {id:'breadcrumb-schema-gen',name:'Breadcrumb Schema Generator',cat:'seo',desc:'Generate breadcrumb structured data'},
+{id:'pdf-to-word',name:'PDF to Word Converter',cat:'converters',desc:'Convert PDF files to editable Word documents'},
+{id:'word-to-pdf',name:'Word to PDF Converter',cat:'converters',desc:'Convert Word documents to PDF files'},
 {id:'smart-text-lab',name:'Smart Text Lab',cat:'text',desc:'All-in-one workspace with live stats and quick actions'}
 ];
 

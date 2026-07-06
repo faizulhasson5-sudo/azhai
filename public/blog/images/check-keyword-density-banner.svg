@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#141414"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <line x1="0" y1="100" x2="1200" y2="100" stroke="#1a1a1a"/>
+  <line x1="0" y1="200" x2="1200" y2="200" stroke="#1a1a1a"/>
+  <line x1="0" y1="300" x2="1200" y2="300" stroke="#1a1a1a"/>
+  <line x1="0" y1="400" x2="1200" y2="400" stroke="#1a1a1a"/>
+  <line x1="0" y1="500" x2="1200" y2="500" stroke="#1a1a1a"/>
+  <line x1="200" y1="0" x2="200" y2="630" stroke="#1a1a1a"/>
+  <line x1="400" y1="0" x2="400" y2="630" stroke="#1a1a1a"/>
+  <line x1="600" y1="0" x2="600" y2="630" stroke="#1a1a1a"/>
+  <line x1="800" y1="0" x2="800" y2="630" stroke="#1a1a1a"/>
+  <line x1="1000" y1="0" x2="1000" y2="630" stroke="#1a1a1a"/>
+  <!-- Magnifying glass -->
+  <circle cx="300" cy="280" r="80" fill="none" stroke="#2563eb" stroke-width="4"/>
+  <line x1="357" y1="337" x2="420" y2="400" stroke="#2563eb" stroke-width="6" stroke-linecap="round"/>
+  <!-- Percentage symbol inside magnifier -->
+  <text x="275" y="270" fill="#2563eb" font-size="60" font-family="system-ui, sans-serif" font-weight="700">%</text>
+  <text x="325" y="310" fill="#3b82f6" font-size="24" font-family="system-ui, sans-serif">1.5</text>
+  <!-- Bar chart -->
+  <rect x="550" y="350" width="50" height="120" rx="4" fill="#2563eb" opacity="0.8"/>
+  <rect x="620" y="300" width="50" height="170" rx="4" fill="#2563eb"/>
+  <rect x="690" y="260" width="50" height="210" rx="4" fill="#3b82f6"/>
+  <rect x="760" y="310" width="50" height="160" rx="4" fill="#2563eb" opacity="0.7"/>
+  <rect x="830" y="340" width="50" height="130" rx="4" fill="#2563eb" opacity="0.5"/>
+  <!-- Text -->
+  <text x="550" y="180" fill="#fafafa" font-size="22" font-family="system-ui, sans-serif" font-weight="600">How to Check Keyword Density</text>
+  <text x="550" y="220" fill="#a3a3a3" font-size="16" font-family="system-ui, sans-serif">Step-by-Step Guide with Free Tools</text>
+  <!-- Label -->
+  <rect x="550" y="490" width="140" height="32" rx="6" fill="#2563eb"/>
+  <text x="620" y="511" fill="#fff" font-size="14" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="500">FREE TOOL</text>
+</svg>

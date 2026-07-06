@@ -19,7 +19,8 @@
       "linkType": "nofollow",
       "cost": "Free",
       "notes": "Schedule launch for Tuesday-Thursday. Prepare supporters for upvotes.",
-      "status": "pending"
+      "status": "submitted",
+      "submittedAt": "2026-07-06"
     },
     {
       "tier": 1,
@@ -170,6 +171,50 @@
       "cost": "Free",
       "notes": "List as alternative to ConvertCase.",
       "status": "pending"
+    },
+    {
+      "tier": 2,
+      "name": "AgentLocker",
+      "url": "https://agentlocker.ai/submit-your-tool",
+      "dr": 40,
+      "linkType": "dofollow",
+      "cost": "Free",
+      "notes": "Free account required. Submitted 2026-07-06.",
+      "status": "submitted",
+      "submittedAt": "2026-07-06"
+    },
+    {
+      "tier": 2,
+      "name": "DayToDay.ai",
+      "url": "https://daytoday.ai/submit",
+      "dr": 35,
+      "linkType": "dofollow",
+      "cost": "Free",
+      "notes": "No payment required. Submitted 2026-07-06.",
+      "status": "submitted",
+      "submittedAt": "2026-07-06"
+    },
+    {
+      "tier": 2,
+      "name": "AInexfinder",
+      "url": "https://ainexfinder.com/submit",
+      "dr": 30,
+      "linkType": "dofollow",
+      "cost": "Free",
+      "notes": "Free listing. Submitted 2026-07-06.",
+      "status": "submitted",
+      "submittedAt": "2026-07-06"
+    },
+    {
+      "tier": 2,
+      "name": "MadeWithStack",
+      "url": "https://www.madewithstack.com",
+      "dr": 45,
+      "linkType": "dofollow",
+      "cost": "Free",
+      "notes": "Submitted via API 2026-07-06. Under editorial review.",
+      "status": "submitted",
+      "submittedAt": "2026-07-06"
     }
   ],
   "outreachTemplates": {

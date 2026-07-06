@@ -111,6 +111,9 @@ sb.innerHTML=h;
 var views=lsGet('attBlogViews')||{};
 views[slug]=(views[slug]||0)+1;
 lsSet('attBlogViews',views);
+if(typeof App!=='undefined'&&App.trackBlogRead){
+  App.trackBlogRead(slug,post?post.category:'');
+}
 })();
 </script>
 <script>

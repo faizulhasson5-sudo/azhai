@@ -59,10 +59,14 @@ App.initAnalytics=function(){
   document.head.appendChild(s);
 };
 
-/* ---- GTM Events ---- */
+/* ---- GTM Events (via GA4 gtag) ---- */
 App.trackEvent=function(eventName,params){
-  window.dataLayer=window.dataLayer||[];
-  window.dataLayer.push(Object.assign({event:eventName},params||{}));
+  if(typeof gtag==='function'){
+    gtag('event',eventName,params||{});
+  }else{
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push(Object.assign({event:eventName},params||{}));
+  }
 };
 
 App.trackToolUsage=function(toolName){

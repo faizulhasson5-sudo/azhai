@@ -69,6 +69,51 @@ fs.mkdirSync(outDir, { recursive: true });
 
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
+const toolContent = {
+'word-counter':{about:'Count words, characters, sentences, paragraphs, and lines in any text. Paste your text and get instant results.',howTo:'Paste or type your text in the input area. Click Process to see word count, character count, sentence count, and more. Use the Clean button to trim extra whitespace before counting.',faq:[{q:'How accurate is the word counter?',a:'Our word counter uses precise whitespace-delimited tokenization. It counts real words, not spaces or characters.'},{q:'Does it count words in different languages?',a:'Yes. The counter works with any language that uses spaces between words, including English, Spanish, French, German, and more.'}]},
+'char-counter':{about:'Count characters with and without spaces, words, sentences, and lines. Perfect for meeting character limits on social media and forms.',howTo:'Paste your text and click Process. See character count with spaces, without spaces, word count, and line count.'},
+'sentence-counter':{about:'Count sentences in any text by detecting period, question mark, and exclamation boundaries.',howTo:'Paste your text and click Process. The tool detects sentence boundaries using punctuation marks.'},
+'paragraph-counter':{about:'Count paragraphs by detecting empty line breaks in your text.',howTo:'Paste your text and click Process. Paragraphs are separated by blank lines.'},
+'word-frequency':{about:'Analyze word occurrence frequency and distribution. Find the most common words in your text.',howTo:'Paste your text and click Process. See a frequency table sorted by word count.'},
+'case-converter':{about:'Convert text between UPPERCASE, lowercase, Title Case, Sentence case, and toggleCase.',howTo:'Paste your text, select the desired case, and click Process. Results are instant.'},
+'remove-spaces':{about:'Remove leading, trailing, and extra whitespace from text. Clean up messy copy-pasted content.',howTo:'Paste your text and choose what to remove: leading spaces, trailing spaces, extra spaces, or all spaces.'},
+'find-replace':{about:'Find and replace text with regex support and case-insensitive options.',howTo:'Enter the text to find, the replacement text, and click Replace. Enable regex or case-insensitive options as needed.'},
+'line-sorter':{about:'Sort lines of text alphabetically in ascending or descending order.',howTo:'Paste your text, choose ascending or descending, and click Sort.'},
+'alpha-sorter':{about:'Sort text lines in strict alphabetical order. Perfect for organizing lists.',howTo:'Paste your list, choose A-Z or Z-A, and click Sort.'},
+'text-reverser':{about:'Reverse text by characters, words, or lines with one click.',howTo:'Paste your text, choose reversal mode (characters, words, or lines), and click Reverse.'},
+'duplicate-remover':{about:'Remove duplicate lines from text with case-insensitive option.',howTo:'Paste your text, choose case-sensitive or case-insensitive, and click Remove Duplicates.'},
+'lorem-generator':{about:'Generate Lorem Ipsum placeholder text with custom paragraph count.',howTo:'Select the number of paragraphs and click Generate. Copy the output.'},
+'slug-generator':{about:'Convert titles to URL-friendly slugs instantly. Perfect for SEO-friendly URLs.',howTo:'Enter your title and click Generate. The slug is ready to copy.'},
+'keyword-density':{about:'Calculate keyword frequency and density percentage for SEO analysis.',howTo:'Paste your content and click Analyze. See keyword counts, density %, and a visual chart.'},
+'keyword-extract':{about:'Extract the most frequent keywords from text for SEO analysis.',howTo:'Paste your content and click Extract. See keywords ranked by frequency.'},
+'meta-gen':{about:'Generate complete HTML meta tags including title, description, OG tags, and Twitter cards.',howTo:'Enter your page title, description, and URL. Click Generate to get copy-paste ready meta tags.'},
+'meta-desc-gen':{about:'Generate SEO-optimized meta descriptions from your content.',howTo:'Paste your page content and click Generate. Get a 155-character meta description.'},
+'og-generator':{about:'Generate Open Graph meta tags for social media sharing on Facebook, LinkedIn, and Twitter.',howTo:'Enter your page details and click Generate. Copy the OG tags to your HTML head.'},
+'canonical-gen':{about:'Generate canonical link tags for SEO to prevent duplicate content issues.',howTo:'Enter your page URL and click Generate. Add the canonical tag to your HTML head.'},
+'robots-txt':{about:'Generate robots.txt with crawl directives, disallow rules, and sitemap reference.',howTo:'Configure your crawl rules and click Generate. Download or copy the robots.txt file.'},
+'sitemap-gen':{about:'Generate XML sitemaps for search engine indexing.',howTo:'Add your URLs and click Generate. Download the XML sitemap.'},
+'json-formatter':{about:'Beautify and validate JSON with customizable indentation.',howTo:'Paste your JSON and click Format. Choose indent size and style.'},
+'json-validator':{about:'Validate JSON syntax and structure instantly.',howTo:'Paste your JSON and click Validate. See errors highlighted.'},
+'xml-formatter':{about:'Pretty-print and indent XML documents.',howTo:'Paste your XML and click Format. Choose indent size.'},
+'xml-validator':{about:'Validate XML structure and syntax.',howTo:'Paste your XML and click Validate. See errors with line numbers.'},
+'markdown-editor':{about:'Write Markdown with live HTML preview side by side.',howTo:'Write Markdown on the left, see live preview on the right.'},
+'markdown-preview':{about:'Convert Markdown to HTML output instantly.',howTo:'Paste Markdown and get HTML output instantly.'},
+'html-previewer':{about:'Preview HTML code with live rendering in browser.',howTo:'Write or paste HTML on the left, see rendered output on the right.'},
+'regex-tester':{about:'Test regular expressions with match highlighting.',howTo:'Enter your regex pattern and test string. See matches highlighted in real time.'},
+'url-encoder':{about:'Encode special characters for URLs instantly.',howTo:'Paste your URL and click Encode. Copy the encoded result.'},
+'url-decoder':{about:'Decode percent-encoded URL strings back to readable text.',howTo:'Paste your encoded URL and click Decode.'},
+'html-encoder':{about:'Escape HTML special characters to entities.',howTo:'Paste your HTML and click Encode. Copy the escaped output.'},
+'html-decoder':{about:'Decode HTML entities back to readable text.',howTo:'Paste your HTML entities and click Decode.'},
+'b64-encoder':{about:'Encode text to Base64 format instantly.',howTo:'Paste your text and click Encode. Copy the Base64 string.'},
+'b64-decoder':{about:'Decode Base64 strings back to original text.',howTo:'Paste your Base64 string and click Decode.'},
+'hash-generator':{about:'Generate djb2 and FNV-1a hashes from text.',howTo:'Paste your text and click Generate. See both hash values.'},
+'hreflang-gen':{about:'Generate hreflang link tags for multilingual websites.',howTo:'Enter your page URL and language codes. Click Generate to get hreflang tags.'},
+'schema-gen':{about:'Generate JSON-LD structured data for Articles, FAQs, Breadcrumbs, Products, and Local Businesses.',howTo:'Select schema type, fill in the fields, and click Generate. Copy the JSON-LD to your HTML.'},
+'faq-schema-gen':{about:'Generate FAQ structured data for Google rich results.',howTo:'Add your Q&A pairs and click Generate. Copy the FAQPage JSON-LD.'},
+'article-schema-gen':{about:'Generate Article structured data for blog posts and news.',howTo:'Enter article details and click Generate. Copy the Article JSON-LD.'},
+'breadcrumb-schema-gen':{about:'Generate BreadcrumbList structured data for site navigation.',howTo:'Add your breadcrumb levels and click Generate. Copy the BreadcrumbList JSON-LD.'}
+};
+
 tools.forEach(toolId => {
     const seo = toolSEO[toolId] || {title:'Tool',desc:'',keywords:''};
     const toolUrl = baseUrl + '/tools/' + toolId + '.html';
@@ -95,6 +140,27 @@ tools.forEach(toolId => {
 
     if (toolId === 'markdown-editor' || toolId === 'markdown-preview') {
         html = html.replace('</head>', '<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>\n</head>');
+    }
+
+    var tc = toolContent[toolId];
+    if (tc) {
+        var contentHtml = '<section class="tool-content-section" style="margin-top:40px;padding:32px 0;border-top:1px solid var(--border)">';
+        contentHtml += '<div style="max-width:720px">';
+        contentHtml += '<h2 style="font-size:1.25rem;font-weight:700;margin-bottom:12px;color:var(--text)">What is ' + esc(seo.title.split(' - ')[0]) + '?</h2>';
+        contentHtml += '<p style="color:var(--text-2);line-height:1.7;margin-bottom:20px">' + esc(tc.about) + '</p>';
+        contentHtml += '<h2 style="font-size:1.25rem;font-weight:700;margin-bottom:12px;color:var(--text)">How to Use ' + esc(seo.title.split(' - ')[0]) + '</h2>';
+        contentHtml += '<p style="color:var(--text-2);line-height:1.7;margin-bottom:20px">' + esc(tc.howTo) + '</p>';
+        if (tc.faq && tc.faq.length) {
+            contentHtml += '<h2 style="font-size:1.25rem;font-weight:700;margin-bottom:12px;color:var(--text)">Frequently Asked Questions</h2>';
+            tc.faq.forEach(function(f) {
+                contentHtml += '<div style="margin-bottom:16px">';
+                contentHtml += '<h3 style="font-size:1rem;font-weight:600;margin-bottom:4px;color:var(--text)">' + esc(f.q) + '</h3>';
+                contentHtml += '<p style="color:var(--text-2);line-height:1.6;margin:0">' + esc(f.a) + '</p>';
+                contentHtml += '</div>';
+            });
+        }
+        contentHtml += '</div></section>';
+        html = html.replace('</main>', contentHtml + '\n</main>');
     }
 
     const filePath = path.join(outDir, toolId + '.html');

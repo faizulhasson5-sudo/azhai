@@ -1,0 +1,336 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-page="home" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Free AI Text Tools — 43+ Online Writing & Developer Tools</title>
+  <meta name="description" content="43+ free online text tools — word counter, text case converter, JSON formatter, SEO meta tag generator, hash generator & more. No login. 100% client-side.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://azhai-six.vercel.app/">
+  <meta name="keywords" content="free text tools, online word counter, JSON formatter, SEO tools, text case converter, hash generator, base64 encoder, online tools">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free AI Text Tools — 43+ Online Writing & Developer Tools">
+  <meta property="og:description" content="43+ free online text tools — word counter, JSON formatter, SEO tools & more. No login required.">
+  <meta property="og:url" content="https://azhai-six.vercel.app/">
+  <meta property="og:site_name" content="Free AI Text Tools">
+  <meta property="og:image" content="https://azhai-six.vercel.app/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free AI Text Tools — 43+ Online Writing & Developer Tools">
+  <meta name="twitter:description" content="43+ free online text tools — word counter, JSON formatter, SEO tools & more.">
+  <meta name="twitter:image" content="https://azhai-six.vercel.app/og-image.png">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="alternate" type="application/rss+xml" title="Free AI Text Tools Blog" href="/blog/feed.xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem('attTheme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+      } catch(e) {}
+    })();
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Free AI Text Tools",
+    "url": "https://azhai-six.vercel.app/",
+    "description": "43+ free online text tools for writers, developers and SEO professionals.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://azhai-six.vercel.app/tools/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-logo" href="/" aria-label="Free AI Text Tools — Home">
+        <span class="logo-mark">⚡</span> Free AI Text Tools
+      </a>
+      <nav class="nav" id="mainNav" aria-label="Main navigation">
+        <a class="nav-link active" href="/">Home</a>
+        <a class="nav-link" href="/tools/">Tools</a>
+        <a class="nav-link" href="/tools/smart-text-lab.html">Smart Lab</a>
+        <a class="nav-link" href="/blog/">Blog</a>
+
+        <button type="button" class="theme-btn" id="themeToggle" onclick="App.toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+      </nav>
+      <button type="button" class="menu-toggle" id="menuToggle" onclick="App.toggleMenu()" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- HERO — Product-first, high contrast -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-eyebrow">43+ free tools · No login · Client-side</span>
+        <h1>Write, Convert<br>& Optimize.</h1>
+        <p class="hero-sub">Word counters, text formatters, SEO analyzers, code tools — all processing happens in your browser.</p>
+        <div class="hero-search">
+          <input type="search" id="heroSearch" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+          <div class="hero-search-results" id="heroResults"></div>
+        </div>
+        <a href="/tools/" class="hero-cta">Browse All Tools →</a>
+      </div>
+    </section>
+
+    <!-- Stats — Minimal -->
+    <section class="stats-bar reveal" aria-label="Platform statistics">
+      <div class="stat"><div class="stat-num">43+</div><div class="stat-label">Free Tools</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Client-Side</div></div>
+      <div class="stat"><div class="stat-num">0</div><div class="stat-label">Sign-Ups</div></div>
+    </section>
+
+    <!-- Text Tools -->
+    <section class="tool-section reveal" aria-labelledby="sec-text">
+      <div class="category-header">
+        <h2 id="sec-text">Writing & Text Tools</h2>
+        <a href="/tools/?cat=counters">View all →</a>
+      </div>
+      <div class="tool-grid" id="textTools"></div>
+    </section>
+
+    <!-- Converters -->
+    <section class="tool-section reveal" aria-labelledby="sec-convert">
+      <div class="category-header">
+        <h2 id="sec-convert">Converters & Cleaners</h2>
+        <a href="/tools/?cat=converters">View all →</a>
+      </div>
+      <div class="tool-grid" id="convertTools"></div>
+    </section>
+
+    <!-- SEO Tools -->
+    <section class="tool-section reveal" aria-labelledby="sec-seo">
+      <div class="category-header">
+        <h2 id="sec-seo">SEO & Marketing Tools</h2>
+        <a href="/tools/?cat=seo">View all →</a>
+      </div>
+      <div class="tool-grid" id="seoTools"></div>
+    </section>
+
+    <!-- Code Tools -->
+    <section class="tool-section reveal" aria-labelledby="sec-code">
+      <div class="category-header">
+        <h2 id="sec-code">Code & Developer Tools</h2>
+        <a href="/tools/?cat=code">View all →</a>
+      </div>
+      <div class="tool-grid" id="codeTools"></div>
+    </section>
+
+    <!-- Blog Preview -->
+    <section class="blog-preview reveal" aria-labelledby="blog-heading">
+      <h2 id="blog-heading">From the Blog</h2>
+      <p class="section-sub">Guides, tutorials, and tips for writers & developers.</p>
+      <div class="blog-grid" id="blogPreview"></div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section reveal" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Frequently Asked Questions</h2>
+      <details class="faq-item">
+        <summary class="faq-question">Are these tools really free? <span>▼</span></summary>
+        <div class="faq-answer">Yes. Every tool is 100% free with no usage limits. No account required.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Is my data uploaded to a server? <span>▼</span></summary>
+        <div class="faq-answer">No. All processing happens in your browser using JavaScript. Your text never leaves your device.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Can I use these tools on mobile? <span>▼</span></summary>
+        <div class="faq-answer">Absolutely. Every tool is fully responsive and works on phones, tablets, and desktops.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Do you store my text? <span>▼</span></summary>
+        <div class="faq-answer">No. Nothing is stored, cached, or transmitted. Refresh the page and everything is gone.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">How can I suggest a new tool? <span>▼</span></summary>
+        <div class="faq-answer">Visit our <a href="/contact.html">contact page</a> and send us a message. We review every suggestion.</div>
+      </details>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">⚡</span> Free AI Text Tools</a>
+          <p style="font-size:13px;color:var(--text-3);line-height:1.6;max-width:320px">43+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser — your data never leaves your device.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Tools</h4>
+          <a href="/tools/word-counter.html">Word Counter</a>
+          <a href="/tools/case-converter.html">Case Converter</a>
+          <a href="/tools/json-formatter.html">JSON Formatter</a>
+          <a href="/tools/robots-txt.html">Robots.txt</a>
+        </div>
+        <div class="footer-col">
+          <h4>SEO</h4>
+          <a href="/tools/meta-gen.html">Meta Tags</a>
+          <a href="/tools/keyword-density.html">Keyword Density</a>
+          <a href="/tools/slug-generator.html">Slug Generator</a>
+          <a href="/tools/sitemap-gen.html">Sitemap</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="/about.html">About</a>
+          <a href="/blog/">Blog</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/advertise.html">Advertise</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+          <a href="/cookie-policy.html">Cookie Policy</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Free AI Text Tools. All rights reserved. Your data stays in your browser.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent -->
+  <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent">
+    <p>🍪 We use cookies for analytics & preferences. <a href="/cookie-policy.html">Learn more</a></p>
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button>
+      <button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="appToast" aria-live="polite"></div>
+
+  <!-- Back to Top -->
+  <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script src="/js/app.js"></script>
+  <script>
+  (function(){
+    if(typeof App==='undefined'||typeof App.getAllTools!=='function')return;
+
+    function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+
+    var tools=App.getAllTools();
+    var cats={counters:[],text:[],converters:[],cleaners:[],seo:[],code:[]};
+    tools.forEach(function(t){
+      if(cats[t.cat])cats[t.cat].push(t);
+    });
+    function renderGrid(id,items){
+      var el=document.getElementById(id);
+      if(!el||!items.length)return;
+      var h='';
+      items.forEach(function(t){
+        h+='<a href="/tools/'+esc(t.id)+'.html" class="tool-card" data-cat="'+esc(t.cat)+'">';
+        h+='<span class="card-cat">'+esc(t.cat)+'</span>';
+        h+='<h3>'+esc(t.name)+'</h3>';
+        h+='<p>'+esc(t.desc)+'</p>';
+        h+='<span class="card-arrow">→</span>';
+        h+='</a>';
+      });
+      el.innerHTML=h;
+    }
+    renderGrid('textTools',cats.counters.concat(cats.text));
+    renderGrid('convertTools',cats.converters.concat(cats.cleaners));
+    renderGrid('seoTools',cats.seo);
+    renderGrid('codeTools',cats.code);
+
+    // Blog preview (4 most viewed)
+    if(App.blogPosts){
+      var bp=document.getElementById('blogPreview');
+      if(bp){
+        function lsGet(k){try{return JSON.parse(localStorage.getItem(k));}catch(e){return null;}}
+        var views=lsGet('attBlogViews')||{};
+        var sorted=App.blogPosts.slice().sort(function(a,b){return (views[b.slug]||0)-(views[a.slug]||0);});
+        var bh='';
+        sorted.slice(0,4).forEach(function(p){
+          bh+='<a href="/blog/'+esc(p.slug)+'.html" class="blog-card">';
+          if(p.image)bh+='<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" class="blog-card-img" loading="lazy">';
+          bh+='<span class="card-cat">'+esc(p.category)+'</span>';
+          bh+='<h3>'+esc(p.title)+'</h3>';
+          bh+='<p>'+esc(p.excerpt)+'</p>';
+          bh+='<span class="blog-meta">'+esc(p.category)+' · '+esc(p.readTime)+'</span>';
+          bh+='</a>';
+        });
+        bp.innerHTML=bh;
+      }
+    }
+
+    // Hero search
+    var si=document.getElementById('heroSearch');
+    var sr=document.getElementById('heroResults');
+    if(si&&sr){
+      si.addEventListener('input',function(){
+        var q=this.value.toLowerCase().trim();
+        if(!q){sr.classList.remove('open');return;}
+        var matched=tools.filter(function(t){
+          return t.name.toLowerCase().indexOf(q)!==-1||t.id.indexOf(q)!==-1||t.desc.toLowerCase().indexOf(q)!==-1||t.cat.indexOf(q)!==-1;
+        }).slice(0,8);
+        if(!matched.length){
+          sr.innerHTML='<div class="no-results">No tools found for "'+esc(q)+'"</div>';
+        } else {
+          var rh='';
+          matched.forEach(function(t){
+            rh+='<a href="/tools/'+esc(t.id)+'.html">';
+            rh+='<span class="sr-cat">'+esc(t.cat)+'</span>';
+            rh+='<span>'+esc(t.name)+'</span>';
+            rh+='</a>';
+          });
+          sr.innerHTML=rh;
+        }
+        sr.classList.add('open');
+      });
+      si.addEventListener('keydown',function(e){
+        if(e.key==='Enter'){
+          var q=this.value.trim();
+          if(q)window.location.href='/tools/?q='+encodeURIComponent(q);
+        }
+      });
+      document.addEventListener('click',function(e){
+        if(!e.target.closest('.hero-search'))sr.classList.remove('open');
+      });
+    }
+
+    // Scroll reveal
+    var reveals=document.querySelectorAll('.reveal');
+    if(reveals.length&&'IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+      reveals.forEach(function(el){io.observe(el);});
+    } else {
+      reveals.forEach(function(el){el.classList.add('visible');});
+    }
+
+    // Back to top
+    var btt=document.getElementById('backToTop');
+    if(btt){
+      window.addEventListener('scroll',function(){
+        btt.classList.toggle('visible',window.scrollY>400);
+      },{passive:true});
+      btt.addEventListener('click',function(){
+        window.scrollTo({top:0,behavior:'smooth'});
+      });
+    }
+  })();
+  </script>
+  <script>
+  if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(reg){reg.unregister();});});}
+  </script>
+</body>
+</html>

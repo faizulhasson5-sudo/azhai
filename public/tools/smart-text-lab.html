@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Smart Text Lab - All-in-One Text Workspace</title>
+<meta name="description" content="All-in-one text workspace with live stats, quick actions, smart clean, and history. Count words, change case, remove spaces, and more in one place.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://azhai-six.vercel.app/tools/smart-text-lab.html">
+<link rel="stylesheet" href="/css/style.css">
+<meta property="og:title" content="Smart Text Lab - All-in-One Text Workspace">
+<meta property="og:description" content="All-in-one text workspace with live stats, quick actions, smart clean, and history.">
+<meta property="og:url" content="https://azhai-six.vercel.app/tools/smart-text-lab.html">
+<meta property="og:site_name" content="Free AI Text Tools">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://azhai-six.vercel.app/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Smart Text Lab - All-in-One Text Workspace">
+<meta name="twitter:description" content="All-in-one text workspace with live stats, quick actions, and history.">
+<meta name="twitter:image" content="https://azhai-six.vercel.app/og-image.png">
+<meta name="theme-color" content="#0a0a0a">
+<script>
+(function(){
+  try {
+    var t = localStorage.getItem('attTheme');
+    if (t) document.documentElement.setAttribute('data-theme', t);
+  } catch(e) {}
+})();
+</script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header class="site-header">
+<div class="header-inner">
+<a href="/" class="site-logo"><span class="logo-mark">⚡</span> Free AI Text Tools</a>
+<nav class="nav" aria-label="Main navigation">
+<a href="/" class="nav-link">Home</a>
+<a href="/tools/" class="nav-link active">Tools</a>
+<a href="/tools/smart-text-lab.html" class="nav-link">Smart Lab</a>
+<a href="/blog/" class="nav-link">Blog</a>
+<button type="button" class="theme-btn" onclick="App.toggleTheme()" aria-label="Toggle theme">🌙</button>
+</nav>
+<button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" onclick="App.toggleMenu()">☰</button>
+</div>
+</header>
+<main id="main-content">
+<div class="container">
+<div class="tool-header">
+<div class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a> <span>/</span> <span>Smart Text Lab</span></div>
+<h1>Smart Text Lab</h1>
+<p>All-in-one text workspace. Edit, transform, and analyze your text in real-time.</p>
+</div>
+<div class="tool-layout">
+<div class="tool-main">
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+<button type="button" class="btn btn-primary btn-sm" onclick="labAction('upper')">UPPER</button>
+<button type="button" class="btn btn-secondary btn-sm" onclick="labAction('lower')">lower</button>
+<button type="button" class="btn btn-secondary btn-sm" onclick="labAction('title')">Title</button>
+<button type="button" class="btn btn-secondary btn-sm" onclick="labAction('sentence')">Sentence</button>
+<button type="button" class="btn btn-secondary btn-sm" onclick="labAction('trim')">Trim</button>
+<button type="button" class="btn btn-secondary btn-sm" onclick="labAction('dedup')">Remove Dups</button>
+<button type="button" class="btn btn-secondary btn-sm" onclick="labAction('smartclean')">⚡ Smart Clean</button>
+<button type="button" class="btn btn-secondary btn-sm" onclick="labAction('sort')">Sort Lines</button>
+<button type="button" class="btn btn-secondary btn-sm" onclick="labAction('slug')">Slug</button>
+<button type="button" class="btn btn-secondary btn-sm" onclick="labAction('b64enc')">Base64 Enc</button>
+<button type="button" class="btn btn-secondary btn-sm" onclick="labAction('urlencode')">URL Enc</button>
+</div>
+<textarea id="labInput" style="width:100%;min-height:280px;padding:16px;font-family:var(--mono);font-size:14px;line-height:1.7;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);color:var(--text);resize:vertical" placeholder="Paste or type your text here..."></textarea>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+<button type="button" class="btn btn-primary" onclick="copyLab()">Copy</button>
+<button type="button" class="btn btn-secondary" onclick="downloadLab()">Download</button>
+<button type="button" class="btn btn-secondary" onclick="clearLab()">Clear</button>
+<label class="btn btn-secondary" style="cursor:pointer">Upload CSV/TXT<input type="file" accept=".csv,.txt,.tsv" style="display:none" onchange="uploadFile(this)"></label>
+</div>
+<div id="labOutput" style="margin-top:16px"></div>
+</div>
+<aside class="tool-sidebar">
+<div class="sidebar-widget">
+<h3>Live Stats</h3>
+<div id="labStats" style="font-size:.88rem;line-height:2;color:var(--text-2)"></div>
+</div>
+<div class="sidebar-widget" id="labHistoryWidget" style="display:none">
+<h3>History <button type="button" onclick="clearHistory()" style="float:right;background:none;border:none;color:var(--text-3);cursor:pointer;font-size:.75rem">Clear</button></h3>
+<div id="labHistory"></div>
+</div>
+<div class="sidebar-widget">
+<h3>Quick Tools</h3>
+<a href="/tools/word-counter.html" class="related-link">Word Counter →</a>
+<a href="/tools/case-converter.html" class="related-link">Case Converter →</a>
+<a href="/tools/json-formatter.html" class="related-link">JSON Formatter →</a>
+<a href="/tools/meta-gen.html" class="related-link">Meta Tag Generator →</a>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-col">
+<a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">⚡</span> Free AI Text Tools</a>
+<p style="font-size:13px;color:var(--text-3)">43+ free online text tools. No sign-up needed. Your data stays in your browser.</p>
+</div>
+<div class="footer-col"><h4>Tools</h4><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a><a href="/tools/robots-txt.html">Robots.txt</a></div>
+<div class="footer-col"><h4>SEO</h4><a href="/tools/meta-gen.html">Meta Tags</a><a href="/tools/keyword-density.html">Keyword Density</a><a href="/tools/slug-generator.html">Slug Generator</a><a href="/tools/sitemap-gen.html">Sitemap</a></div>
+<div class="footer-col"><h4>Company</h4><a href="/about.html">About</a><a href="/blog/">Blog</a><a href="/contact.html">Contact</a><a href="/advertise.html">Advertise</a></div>
+<div class="footer-col"><h4>Legal</h4><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a><a href="/cookie-policy.html">Cookie Policy</a></div>
+</div>
+<div class="footer-bottom"><p>&copy; 2026 Free AI Text Tools. All rights reserved.</p></div>
+</div>
+</footer>
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent">
+<p>🍪 We use cookies for analytics &amp; preferences. <a href="/cookie-policy.html">Learn more</a></p>
+<div class="btn-group">
+<button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button>
+<button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button>
+</div>
+</div>
+<div class="toast" id="appToast"></div>
+<script src="/js/app.js"></script>
+<script>
+(function(){
+'use strict';
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function lsGet(k){try{return JSON.parse(localStorage.getItem(k));}catch(e){return null;}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+
+var input=document.getElementById('labInput');
+var statsEl=document.getElementById('labStats');
+
+function countWords(t){return t.trim()?t.trim().split(/\s+/).length:0;}
+function countChars(t){return t.length;}
+function countCharsNoSpace(t){return t.replace(/\s/g,'').length;}
+function countSentences(t){var m=t.match(/[.!?]+[\s\n]*/g);return m?m.length:0;}
+function countParagraphs(t){return t.trim()?t.trim().split(/\n\s*\n/).length:0;}
+
+function updateStats(){
+var t=input.value;
+var wc=countWords(t),cc=countChars(t),cns=countCharsNoSpace(t),sc=countSentences(t),pc=countParagraphs(t),lc=t.split('\n').length;
+statsEl.innerHTML=
+'<div>Words: <strong>'+wc+'</strong></div>'+
+'<div>Characters: <strong>'+cc+'</strong></div>'+
+'<div>No Spaces: <strong>'+cns+'</strong></div>'+
+'<div>Sentences: <strong>'+sc+'</strong></div>'+
+'<div>Paragraphs: <strong>'+pc+'</strong></div>'+
+'<div>Lines: <strong>'+lc+'</strong></div>'+
+'<div style="margin-top:8px;font-size:.8rem;color:var(--text-3)">~'+(wc/250).toFixed(1)+' min read</div>';
+}
+
+input.addEventListener('input',updateStats);
+updateStats();
+
+function saveHistory(action,before,after){
+var h=lsGet('attTextHistory')||[];
+h.unshift({action:action,preview:before.substring(0,50)+(before.length>50?'...':''),result:after.substring(0,50)+(after.length>50?'...':''),full:before,fullResult:after,time:Date.now()});
+if(h.length>10)h.pop();
+lsSet('attTextHistory',h);
+renderHistory();
+}
+
+function renderHistory(){
+var h=lsGet('attTextHistory')||[];
+var w=document.getElementById('labHistoryWidget');
+var el=document.getElementById('labHistory');
+if(!h.length){w.style.display='none';return;}
+w.style.display='block';
+var html='';
+h.slice(0,8).forEach(function(item,i){
+var ago=getTimeAgo(item.time);
+html+='<div style="padding:8px 0;border-bottom:1px solid var(--border);font-size:.82rem;cursor:pointer" onclick="restoreHistory('+i+')" title="Click to restore this text">';
+html+='<div style="color:var(--accent);font-weight:600">'+esc(item.action)+' <span style="color:var(--text-3);font-weight:400;font-size:.75rem">'+ago+'</span></div>';
+html+='<div style="color:var(--text-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(item.preview)+'</div>';
+html+='</div>';
+});
+el.innerHTML=html;
+}
+
+window.restoreHistory=function(i){
+var h=lsGet('attTextHistory')||[];
+if(h[i]){input.value=h[i].fullResult;updateStats();}
+};
+
+window.clearHistory=function(){lsSet('attTextHistory',[]);renderHistory();};
+
+function getTimeAgo(ts){
+var diff=Date.now()-ts;
+if(diff<60000)return 'just now';
+if(diff<3600000)return Math.floor(diff/60000)+'m ago';
+if(diff<86400000)return Math.floor(diff/3600000)+'h ago';
+return Math.floor(diff/86400000)+'d ago';
+}
+
+window.labAction=function(action){
+var t=input.value;
+if(!t.trim()&&action!=='smartclean')return;
+var before=t;
+var result='';
+switch(action){
+case'upper':result=t.toUpperCase();break;
+case'lower':result=t.toLowerCase();break;
+case'title':result=t.replace(/\w\S*/g,function(w){return w.charAt(0).toUpperCase()+w.slice(1).toLowerCase();});break;
+case'sentence':result=t.toLowerCase().replace(/(^\s*\w|[.!?]\s+\w)/g,function(c){return c.toUpperCase();});break;
+case'trim':result=t.replace(/[ \t]+/g,' ').replace(/^\s+|\s+$/gm,'').replace(/\n\s*\n/g,'\n\n');break;
+case'dedup':
+var seen={};var lines=[];
+t.split('\n').forEach(function(l){var k=l.trim();if(k&&!seen[k]){seen[k]=1;lines.push(l);}});
+result=lines.join('\n');break;
+case'smartclean':
+result=t.replace(/[ \t]+/g,' ').replace(/^\s+|\s+$/gm,'').replace(/\n{3,}/g,'\n\n');
+result=result.replace(/\s+([.,;:!?])/g,'$1').replace(/([.,;:!?])\s+/g,'$1 ');
+result=result.replace(/"([^"]+)"/g,'\u201c$1\u201d').replace(/'([^']+)'/g,'\u2018$1\u2019');
+break;
+case'sort':result=t.split('\n').filter(function(l){return l.trim();}).sort().join('\n');break;
+case'slug':result=t.toLowerCase().trim().replace(/[^\w\s-]/g,'').replace(/[\s_]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');break;
+case'b64enc':try{result=btoa(unescape(encodeURIComponent(t)));}catch(e){result='Error: '+e.message;}break;
+case'urlencode':result=encodeURIComponent(t);break;
+}
+input.value=result;
+updateStats();
+saveHistory(action.replace('smartclean','Smart Clean').replace('upper','UPPER').replace('lower','lower').replace('title','Title Case').replace('sentence','Sentence Case').replace('trim','Trim Spaces').replace('dedup','Remove Dups').replace('sort','Sort Lines').replace('slug','Slug').replace('b64enc','Base64 Encode').replace('urlencode','URL Encode'),before,result);
+};
+
+window.copyLab=function(){
+var t=input.value;
+if(!t){App.toast('Nothing to copy');return;}
+navigator.clipboard.writeText(t).then(function(){App.toast('Copied!');}).catch(function(){App.toast('Failed');});
+};
+
+window.downloadLab=function(){
+var t=input.value;
+if(!t){App.toast('Nothing to download');return;}
+var blob=new Blob([t],{type:'text/plain'});
+var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='smart-text-lab.txt';
+a.click();setTimeout(function(){URL.revokeObjectURL(a.href);},1000);
+};
+
+window.clearLab=function(){input.value='';updateStats();};
+
+window.uploadFile=function(el){
+var file=el.files[0];
+if(!file)return;
+var reader=new FileReader();
+reader.onload=function(e){input.value=e.target.result;updateStats();};
+reader.readAsText(file);
+el.value='';
+};
+
+renderHistory();
+})();
+</script>
+</body>
+</html>

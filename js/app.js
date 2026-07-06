@@ -48,14 +48,59 @@ App.initAnalytics=function(){
   if(lsGet('attCookies')!=='accepted')return;
   if(window._gaInitialized)return;
   window._gaInitialized=true;
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied'});
+  gtag('js',new Date());
+  gtag('config','G-XDHMXW7PR2');
   var s=document.createElement('script');
   s.async=true;
   s.src='https://www.googletagmanager.com/gtag/js?id=G-XDHMXW7PR2';
   document.head.appendChild(s);
+};
+
+/* ---- GTM Events ---- */
+App.trackEvent=function(eventName,params){
   window.dataLayer=window.dataLayer||[];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js',new Date());
-  gtag('config','G-XDHMXW7PR2');
+  window.dataLayer.push(Object.assign({event:eventName},params||{}));
+};
+
+App.trackToolUsage=function(toolName){
+  App.trackEvent('tool_usage',{tool_name:toolName});
+};
+
+App.trackBlogRead=function(slug,category){
+  App.trackEvent('blog_read',{blog_slug:slug,blog_category:category});
+};
+
+App.trackScrollDepth=function(percent,slug){
+  App.trackEvent('scroll_depth',{percent:percent,blog_slug:slug});
+};
+
+App.trackCookieConsent=function(choice){
+  App.trackEvent('cookie_consent',{consent_choice:choice});
+};
+
+App.trackToolHistoryRestore=function(toolName){
+  App.trackEvent('tool_history_restore',{tool_name:toolName});
+};
+
+/* ---- Scroll Depth Tracking (blog posts) ---- */
+App.initScrollTracking=function(){
+  var slug=document.querySelector('meta[property="og:url"]')?.content?.match(/\/blog\/(.+)\.html/)?.[1];
+  if(!slug)return;
+  var tracked={};
+  function checkScroll(){
+    var h=document.documentElement;
+    var pct=Math.round((h.scrollTop/(h.scrollHeight-h.clientHeight))*100);
+    [25,50,75,100].forEach(function(t){
+      if(pct>=t&&!tracked[t]){
+        tracked[t]=true;
+        App.trackScrollDepth(t,slug);
+      }
+    });
+  }
+  window.addEventListener('scroll',checkScroll,{passive:true});
 };
 
 /* ---- Cookie Consent ---- */
@@ -73,10 +118,12 @@ App.initCookieConsent=function(){
     lsSet('attCookies','accepted');
     b.classList.remove('show');
     App.initAnalytics();
+    App.trackCookieConsent('accepted');
   });
   if(r)r.addEventListener('click',function(){
     lsSet('attCookies','rejected');
     b.classList.remove('show');
+    App.trackCookieConsent('rejected');
   });
 };
 
@@ -161,6 +208,7 @@ App.blogPosts=[
 /* ---- Init ---- */
 document.addEventListener('DOMContentLoaded',function(){
   App.initCookieConsent();
+  App.initScrollTracking();
 
   /* Header scroll shadow */
   var header=document.querySelector('.site-header');

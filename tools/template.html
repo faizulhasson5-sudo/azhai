@@ -278,6 +278,7 @@ document.getElementById('tool-output').innerHTML='<div class="output-content"><p
 window.convertCase=cv;
 
 window.processCurrentTool=function(){
+if(window.App&&App.trackToolUsage)App.trackToolUsage(tid);
 var input=document.getElementById('tool-input').value;
 var out=document.getElementById('tool-output');
 if(!input.trim()&&tid!=='lorem-generator'){out.innerHTML='<p style="color:var(--text-2)">Please enter some text.</p>';return;}

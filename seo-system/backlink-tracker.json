@@ -1,0 +1,209 @@
+{
+  "product": {
+    "name": "Free AI Text Tools",
+    "tagline": "43 free browser-based tools for text processing, SEO, and developer utilities",
+    "description": "Free AI Text Tools is a comprehensive suite of 43 browser-based tools for text processing, SEO optimization, and developer utilities. All tools run entirely in your browser — no data leaves your device. Includes word counters, keyword density checkers, meta tag generators, JSON/XML formatters, markdown editors, and 5 dedicated SEO schema generators. Built with a clean 2026 design, dark mode, and mobile-first responsive layout.",
+    "shortDescription": "43 free browser-based tools for text processing, SEO, and developer utilities. No sign-up, no data collection.",
+    "website": "https://azhai-six.vercel.app",
+    "category": "AI Tools, SEO Tools, Developer Tools",
+    "pricing": "Free",
+    "logo": "https://azhai-six.vercel.app/og-image.png",
+    "screenshot": "https://azhai-six.vercel.app/og-image.png"
+  },
+  "directories": [
+    {
+      "tier": 1,
+      "name": "Product Hunt",
+      "url": "https://www.producthunt.com/posts/new",
+      "dr": 91,
+      "linkType": "nofollow",
+      "cost": "Free",
+      "notes": "Schedule launch for Tuesday-Thursday. Prepare supporters for upvotes.",
+      "status": "pending"
+    },
+    {
+      "tier": 1,
+      "name": "AlternativeTo",
+      "url": "https://alternativeto.net/contribute/new-product/",
+      "dr": 82,
+      "linkType": "dofollow",
+      "cost": "Free",
+      "notes": "Tag as alternative to: TextMechanic, ConvertCase, SmallSEOTools",
+      "status": "pending"
+    },
+    {
+      "tier": 1,
+      "name": "Hacker News (Show HN)",
+      "url": "https://news.ycombinator.com/submit",
+      "dr": 91,
+      "linkType": "nofollow",
+      "cost": "Free",
+      "notes": "Post as \"Show HN: Free AI Text Tools — 43 browser-based text/SEO tools\"",
+      "status": "pending"
+    },
+    {
+      "tier": 2,
+      "name": "There's An AI For That",
+      "url": "https://theresanaiforthat.com/submit/",
+      "dr": 72,
+      "linkType": "dofollow",
+      "cost": "Free",
+      "notes": "Major AI tool directory. Cited by ChatGPT/Claude.",
+      "status": "pending"
+    },
+    {
+      "tier": 2,
+      "name": "Futurepedia",
+      "url": "https://www.futurepedia.io/submit-tool",
+      "dr": 66,
+      "linkType": "dofollow",
+      "cost": "Free",
+      "notes": "AI tools directory with strong traffic.",
+      "status": "pending"
+    },
+    {
+      "tier": 2,
+      "name": "TopAI.tools",
+      "url": "https://topai.tools/submit",
+      "dr": 58,
+      "linkType": "dofollow",
+      "cost": "Free",
+      "notes": "AI tools listing with dofollow backlink.",
+      "status": "pending"
+    },
+    {
+      "tier": 2,
+      "name": "ToolPilot.ai",
+      "url": "https://toolpilot.ai/submit",
+      "dr": 48,
+      "linkType": "dofollow",
+      "cost": "Free",
+      "notes": "AI tools directory.",
+      "status": "pending"
+    },
+    {
+      "tier": 2,
+      "name": "AI Tool Directory",
+      "url": "https://aitoolsdirectory.com/submit",
+      "dr": 45,
+      "linkType": "dofollow",
+      "cost": "Free",
+      "notes": "Simple submission, quick approval.",
+      "status": "pending"
+    },
+    {
+      "tier": 3,
+      "name": "SaaSHub",
+      "url": "https://www.saashub.com/submit",
+      "dr": 71,
+      "linkType": "dofollow",
+      "cost": "Free",
+      "notes": "Alternative/comparison marketplace. Dofollow backlink.",
+      "status": "pending"
+    },
+    {
+      "tier": 3,
+      "name": "BetaList",
+      "url": "https://betalist.com/submit",
+      "dr": 68,
+      "linkType": "dofollow",
+      "cost": "Free (waitlist)",
+      "notes": "Pre-launch directory. May have waitlist.",
+      "status": "pending"
+    },
+    {
+      "tier": 3,
+      "name": "Indie Hackers",
+      "url": "https://www.indiehackers.com/post/new",
+      "dr": 72,
+      "linkType": "nofollow",
+      "cost": "Free",
+      "notes": "Post as product launch. Engage with community.",
+      "status": "pending"
+    },
+    {
+      "tier": 3,
+      "name": "StartupBase",
+      "url": "https://startupbase.io/submit",
+      "dr": 46,
+      "linkType": "dofollow",
+      "cost": "Free",
+      "notes": "Simple startup directory.",
+      "status": "pending"
+    },
+    {
+      "tier": 3,
+      "name": "Launching Next",
+      "url": "https://www.launchingnext.com/submit",
+      "dr": 52,
+      "linkType": "dofollow",
+      "cost": "$49",
+      "notes": "Paid listing but high quality.",
+      "status": "pending"
+    },
+    {
+      "tier": 4,
+      "name": "SmallSEOTools Alternative",
+      "url": "https://alternativeto.net/software/smallseotools/",
+      "dr": 82,
+      "linkType": "dofollow",
+      "cost": "Free",
+      "notes": "List as alternative to SmallSEOTools.",
+      "status": "pending"
+    },
+    {
+      "tier": 4,
+      "name": "TextMechanic Alternative",
+      "url": "https://alternativeto.net/software/textmechanic/",
+      "dr": 82,
+      "linkType": "dofollow",
+      "cost": "Free",
+      "notes": "List as alternative to TextMechanic.",
+      "status": "pending"
+    },
+    {
+      "tier": 4,
+      "name": "ConvertCase Alternative",
+      "url": "https://alternativeto.net/software/convertcase/",
+      "dr": 82,
+      "linkType": "dofollow",
+      "cost": "Free",
+      "notes": "List as alternative to ConvertCase.",
+      "status": "pending"
+    }
+  ],
+  "outreachTemplates": {
+    "haro": {
+      "subject": "SEO Tools Expert — Free Browser-Based Suite",
+      "body": "Hi [Name],\n\nI'm the creator of Free AI Text Tools (azhai-six.vercel.app), a suite of 43 browser-based tools for text processing and SEO.\n\nFor your article about [TOPIC], I can provide:\n\n• Expert insights on [SPECIFIC_ANGLE]\n• Data from our tool usage (word counters, keyword density checkers, meta generators used by thousands)\n• A unique perspective on browser-based vs server-side tool architecture\n\nAll tools run client-side with zero data collection — a privacy-first approach that's increasingly relevant in 2026.\n\nHappy to provide a quick quote or detailed response. What's your deadline?\n\nBest,\n[Your Name]\nCreator, Free AI Text Tools"
+    },
+    "guestPost": {
+      "subject": "Guest Post: [TITLE] for [SITE]",
+      "body": "Hi [Editor Name],\n\nI run Free AI Text Tools (azhai-six.vercel.app), a suite of 43 browser-based text and SEO tools used by content creators and developers.\n\nI'd like to contribute a guest post to [PUBLICATION]:\n\n**Proposed Title:** [COMPELLING_TITLE]\n\n**Outline:**\n1. [Section 1]\n2. [Section 2]\n3. [Section 3]\n4. [Section 4]\n\n**Why this works for your audience:**\n[2-3 sentences about why their readers would care]\n\n**My credentials:**\n- Creator of 43 free browser-based SEO tools\n- Published articles on AI content detection, query fan-out, and E-E-A-T\n- Deep expertise in technical SEO and content optimization\n\nWord count: [1000-1500] words, original content, includes custom diagrams.\n\nInterested?\n\nBest,\n[Your Name]"
+    },
+    "directorySubmission": {
+      "name": "Free AI Text Tools",
+      "tagline": "43 free browser-based tools for text processing, SEO, and developer utilities",
+      "description": "Free AI Text Tools is a comprehensive suite of 43 browser-based tools for text processing, SEO optimization, and developer utilities. All tools run entirely in your browser — no data leaves your device. Includes word counters, keyword density checkers, meta tag generators, JSON/XML formatters, markdown editors, and 5 dedicated SEO schema generators. Built with a clean 2026 design, dark mode, and mobile-first responsive layout.",
+      "website": "https://azhai-six.vercel.app",
+      "category": "AI Tools, SEO Tools, Developer Tools",
+      "pricing": "Free"
+    }
+  },
+  "socialSnippets": {
+    "twitter": [
+      "Just built 43 free browser-based SEO tools — word counters, keyword density checkers, meta generators, JSON formatters, and more.\n\nAll run in your browser. No sign-up. No data collection.\n\nTry it: azhai-six.vercel.app",
+      "New blog: Query Fan-Out is changing Google Search in 2026 (+2,550% YoY growth)\n\nLearn how Google breaks down searches and how to optimize your content for it.\n\nRead: azhai-six.vercel.app/blog/query-fanout-seo-2026.html",
+      "Google now detects AI content with 94% accuracy.\n\nHere's how their detection works and how to create compliant content that ranks:\n\nazhai-six.vercel.app/blog/ai-content-detection-2026.html",
+      "Free alternative to SmallSEOTools, TextMechanic, and ConvertCase — all running in your browser with zero data collection.\n\n43 tools. Zero cost. Zero tracking.\n\nazhai-six.vercel.app"
+    ],
+    "linkedin": [
+      "I just launched Free AI Text Tools — a suite of 43 browser-based tools for text processing, SEO, and developer utilities.\n\nWhat makes it different:\n✓ All tools run in your browser (no server, no data collection)\n✓ Zero sign-up required\n✓ Completely free\n✓ Dark mode + mobile-first design\n\nWhether you're a content creator needing word counts and keyword density checks, or a developer needing JSON/XML formatters — it's all there.\n\nTry it: azhai-six.vercel.app\n\n#SEO #FreeTools #WebDev #ContentCreation"
+    ],
+    "reddit": [
+      "I built a free alternative to SmallSEOTools with 43 browser-based tools. All processing happens in your browser — no data leaves your device. Would love feedback from this community.",
+      "Created a free keyword density checker and meta tag generator that runs entirely in your browser. No sign-up, no tracking. Looking for beta testers."
+    ]
+  },
+  "lastUpdated": "2026-07-06T07:46:10.348Z"
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="900" cy="400" r="200" fill="#059669" opacity="0.08"/>
+  <text x="600" y="80" font-family="system-ui,-apple-system,sans-serif" font-size="14" fill="#059669" text-anchor="middle" font-weight="600" letter-spacing="2">CONTENT STRATEGY</text>
+  <text x="600" y="170" font-family="system-ui,-apple-system,sans-serif" font-size="46" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="-2">Long-Tail Keyword</text>
+  <text x="600" y="230" font-family="system-ui,-apple-system,sans-serif" font-size="46" font-weight="800" fill="#059669" text-anchor="middle" letter-spacing="-2">Strategy for 2026</text>
+  <text x="600" y="290" font-family="system-ui,-apple-system,sans-serif" font-size="18" fill="#94a3b8" text-anchor="middle">How to find, target, and rank for long-tail keywords that convert</text>
+  <rect x="150" y="340" width="900" height="100" rx="8" fill="#1e293b" opacity="0.5"/>
+  <text x="200" y="375" font-family="system-ui,sans-serif" font-size="13" fill="#059669" font-weight="600">WHY LONG-TAIL?</text>
+  <text x="200" y="400" font-family="system-ui,sans-serif" font-size="12" fill="#e2e8f0">Long-tail keywords = lower competition + higher conversion rates.</text>
+  <text x="200" y="420" font-family="system-ui,sans-serif" font-size="12" fill="#94a3b8">70% of all searches are long-tail. They drive more traffic than head terms.</text>
+  <rect x="0" y="580" width="1200" height="50" fill="#059669" opacity="0.1"/>
+  <text x="600" y="610" font-family="system-ui,-apple-system,sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Free AI Text Tools — SEO Strategy Guide 2026</text>
+</svg>

@@ -590,7 +590,9 @@ var textParts=[];
 var loadPage=function(num){
 if(num>totalPages){
 var fullText=textParts.join('\n\n');
-createDocxFromText(fullText,pdfFile.name.replace(/\.pdf$/i,''));
+window._pdfExtractedText=fullText;
+window._pdfFileName=pdfFile.name.replace(/\.pdf$/i,'');
+out.innerHTML='<div class="output-content"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><strong>Extracted Text ('+totalPages+' pages)</strong><button onclick="downloadPdfAsDocx()" style="background:var(--accent);color:#fff;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:.85rem">Download as DOCX</button></div><pre style="white-space:pre-wrap;font-size:.9rem;line-height:1.6;color:var(--text);background:var(--bg-2);padding:16px;border-radius:8px;max-height:500px;overflow-y:auto">'+esc(fullText)+'</pre></div>';
 return;
 }
 pdf.getPage(num).then(function(page){
@@ -606,6 +608,7 @@ loadPage(1);
 };
 reader.readAsArrayBuffer(pdfFile);
 }).catch(function(err){out.innerHTML='<p style="color:var(--danger)">Failed to load converter libraries. Check your internet connection.</p>';});
+window.downloadPdfAsDocx=function(){var t=window._pdfExtractedText;var n=window._pdfFileName;if(!t)return;createDocxFromText(t,n);};
 return;
 case'word-to-pdf':
 var docxFile=window._currentFile;

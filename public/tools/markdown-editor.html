@@ -61,6 +61,19 @@
 <div class="tool-main">
 <div class="tool-interface">
 <div class="tool-options" id="toolOptions"></div>
+<div class="converter-interface" id="converterInterface" style="display:none">
+<div class="converter-upload-zone" id="converterUploadZone" onclick="document.getElementById('converterFileInput').click()">
+<input type="file" id="converterFileInput" style="display:none" onchange="handleConverterUpload(this)">
+<div class="converter-upload-icon">📄</div>
+<div class="converter-upload-text">Click or drag file here</div>
+<div class="converter-upload-hint" id="converterHint">.pdf files only</div>
+</div>
+<div class="converter-file-info" id="converterFileInfo" style="display:none"></div>
+<div class="converter-actions">
+<button type="button" class="btn btn-primary" onclick="processCurrentTool()" id="converterProcessBtn" disabled>▶ Convert</button>
+<button type="button" class="btn btn-secondary btn-sm" onclick="clearConverter()">Clear</button>
+</div>
+</div>
 <textarea class="tool-textarea" id="tool-input" placeholder="Paste or type your text here..."></textarea>
 <div class="action-bar">
 <button type="button" class="btn btn-primary" onclick="processCurrentTool()">▶ Process</button>
@@ -656,7 +669,7 @@ if(typeof result==='string')out.innerHTML=result;
 }catch(err){out.innerHTML='<p style="color:var(--danger)">Error: '+esc(err.message)+'</p>';}
 };
 
-window.clearTool=function(){document.getElementById('tool-input').value='';document.getElementById('tool-output').innerHTML='';};
+window.clearTool=function(){document.getElementById('tool-input').value='';document.getElementById('tool-output').innerHTML='';if(typeof window.clearConverter==='function')window.clearConverter();};
 window.copyOutput=function(){var t=document.getElementById('tool-output').innerText;if(!t){App.toast('Nothing to copy');return;}navigator.clipboard.writeText(t).then(function(){App.toast('Copied!');var cb=document.getElementById('bottomCopyBtn');if(cb){cb.textContent='✓ Copied';cb.classList.add('btn-copy-success');setTimeout(function(){cb.textContent='Copy';cb.classList.remove('btn-copy-success');},1500);}}).catch(function(){App.toast('Failed');});};
 window.downloadResult=function(){var t=document.getElementById('tool-output').innerText;if(!t){App.toast('Nothing to download');return;}var ext={'json-formatter':'json','json-validator':'json','xml-formatter':'xml','xml-validator':'xml','markdown-editor':'md','markdown-preview':'md','html-previewer':'html','regex-tester':'txt','hash-generator':'txt','b64-encoder':'txt','b64-decoder':'txt','url-encoder':'txt','url-decoder':'txt','html-encoder':'html','html-decoder':'html','css':'css','csv':'csv'}[tid]||'txt';
 var blob=new Blob([t],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=tid+'-output.'+ext;a.click();setTimeout(function(){URL.revokeObjectURL(a.href);},1000);};
@@ -733,6 +746,42 @@ lsSet('attToolHistory',h);renderToolHistory();
 };
 
 ga();rb();ffaq();
+
+/* ---- Converter Interface ---- */
+if(tid==='pdf-to-word'||tid==='word-to-pdf'){
+var convBox=document.getElementById('converterInterface');
+var textarea=document.getElementById('tool-input');
+var actBar=textarea.nextElementSibling;
+convBox.style.display='block';
+textarea.style.display='none';
+actBar.style.display='none';
+document.getElementById('converterHint').textContent=tid==='pdf-to-word'?'.pdf files only':'.docx files only';
+var zone=document.getElementById('converterUploadZone');
+zone.addEventListener('dragover',function(e){e.preventDefault();zone.classList.add('converter-upload-zone-hover');});
+zone.addEventListener('dragleave',function(){zone.classList.remove('converter-upload-zone-hover');});
+zone.addEventListener('drop',function(e){e.preventDefault();zone.classList.remove('converter-upload-zone-hover');var f=e.dataTransfer.files[0];if(f)handleConverterFile(f);});
+window.handleConverterUpload=function(el){var f=el.files[0];if(f)handleConverterFile(f);el.value='';};
+window.handleConverterFile=function(file){
+var allowed=tid==='pdf-to-word'?['application/pdf']:['application/vnd.openxmlformats-officedocument.wordprocessingml.document','.docx'];
+var ext=file.name.split('.').pop().toLowerCase();
+var ok=tid==='pdf-to-word'?ext==='pdf':ext==='docx';
+if(!ok){document.getElementById('converterFileInfo').style.display='block';document.getElementById('converterFileInfo').innerHTML='<p style="color:var(--danger)">Invalid file type. Please upload a '+ (tid==='pdf-to-word'?'PDF':'DOCX')+' file.</p>';return;}
+window._currentFile=file;
+var sz=file.size<1024*1024?(file.size/1024).toFixed(1)+' KB':(file.size/(1024*1024)).toFixed(1)+' MB';
+document.getElementById('converterFileInfo').style.display='block';
+document.getElementById('converterFileInfo').innerHTML='<div class="converter-file-details"><span class="converter-file-name">'+esc(file.name)+'</span><span class="converter-file-size">'+sz+'</span></div>';
+document.getElementById('converterProcessBtn').disabled=false;
+zone.style.display='none';
+};
+window.clearConverter=function(){
+window._currentFile=null;
+document.getElementById('converterFileInfo').style.display='none';
+document.getElementById('converterFileInfo').innerHTML='';
+document.getElementById('converterProcessBtn').disabled=true;
+document.getElementById('tool-output').innerHTML='';
+document.getElementById('converterUploadZone').style.display='';
+};
+}
 
 /* ---- Favorites & Recently Used ---- */
 function lsGet(k){try{return JSON.parse(localStorage.getItem(k));}catch(e){return null;}}

@@ -432,6 +432,55 @@ a:hover { color: var(--accent-hover); }
 .btn-secondary:hover { border-color: var(--border-2); color: var(--text); }
 .btn-sm { padding: 5px 12px; font-size: 12px; }
 
+/* ---- Converter Upload Zone ---- */
+.converter-upload-zone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 48px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  background: var(--bg-2);
+}
+.converter-upload-zone:hover,
+.converter-upload-zone-hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 5%, var(--bg-2));
+}
+.converter-upload-icon { font-size: 36px; margin-bottom: 12px; opacity: 0.6; }
+.converter-upload-text { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+.converter-upload-hint { font-size: 12px; color: var(--text-3); }
+.converter-file-info {
+  margin-top: 12px;
+  padding: 12px 16px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.converter-file-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.converter-file-name {
+  font-weight: 500;
+  color: var(--text);
+  font-size: 13px;
+  word-break: break-all;
+}
+.converter-file-size {
+  font-size: 12px;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+.converter-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+.converter-actions .btn { flex: none; }
+
 /* ---- Output ---- */
 .tool-output { margin-top: 14px; min-height: 40px; }
 .output-content {

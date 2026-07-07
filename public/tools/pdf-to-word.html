@@ -613,30 +613,45 @@ return;
 case'word-to-pdf':
 var docxFile=window._currentFile;
 if(!docxFile){out.innerHTML='<p style="color:var(--text-2)">Please upload a Word document using the Upload button.</p>';return;}
-function loadScriptW(url){return new Promise(function(resolve,reject){if(document.querySelector('script[src="'+url+'"]')){resolve();return;}var s=document.createElement('script');s.src=url;s.onload=resolve;s.onerror=reject;document.head.appendChild(s);});}
 out.innerHTML='<p style="color:var(--accent)">Loading document library...</p>';
-loadScriptW('https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js').then(function(){
-var mammothLib=window.mammoth;
-if(!mammothLib){out.innerHTML='<p style="color:var(--danger)">Document library failed to load.</p>';return;}
+(function(){
+var existing=document.querySelector('script[data-mammoth]');
+if(existing&&window.mammoth){convertDocx(docxFile,window.mammoth);return;}
+if(existing){var check=setInterval(function(){if(window.mammoth){clearInterval(check);convertDocx(docxFile,window.mammoth);}},100);setTimeout(function(){clearInterval(check);if(!window.mammoth)out.innerHTML='<p style="color:var(--danger)">Document library timed out. Please refresh.</p>';},10000);return;}
+var s=document.createElement('script');
+s.src='https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js';
+s.setAttribute('data-mammoth','1');
+s.onload=function(){convertDocx(docxFile,window.mammoth);};
+s.onerror=function(){out.innerHTML='<p style="color:var(--danger)">Failed to load document library.</p>';};
+document.head.appendChild(s);
+})();
+function convertDocx(file,mammothLib){
 out.innerHTML='<p style="color:var(--accent)">Converting Word document...</p>';
-var reader2=new FileReader();
-reader2.onload=function(e){
-var arrayBuffer=e.target.result;
-mammothLib.convertToHtml({arrayBuffer:arrayBuffer}).then(function(result){
+var reader=new FileReader();
+reader.onload=function(e){
+mammothLib.convertToHtml({arrayBuffer:e.target.result}).then(function(result){
 var htmlContent=result.value;
-var warnings=result.messages;
 var iframe=document.createElement('iframe');
 iframe.style.cssText='width:100%;min-height:500px;border:1px solid var(--border);border-radius:var(--radius)';
-var printBtn='<div style="margin:12px 0"><button onclick="var f=document.querySelector(\'iframe[srcdoc]\');if(f)f.contentWindow.print();" style="background:var(--accent);color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-size:.9rem">Print as PDF</button><span style="font-size:.8rem;color:var(--text-3);margin-left:12px">Use your browser print dialog to save as PDF</span></div>';
-var doc='<!DOCTYPE html><html><head><style>body{font-family:system-ui,sans-serif;max-width:800px;margin:0 auto;padding:40px;line-height:1.6;color:#1a1a1a}h1,h2,h3{margin-top:1.5em}p{margin:0.8em 0}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ddd;padding:8px;text-align:left}@media print{body{padding:20px}}</style></head><body>'+htmlContent+'</body></html>';
-iframe.srcdoc=doc;
-out.innerHTML=printBtn;
+iframe.srcdoc='<!DOCTYPE html><html><head><style>body{font-family:system-ui,sans-serif;max-width:800px;margin:0 auto;padding:40px;line-height:1.6;color:#1a1a1a}h1,h2,h3{margin-top:1.5em}p{margin:0.8em 0}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ddd;padding:8px;text-align:left}@media print{body{padding:20px}}</style></head><body>'+htmlContent+'</body></html>';
+out.innerHTML='';
+var btnWrap=document.createElement('div');
+btnWrap.style.cssText='margin:12px 0';
+var btn=document.createElement('button');
+btn.textContent='Print as PDF';
+btn.style.cssText='background:var(--accent);color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-size:.9rem';
+btn.onclick=function(){iframe.contentWindow.print();};
+var hint=document.createElement('span');
+hint.style.cssText='font-size:.8rem;color:var(--text-3);margin-left:12px';
+hint.textContent='Use your browser print dialog to save as PDF';
+btnWrap.appendChild(btn);
+btnWrap.appendChild(hint);
+out.appendChild(btnWrap);
 out.appendChild(iframe);
-if(warnings.length>0){var wDiv=document.createElement('p');wDiv.style.cssText='font-size:.8rem;color:var(--text-3);margin-top:8px';wDiv.textContent=warnings.length+' conversion note(s)';out.appendChild(wDiv);}
-}).catch(function(err){out.innerHTML='<p style="color:var(--danger)">Error converting document: '+esc(err.message)+'</p>';});
+}).catch(function(err){out.innerHTML='<p style="color:var(--danger)">Error converting: '+esc(err.message)+'</p>';});
 };
-reader2.readAsArrayBuffer(docxFile);
-}).catch(function(err){out.innerHTML='<p style="color:var(--danger)">Failed to load converter library. Check your internet connection.</p>';});
+reader.readAsArrayBuffer(file);
+}
 return;
 return;
 default:

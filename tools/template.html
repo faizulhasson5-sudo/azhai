@@ -759,10 +759,10 @@ ga();rb();ffaq();
 if(tid==='pdf-to-word'||tid==='word-to-pdf'){
 var convBox=document.getElementById('converterInterface');
 var textarea=document.getElementById('tool-input');
-var actBar=textarea.nextElementSibling;
+var actBar=document.querySelector('.tool-card-actions');
 convBox.style.display='block';
 textarea.style.display='none';
-actBar.style.display='none';
+if(actBar)actBar.style.display='none';
 document.getElementById('converterHint').textContent=tid==='pdf-to-word'?'.pdf files only':'.docx files only';
 var zone=document.getElementById('converterUploadZone');
 zone.addEventListener('dragover',function(e){e.preventDefault();zone.classList.add('converter-upload-zone-hover');});

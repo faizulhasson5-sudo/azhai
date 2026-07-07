@@ -620,8 +620,7 @@ try{
 if(!window.mammoth){out.innerHTML='<p style="color:var(--danger)">Library failed.</p>';return;}
 var reader=new FileReader();
 reader.onload=function(ev){
-try{
-var result=window.mammoth.convertToHtml({arrayBuffer:ev.target.result});
+window.mammoth.convertToHtml({arrayBuffer:ev.target.result}).then(function(result){
 var html=result.value;
 out.innerHTML='';
 var bar=document.createElement('div');
@@ -640,7 +639,7 @@ var content=document.createElement('div');
 content.style.cssText='font-family:system-ui,sans-serif;max-width:800px;line-height:1.6;color:#1a1a1a;padding:20px;border:1px solid var(--border);border-radius:8px;max-height:600px;overflow-y:auto';
 content.innerHTML=html;
 out.appendChild(content);
-}catch(err2){out.innerHTML='<p style="color:var(--danger)">Convert error: '+err2.message+'</p>';}
+}).catch(function(err){out.innerHTML='<p style="color:var(--danger)">Convert error: '+err.message+'</p>';});
 };
 reader.readAsArrayBuffer(docxFile);
 }catch(err){out.innerHTML='<p style="color:var(--danger)">Error: '+err.message+'</p>';}

@@ -570,7 +570,7 @@ result='<div class="code-block"><pre>'+esc(JSON.stringify(bcSchema,null,2))+'</p
 case'pdf-to-word':
 var pdfFile=window._currentFile;
 if(!pdfFile){out.innerHTML='<p style="color:var(--text-2)">Please upload a PDF file using the Upload button.</p>';return;}
-function loadScript(url){return new Promise(function(resolve,reject){if(document.querySelector('script[src="'+url+'"]')){resolve();return;}var s=document.createElement('script');s.src=url;s.onload=resolve;s.onerror=reject;document.head.appendChild(s);});}
+var loadScript=function(url){return new Promise(function(resolve,reject){if(document.querySelector('script[src="'+url+'"]')){resolve();return;}var s=document.createElement('script');s.src=url;s.onload=resolve;s.onerror=reject;document.head.appendChild(s);});};
 out.innerHTML='<p style="color:var(--accent)">Loading PDF library...</p>';
 Promise.all([
   loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js'),
@@ -613,7 +613,7 @@ return;
 case'word-to-pdf':
 var docxFile=window._currentFile;
 if(!docxFile){out.innerHTML='<p style="color:var(--text-2)">Please upload a Word document using the Upload button.</p>';return;}
-function loadScriptWp(url){return new Promise(function(res,rej){var old=document.querySelector('script[src="'+url+'"]');if(old){res();return;}var s=document.createElement('script');s.src=url;s.onload=res;s.onerror=rej;document.head.appendChild(s);});}
+var loadScriptWp=function(url){return new Promise(function(res,rej){var old=document.querySelector('script[src="'+url+'"]');if(old){res();return;}var s=document.createElement('script');s.src=url;s.onload=res;s.onerror=rej;document.head.appendChild(s);});};
 out.innerHTML='<p style="color:var(--accent)">Loading document library...</p>';
 loadScriptWp('https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js').then(function(){
 if(!window.mammoth){out.innerHTML='<p style="color:var(--danger)">Library failed to load.</p>';return;}
@@ -640,11 +640,10 @@ var content=document.createElement('div');
 content.style.cssText='font-family:system-ui,sans-serif;max-width:800px;line-height:1.6;color:#1a1a1a;padding:20px;border:1px solid var(--border);border-radius:8px;max-height:600px;overflow-y:auto';
 content.innerHTML=html;
 out.appendChild(content);
-}catch(err){out.innerHTML='<p style="color:var(--danger)">Error: '+esc(err.message)+'</p>';});
+}catch(err){out.innerHTML='<p style="color:var(--danger)">Error: '+esc(err.message)+'</p>';}
 };
 reader.readAsArrayBuffer(docxFile);
 }).catch(function(){out.innerHTML='<p style="color:var(--danger)">Failed to load library. Check connection.</p>';});
-return;
 return;
 default:
 result='<p style="color:var(--text-2)">Processing not available for this tool.</p>';

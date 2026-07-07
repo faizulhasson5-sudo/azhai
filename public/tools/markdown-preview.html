@@ -614,22 +614,13 @@ return;
 case'word-to-pdf':
 var docxFile=window._currentFile;
 if(!docxFile){out.innerHTML='<p style="color:var(--text-2)">Please upload a Word document using the Upload button.</p>';return;}
+function loadScriptWp(url){return new Promise(function(res,rej){var old=document.querySelector('script[src="'+url+'"]');if(old){res();return;}var s=document.createElement('script');s.src=url;s.onload=res;s.onerror=rej;document.head.appendChild(s);});}
 out.innerHTML='<p style="color:var(--accent)">Loading document library...</p>';
-(function(){
-var s=document.querySelector('script[data-mammoth]');
-if(s&&window.mammoth){doConvert(docxFile);return;}
-if(s){var w=setInterval(function(){if(window.mammoth){clearInterval(w);doConvert(docxFile);}},200);setTimeout(function(){clearInterval(w);},10000);return;}
-var el=document.createElement('script');
-el.src='https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js';
-el.setAttribute('data-mammoth','1');
-el.onload=function(){doConvert(docxFile);};
-el.onerror=function(){out.innerHTML='<p style="color:var(--danger)">Failed to load library.</p>';};
-document.head.appendChild(el);
-})();
-function doConvert(file){
+loadScriptWp('https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js').then(function(){
+if(!window.mammoth){out.innerHTML='<p style="color:var(--danger)">Library failed to load.</p>';return;}
 out.innerHTML='<p style="color:var(--accent)">Converting Word document...</p>';
-var r=new FileReader();
-r.onload=function(e){
+var reader=new FileReader();
+reader.onload=function(e){
 try{
 var res=window.mammoth.convertToHtml({arrayBuffer:e.target.result});
 var html=res.value;
@@ -650,10 +641,10 @@ var content=document.createElement('div');
 content.style.cssText='font-family:system-ui,sans-serif;max-width:800px;line-height:1.6;color:#1a1a1a;padding:20px;border:1px solid var(--border);border-radius:8px;max-height:600px;overflow-y:auto';
 content.innerHTML=html;
 out.appendChild(content);
-}catch(err){out.innerHTML='<p style="color:var(--danger)">Error: '+esc(err.message)+'</p>';}
+}catch(err){out.innerHTML='<p style="color:var(--danger)">Error: '+esc(err.message)+'</p>';});
 };
-r.readAsArrayBuffer(file);
-}
+reader.readAsArrayBuffer(docxFile);
+}).catch(function(){out.innerHTML='<p style="color:var(--danger)">Failed to load library. Check connection.</p>';});
 return;
 return;
 default:

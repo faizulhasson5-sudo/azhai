@@ -221,17 +221,17 @@ function createDocxFromText(text,baseName){
 var out=document.getElementById('tool-output');
 try{
 var paragraphs=text.split(/\n\n+/).filter(function(p){return p.trim();});
+var D=window.docx;
+if(!D){out.innerHTML='<p style="color:var(--danger)">DOCX library not loaded. Please refresh and try again.</p>';return;}
 var docChildren=paragraphs.map(function(p){
-return new docx.Paragraph({children:[new docx.TextRun({text:p.trim(),font:'Calibri',size:24})]});
+return new D.Paragraph({children:[new D.TextRun({text:p.trim(),font:'Calibri',size:24})]});
 });
-var doc=new docx.Document({sections:[{properties:{},children:docChildren}]});
-docx.Packer.toBlob(doc).then(function(blob){
-var a=document.createElement('a');
-a.href=URL.createObjectURL(blob);
-a.download=baseName+'.docx';
-a.click();
-setTimeout(function(){URL.revokeObjectURL(a.href);},1000);
+var doc=new D.Document({sections:[{properties:{},children:docChildren}]});
+D.Packer.toBlob(doc).then(function(blob){
+saveAs(blob,baseName+'.docx');
 out.innerHTML='<p style="color:var(--success)">&#10003; DOCX file downloaded!</p><p style="font-size:.8rem;color:var(--text-2)">'+paragraphs.length+' paragraphs extracted from PDF</p>';
+}).catch(function(err){
+out.innerHTML='<p style="color:var(--danger)">Error creating DOCX: '+esc(err.message)+'</p>';
 });
 }catch(err){
 out.innerHTML='<p style="color:var(--danger)">Error creating DOCX: '+esc(err.message)+'</p>';
@@ -569,12 +569,14 @@ result='<div class="code-block"><pre>'+esc(JSON.stringify(bcSchema,null,2))+'</p
 case'pdf-to-word':
 var pdfFile=window._currentFile;
 if(!pdfFile){out.innerHTML='<p style="color:var(--text-2)">Please upload a PDF file using the Upload button.</p>';return;}
+var PDFJS=window.pdfjsLib||window['pdfjs-dist/build/pdf'];
+if(!PDFJS){out.innerHTML='<p style="color:var(--danger)">PDF library not loaded. Please refresh the page and try again.</p>';return;}
 out.innerHTML='<p style="color:var(--accent)">Reading PDF...</p>';
 var reader=new FileReader();
 reader.onload=function(e){
 var typedarray=new Uint8Array(e.target.result);
-pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
-pdfjsLib.getDocument(typedarray).promise.then(function(pdf){
+PDFJS.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+PDFJS.getDocument(typedarray).promise.then(function(pdf){
 var totalPages=pdf.numPages;
 var textParts=[];
 var loadPage=function(num){
@@ -599,16 +601,18 @@ return;
 case'word-to-pdf':
 var docxFile=window._currentFile;
 if(!docxFile){out.innerHTML='<p style="color:var(--text-2)">Please upload a Word document using the Upload button.</p>';return;}
+var mammothLib=window.mammoth;
+if(!mammothLib){out.innerHTML='<p style="color:var(--danger)">Document library not loaded. Please refresh the page and try again.</p>';return;}
 out.innerHTML='<p style="color:var(--accent)">Converting Word document...</p>';
 var reader2=new FileReader();
 reader2.onload=function(e){
 var arrayBuffer=e.target.result;
-mammoth.convertToHtml({arrayBuffer:arrayBuffer}).then(function(result){
+mammothLib.convertToHtml({arrayBuffer:arrayBuffer}).then(function(result){
 var htmlContent=result.value;
 var warnings=result.messages;
 var iframe=document.createElement('iframe');
 iframe.style.cssText='width:100%;min-height:500px;border:1px solid var(--border);border-radius:var(--radius)';
-var printBtn='<div style="margin:12px 0"><button onclick="var iframe=document.querySelector(\'iframe\');if(iframe)iframe.contentWindow.print();" style="background:var(--accent);color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-size:.9rem">Print as PDF</button><span style="font-size:.8rem;color:var(--text-3);margin-left:12px">Use your browser print dialog to save as PDF</span></div>';
+var printBtn='<div style="margin:12px 0"><button onclick="var f=document.querySelector(\'iframe[srcdoc]\');if(f)f.contentWindow.print();" style="background:var(--accent);color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-size:.9rem">Print as PDF</button><span style="font-size:.8rem;color:var(--text-3);margin-left:12px">Use your browser print dialog to save as PDF</span></div>';
 var doc='<!DOCTYPE html><html><head><style>body{font-family:system-ui,sans-serif;max-width:800px;margin:0 auto;padding:40px;line-height:1.6;color:#1a1a1a}h1,h2,h3{margin-top:1.5em}p{margin:0.8em 0}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ddd;padding:8px;text-align:left}@media print{body{padding:20px}}</style></head><body>'+htmlContent+'</body></html>';
 iframe.srcdoc=doc;
 out.innerHTML=printBtn;

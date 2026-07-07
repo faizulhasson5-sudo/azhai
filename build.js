@@ -149,8 +149,8 @@ tools.forEach(toolId => {
 
     if (toolId === 'pdf-to-word') {
         html = html.replace('</head>',
-            '<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js" defer></script>\n'+
-            '<script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.min.js" defer></script>\n'+
+            '<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js" defer></script>\n'+
+            '<script src="https://cdn.jsdelivr.net/npm/docx@8.2.3/build/index.umd.js" defer></script>\n'+
             '<script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js" defer></script>\n</head>');
     }
 

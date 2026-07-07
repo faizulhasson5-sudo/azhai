@@ -59,8 +59,10 @@
 </div>
 <div class="tool-layout">
 <div class="tool-main">
-<div class="tool-interface">
-<div class="tool-options" id="toolOptions"></div>
+<div class="tool-options-row" id="toolOptions"></div>
+<div class="tool-card">
+<div class="tool-card-section">
+<div class="tool-section-label">Input</div>
 <div class="converter-interface" id="converterInterface" style="display:none">
 <div class="converter-upload-zone" id="converterUploadZone" onclick="document.getElementById('converterFileInput').click()">
 <input type="file" id="converterFileInput" style="display:none" onchange="handleConverterUpload(this)">
@@ -75,15 +77,21 @@
 </div>
 </div>
 <textarea class="tool-textarea" id="tool-input" placeholder="Paste or type your text here..."></textarea>
-<div class="action-bar">
+</div>
+<div class="tool-card-actions">
 <button type="button" class="btn btn-primary" onclick="processCurrentTool()">▶ Process</button>
 <button type="button" class="btn btn-secondary btn-sm" onclick="smartClean()" title="Smart Clean: trim, fix spacing, remove duplicate lines">⚡ Clean</button>
 <button type="button" class="btn btn-secondary btn-sm" onclick="clearTool()">Clear</button>
-<button type="button" class="btn btn-secondary btn-sm" onclick="copyOutput()">Copy</button>
-<button type="button" class="btn btn-secondary btn-sm" onclick="downloadResult()">Download</button>
 <label class="btn btn-secondary btn-sm" style="cursor:pointer;margin:0" title="Upload CSV/TXT/PDF/DOCX file">Upload<input type="file" accept=".csv,.txt,.tsv,.pdf,.docx" style="display:none" onchange="uploadToolFile(this)"></label>
 </div>
+<div class="tool-card-section tool-output-section">
+<div class="tool-section-label">Output <span id="outputMeta" class="tool-output-meta"></span></div>
 <div class="tool-output" id="tool-output"></div>
+<div class="tool-output-actions" id="outputActions" style="display:none">
+<button type="button" class="btn btn-secondary btn-sm" onclick="copyOutput()">📋 Copy</button>
+<button type="button" class="btn btn-secondary btn-sm" onclick="downloadResult()">⬇ Download</button>
+</div>
+</div>
 </div>
 <div class="tool-blog-section" id="toolBlogSection" style="margin-top:24px;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)">
 <h3 style="font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-3);margin-bottom:14px">From the Blog</h3>
@@ -179,11 +187,12 @@
 </div>
 </div>
 <div class="bottom-sheet" id="bottomSheet">
-<div class="action-bar">
-<button type="button" class="btn btn-primary" onclick="processCurrentTool()">▶ Process</button>
-<button type="button" class="btn btn-secondary btn-sm" onclick="clearTool()">Clear</button>
-<button type="button" class="btn btn-secondary btn-sm" id="bottomCopyBtn" onclick="copyOutput()">Copy</button>
-<button type="button" class="btn btn-secondary btn-sm" onclick="downloadResult()">Download</button>
+<div class="bottom-sheet-inner">
+<button type="button" class="btn btn-primary btn-sheet" onclick="processCurrentTool()">▶ Process</button>
+<button type="button" class="btn btn-secondary btn-sheet" onclick="smartClean()" title="Smart Clean">⚡ Clean</button>
+<button type="button" class="btn btn-secondary btn-sheet" onclick="clearTool()">Clear</button>
+<button type="button" class="btn btn-secondary btn-sheet" onclick="copyOutput()">📋 Copy</button>
+<button type="button" class="btn btn-secondary btn-sheet" onclick="downloadResult()">⬇ Save</button>
 </div>
 </div>
 <div class="toast" id="appToast"></div>
@@ -665,12 +674,13 @@ return;
 default:
 result='<p style="color:var(--text-2)">Processing not available for this tool.</p>';
 }
-if(typeof result==='string')out.innerHTML=result;
-}catch(err){out.innerHTML='<p style="color:var(--danger)">Error: '+esc(err.message)+'</p>';}
+if(typeof result==='string')window.showOutput(result);
+}catch(err){window.showOutput('<p style="color:var(--danger)">Error: '+esc(err.message)+'</p>');}
 };
 
-window.clearTool=function(){document.getElementById('tool-input').value='';document.getElementById('tool-output').innerHTML='';if(typeof window.clearConverter==='function')window.clearConverter();};
-window.copyOutput=function(){var t=document.getElementById('tool-output').innerText;if(!t){App.toast('Nothing to copy');return;}navigator.clipboard.writeText(t).then(function(){App.toast('Copied!');var cb=document.getElementById('bottomCopyBtn');if(cb){cb.textContent='✓ Copied';cb.classList.add('btn-copy-success');setTimeout(function(){cb.textContent='Copy';cb.classList.remove('btn-copy-success');},1500);}}).catch(function(){App.toast('Failed');});};
+window.clearTool=function(){document.getElementById('tool-input').value='';document.getElementById('tool-output').innerHTML='';document.getElementById('outputActions').style.display='none';document.getElementById('outputMeta').textContent='';if(typeof window.clearConverter==='function')window.clearConverter();};
+window.showOutput=function(html,meta){var o=document.getElementById('tool-output');o.innerHTML=html;var a=document.getElementById('outputActions');a.style.display=html?'flex':'none';var m=document.getElementById('outputMeta');m.textContent=meta||'';};
+window.copyOutput=function(){var t=document.getElementById('tool-output').innerText;if(!t){App.toast('Nothing to copy');return;}navigator.clipboard.writeText(t).then(function(){App.toast('Copied!');}).catch(function(){App.toast('Failed');});};
 window.downloadResult=function(){var t=document.getElementById('tool-output').innerText;if(!t){App.toast('Nothing to download');return;}var ext={'json-formatter':'json','json-validator':'json','xml-formatter':'xml','xml-validator':'xml','markdown-editor':'md','markdown-preview':'md','html-previewer':'html','regex-tester':'txt','hash-generator':'txt','b64-encoder':'txt','b64-decoder':'txt','url-encoder':'txt','url-decoder':'txt','html-encoder':'html','html-decoder':'html','css':'css','csv':'csv'}[tid]||'txt';
 var blob=new Blob([t],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=tid+'-output.'+ext;a.click();setTimeout(function(){URL.revokeObjectURL(a.href);},1000);};
 

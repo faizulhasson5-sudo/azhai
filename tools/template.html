@@ -569,8 +569,15 @@ result='<div class="code-block"><pre>'+esc(JSON.stringify(bcSchema,null,2))+'</p
 case'pdf-to-word':
 var pdfFile=window._currentFile;
 if(!pdfFile){out.innerHTML='<p style="color:var(--text-2)">Please upload a PDF file using the Upload button.</p>';return;}
-var PDFJS=window.pdfjsLib||window['pdfjs-dist/build/pdf'];
-if(!PDFJS){out.innerHTML='<p style="color:var(--danger)">PDF library not loaded. Please refresh the page and try again.</p>';return;}
+function loadScript(url){return new Promise(function(resolve,reject){if(document.querySelector('script[src="'+url+'"]')){resolve();return;}var s=document.createElement('script');s.src=url;s.onload=resolve;s.onerror=reject;document.head.appendChild(s);});}
+out.innerHTML='<p style="color:var(--accent)">Loading PDF library...</p>';
+Promise.all([
+  loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js'),
+  loadScript('https://cdn.jsdelivr.net/npm/docx@8.2.3/build/index.umd.js'),
+  loadScript('https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js')
+]).then(function(){
+var PDFJS=window.pdfjsLib;
+if(!PDFJS){out.innerHTML='<p style="color:var(--danger)">PDF library failed to load.</p>';return;}
 out.innerHTML='<p style="color:var(--accent)">Reading PDF...</p>';
 var reader=new FileReader();
 reader.onload=function(e){
@@ -597,12 +604,16 @@ loadPage(1);
 }).catch(function(err){out.innerHTML='<p style="color:var(--danger)">Error reading PDF: '+esc(err.message)+'</p>';});
 };
 reader.readAsArrayBuffer(pdfFile);
+}).catch(function(err){out.innerHTML='<p style="color:var(--danger)">Failed to load converter libraries. Check your internet connection.</p>';});
 return;
 case'word-to-pdf':
 var docxFile=window._currentFile;
 if(!docxFile){out.innerHTML='<p style="color:var(--text-2)">Please upload a Word document using the Upload button.</p>';return;}
+function loadScript2(url){return new Promise(function(resolve,reject){if(document.querySelector('script[src="'+url+'"]')){resolve();return;}var s=document.createElement('script');s.src=url;s.onload=resolve;s.onerror=reject;document.head.appendChild(s);});}
+out.innerHTML='<p style="color:var(--accent)">Loading document library...</p>';
+loadScript2('https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js').then(function(){
 var mammothLib=window.mammoth;
-if(!mammothLib){out.innerHTML='<p style="color:var(--danger)">Document library not loaded. Please refresh the page and try again.</p>';return;}
+if(!mammothLib){out.innerHTML='<p style="color:var(--danger)">Document library failed to load.</p>';return;}
 out.innerHTML='<p style="color:var(--accent)">Converting Word document...</p>';
 var reader2=new FileReader();
 reader2.onload=function(e){
@@ -621,6 +632,7 @@ if(warnings.length>0)out.innerHTML+='<p style="font-size:.8rem;color:var(--text-
 }).catch(function(err){out.innerHTML='<p style="color:var(--danger)">Error converting document: '+esc(err.message)+'</p>';});
 };
 reader2.readAsArrayBuffer(docxFile);
+}).catch(function(err){out.innerHTML='<p style="color:var(--danger)">Failed to load converter library. Check your internet connection.</p>';});
 return;
 default:
 result='<p style="color:var(--text-2)">Processing not available for this tool.</p>';

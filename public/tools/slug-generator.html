@@ -637,7 +637,7 @@ bar.appendChild(btn);
 bar.appendChild(info);
 out.appendChild(bar);
 var content=document.createElement('div');
-content.style.cssText='font-family:system-ui,sans-serif;max-width:800px;line-height:1.6;color:#1a1a1a;padding:20px;border:1px solid var(--border);border-radius:8px;max-height:600px;overflow-y:auto';
+content.style.cssText='font-family:system-ui,sans-serif;max-width:800px;line-height:1.6;color:var(--text);background:var(--surface);padding:20px;border:1px solid var(--border);border-radius:8px;max-height:600px;overflow-y:auto';
 content.innerHTML=html;
 out.appendChild(content);
 }).catch(function(err){out.innerHTML='<p style="color:var(--danger)">Convert error: '+err.message+'</p>';});

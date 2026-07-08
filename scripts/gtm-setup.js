@@ -111,12 +111,11 @@ async function setupSEOTracking() {
 
   // 1. Create Custom Event Triggers
   const events = [
-    {name: 'tool_usage', type: 'CUSTOM_EVENT', config: {customEventFilter: [{parameter: 'eventName', type: 'equals', value: 'tool_usage'}]}},
-    {name: 'blog_read', type: 'CUSTOM_EVENT', config: {customEventFilter: [{parameter: 'eventName', type: 'equals', value: 'blog_read'}]}},
-    {name: 'scroll_depth', type: 'CUSTOM_EVENT', config: {customEventFilter: [{parameter: 'eventName', type: 'equals', value: 'scroll_depth'}]}},
-    {name: 'cookie_consent', type: 'CUSTOM_EVENT', config: {customEventFilter: [{parameter: 'eventName', type: 'equals', value: 'cookie_consent'}]}},
-    {name: 'tool_history_restore', type: 'CUSTOM_EVENT', config: {customEventFilter: [{parameter: 'eventName', type: 'equals', value: 'tool_history_restore'}]}},
-    {name: 'blog_list_view', type: 'PAGE_VIEW', config: {urlFilter: {parameter: [{key: 'url', type: 'equals', value: '/blog/'}]}}}
+    {name: 'tool_usage', type: 'CUSTOM_EVENT', config: {customEventFilter: [{type: 'equals', parameter: {key: 'eventName', type: 'template', value: 'tool_usage'}}]}},
+    {name: 'blog_read', type: 'CUSTOM_EVENT', config: {customEventFilter: [{type: 'equals', parameter: {key: 'eventName', type: 'template', value: 'blog_read'}}]}},
+    {name: 'scroll_depth', type: 'CUSTOM_EVENT', config: {customEventFilter: [{type: 'equals', parameter: {key: 'eventName', type: 'template', value: 'scroll_depth'}}]}},
+    {name: 'cookie_consent', type: 'CUSTOM_EVENT', config: {customEventFilter: [{type: 'equals', parameter: {key: 'eventName', type: 'template', value: 'cookie_consent'}}]}},
+    {name: 'tool_history_restore', type: 'CUSTOM_EVENT', config: {customEventFilter: [{type: 'equals', parameter: {key: 'eventName', type: 'template', value: 'tool_history_restore'}}]}}
   ];
 
   for (const event of events) {

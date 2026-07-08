@@ -3,50 +3,185 @@
 <channel>
 <title>Free AI Text Tools Blog</title>
 <link>https://azhai-six.vercel.app/blog/</link>
-<description>Guides, tutorials, and tips for using free online text tools.</description>
+<description>Guides, tutorials, and tips for SEO, content writing, and using free online text tools.</description>
 <language>en</language>
+<lastBuildDate>Wed, 08 Jul 2026 00:00:00 GMT</lastBuildDate>
 <atom:link href="https://azhai-six.vercel.app/blog/feed.xml" rel="self" type="application/rss+xml"/>
+<item>
+  <title>Google's AI Overview Spam Policy: What Gets You Penalized in 2026</title>
+  <link>https://azhai-six.vercel.app/blog/google-ai-overview-spam-policy-2026.html</link>
+  <guid isPermaLink="true">https://azhai-six.vercel.app/blog/google-ai-overview-spam-policy-2026.html</guid>
+  <pubDate>Thu, 02 Jul 2026 00:00:00 GMT</pubDate>
+  <category>Policy Update</category>
+  <description>Google now treats AI Overview manipulation as spam. Learn what's banned, what still works, and how to stay compliant.</description>
+</item>
+<item>
+  <title>How to Optimize for Google AI Overviews: The Complete GEO Guide</title>
+  <link>https://azhai-six.vercel.app/blog/optimize-google-ai-overviews.html</link>
+  <guid isPermaLink="true">https://azhai-six.vercel.app/blog/optimize-google-ai-overviews.html</guid>
+  <pubDate>Fri, 03 Jul 2026 00:00:00 GMT</pubDate>
+  <category>SEO Strategy</category>
+  <description>Google AI Mode has 1B+ users. Learn how GEO can get your content cited in AI Overviews and future-proof your SEO.</description>
+</item>
+<item>
+  <title>Google June 2026 Spam Update: Complete Recovery &amp; Strategy Guide</title>
+  <link>https://azhai-six.vercel.app/blog/google-june-2026-spam-update.html</link>
+  <guid isPermaLink="true">https://azhai-six.vercel.app/blog/google-june-2026-spam-update.html</guid>
+  <pubDate>Sat, 04 Jul 2026 00:00:00 GMT</pubDate>
+  <category>SEO Analysis</category>
+  <description>Google's June 2026 Spam Update is live. Learn what changed, who was affected, and how to recover your rankings.</description>
+</item>
 <item>
   <title>The Ultimate Guide to Free SEO Text Tools in 2026</title>
   <link>https://azhai-six.vercel.app/blog/ultimate-guide-seo-text-tools.html</link>
   <guid isPermaLink="true">https://azhai-six.vercel.app/blog/ultimate-guide-seo-text-tools.html</guid>
-  <pubDate>Fri, 20 Jun 2026 00:00:00 GMT</pubDate>
-  <description>Discover how free online SEO tools can boost your content strategy, improve rankings, and save hours of manual work.</description>
+  <pubDate>Sat, 20 Jun 2026 00:00:00 GMT</pubDate>
+  <category>SEO Tools</category>
+  <description>Discover how free online SEO tools can boost your content strategy, improve rankings, and save hours.</description>
 </item>
 <item>
   <title>How to Write Perfect Meta Descriptions That Get Clicks</title>
   <link>https://azhai-six.vercel.app/blog/how-to-write-perfect-meta-descriptions.html</link>
   <guid isPermaLink="true">https://azhai-six.vercel.app/blog/how-to-write-perfect-meta-descriptions.html</guid>
-  <pubDate>Wed, 18 Jun 2026 00:00:00 GMT</pubDate>
-  <description>Learn the art of crafting compelling meta descriptions that improve CTR and boost your search rankings.</description>
+  <pubDate>Thu, 18 Jun 2026 00:00:00 GMT</pubDate>
+  <category>SEO Tips</category>
+  <description>Learn the art of crafting compelling meta descriptions that improve CTR and boost search rankings.</description>
 </item>
 <item>
   <title>JSON Formatting Best Practices for Developers</title>
   <link>https://azhai-six.vercel.app/blog/json-formatting-best-practices.html</link>
   <guid isPermaLink="true">https://azhai-six.vercel.app/blog/json-formatting-best-practices.html</guid>
-  <pubDate>Sun, 15 Jun 2026 00:00:00 GMT</pubDate>
-  <description>Master JSON formatting, validation, and optimization with practical examples and free online tools.</description>
+  <pubDate>Mon, 15 Jun 2026 00:00:00 GMT</pubDate>
+  <category>Development</category>
+  <description>Master JSON formatting, validation, and optimization with practical examples and free tools.</description>
 </item>
 <item>
   <title>Markdown for Bloggers: A Complete Beginner Guide</title>
   <link>https://azhai-six.vercel.app/blog/markdown-for-bloggers.html</link>
   <guid isPermaLink="true">https://azhai-six.vercel.app/blog/markdown-for-bloggers.html</guid>
-  <pubDate>Thu, 12 Jun 2026 00:00:00 GMT</pubDate>
+  <pubDate>Fri, 12 Jun 2026 00:00:00 GMT</pubDate>
+  <category>Blogging</category>
   <description>Learn how to write beautiful blog posts using Markdown syntax with our live preview editor.</description>
 </item>
 <item>
   <title>Understanding Canonical Tags: The Complete SEO Guide</title>
   <link>https://azhai-six.vercel.app/blog/understanding-canonical-tags-seo.html</link>
   <guid isPermaLink="true">https://azhai-six.vercel.app/blog/understanding-canonical-tags-seo.html</guid>
-  <pubDate>Tue, 10 Jun 2026 00:00:00 GMT</pubDate>
-  <description>Learn how canonical tags prevent duplicate content issues and consolidate your SEO ranking signals.</description>
+  <pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate>
+  <category>SEO Tips</category>
+  <description>Learn how canonical tags prevent duplicate content issues and consolidate ranking signals.</description>
 </item>
 <item>
   <title>Open Graph Tags: Get Perfect Social Media Previews</title>
   <link>https://azhai-six.vercel.app/blog/open-graph-tags-social-media.html</link>
   <guid isPermaLink="true">https://azhai-six.vercel.app/blog/open-graph-tags-social-media.html</guid>
-  <pubDate>Sun, 08 Jun 2026 00:00:00 GMT</pubDate>
+  <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
+  <category>Social Media</category>
   <description>Master Open Graph meta tags to ensure your content looks amazing when shared on social media.</description>
+</item>
+<item>
+  <title>AI Content Detection 2026: How Google Catches AI Writing</title>
+  <link>https://azhai-six.vercel.app/blog/ai-content-detection-2026.html</link>
+  <guid isPermaLink="true">https://azhai-six.vercel.app/blog/ai-content-detection-2026.html</guid>
+  <pubDate>Sun, 05 Jul 2026 00:00:00 GMT</pubDate>
+  <category>SEO Strategy</category>
+  <description>Google now detects AI-generated content with 94% accuracy. Learn how detection works and how to create compliant content.</description>
+</item>
+<item>
+  <title>Query Fan-Out SEO 2026: How Google Breaks Down Searches</title>
+  <link>https://azhai-six.vercel.app/blog/query-fanout-seo-2026.html</link>
+  <guid isPermaLink="true">https://azhai-six.vercel.app/blog/query-fanout-seo-2026.html</guid>
+  <pubDate>Sun, 05 Jul 2026 00:00:00 GMT</pubDate>
+  <category>SEO Strategy</category>
+  <description>Query fan-out has grown +2,550% YoY. Learn how Google decomposes complex queries and how to optimize.</description>
+</item>
+<item>
+  <title>How to Get Cited in Google AI Overviews: The 2026 Playbook</title>
+  <link>https://azhai-six.vercel.app/blog/how-to-get-cited-google-ai-overviews.html</link>
+  <guid isPermaLink="true">https://azhai-six.vercel.app/blog/how-to-get-cited-google-ai-overviews.html</guid>
+  <pubDate>Mon, 06 Jul 2026 00:00:00 GMT</pubDate>
+  <category>SEO Strategy</category>
+  <description>Google AI Overviews now appear on most queries. Learn the 9-factor citeability checklist and schema strategies.</description>
+</item>
+<item>
+  <title>How to Find Trending Keywords Before Competitors in 2026</title>
+  <link>https://azhai-six.vercel.app/blog/find-trending-keywords-before-competitors.html</link>
+  <guid isPermaLink="true">https://azhai-six.vercel.app/blog/find-trending-keywords-before-competitors.html</guid>
+  <pubDate>Mon, 06 Jul 2026 00:00:00 GMT</pubDate>
+  <category>Keyword Research</category>
+  <description>By the time keyword tools show volume, competitors already target it. Learn 6 proven methods to spot rising demand.</description>
+</item>
+<item>
+  <title>Query Fan-Out vs Keywords: Why Traditional Keyword Research Is Dead</title>
+  <link>https://azhai-six.vercel.app/blog/query-fanout-vs-keywords.html</link>
+  <guid isPermaLink="true">https://azhai-six.vercel.app/blog/query-fanout-vs-keywords.html</guid>
+  <pubDate>Mon, 06 Jul 2026 00:00:00 GMT</pubDate>
+  <category>SEO Strategy</category>
+  <description>95% of fan-out sub-queries show zero volume in keyword tools. Learn why traditional keyword research is broken.</description>
+</item>
+<item>
+  <title>Long-Tail Keyword Strategy 2026: Find and Rank for Keywords That Convert</title>
+  <link>https://azhai-six.vercel.app/blog/long-tail-keyword-strategy-2026.html</link>
+  <guid isPermaLink="true">https://azhai-six.vercel.app/blog/long-tail-keyword-strategy-2026.html</guid>
+  <pubDate>Mon, 06 Jul 2026 00:00:00 GMT</pubDate>
+  <category>Keyword Research</category>
+  <description>Long-tail keywords drive 70% of all searches with lower competition and higher conversion rates.</description>
+</item>
+<item>
+  <title>What Is Keyword Density? The Complete Guide for SEO in 2026</title>
+  <link>https://azhai-six.vercel.app/blog/what-is-keyword-density.html</link>
+  <guid isPermaLink="true">https://azhai-six.vercel.app/blog/what-is-keyword-density.html</guid>
+  <pubDate>Mon, 06 Jul 2026 00:00:00 GMT</pubDate>
+  <category>SEO Fundamentals</category>
+  <description>Keyword density measures how often a keyword appears in your content. Learn the ideal density and how to calculate it.</description>
+</item>
+<item>
+  <title>25 Free SEO Tools Every Small Business Needs in 2026</title>
+  <link>https://azhai-six.vercel.app/blog/free-seo-tools-small-business.html</link>
+  <guid isPermaLink="true">https://azhai-six.vercel.app/blog/free-seo-tools-small-business.html</guid>
+  <pubDate>Mon, 06 Jul 2026 00:00:00 GMT</pubDate>
+  <category>SEO Tools</category>
+  <description>Discover the best free SEO tools for small businesses. Keyword research, site audit, rank tracking, and more.</description>
+</item>
+<item>
+  <title>How to Check Keyword Density: Step-by-Step Guide with Free Tools</title>
+  <link>https://azhai-six.vercel.app/blog/how-to-check-keyword-density.html</link>
+  <guid isPermaLink="true">https://azhai-six.vercel.app/blog/how-to-check-keyword-density.html</guid>
+  <pubDate>Mon, 06 Jul 2026 00:00:00 GMT</pubDate>
+  <category>SEO Tutorial</category>
+  <description>Learn how to check keyword density in your content using free tools. Step-by-step guide with examples.</description>
+</item>
+<item>
+  <title>SEO Content Writing: How to Write Content That Ranks in 2026</title>
+  <link>https://azhai-six.vercel.app/blog/seo-content-writing-guide.html</link>
+  <guid isPermaLink="true">https://azhai-six.vercel.app/blog/seo-content-writing-guide.html</guid>
+  <pubDate>Mon, 06 Jul 2026 00:00:00 GMT</pubDate>
+  <category>Content Strategy</category>
+  <description>Learn how to write SEO-optimized content that ranks on Google. From keyword research to on-page optimization.</description>
+</item>
+<item>
+  <title>How to Write Meta Descriptions That Get Clicks in 2026</title>
+  <link>https://azhai-six.vercel.app/blog/how-to-write-meta-descriptions.html</link>
+  <guid isPermaLink="true">https://azhai-six.vercel.app/blog/how-to-write-meta-descriptions.html</guid>
+  <pubDate>Mon, 06 Jul 2026 00:00:00 GMT</pubDate>
+  <category>SEO Tutorial</category>
+  <description>Meta descriptions impact CTR more than rankings. Learn how to write compelling meta descriptions.</description>
+</item>
+<item>
+  <title>How to Create a Robots.txt File: Complete Step-by-Step Guide</title>
+  <link>https://azhai-six.vercel.app/blog/how-to-create-robots-txt-file.html</link>
+  <guid isPermaLink="true">https://azhai-six.vercel.app/blog/how-to-create-robots-txt-file.html</guid>
+  <pubDate>Wed, 08 Jul 2026 00:00:00 GMT</pubDate>
+  <category>Technical SEO</category>
+  <description>Learn how to create a robots.txt file that tells search engines which pages to crawl. Free generator included.</description>
+</item>
+<item>
+  <title>XML Sitemap Guide: How to Create and Submit Your Sitemap for SEO</title>
+  <link>https://azhai-six.vercel.app/blog/xml-sitemap-guide-seo.html</link>
+  <guid isPermaLink="true">https://azhai-six.vercel.app/blog/xml-sitemap-guide-seo.html</guid>
+  <pubDate>Wed, 08 Jul 2026 00:00:00 GMT</pubDate>
+  <category>Technical SEO</category>
+  <description>An XML sitemap helps search engines discover and index your pages faster. Learn how to create and submit yours.</description>
 </item>
 </channel>
 </rss>

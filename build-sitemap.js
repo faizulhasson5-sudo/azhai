@@ -14,7 +14,8 @@ const tools = [
   'markdown-editor','markdown-preview','html-previewer','regex-tester',
   'url-encoder','url-decoder','html-encoder','html-decoder',
   'b64-encoder','b64-decoder','hash-generator',
-  'hreflang-gen','schema-gen','faq-schema-gen','article-schema-gen','breadcrumb-schema-gen'
+  'hreflang-gen','schema-gen','faq-schema-gen','article-schema-gen','breadcrumb-schema-gen',
+  'pdf-to-word','word-to-pdf'
 ];
 
 // Blog posts from build-blog.js

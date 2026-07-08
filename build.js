@@ -151,6 +151,18 @@ tools.forEach(toolId => {
     html = html.replace('<meta name="twitter:description" id="tw-desc" content="">',
         '<meta name="twitter:description" id="tw-desc" content="'+esc(seo.desc)+'">');
 
+    // BreadcrumbList schema
+    var breadcrumbSchema = JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+            {"@type":"ListItem","position":1,"name":"Home","item":baseUrl+"/"},
+            {"@type":"ListItem","position":2,"name":"Tools","item":baseUrl+"/tools/"},
+            {"@type":"ListItem","position":3,"name":seo.title.split(' - ')[0],"item":toolUrl}
+        ]
+    });
+    html = html.replace('</head>', '<script type="application/ld+json">'+breadcrumbSchema+'</script>\n</head>');
+
     if (toolId === 'markdown-editor' || toolId === 'markdown-preview') {
         html = html.replace('</head>', '<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>\n</head>');
     }

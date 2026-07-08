@@ -64,7 +64,14 @@ const staticPages = [
   {url: '/tools/encoding-tools.html', priority: '0.8', changefreq: 'monthly'},
   {url: '/tools/schema-generators.html', priority: '0.8', changefreq: 'monthly'},
   {url: '/tools/smart-text-lab.html', priority: '0.9', changefreq: 'monthly'},
-  {url: '/blog/', priority: '0.9', changefreq: 'weekly'}
+  {url: '/blog/', priority: '0.9', changefreq: 'weekly'},
+  {url: '/blog/seo-strategy.html', priority: '0.8', changefreq: 'weekly'},
+  {url: '/blog/keyword-research.html', priority: '0.8', changefreq: 'weekly'},
+  {url: '/blog/seo-tutorials.html', priority: '0.8', changefreq: 'weekly'},
+  {url: '/blog/technical-seo.html', priority: '0.8', changefreq: 'weekly'},
+  {url: '/blog/content-strategy.html', priority: '0.8', changefreq: 'weekly'},
+  {url: '/blog/tools-tutorials.html', priority: '0.8', changefreq: 'weekly'},
+  {url: '/blog/social-media.html', priority: '0.8', changefreq: 'weekly'}
 ];
 
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';

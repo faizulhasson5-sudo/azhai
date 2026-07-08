@@ -13,7 +13,9 @@ const urls = [
   'https://azhai-six.vercel.app/blog/free-seo-tools-small-business.html',
   'https://azhai-six.vercel.app/blog/how-to-check-keyword-density.html',
   'https://azhai-six.vercel.app/blog/seo-content-writing-guide.html',
-  'https://azhai-six.vercel.app/blog/how-to-write-meta-descriptions.html'
+  'https://azhai-six.vercel.app/blog/how-to-write-meta-descriptions.html',
+  'https://azhai-six.vercel.app/blog/how-to-create-robots-txt-file.html',
+  'https://azhai-six.vercel.app/blog/xml-sitemap-guide-seo.html'
 ];
 
 async function requestIndexing(url) {

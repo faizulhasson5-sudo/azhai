@@ -56,6 +56,13 @@ const staticPages = [
   {url: '/terms.html', priority: '0.5', changefreq: 'yearly'},
   {url: '/cookie-policy.html', priority: '0.5', changefreq: 'yearly'},
   {url: '/tools/', priority: '0.9', changefreq: 'weekly'},
+  {url: '/tools/directory.html', priority: '0.9', changefreq: 'weekly'},
+  {url: '/tools/text-analysis.html', priority: '0.8', changefreq: 'monthly'},
+  {url: '/tools/seo-tools.html', priority: '0.8', changefreq: 'monthly'},
+  {url: '/tools/text-formatting.html', priority: '0.8', changefreq: 'monthly'},
+  {url: '/tools/developer-tools.html', priority: '0.8', changefreq: 'monthly'},
+  {url: '/tools/encoding-tools.html', priority: '0.8', changefreq: 'monthly'},
+  {url: '/tools/schema-generators.html', priority: '0.8', changefreq: 'monthly'},
   {url: '/tools/smart-text-lab.html', priority: '0.9', changefreq: 'monthly'},
   {url: '/blog/', priority: '0.9', changefreq: 'weekly'}
 ];

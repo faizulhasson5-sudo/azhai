@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "37+ free online text tools for writers, developers, and SEO professionals",
   "scripts": {
-    "build": "node copy-public.js && node build.js && node build-sitemap.js && node build-blog.js && node build-rss.js",
+    "build": "node copy-public.js && node build.js && node build-sitemap.js && node build-blog.js && node build-rss.js && node build-directory.js",
     "build:tools": "node build.js",
     "build:blog": "node build-blog.js"
   },
   "private": true,
-  "buildCommand": "node copy-public.js && node build.js && node build-sitemap.js && node build-blog.js && node build-rss.js",
+  "buildCommand": "node copy-public.js && node build.js && node build-sitemap.js && node build-blog.js && node build-rss.js && node build-directory.js",
   "outputDirectory": "public"
 }

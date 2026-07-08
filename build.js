@@ -132,6 +132,14 @@ tools.forEach(toolId => {
         '<meta id="meta-keywords" name="keywords" content="'+esc(seo.keywords)+'">');
     html = html.replace('<link rel="canonical" id="canonical-link" href="">',
         '<link rel="canonical" id="canonical-link" href="'+toolUrl+'">');
+    html = html.replace('<link rel="alternate" hreflang="en" href="">',
+        '<link rel="alternate" hreflang="en" href="'+toolUrl+'">');
+    html = html.replace('<link rel="alternate" hreflang="en-US" href="">',
+        '<link rel="alternate" hreflang="en-US" href="'+toolUrl+'">');
+    html = html.replace('<link rel="alternate" hreflang="en-GB" href="">',
+        '<link rel="alternate" hreflang="en-GB" href="'+toolUrl+'">');
+    html = html.replace('<link rel="alternate" hreflang="x-default" href="">',
+        '<link rel="alternate" hreflang="x-default" href="'+toolUrl+'">');
     html = html.replace('<meta property="og:title" id="og-title" content="">',
         '<meta property="og:title" id="og-title" content="'+esc(seo.title)+'">');
     html = html.replace('<meta property="og:description" id="og-desc" content="">',

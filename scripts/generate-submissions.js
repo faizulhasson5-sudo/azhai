@@ -5,16 +5,16 @@ const baseUrl = 'https://azhai-six.vercel.app';
 
 const submissions = {
   productHunt: {
-    name: 'Free AI Text Tools',
+    name: 'KwordSEO',
     tagline: '43 free browser-based tools for text, SEO & dev utilities',
-    description: `Free AI Text Tools is a comprehensive suite of 43 browser-based tools for text processing, SEO optimization, and developer utilities.\n\n**Key Features:**\n- All tools run in your browser — zero data leaves your device\n- No sign-up, no tracking, completely free\n- Dark mode + mobile-first responsive design\n- 43 tools across 6 categories: Text Analysis, Text Transform, SEO, Developer, Encoding, and Smart Lab\n\n**Popular Tools:**\n- Word Counter — Count words, characters, sentences, paragraphs\n- Keyword Density Checker — Analyze keyword usage for SEO\n- Meta Tag Generator — Create complete HTML meta tags\n- JSON Formatter — Beautify and validate JSON\n- Markdown Editor — Write Markdown with live preview\n- Smart Text Lab — All-in-one text workspace\n\nBuilt with vanilla HTML/CSS/JS. No frameworks. No dependencies. No data collection.`,
+    description: `KwordSEO is a comprehensive suite of 43 browser-based tools for text processing, SEO optimization, and developer utilities.\n\n**Key Features:**\n- All tools run in your browser — zero data leaves your device\n- No sign-up, no tracking, completely free\n- Dark mode + mobile-first responsive design\n- 43 tools across 6 categories: Text Analysis, Text Transform, SEO, Developer, Encoding, and Smart Lab\n\n**Popular Tools:**\n- Word Counter — Count words, characters, sentences, paragraphs\n- Keyword Density Checker — Analyze keyword usage for SEO\n- Meta Tag Generator — Create complete HTML meta tags\n- JSON Formatter — Beautify and validate JSON\n- Markdown Editor — Write Markdown with live preview\n- Smart Text Lab — All-in-one text workspace\n\nBuilt with vanilla HTML/CSS/JS. No frameworks. No dependencies. No data collection.`,
     topics: ['Productivity', 'Developer Tools', 'SEO Tools'],
     website: baseUrl,
     icon: baseUrl + '/og-image.png'
   },
   
   alternativeTo: {
-    name: 'Free AI Text Tools',
+    name: 'KwordSEO',
     tagline: 'Free browser-based alternative to SmallSEOTools and TextMechanic',
     description: 'A free suite of 43 browser-based tools for text processing, SEO optimization, and developer utilities. All tools run client-side with zero data collection. Includes word counters, keyword density checkers, meta tag generators, JSON formatters, and markdown editors.',
     alternatives: ['SmallSEOTools', 'TextMechanic', 'ConvertCase', 'SEOBook'],
@@ -23,7 +23,7 @@ const submissions = {
   },
 
   theresanaiforthat: {
-    name: 'Free AI Text Tools',
+    name: 'KwordSEO',
     tagline: '43 free browser-based tools for text processing, SEO & dev utilities',
     description: 'Comprehensive suite of 43 browser-based tools for text analysis, SEO optimization, and developer utilities. All processing happens in your browser — no data leaves your device. Includes word counters, keyword density checkers, meta tag generators, JSON/XML formatters, and markdown editors.',
     url: baseUrl,
@@ -33,7 +33,7 @@ const submissions = {
   },
 
   futurepedia: {
-    name: 'Free AI Text Tools',
+    name: 'KwordSEO',
     description: 'A free suite of 43 browser-based tools for text processing, SEO optimization, and developer utilities. All tools run in your browser with zero data collection. Includes word counters, keyword density checkers, meta tag generators, JSON formatters, and markdown editors.',
     url: baseUrl,
     category: 'Productivity',
@@ -41,7 +41,7 @@ const submissions = {
   },
 
   saashub: {
-    name: 'Free AI Text Tools',
+    name: 'KwordSEO',
     description: '43 free browser-based tools for text processing, SEO, and developer utilities. No sign-up. No tracking. All processing happens in your browser.',
     url: baseUrl,
     category: 'Developer Tools'
@@ -55,7 +55,7 @@ const productHuntLaunch = `# Product Hunt Launch Copy
 43 free browser-based tools for text, SEO & dev utilities
 
 ## Description
-Free AI Text Tools is a comprehensive suite of 43 browser-based tools for text processing, SEO optimization, and developer utilities.
+KwordSEO is a comprehensive suite of 43 browser-based tools for text processing, SEO optimization, and developer utilities.
 
 **Why I built this:**
 I was tired of SEO tools that require sign-ups, collect your data, and limit free usage. So I built a complete suite where everything runs in your browser — no server, no data collection, no BS.
@@ -122,7 +122,7 @@ fs.writeFileSync(path.join(__dirname, '..', 'seo-system', 'reddit-post.md'), red
 // Generate LinkedIn post
 const linkedinPost = `# LinkedIn Post
 
-I just launched Free AI Text Tools — a suite of 43 browser-based tools for text processing, SEO, and developer utilities.
+I just launched KwordSEO — a suite of 43 browser-based tools for text processing, SEO, and developer utilities.
 
 What makes it different:
 
@@ -191,7 +191,7 @@ For your article about [TOPIC], here's my expert take:
 
 [2-3 paragraphs with specific, actionable insights]
 
-I'm the creator of Free AI Text Tools (azhai-six.vercel.app), a suite of 43 browser-based tools used by thousands of content creators. The data from our keyword density checker shows that [RELEVANT_DATA_POINT].
+I'm the creator of KwordSEO (azhai-six.vercel.app), a suite of 43 browser-based tools used by thousands of content creators. The data from our keyword density checker shows that [RELEVANT_DATA_POINT].
 
 Happy to provide additional quotes or data. What's your deadline?
 

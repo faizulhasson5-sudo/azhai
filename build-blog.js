@@ -90,7 +90,7 @@ posts.forEach(post => {
   const content = blogContents[post.slug] || '<p>Content coming soon.</p>';
   const fullImageUrl = baseUrl + post.image;
   const html = template
-    .replace('<title id="page-title">Blog - Free AI Text Tools</title>', '<title id="page-title">' + esc(post.title) + ' - Free AI Text Tools</title>')
+    .replace('<title id="page-title">Blog - KwordSEO</title>', '<title id="page-title">' + esc(post.title) + ' - KwordSEO</title>')
     .replace('<meta id="meta-desc" name="description" content="">', '<meta id="meta-desc" name="description" content="' + esc(post.desc) + '">')
     .replace('<link rel="canonical" id="canonical-link" href="">', '<link rel="canonical" id="canonical-link" href="' + baseUrl + '/blog/' + post.slug + '.html">')
     .replace('<link rel="alternate" hreflang="en" href="">', '<link rel="alternate" hreflang="en" href="' + baseUrl + '/blog/' + post.slug + '.html">')

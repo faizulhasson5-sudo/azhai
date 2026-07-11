@@ -4,9 +4,9 @@ const path = require('path');
 const baseUrl = 'https://azhai-six.vercel.app';
 
 const productInfo = {
-  name: 'Free AI Text Tools',
+  name: 'KwordSEO',
   tagline: '43 free browser-based tools for text processing, SEO, and developer utilities',
-  description: `Free AI Text Tools is a comprehensive suite of 43 browser-based tools for text processing, SEO optimization, and developer utilities. All tools run entirely in your browser — no data leaves your device. Includes word counters, keyword density checkers, meta tag generators, JSON/XML formatters, markdown editors, and 5 dedicated SEO schema generators. Built with a clean 2026 design, dark mode, and mobile-first responsive layout.`,
+  description: `KwordSEO is a comprehensive suite of 43 browser-based tools for text processing, SEO optimization, and developer utilities. All tools run entirely in your browser — no data leaves your device. Includes word counters, keyword density checkers, meta tag generators, JSON/XML formatters, markdown editors, and 5 dedicated SEO schema generators. Built with a clean 2026 design, dark mode, and mobile-first responsive layout.`,
   shortDescription: '43 free browser-based tools for text processing, SEO, and developer utilities. No sign-up, no data collection.',
   website: baseUrl,
   category: 'AI Tools, SEO Tools, Developer Tools',
@@ -44,7 +44,7 @@ const directories = [
     dr: 91,
     linkType: 'nofollow',
     cost: 'Free',
-    notes: 'Post as "Show HN: Free AI Text Tools — 43 browser-based text/SEO tools"',
+    notes: 'Post as "Show HN: KwordSEO — 43 browser-based text/SEO tools"',
     status: 'pending'
   },
 
@@ -190,7 +190,7 @@ const outreachTemplates = {
     subject: 'SEO Tools Expert — Free Browser-Based Suite',
     body: `Hi [Name],
 
-I'm the creator of Free AI Text Tools (azhai-six.vercel.app), a suite of 43 browser-based tools for text processing and SEO.
+I'm the creator of KwordSEO (azhai-six.vercel.app), a suite of 43 browser-based tools for text processing and SEO.
 
 For your article about [TOPIC], I can provide:
 
@@ -204,13 +204,13 @@ Happy to provide a quick quote or detailed response. What's your deadline?
 
 Best,
 [Your Name]
-Creator, Free AI Text Tools`
+Creator, KwordSEO`
   },
   guestPost: {
     subject: 'Guest Post: [TITLE] for [SITE]',
     body: `Hi [Editor Name],
 
-I run Free AI Text Tools (azhai-six.vercel.app), a suite of 43 browser-based text and SEO tools used by content creators and developers.
+I run KwordSEO (azhai-six.vercel.app), a suite of 43 browser-based text and SEO tools used by content creators and developers.
 
 I'd like to contribute a guest post to [PUBLICATION]:
 
@@ -255,7 +255,7 @@ const socialSnippets = {
     "Free alternative to SmallSEOTools, TextMechanic, and ConvertCase — all running in your browser with zero data collection.\n\n43 tools. Zero cost. Zero tracking.\n\nazhai-six.vercel.app"
   ],
   linkedin: [
-    "I just launched Free AI Text Tools — a suite of 43 browser-based tools for text processing, SEO, and developer utilities.\n\nWhat makes it different:\n✓ All tools run in your browser (no server, no data collection)\n✓ Zero sign-up required\n✓ Completely free\n✓ Dark mode + mobile-first design\n\nWhether you're a content creator needing word counts and keyword density checks, or a developer needing JSON/XML formatters — it's all there.\n\nTry it: azhai-six.vercel.app\n\n#SEO #FreeTools #WebDev #ContentCreation"
+    "I just launched KwordSEO — a suite of 43 browser-based tools for text processing, SEO, and developer utilities.\n\nWhat makes it different:\n✓ All tools run in your browser (no server, no data collection)\n✓ Zero sign-up required\n✓ Completely free\n✓ Dark mode + mobile-first design\n\nWhether you're a content creator needing word counts and keyword density checks, or a developer needing JSON/XML formatters — it's all there.\n\nTry it: azhai-six.vercel.app\n\n#SEO #FreeTools #WebDev #ContentCreation"
   ],
   reddit: [
     "I built a free alternative to SmallSEOTools with 43 browser-based tools. All processing happens in your browser — no data leaves your device. Would love feedback from this community.",

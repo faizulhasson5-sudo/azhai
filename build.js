@@ -124,7 +124,7 @@ tools.forEach(toolId => {
     const toolUrl = baseUrl + '/tools/' + toolId + '.html';
     let html = template;
 
-    html = html.replace('<title id="page-title">Tool - Free AI Text Tools</title>',
+    html = html.replace('<title id="page-title">Tool - KwordSEO</title>',
         '<title id="page-title">'+esc(seo.title)+'</title>');
     html = html.replace('<meta id="meta-desc" name="description" content="">',
         '<meta id="meta-desc" name="description" content="'+esc(seo.desc)+'">');

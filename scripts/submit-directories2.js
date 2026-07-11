@@ -1,7 +1,7 @@
 const https = require('https');
 
 const tool = {
-  name: 'Free AI Text Tools',
+  name: 'KwordSEO',
   url: 'https://azhai-six.vercel.app',
   description: '43 free browser-based tools for text processing, SEO, and developer utilities. No sign-up, no data collection.',
   email: 'contact@azhai-six.vercel.app'

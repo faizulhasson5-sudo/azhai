@@ -166,7 +166,7 @@ function generateBlogCategoryPage(cat) {
 <meta property="og:description" content="${esc(cat.desc)}">
 <meta property="og:url" content="${url}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Free AI Text Tools">
+<meta property="og:site_name" content="KwordSEO">
 <meta property="og:image" content="${BASE}/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(cat.title)}">
@@ -174,7 +174,7 @@ function generateBlogCategoryPage(cat) {
 <meta name="twitter:image" content="${BASE}/og-image.png">
 <meta name="theme-color" content="#0a0a0a">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-<link rel="alternate" type="application/rss+xml" title="Free AI Text Tools Blog" href="/blog/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="KwordSEO Blog" href="/blog/feed.xml">
 <link rel="stylesheet" href="/css/style.css">
 <script>(function(){try{var t=localStorage.getItem('attTheme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <script type="application/ld+json">${breadcrumbSchema}</script>
@@ -185,7 +185,7 @@ function generateBlogCategoryPage(cat) {
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <header class="site-header">
 <div class="header-inner">
-<a href="/" class="site-logo"><span class="logo-mark">⚡</span> Free AI Text Tools</a>
+<a href="/" class="site-logo"><span class="logo-mark">⚡</span> KwordSEO</a>
 <nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link">Tools</a>
@@ -230,7 +230,7 @@ ${catLinks}
 <div class="container">
 <div class="footer-grid">
 <div class="footer-col">
-<a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">⚡</span> Free AI Text Tools</a>
+<a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">⚡</span> KwordSEO</a>
 <p style="font-size:13px;color:var(--text-3)">45+ free online text tools. No sign-up needed. Your data stays in your browser.</p>
 </div>
 <div class="footer-col"><h4>Tools</h4><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a><a href="/tools/robots-txt.html">Robots.txt</a></div>
@@ -238,7 +238,7 @@ ${catLinks}
 <div class="footer-col"><h4>Company</h4><a href="/about.html">About</a><a href="/blog/">Blog</a><a href="/contact.html">Contact</a><a href="/advertise.html">Advertise</a></div>
 <div class="footer-col"><h4>Legal</h4><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a><a href="/cookie-policy.html">Cookie Policy</a></div>
 </div>
-<div class="footer-bottom"><p>&copy; 2026 Free AI Text Tools. All rights reserved.</p></div>
+<div class="footer-bottom"><p>&copy; 2026 KwordSEO. All rights reserved.</p></div>
 </div>
 </footer>
 <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent">

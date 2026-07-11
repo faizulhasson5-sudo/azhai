@@ -1,5 +1,5 @@
 ﻿/* ============================================================
-   Free AI Text Tools — Core Application v3
+   KwordSEO — Core Application v3
    All bugs fixed · localStorage guards · Proper icons
    GA behind consent · Fixed focus · Fixed dark contrast
    ============================================================ */

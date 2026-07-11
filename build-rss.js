@@ -36,9 +36,9 @@ function toRFC822(dateStr) {
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
 xml += '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n';
 xml += '<channel>\n';
-xml += '<title>Free AI Text Tools Blog</title>\n';
+xml += '<title>KwordSEO Blog</title>\n';
 xml += '<link>' + BASE + '/blog/</link>\n';
-xml += '<description>Guides, tutorials, and tips for SEO, content writing, and using free online text tools.</description>\n';
+xml += '<description>Guides, tutorials, and tips for SEO, content writing, and keyword optimization.</description>\n';
 xml += '<language>en</language>\n';
 xml += '<lastBuildDate>' + toRFC822(new Date().toISOString().slice(0, 10)) + '</lastBuildDate>\n';
 xml += '<atom:link href="' + BASE + '/blog/feed.xml" rel="self" type="application/rss+xml"/>\n';

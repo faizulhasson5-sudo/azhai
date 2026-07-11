@@ -47,7 +47,8 @@ const blogFeed = path.join(src, 'blog', 'feed.xml');
 if (fs.existsSync(blogFeed)) fs.copyFileSync(blogFeed, path.join(dst, 'blog', 'feed.xml'));
 const blogIndex = path.join(src, 'blog', 'index.html');
 if (fs.existsSync(blogIndex)) fs.copyFileSync(blogIndex, path.join(dst, 'blog', 'index.html'));
-const standaloneBlogs = ['eeat-2026-google-trust-guide.html'];
+const standaloneBlogs = fs.readdirSync(path.join(src, 'blog'))
+  .filter(f => f.endsWith('.html') && f !== 'template.html' && f !== 'index.html');
 for (const b of standaloneBlogs) {
   const bp = path.join(src, 'blog', b);
   if (fs.existsSync(bp)) fs.copyFileSync(bp, path.join(dst, 'blog', b));

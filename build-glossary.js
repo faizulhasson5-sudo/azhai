@@ -132,7 +132,7 @@ const terms = [
    tools:['meta-desc-gen','meta-gen','og-generator']},
   {slug:'title-tag',term:'Title Tag',cat:'on-page-seo',
    def:'The title tag is the clickable headline that appears in search results and browser tabs. It\'s one of the most important on-page SEO factors. Titles should be 50-60 characters, include the primary keyword, and be compelling enough to earn clicks.',
-   example:'<title>Free Word Counter - Count Words Instantly | Free AI Text Tools</title> — includes the keyword "word counter", is under 60 characters, and has a clear value proposition.',
+   example:'<title>Free Word Counter - Count Words Instantly | KwordSEO</title> — includes the keyword "word counter", is under 60 characters, and has a clear value proposition.',
    related:['meta-description','on-page-seo','ctr','serp','meta-tags'],
    tools:['meta-gen','meta-desc-gen']},
   {slug:'header-tags',term:'Header Tags (H1-H6)',cat:'on-page-seo',
@@ -447,7 +447,7 @@ function generateTermPage(term) {
 <meta property="og:description" content="${esc(term.def.substring(0,155))}">
 <meta property="og:url" content="${url}">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="Free AI Text Tools">
+<meta property="og:site_name" content="KwordSEO">
 <meta property="og:image" content="${BASE}/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="What is ${esc(term.term.split('(')[0].trim())}?">
@@ -465,7 +465,7 @@ function generateTermPage(term) {
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <header class="site-header">
 <div class="header-inner">
-<a href="/" class="site-logo"><span class="logo-mark">⚡</span> Free AI Text Tools</a>
+<a href="/" class="site-logo"><span class="logo-mark">⚡</span> KwordSEO</a>
 <nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link">Tools</a>
@@ -517,12 +517,12 @@ ${sameLinks ? '<div style="margin-bottom:48px"><h2 style="font-size:1.1rem;font-
 <footer class="site-footer">
 <div class="container">
 <div class="footer-grid">
-<div class="footer-col"><a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">⚡</span> Free AI Text Tools</a><p style="font-size:13px;color:var(--text-3)">45+ free online text tools. No sign-up needed.</p></div>
+<div class="footer-col"><a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">⚡</span> KwordSEO</a><p style="font-size:13px;color:var(--text-3)">45+ free online text tools. No sign-up needed.</p></div>
 <div class="footer-col"><h4>Tools</h4><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a><a href="/tools/robots-txt.html">Robots.txt</a></div>
 <div class="footer-col"><h4>Resources</h4><a href="/glossary/">SEO Glossary</a><a href="/tools/directory.html">Tools Directory</a><a href="/blog/">Blog</a></div>
 <div class="footer-col"><h4>Legal</h4><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms</a></div>
 </div>
-<div class="footer-bottom"><p>&copy; 2026 Free AI Text Tools. All rights reserved.</p></div>
+<div class="footer-bottom"><p>&copy; 2026 KwordSEO. All rights reserved.</p></div>
 </div>
 </footer>
 <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent"><p>🍪 We use cookies for analytics &amp; preferences. <a href="/cookie-policy.html">Learn more</a></p><div class="btn-group"><button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button><button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button></div></div>
@@ -564,7 +564,7 @@ function generateCategoryPage(cat) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${esc(cat.name)} Definitions - SEO Glossary | Free AI Text Tools</title>
+<title>${esc(cat.name)} Definitions - SEO Glossary | KwordSEO</title>
 <meta name="description" content="${esc(cat.desc)}. Browse ${catTerms.length} ${esc(cat.name).toLowerCase()} definitions with examples and practical applications.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="${url}">
@@ -576,7 +576,7 @@ function generateCategoryPage(cat) {
 <meta property="og:description" content="${esc(cat.desc)}. Browse ${catTerms.length} definitions.">
 <meta property="og:url" content="${url}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Free AI Text Tools">
+<meta property="og:site_name" content="KwordSEO">
 <meta property="og:image" content="${BASE}/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(cat.name)} Definitions">
@@ -593,7 +593,7 @@ function generateCategoryPage(cat) {
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <header class="site-header">
 <div class="header-inner">
-<a href="/" class="site-logo"><span class="logo-mark">⚡</span> Free AI Text Tools</a>
+<a href="/" class="site-logo"><span class="logo-mark">⚡</span> KwordSEO</a>
 <nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link">Tools</a>
@@ -629,12 +629,12 @@ ${catLinks}
 <footer class="site-footer">
 <div class="container">
 <div class="footer-grid">
-<div class="footer-col"><a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">⚡</span> Free AI Text Tools</a><p style="font-size:13px;color:var(--text-3)">45+ free online text tools.</p></div>
+<div class="footer-col"><a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">⚡</span> KwordSEO</a><p style="font-size:13px;color:var(--text-3)">45+ free online text tools.</p></div>
 <div class="footer-col"><h4>Tools</h4><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a></div>
 <div class="footer-col"><h4>Resources</h4><a href="/glossary/">SEO Glossary</a><a href="/tools/directory.html">Tools Directory</a><a href="/blog/">Blog</a></div>
 <div class="footer-col"><h4>Legal</h4><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a></div>
 </div>
-<div class="footer-bottom"><p>&copy; 2026 Free AI Text Tools.</p></div>
+<div class="footer-bottom"><p>&copy; 2026 KwordSEO.</p></div>
 </div>
 </footer>
 <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent"><p>🍪 Cookies for analytics.</p><div class="btn-group"><button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button><button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button></div></div>
@@ -681,7 +681,7 @@ function generateHubPage() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SEO Glossary - ${terms.length}+ Terms Explained | Free AI Text Tools</title>
+<title>SEO Glossary - ${terms.length}+ Terms Explained | KwordSEO</title>
 <meta name="description" content="Comprehensive SEO glossary with ${terms.length}+ terms explained. What is SEO, SERP, backlink, keyword density? Definitions, examples, and free tools.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="${url}">
@@ -693,7 +693,7 @@ function generateHubPage() {
 <meta property="og:description" content="Comprehensive SEO glossary with ${terms.length}+ terms. Definitions, examples, and free tools.">
 <meta property="og:url" content="${url}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Free AI Text Tools">
+<meta property="og:site_name" content="KwordSEO">
 <meta property="og:image" content="${BASE}/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SEO Glossary - ${terms.length}+ Terms">
@@ -710,7 +710,7 @@ function generateHubPage() {
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <header class="site-header">
 <div class="header-inner">
-<a href="/" class="site-logo"><span class="logo-mark">⚡</span> Free AI Text Tools</a>
+<a href="/" class="site-logo"><span class="logo-mark">⚡</span> KwordSEO</a>
 <nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link">Tools</a>
@@ -757,12 +757,12 @@ ${allTermLinks}
 <footer class="site-footer">
 <div class="container">
 <div class="footer-grid">
-<div class="footer-col"><a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">⚡</span> Free AI Text Tools</a><p style="font-size:13px;color:var(--text-3)">45+ free online text tools.</p></div>
+<div class="footer-col"><a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">⚡</span> KwordSEO</a><p style="font-size:13px;color:var(--text-3)">45+ free online text tools.</p></div>
 <div class="footer-col"><h4>Tools</h4><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a></div>
 <div class="footer-col"><h4>Resources</h4><a href="/glossary/">SEO Glossary</a><a href="/tools/directory.html">Tools Directory</a><a href="/blog/">Blog</a></div>
 <div class="footer-col"><h4>Legal</h4><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a></div>
 </div>
-<div class="footer-bottom"><p>&copy; 2026 Free AI Text Tools.</p></div>
+<div class="footer-bottom"><p>&copy; 2026 KwordSEO.</p></div>
 </div>
 </footer>
 <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent"><p>🍪 Cookies for analytics.</p><div class="btn-group"><button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button><button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button></div></div>

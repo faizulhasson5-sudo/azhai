@@ -24,8 +24,8 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const auth = req.headers.authorization;
-  if (!auth || auth !== `Bearer ${ADMIN_TOKEN}`) {
+  const token = req.query.token || (req.headers.authorization || '').replace('Bearer ', '');
+  if (!token || token !== ADMIN_TOKEN) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 

@@ -89,8 +89,12 @@
         <h1>Write, Convert<br>& Optimize.</h1>
         <p class="hero-sub">Word counters, text formatters, SEO analyzers, code tools � all processing happens in your browser.</p>
         <div class="hero-search">
-          <input type="search" id="heroSearch" placeholder="Search tools�" aria-label="Search tools" autocomplete="off">
-          <div class="hero-search-results" id="heroResults"></div>
+          <label for="heroSearch" class="hero-search-label">Find the right tool</label>
+          <div class="hero-search-wrap">
+            <input type="search" id="heroSearch" placeholder="Search 45+ tools..." aria-label="Search tools" autocomplete="off">
+            <kbd class="hero-kbd">Ctrl K</kbd>
+            <div class="hero-search-results" id="heroResults"></div>
+          </div>
         </div>
         <a href="/tools/" class="hero-cta">Browse All Tools ?</a>
       </div>
@@ -313,6 +317,14 @@
       });
       document.addEventListener('click',function(e){
         if(!e.target.closest('.hero-search'))sr.classList.remove('open');
+      });
+      // Ctrl+K / Cmd+K shortcut
+      document.addEventListener('keydown',function(e){
+        if((e.ctrlKey||e.metaKey)&&e.key==='k'){
+          e.preventDefault();
+          si.focus();
+          si.select();
+        }
       });
     }
 

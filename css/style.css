@@ -134,17 +134,17 @@ a:hover { color: var(--accent-hover); }
   height: 100%;
 }
 .site-logo {
-  display: flex; align-items: center; gap: 10px;
-  font-weight: 800; font-size: 15px; color: var(--text);
+  display: flex; align-items: center; gap: 8px;
   text-decoration: none; letter-spacing: -0.02em;
 }
-.site-logo:hover { color: var(--accent); }
-.logo-mark {
-  width: 28px; height: 28px; border-radius: 6px;
-  background: var(--accent); color: var(--accent-text);
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 900; font-size: 12px;
+.site-logo:hover .logo-text { color: var(--accent); }
+.logo-icon { width: 28px; height: 28px; flex-shrink: 0; }
+.logo-icon rect { fill: var(--accent); transition: fill 0.3s; }
+.logo-text {
+  font-weight: 800; font-size: 16px; color: var(--text);
+  transition: color 0.3s; line-height: 1;
 }
+.logo-seo { color: var(--accent); transition: color 0.3s; }
 .nav { display: flex; align-items: center; gap: 2px; }
 .nav-link {
   padding: 6px 12px; border-radius: 6px;

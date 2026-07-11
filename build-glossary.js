@@ -465,7 +465,7 @@ function generateTermPage(term) {
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <header class="site-header">
 <div class="header-inner">
-<a href="/" class="site-logo"><span class="logo-mark">⚡</span> KwordSEO</a>
+<a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>
 <nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link">Tools</a>
@@ -517,7 +517,7 @@ ${sameLinks ? '<div style="margin-bottom:48px"><h2 style="font-size:1.1rem;font-
 <footer class="site-footer">
 <div class="container">
 <div class="footer-grid">
-<div class="footer-col"><a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">⚡</span> KwordSEO</a><p style="font-size:13px;color:var(--text-3)">45+ free online text tools. No sign-up needed.</p></div>
+<div class="footer-col"><a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a><p style="font-size:13px;color:var(--text-3)">45+ free online text tools. No sign-up needed.</p></div>
 <div class="footer-col"><p class="footer-heading">Tools</p><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a><a href="/tools/robots-txt.html">Robots.txt</a></div>
 <div class="footer-col"><p class="footer-heading">Resources</p><a href="/glossary/">SEO Glossary</a><a href="/tools/directory.html">Tools Directory</a><a href="/blog/">Blog</a></div>
 <div class="footer-col"><p class="footer-heading">Legal</p><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms</a></div>
@@ -593,7 +593,7 @@ function generateCategoryPage(cat) {
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <header class="site-header">
 <div class="header-inner">
-<a href="/" class="site-logo"><span class="logo-mark">⚡</span> KwordSEO</a>
+<a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>
 <nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link">Tools</a>
@@ -629,7 +629,7 @@ ${catLinks}
 <footer class="site-footer">
 <div class="container">
 <div class="footer-grid">
-<div class="footer-col"><a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">⚡</span> KwordSEO</a><p style="font-size:13px;color:var(--text-3)">45+ free online text tools.</p></div>
+<div class="footer-col"><a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a><p style="font-size:13px;color:var(--text-3)">45+ free online text tools.</p></div>
 <div class="footer-col"><p class="footer-heading">Tools</p><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a></div>
 <div class="footer-col"><p class="footer-heading">Resources</p><a href="/glossary/">SEO Glossary</a><a href="/tools/directory.html">Tools Directory</a><a href="/blog/">Blog</a></div>
 <div class="footer-col"><p class="footer-heading">Legal</p><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a></div>
@@ -710,7 +710,7 @@ function generateHubPage() {
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <header class="site-header">
 <div class="header-inner">
-<a href="/" class="site-logo"><span class="logo-mark">⚡</span> KwordSEO</a>
+<a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>
 <nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link">Tools</a>
@@ -757,7 +757,7 @@ ${allTermLinks}
 <footer class="site-footer">
 <div class="container">
 <div class="footer-grid">
-<div class="footer-col"><a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">⚡</span> KwordSEO</a><p style="font-size:13px;color:var(--text-3)">45+ free online text tools.</p></div>
+<div class="footer-col"><a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a><p style="font-size:13px;color:var(--text-3)">45+ free online text tools.</p></div>
 <div class="footer-col"><p class="footer-heading">Tools</p><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a></div>
 <div class="footer-col"><p class="footer-heading">Resources</p><a href="/glossary/">SEO Glossary</a><a href="/tools/directory.html">Tools Directory</a><a href="/blog/">Blog</a></div>
 <div class="footer-col"><p class="footer-heading">Legal</p><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a></div>

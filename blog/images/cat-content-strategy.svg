@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+  <rect x="40" y="40" width="1120" height="550" rx="16" fill="#141414" stroke="#262626" stroke-width="1"/>
+  <!-- Document flow -->
+  <rect x="120" y="160" width="180" height="240" rx="10" fill="#1a1a2e" stroke="#262626" stroke-width="1"/>
+  <rect x="140" y="180" width="100" height="8" rx="4" fill="#2563eb" opacity="0.8"/>
+  <rect x="140" y="200" width="140" height="4" rx="2" fill="#404040"/>
+  <rect x="140" y="212" width="120" height="4" rx="2" fill="#404040"/>
+  <rect x="140" y="224" width="150" height="4" rx="2" fill="#404040"/>
+  <rect x="140" y="244" width="80" height="8" rx="4" fill="#3b82f6" opacity="0.6"/>
+  <rect x="140" y="260" width="130" height="4" rx="2" fill="#404040"/>
+  <rect x="140" y="272" width="110" height="4" rx="2" fill="#404040"/>
+  <!-- Arrow -->
+  <path d="M320 280 L380 280" stroke="#2563eb" stroke-width="2" opacity="0.5"/>
+  <path d="M370 272 L382 280 L370 288" stroke="#2563eb" stroke-width="2" opacity="0.5"/>
+  <rect x="400" y="140" width="200" height="280" rx="10" fill="#1a1a2e" stroke="#2563eb" stroke-width="1.5"/>
+  <rect x="420" y="160" width="120" height="8" rx="4" fill="#2563eb"/>
+  <rect x="420" y="180" width="160" height="4" rx="2" fill="#404040"/>
+  <rect x="420" y="192" width="140" height="4" rx="2" fill="#404040"/>
+  <rect x="420" y="212" width="80" height="8" rx="4" fill="#3b82f6" opacity="0.6"/>
+  <rect x="420" y="230" width="150" height="4" rx="2" fill="#404040"/>
+  <rect x="420" y="242" width="120" height="4" rx="2" fill="#404040"/>
+  <rect x="420" y="262" width="160" height="4" rx="2" fill="#404040"/>
+  <rect x="420" y="274" width="100" height="4" rx="2" fill="#404040"/>
+  <rect x="420" y="294" width="140" height="4" rx="2" fill="#404040"/>
+  <rect x="420" y="306" width="130" height="4" rx="2" fill="#404040"/>
+  <rect x="420" y="326" width="90" height="8" rx="4" fill="#3b82f6" opacity="0.6"/>
+  <rect x="420" y="344" width="150" height="4" rx="2" fill="#404040"/>
+  <rect x="420" y="356" width="110" height="4" rx="2" fill="#404040"/>
+  <!-- Arrow 2 -->
+  <path d="M620 280 L680 280" stroke="#2563eb" stroke-width="2" opacity="0.5"/>
+  <path d="M670 272 L682 280 L670 288" stroke="#2563eb" stroke-width="2" opacity="0.5"/>
+  <!-- Published -->
+  <rect x="700" y="180" width="180" height="200" rx="10" fill="#1a1a2e" stroke="#262626" stroke-width="1"/>
+  <rect x="720" y="200" width="100" height="8" rx="4" fill="#2563eb"/>
+  <rect x="720" y="220" width="140" height="4" rx="2" fill="#404040"/>
+  <rect x="720" y="232" width="120" height="4" rx="2" fill="#404040"/>
+  <rect x="720" y="252" width="80" height="8" rx="4" fill="#4ade80" opacity="0.8"/>
+  <rect x="720" y="270" width="130" height="4" rx="2" fill="#404040"/>
+  <text x="720" y="340" font-family="DM Mono,monospace" font-size="11" fill="#4ade80">Published</text>
+  <!-- Title -->
+  <text x="100" y="130" font-family="DM Sans,system-ui,sans-serif" font-size="42" font-weight="800" fill="#fafafa" letter-spacing="-1">Content Strategy</text>
+  <text x="100" y="530" font-family="DM Sans,system-ui,sans-serif" font-size="16" fill="#737373">KwordSEO</text>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+  <rect x="40" y="40" width="1120" height="550" rx="16" fill="#141414" stroke="#262626" stroke-width="1"/>
+  <!-- Gear/cog -->
+  <circle cx="420" cy="300" r="100" stroke="#2563eb" stroke-width="3" fill="none"/>
+  <circle cx="420" cy="300" r="60" stroke="#2563eb" stroke-width="2" fill="none" opacity="0.5"/>
+  <circle cx="420" cy="300" r="20" fill="#2563eb"/>
+  <!-- Gear teeth -->
+  <g stroke="#2563eb" stroke-width="3">
+    <line x1="420" y1="195" x2="420" y2="210"/><line x1="420" y1="390" x2="420" y2="405"/>
+    <line x1="315" y1="300" x2="330" y2="300"/><line x1="510" y1="300" x2="525" y2="300"/>
+    <line x1="345" y1="225" x2="356" y2="236"/><line x1="484" y1="364" x2="495" y2="375"/>
+    <line x1="345" y1="375" x2="356" y2="364"/><line x1="484" y1="236" x2="495" y2="225"/>
+  </g>
+  <!-- Server stack -->
+  <rect x="700" y="180" width="200" height="40" rx="6" fill="#1a1a2e" stroke="#262626" stroke-width="1"/>
+  <rect x="700" y="230" width="200" height="40" rx="6" fill="#1a1a2e" stroke="#262626" stroke-width="1"/>
+  <rect x="700" y="280" width="200" height="40" rx="6" fill="#1a1a2e" stroke="#262626" stroke-width="1"/>
+  <circle cx="720" cy="200" r="4" fill="#4ade80"/><circle cx="720" cy="250" r="4" fill="#2563eb"/>
+  <circle cx="720" cy="300" r="4" fill="#fbbf24"/>
+  <text x="740" y="204" font-family="DM Mono,monospace" font-size="10" fill="#737373">crawl.txt</text>
+  <text x="740" y="254" font-family="DM Mono,monospace" font-size="10" fill="#737373">sitemap.xml</text>
+  <text x="740" y="304" font-family="DM Mono,monospace" font-size="10" fill="#737373">schema.json</text>
+  <!-- Connection lines -->
+  <line x1="520" y1="300" x2="700" y2="200" stroke="#2563eb" stroke-width="1.5" opacity="0.3"/>
+  <line x1="520" y1="300" x2="700" y2="250" stroke="#2563eb" stroke-width="1.5" opacity="0.3"/>
+  <line x1="520" y1="300" x2="700" y2="300" stroke="#2563eb" stroke-width="1.5" opacity="0.3"/>
+  <!-- Status indicators -->
+  <text x="700" y="360" font-family="DM Sans,system-ui,sans-serif" font-size="12" fill="#737373">Server Response</text>
+  <rect x="700" y="375" width="100" height="6" rx="3" fill="#262626"/>
+  <rect x="700" y="375" width="85" height="6" rx="3" fill="#4ade80"/>
+  <text x="810" y="383" font-family="DM Mono,monospace" font-size="10" fill="#4ade80">142ms</text>
+  <!-- Title -->
+  <text x="100" y="130" font-family="DM Sans,system-ui,sans-serif" font-size="42" font-weight="800" fill="#fafafa" letter-spacing="-1">Technical SEO</text>
+  <text x="100" y="530" font-family="DM Sans,system-ui,sans-serif" font-size="16" fill="#737373">KwordSEO</text>
+</svg>

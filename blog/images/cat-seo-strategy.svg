@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+  <rect x="40" y="40" width="1120" height="550" rx="16" fill="#141414" stroke="#262626" stroke-width="1"/>
+  <!-- Grid pattern -->
+  <g opacity="0.15" stroke="#2563eb" stroke-width="0.5">
+    <line x1="200" y1="80" x2="200" y2="550"/><line x1="360" y1="80" x2="360" y2="550"/>
+    <line x1="520" y1="80" x2="520" y2="550"/><line x1="680" y1="80" x2="680" y2="550"/>
+    <line x1="840" y1="80" x2="840" y2="550"/><line x1="1000" y1="80" x2="1000" y2="550"/>
+    <line x1="80" y1="180" x2="1120" y2="180"/><line x1="80" y1="280" x2="1120" y2="280"/>
+    <line x1="80" y1="380" x2="1120" y2="380"/><line x1="80" y1="480" x2="1120" y2="480"/>
+  </g>
+  <!-- Strategy nodes connected -->
+  <circle cx="280" cy="230" r="24" fill="#2563eb"/><circle cx="280" cy="230" r="8" fill="#fff"/>
+  <circle cx="520" cy="180" r="18" fill="#1d4ed8"/><circle cx="520" cy="180" r="6" fill="#fff"/>
+  <circle cx="720" cy="310" r="28" fill="#2563eb"/><circle cx="720" cy="310" r="10" fill="#fff"/>
+  <circle cx="920" cy="200" r="16" fill="#3b82f6"/><circle cx="920" cy="200" r="5" fill="#fff"/>
+  <circle cx="400" cy="420" r="20" fill="#1d4ed8"/><circle cx="400" cy="420" r="7" fill="#fff"/>
+  <circle cx="640" cy="460" r="22" fill="#2563eb"/><circle cx="640" cy="460" r="8" fill="#fff"/>
+  <circle cx="880" cy="400" r="14" fill="#3b82f6"/><circle cx="880" cy="400" r="5" fill="#fff"/>
+  <!-- Connection lines -->
+  <line x1="304" y1="230" x2="502" y2="180" stroke="#2563eb" stroke-width="2" opacity="0.6"/>
+  <line x1="538" y1="180" x2="692" y2="310" stroke="#2563eb" stroke-width="2" opacity="0.6"/>
+  <line x1="748" y1="310" x2="904" y2="200" stroke="#2563eb" stroke-width="2" opacity="0.6"/>
+  <line x1="280" y1="254" x2="400" y2="400" stroke="#2563eb" stroke-width="2" opacity="0.4"/>
+  <line x1="420" y1="420" x2="618" y2="460" stroke="#2563eb" stroke-width="2" opacity="0.4"/>
+  <line x1="662" y1="460" x2="866" y2="400" stroke="#2563eb" stroke-width="2" opacity="0.4"/>
+  <line x1="720" y1="338" x2="640" y2="438" stroke="#2563eb" stroke-width="1.5" opacity="0.3"/>
+  <!-- Title -->
+  <text x="100" y="130" font-family="DM Sans,system-ui,sans-serif" font-size="42" font-weight="800" fill="#fafafa" letter-spacing="-1">SEO Strategy</text>
+  <text x="100" y="530" font-family="DM Sans,system-ui,sans-serif" font-size="16" fill="#737373">KwordSEO</text>
+</svg>

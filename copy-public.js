@@ -22,6 +22,7 @@ function copyDir(s, d) {
 // Copy static assets
 if (fs.existsSync(path.join(src, 'css'))) copyDir(path.join(src, 'css'), path.join(dst, 'css'));
 if (fs.existsSync(path.join(src, 'js'))) copyDir(path.join(src, 'js'), path.join(dst, 'js'));
+if (fs.existsSync(path.join(src, 'fonts'))) copyDir(path.join(src, 'fonts'), path.join(dst, 'fonts'));
 if (fs.existsSync(path.join(src, 'blog', 'images'))) copyDir(path.join(src, 'blog', 'images'), path.join(dst, 'blog', 'images'));
 
 // Copy static HTML files

@@ -754,7 +754,28 @@ a:hover { color: var(--accent-hover); }
    FOOTER — Dense, minimal
    ============================================================ */
 .site-footer { margin-top: 80px; border-top: 1px solid var(--border); }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; padding: 40px 0 24px; }
+.footer-newsletter {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 32px 0; border-bottom: 1px solid var(--border);
+  margin-bottom: 32px;
+}
+.footer-newsletter-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.footer-newsletter-sub { font-size: 13px; color: var(--text-3); margin: 0; }
+.footer-newsletter-form { display: flex; gap: 8px; flex-shrink: 0; }
+.footer-newsletter-form input {
+  padding: 10px 14px; border: 1px solid var(--border); border-radius: var(--radius);
+  font-size: 14px; font-family: var(--font); background: var(--bg-2); color: var(--text);
+  min-width: 240px; outline: none; transition: border-color 0.15s;
+}
+.footer-newsletter-form input:focus { border-color: var(--accent); }
+.footer-newsletter-form button {
+  padding: 10px 20px; background: var(--accent); color: var(--accent-text);
+  border: none; border-radius: var(--radius); font-weight: 700; font-size: 14px;
+  cursor: pointer; transition: opacity 0.15s; white-space: nowrap;
+}
+.footer-newsletter-form button:hover { opacity: 0.9; }
+.footer-newsletter-form .success-msg { color: var(--success); font-size: 13px; font-weight: 600; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; padding: 0 0 24px; }
 .footer-col h4, .footer-col .footer-heading {
   font-size: 11px; font-weight: 700;
   text-transform: uppercase; letter-spacing: 0.06em;
@@ -836,6 +857,8 @@ a:hover { color: var(--accent-hover); }
   .tool-sidebar { position: static; }
   .blog-layout { grid-template-columns: 1fr; }
   .blog-sidebar { position: static; }
+  .footer-newsletter { flex-direction: column; text-align: center; }
+  .footer-newsletter-form input { min-width: 200px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
@@ -894,6 +917,8 @@ a:hover { color: var(--accent-hover); }
   .stat-num { font-size: 24px; }
   .tool-grid { grid-template-columns: repeat(2, 1fr); }
   .blog-grid { grid-template-columns: 1fr; }
+  .footer-newsletter-form { flex-direction: column; width: 100%; }
+  .footer-newsletter-form input { min-width: 0; width: 100%; }
   .footer-grid { grid-template-columns: 1fr; gap: 16px; }
   .footer-grid .footer-col:first-child { grid-column: 1 / -1; }
   .cookie-banner { flex-direction: column; text-align: center; }

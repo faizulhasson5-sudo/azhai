@@ -4,3 +4,4 @@ public/
 Thumbs.db
 *.log
 google-service-account.json
+subscribers.json

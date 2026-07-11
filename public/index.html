@@ -179,6 +179,16 @@
 
   <footer class="site-footer">
     <div class="container">
+      <div class="footer-newsletter">
+        <div class="footer-newsletter-text">
+          <p class="footer-newsletter-title">Get new tools & SEO tips</p>
+          <p class="footer-newsletter-sub">No spam. Unsubscribe anytime.</p>
+        </div>
+        <form class="footer-newsletter-form" id="newsletterForm" action="/api/subscribe" method="POST">
+          <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
       <div class="footer-grid">
         <div class="footer-col">
           <a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">?</span> KwordSEO</a>
@@ -352,6 +362,38 @@
       },{passive:true});
       btt.addEventListener('click',function(){
         window.scrollTo({top:0,behavior:'smooth'});
+      });
+    }
+
+    // Newsletter form
+    var nf=document.getElementById('newsletterForm');
+    if(nf){
+      nf.addEventListener('submit',function(e){
+        e.preventDefault();
+        var fd=new FormData(nf);
+        var email=fd.get('email');
+        if(!email)return;
+        var btn=nf.querySelector('button');
+        var origText=btn.textContent;
+        btn.textContent='...';
+        btn.disabled=true;
+        fetch('/api/subscribe',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({email:email})
+        }).then(function(r){return r.json();}).then(function(d){
+          if(d.message){
+            nf.innerHTML='<span class="success-msg">'+d.message+'</span>';
+          }else{
+            btn.textContent=origText;
+            btn.disabled=false;
+            alert(d.error||'Something went wrong');
+          }
+        }).catch(function(){
+          btn.textContent=origText;
+          btn.disabled=false;
+          alert('Network error. Please try again.');
+        });
       });
     }
   })();

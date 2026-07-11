@@ -1,0 +1,19 @@
+{
+  "name": "KwordSEO — Free Online Text & SEO Tools",
+  "short_name": "KwordSEO",
+  "description": "45+ free online text tools for writers, developers, and SEO professionals. All processing happens in your browser.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#2563eb",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["productivity", "utilities", "developer tools"]
+}

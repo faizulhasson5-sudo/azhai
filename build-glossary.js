@@ -518,9 +518,9 @@ ${sameLinks ? '<div style="margin-bottom:48px"><h2 style="font-size:1.1rem;font-
 <div class="container">
 <div class="footer-grid">
 <div class="footer-col"><a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">⚡</span> KwordSEO</a><p style="font-size:13px;color:var(--text-3)">45+ free online text tools. No sign-up needed.</p></div>
-<div class="footer-col"><h4>Tools</h4><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a><a href="/tools/robots-txt.html">Robots.txt</a></div>
-<div class="footer-col"><h4>Resources</h4><a href="/glossary/">SEO Glossary</a><a href="/tools/directory.html">Tools Directory</a><a href="/blog/">Blog</a></div>
-<div class="footer-col"><h4>Legal</h4><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms</a></div>
+<div class="footer-col"><p class="footer-heading">Tools</p><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a><a href="/tools/robots-txt.html">Robots.txt</a></div>
+<div class="footer-col"><p class="footer-heading">Resources</p><a href="/glossary/">SEO Glossary</a><a href="/tools/directory.html">Tools Directory</a><a href="/blog/">Blog</a></div>
+<div class="footer-col"><p class="footer-heading">Legal</p><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms</a></div>
 </div>
 <div class="footer-bottom"><p>&copy; 2026 KwordSEO. All rights reserved.</p></div>
 </div>
@@ -630,9 +630,9 @@ ${catLinks}
 <div class="container">
 <div class="footer-grid">
 <div class="footer-col"><a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">⚡</span> KwordSEO</a><p style="font-size:13px;color:var(--text-3)">45+ free online text tools.</p></div>
-<div class="footer-col"><h4>Tools</h4><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a></div>
-<div class="footer-col"><h4>Resources</h4><a href="/glossary/">SEO Glossary</a><a href="/tools/directory.html">Tools Directory</a><a href="/blog/">Blog</a></div>
-<div class="footer-col"><h4>Legal</h4><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a></div>
+<div class="footer-col"><p class="footer-heading">Tools</p><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a></div>
+<div class="footer-col"><p class="footer-heading">Resources</p><a href="/glossary/">SEO Glossary</a><a href="/tools/directory.html">Tools Directory</a><a href="/blog/">Blog</a></div>
+<div class="footer-col"><p class="footer-heading">Legal</p><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a></div>
 </div>
 <div class="footer-bottom"><p>&copy; 2026 KwordSEO.</p></div>
 </div>
@@ -758,9 +758,9 @@ ${allTermLinks}
 <div class="container">
 <div class="footer-grid">
 <div class="footer-col"><a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><span class="logo-mark">⚡</span> KwordSEO</a><p style="font-size:13px;color:var(--text-3)">45+ free online text tools.</p></div>
-<div class="footer-col"><h4>Tools</h4><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a></div>
-<div class="footer-col"><h4>Resources</h4><a href="/glossary/">SEO Glossary</a><a href="/tools/directory.html">Tools Directory</a><a href="/blog/">Blog</a></div>
-<div class="footer-col"><h4>Legal</h4><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a></div>
+<div class="footer-col"><p class="footer-heading">Tools</p><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a></div>
+<div class="footer-col"><p class="footer-heading">Resources</p><a href="/glossary/">SEO Glossary</a><a href="/tools/directory.html">Tools Directory</a><a href="/blog/">Blog</a></div>
+<div class="footer-col"><p class="footer-heading">Legal</p><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a></div>
 </div>
 <div class="footer-bottom"><p>&copy; 2026 KwordSEO.</p></div>
 </div>

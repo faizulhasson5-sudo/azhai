@@ -1,0 +1,40 @@
+const UPSTASH_URL = process.env.UPSTASH_REDIS_REST_URL;
+const UPSTASH_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN;
+const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
+
+async function redis(command, ...args) {
+  const body = [command, ...args];
+  const res = await fetch(UPSTASH_URL, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${UPSTASH_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json();
+  if (data.error) throw new Error(data.error);
+  return data.result;
+}
+
+module.exports = async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+
+  if (req.method !== 'GET') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  const auth = req.headers.authorization;
+  if (!auth || auth !== `Bearer ${ADMIN_TOKEN}`) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  try {
+    const emails = await redis('SMEMBERS', 'newsletter:subscribers');
+    const count = await redis('SCARD', 'newsletter:subscribers');
+    return res.status(200).json({ count, emails });
+  } catch (e) {
+    console.error('[REDIS ERROR]', e.message);
+    return res.status(500).json({ error: 'Failed to fetch subscribers' });
+  }
+};

@@ -51,7 +51,11 @@ const standaloneBlogs = fs.readdirSync(path.join(src, 'blog'))
   .filter(f => f.endsWith('.html') && f !== 'template.html' && f !== 'index.html');
 for (const b of standaloneBlogs) {
   const bp = path.join(src, 'blog', b);
-  if (fs.existsSync(bp)) fs.copyFileSync(bp, path.join(dst, 'blog', b));
+  if (fs.existsSync(bp)) {
+    const firstLine = fs.readFileSync(bp, 'utf8').substring(0, 50);
+    if (!firstLine.includes('<!DOCTYPE html>')) continue;
+    fs.copyFileSync(bp, path.join(dst, 'blog', b));
+  }
 }
 
 // Copy pillar pages

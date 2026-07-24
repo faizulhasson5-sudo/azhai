@@ -107,6 +107,51 @@ const urls = [
   `${BASE}/blog/how-to-create-robots-txt-file.html`,
   `${BASE}/blog/xml-sitemap-guide-seo.html`,
   `${BASE}/blog/eeat-2026-google-trust-guide.html`,
+  `${BASE}/blog/how-to-optimize-images-for-seo.html`,
+  `${BASE}/blog/internal-linking-strategy-seo.html`,
+  `${BASE}/blog/schema-markup-types-for-seo.html`,
+  `${BASE}/blog/google-search-console-guide-beginners.html`,
+  `${BASE}/blog/how-to-improve-core-web-vitals.html`,
+  `${BASE}/blog/local-seo-checklist-2026.html`,
+  `${BASE}/blog/how-to-build-backlinks-2026.html`,
+  `${BASE}/blog/seo-vs-sem-whats-the-difference.html`,
+  `${BASE}/blog/seo-rank-tracking-guide.html`,
+  `${BASE}/blog/seo-analytics-dashboard.html`,
+  `${BASE}/blog/ecommerce-seo-checklist.html`,
+  `${BASE}/blog/competitor-seo-analysis.html`,
+  `${BASE}/blog/youtube-seo-guide.html`,
+  `${BASE}/blog/google-ai-mode-seo-guide-2026.html`,
+  `${BASE}/blog/zero-click-search-optimization.html`,
+  `${BASE}/blog/chatgpt-search-vs-google-seo.html`,
+  `${BASE}/blog/structured-data-for-ai-search.html`,
+  `${BASE}/blog/prompt-engineering-for-seo.html`,
+  `${BASE}/blog/local-seo.html`,
+  `${BASE}/blog/off-page-seo.html`,
+
+  // Tools (new)
+  `${BASE}/tools/ai-content-detector.html`,
+  `${BASE}/tools/ai-humanizer.html`,
+  `${BASE}/tools/ai-prompt-gen.html`,
+
+  // Pillar pages
+  `${BASE}/pillar/seo-complete-guide.html`,
+  `${BASE}/pillar/keyword-research-masterclass.html`,
+  `${BASE}/pillar/technical-seo-checklist.html`,
+  `${BASE}/pillar/seo-content-writing-guide.html`,
+
+  // Author pages
+  `${BASE}/authors/sarah-mitchell.html`,
+  `${BASE}/authors/james-chen.html`,
+  `${BASE}/authors/emma-rodriguez.html`,
+  `${BASE}/authors/david-park.html`,
+
+  // Static pages (new)
+  `${BASE}/seo-statistics-2026.html`,
+  `${BASE}/best-free-seo-tools.html`,
+  `${BASE}/seo-checklist-2026.html`,
+  `${BASE}/google-algorithm-history.html`,
+  `${BASE}/seo-roi-calculator.html`,
+  `${BASE}/editorial-policy.html`,
 
   // Glossary hub + categories
   `${BASE}/glossary/`,

@@ -5,3 +5,6 @@ Thumbs.db
 *.log
 google-service-account.json
 subscribers.json
+
+.vercel
+.env*

@@ -28,7 +28,8 @@ if (fs.existsSync(path.join(src, 'blog', 'images'))) copyDir(path.join(src, 'blo
 // Copy static HTML files
 const htmlFiles = [
   'index.html', 'about.html', 'contact.html', 'advertise.html',
-  'privacy-policy.html', 'terms.html', 'cookie-policy.html', '404.html'
+  'privacy-policy.html', 'terms.html', 'cookie-policy.html', '404.html',
+  'seo-statistics-2026.html', 'best-free-seo-tools.html', 'seo-checklist-2026.html', 'google-algorithm-history.html', 'seo-roi-calculator.html', 'editorial-policy.html'
 ];
 for (const f of htmlFiles) {
   const sp = path.join(src, f);
@@ -42,17 +43,26 @@ for (const f of otherFiles) {
   if (fs.existsSync(sp)) fs.copyFileSync(sp, path.join(dst, f));
 }
 
-// Copy blog feed and standalone blog posts
+// Copy blog feed and standalone blog posts (NOT index.html - build-blog.js generates it)
 fs.mkdirSync(path.join(dst, 'blog'), { recursive: true });
 const blogFeed = path.join(src, 'blog', 'feed.xml');
 if (fs.existsSync(blogFeed)) fs.copyFileSync(blogFeed, path.join(dst, 'blog', 'feed.xml'));
-const blogIndex = path.join(src, 'blog', 'index.html');
-if (fs.existsSync(blogIndex)) fs.copyFileSync(blogIndex, path.join(dst, 'blog', 'index.html'));
 const standaloneBlogs = fs.readdirSync(path.join(src, 'blog'))
   .filter(f => f.endsWith('.html') && f !== 'template.html' && f !== 'index.html');
 for (const b of standaloneBlogs) {
   const bp = path.join(src, 'blog', b);
   if (fs.existsSync(bp)) fs.copyFileSync(bp, path.join(dst, 'blog', b));
+}
+
+// Copy pillar pages
+fs.mkdirSync(path.join(dst, 'pillar'), { recursive: true });
+const pillarDir = path.join(src, 'pillar');
+if (fs.existsSync(pillarDir)) {
+  const pillarFiles = fs.readdirSync(pillarDir).filter(f => f.endsWith('.html'));
+  for (const p of pillarFiles) {
+    const pp = path.join(pillarDir, p);
+    if (fs.existsSync(pp)) fs.copyFileSync(pp, path.join(dst, 'pillar', p));
+  }
 }
 
 // Copy tools listing page
@@ -61,6 +71,21 @@ const toolsIndex = path.join(src, 'tools', 'index.html');
 if (fs.existsSync(toolsIndex)) fs.copyFileSync(toolsIndex, path.join(dst, 'tools', 'index.html'));
 const smartLab = path.join(src, 'tools', 'smart-text-lab.html');
 if (fs.existsSync(smartLab)) fs.copyFileSync(smartLab, path.join(dst, 'tools', 'smart-text-lab.html'));
+
+// Copy author pages
+fs.mkdirSync(path.join(dst, 'authors'), { recursive: true });
+const authorDir = path.join(src, 'authors');
+if (fs.existsSync(authorDir)) {
+  const authorFiles = fs.readdirSync(authorDir).filter(f => f.endsWith('.html'));
+  for (const a of authorFiles) {
+    const ap = path.join(authorDir, a);
+    if (fs.existsSync(ap)) fs.copyFileSync(ap, path.join(dst, 'authors', a));
+  }
+}
+
+// Copy editorial policy
+const editorialPolicy = path.join(src, 'editorial-policy.html');
+if (fs.existsSync(editorialPolicy)) fs.copyFileSync(editorialPolicy, path.join(dst, 'editorial-policy.html'));
 
 console.log('Static files copied to public/');
 

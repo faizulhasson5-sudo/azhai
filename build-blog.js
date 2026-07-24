@@ -259,7 +259,7 @@ posts.forEach(post => {
 // --- Generate blog index.html with server-side rendered grid ---
 const blogIndexPath = path.join(__dirname, 'public', 'blog', 'index.html');
 const blogIndexSrc = path.join(__dirname, 'blog', 'index.html');
-let blogIndexHtml = fs.existsSync(blogIndexPath) ? fs.readFileSync(blogIndexPath, 'utf8') : fs.readFileSync(blogIndexSrc, 'utf8');
+let blogIndexHtml = fs.readFileSync(blogIndexSrc, 'utf8');
 
 // Extract unique categories from posts
 const blogCategories = ['All Posts'];

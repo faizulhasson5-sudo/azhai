@@ -14,7 +14,6 @@ const categories = [
     name: 'Text Analysis Tools',
     title: 'Best Free Text Analysis Tools Online in 2026',
     desc: 'Count words, characters, sentences, paragraphs, and analyze text frequency with these free online tools. No sign-up required.',
-    icon: '📊',
     tools: [
       {id:'word-counter',name:'Word Counter',desc:'Count words, characters, lines, sentences and paragraphs in any text.',use:'Blog posts, essays, social media'},
       {id:'char-counter',name:'Character Counter',desc:'Count characters with and without spaces. Check byte size.',use:'Twitter, SMS, form limits'},
@@ -36,7 +35,6 @@ const categories = [
     name: 'SEO Tools',
     title: 'Best Free SEO Tools for Small Businesses in 2026',
     desc: 'Generate meta tags, check keyword density, create robots.txt files, build sitemaps, and optimize your website for search engines — all free.',
-    icon: '🔍',
     tools: [
       {id:'meta-gen',name:'Meta Tag Generator',desc:'Generate complete HTML meta tags including OG and Twitter cards.',use:'On-page SEO'},
       {id:'meta-desc-gen',name:'Meta Description Generator',desc:'Generate SEO-optimized meta descriptions from content.',use:'SERP optimization'},
@@ -45,7 +43,10 @@ const categories = [
       {id:'robots-txt',name:'Robots.txt Generator',desc:'Generate robots.txt with crawl directives and sitemap reference.',use:'Crawl optimization'},
       {id:'sitemap-gen',name:'Sitemap Generator',desc:'Generate XML sitemaps for search engine indexing.',use:'Indexation'},
       {id:'hreflang-gen',name:'Hreflang Tag Generator',desc:'Generate hreflang tags for multilingual websites.',use:'International SEO'},
-      {id:'slug-generator',name:'URL Slug Generator',desc:'Convert titles to URL-friendly slugs for SEO.',use:'URL optimization'}
+      {id:'slug-generator',name:'URL Slug Generator',desc:'Convert titles to URL-friendly slugs for SEO.',use:'URL optimization'},
+      {id:'ai-content-detector',name:'AI Content Detector',desc:'Detect whether text is AI-generated using linguistic pattern analysis.',use:'Content quality'},
+      {id:'ai-humanizer',name:'AI Humanizer',desc:'Rewrite AI text to sound natural with contractions and casual tone.',use:'Content optimization'},
+      {id:'ai-prompt-gen',name:'AI Prompt Generator',desc:'Generate optimized prompts for ChatGPT, Claude, and Gemini. 60+ templates.',use:'AI prompt engineering'}
     ],
     faqs: [
       {q:'What are the most important SEO tools?',a:'The most essential SEO tools are: Meta Tag Generator (for title and description tags), Keyword Density Checker (for on-page optimization), Robots.txt Generator (for crawl control), and Sitemap Generator (for indexation). Our free tools cover all of these.'},
@@ -59,7 +60,6 @@ const categories = [
     name: 'Text Formatting Tools',
     title: 'Best Free Text Formatting & Editing Tools Online',
     desc: 'Convert text case, remove extra spaces, find and replace text, sort lines, and format text instantly with these free tools.',
-    icon: '✏️',
     tools: [
       {id:'case-converter',name:'Case Converter',desc:'Convert text between UPPERCASE, lowercase, Title Case, Sentence case.',use:'Content formatting'},
       {id:'remove-spaces',name:'Remove Spaces',desc:'Remove leading, trailing, and extra whitespace from text.',use:'Text cleanup'},
@@ -82,7 +82,6 @@ const categories = [
     name: 'Developer Tools',
     title: 'Best Free Developer & Code Tools Online',
     desc: 'Format JSON, validate XML, test regex, preview HTML, edit Markdown, and more with these free online developer tools.',
-    icon: '💻',
     tools: [
       {id:'json-formatter',name:'JSON Formatter',desc:'Beautify and validate JSON with customizable indentation.',use:'Data formatting'},
       {id:'json-validator',name:'JSON Validator',desc:'Validate JSON syntax and structure instantly.',use:'Error detection'},
@@ -105,7 +104,6 @@ const categories = [
     name: 'Encoding & Decoding Tools',
     title: 'Best Free Encoding & Decoding Tools Online',
     desc: 'Encode and decode URLs, HTML entities, and Base64 strings with these free online tools. Quick, accurate, no sign-up.',
-    icon: '🔐',
     tools: [
       {id:'url-encoder',name:'URL Encoder',desc:'Encode special characters for URLs instantly.',use:'URL preparation'},
       {id:'url-decoder',name:'URL Decoder',desc:'Decode percent-encoded URL strings back to readable text.',use:'URL reading'},
@@ -127,7 +125,6 @@ const categories = [
     name: 'Schema & Structured Data Tools',
     title: 'Best Free Schema Markup & Structured Data Generators',
     desc: 'Generate JSON-LD structured data for Articles, FAQs, Breadcrumbs, and more. Get rich results in Google search.',
-    icon: '📋',
     tools: [
       {id:'schema-gen',name:'Schema Markup Generator',desc:'Generate JSON-LD structured data for multiple types.',use:'Rich results'},
       {id:'faq-schema-gen',name:'FAQ Schema Generator',desc:'Generate FAQ structured data for Google rich results.',use:'FAQ rich results'},
@@ -145,12 +142,17 @@ const categories = [
 
 function generateCategoryPage(cat) {
   const url = BASE + '/tools/' + cat.id + '.html';
-  const toolLinks = cat.tools.map(t =>
-    '<a href="/tools/' + t.id + '.html" class="category-tool-link" style="display:flex;flex-direction:column;padding:20px;background:var(--bg-2);border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--text);transition:border-color .2s" onmouseover="this.style.borderColor=\'var(--accent)\'" onmouseout="this.style.borderColor=\'var(--border)\'">' +
+  const trendingIds = ['ai-content-detector','ai-humanizer','ai-prompt-gen'];
+  const toolLinks = cat.tools.map(t => {
+    const isTrending = trendingIds.includes(t.id);
+    const trendingBadge = isTrending ? '<span style="position:absolute;top:12px;right:12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:3px 8px;border-radius:4px;background:var(--accent);color:#fff">Trending</span>' : '';
+    const borderStyle = isTrending ? 'border-color:var(--accent);background:linear-gradient(135deg,var(--bg-2) 0%,var(--accent-light) 100%)' : '';
+    return '<a href="/tools/' + t.id + '.html" class="category-tool-link" style="position:relative;display:flex;flex-direction:column;padding:20px;background:var(--bg-2);border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--text);transition:border-color .2s;' + borderStyle + '" onmouseover="this.style.borderColor=\'var(--accent)\'" onmouseout="this.style.borderColor=\'' + (isTrending ? 'var(--accent)' : 'var(--border)') + '\'">' +
+    trendingBadge +
     '<div style="font-weight:600;font-size:1rem;margin-bottom:6px;color:var(--text)">' + esc(t.name) + '</div>' +
     '<div style="font-size:.85rem;color:var(--text-2);margin-bottom:8px;line-height:1.5">' + esc(t.desc) + '</div>' +
-    '<div style="font-size:.75rem;color:var(--accent);margin-top:auto">Use case: ' + esc(t.use) + ' &rarr;</div></a>'
-  ).join('\n');
+    '<div style="font-size:.75rem;color:var(--accent);margin-top:auto">Use case: ' + esc(t.use) + ' &rarr;</div></a>';
+  }).join('\n');
 
   const faqItems = cat.faqs.map(f =>
     '<details class="faq-item" style="margin-bottom:12px"><summary style="cursor:pointer;font-weight:600;font-size:.95rem;padding:12px 0;color:var(--text)">' + esc(f.q) + ' <span style="color:var(--text-3)">&#9660;</span></summary><div style="padding:8px 0 16px;color:var(--text-2);line-height:1.7;font-size:.9rem">' + esc(f.a) + '</div></details>'
@@ -189,7 +191,7 @@ function generateCategoryPage(cat) {
 <title>${esc(cat.title)}</title>
 <meta name="description" content="${esc(cat.desc)}">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="${url}">
+<link rel="canonical" href="${url}">\n  <link rel="manifest" href="/manifest.json">\n  <meta name="theme-color" content="#2563eb">
 <link rel="alternate" hreflang="en" href="${url}">
 <link rel="alternate" hreflang="en-US" href="${url}">
 <link rel="alternate" hreflang="en-GB" href="${url}">
@@ -205,32 +207,49 @@ function generateCategoryPage(cat) {
 <meta name="twitter:description" content="${esc(cat.desc)}">
 <meta name="twitter:image" content="${BASE}/og-image.png">
 <meta name="theme-color" content="#0a0a0a">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="alternate" type="application/rss+xml" title="KwordSEO Blog" href="/blog/feed.xml">
 <link rel="stylesheet" href="/css/style.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KDTPKT4T');</script>
+<!-- End Google Tag Manager -->
 <script>(function(){try{var t=localStorage.getItem('attTheme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <script type="application/ld+json">${breadcrumbSchema}</script>
 <script type="application/ld+json">${faqSchema}</script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDTPKT4T"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <header class="site-header">
 <div class="header-inner">
-<a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>
-<nav class="nav" aria-label="Main navigation">
+<a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>\n\n<nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link active">Tools</a>
-<a href="/tools/smart-text-lab.html" class="nav-link">Smart Lab</a>
+<a href="/courses/" class="nav-link">Courses</a>
+<a href="/books/" class="nav-link">Books</a>
 <a href="/blog/" class="nav-link">Blog</a>
-<button type="button" class="theme-btn" onclick="App.toggleTheme()" aria-label="Toggle theme">🌙</button>
 </nav>
-<button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" onclick="App.toggleMenu()">☰</button>
+<a href="/blog/" class="nav-link">Blog</a>
+</nav>
+<div class="header-actions">
+<button type="button" class="theme-toggle" id="themeToggle" onclick="App.toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode"><span class="track"></span><span class="thumb"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
+<button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" onclick="App.toggleMenu()"><div class="hamburger"><span></span><span></span><span></span></div></button>
 </div>
+</div>
+<div class="nav-backdrop" id="navBackdrop" onclick="App.closeMenu()"></div>
 </header>
+
 <main id="main-content">
 <div class="container" style="max-width:900px;margin:0 auto;padding:32px 20px">
 <div class="breadcrumb" style="margin-bottom:24px;font-size:.85rem"><a href="/" style="color:var(--text-3);text-decoration:none">Home</a> <span style="color:var(--text-3)">/</span> <a href="/tools/" style="color:var(--text-3);text-decoration:none">Tools</a> <span style="color:var(--text-3)">/</span> <span style="color:var(--text)">${esc(cat.name)}</span></div>
-<h1 style="font-size:2.2rem;font-weight:800;margin-bottom:12px;line-height:1.2">${cat.icon} ${esc(cat.title)}</h1>
+<h1 style="font-size:2.2rem;font-weight:800;margin-bottom:12px;line-height:1.2">${esc(cat.title)}</h1>
 <p style="font-size:1.1rem;color:var(--text-2);line-height:1.7;margin-bottom:40px;max-width:720px">${esc(cat.desc)}</p>
 
 <h2 style="font-size:1.3rem;font-weight:700;margin-bottom:20px;color:var(--text)">${esc(cat.name)} (${cat.tools.length} Tools)</h2>
@@ -255,23 +274,75 @@ ${relatedLinks}
 </section>
 </div>
 </main>
-<footer class="site-footer">
-<div class="container">
-<div class="footer-grid">
-<div class="footer-col">
-<a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>
-<p style="font-size:13px;color:var(--text-3)">45+ free online text tools. No sign-up needed. Your data stays in your browser.</p>
-</div>
-<div class="footer-col"><p class="footer-heading">Tools</p><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a><a href="/tools/robots-txt.html">Robots.txt</a></div>
-<div class="footer-col"><p class="footer-heading">SEO</p><a href="/tools/meta-gen.html">Meta Tags</a><a href="/tools/keyword-density.html">Keyword Density</a><a href="/tools/slug-generator.html">Slug Generator</a><a href="/tools/sitemap-gen.html">Sitemap</a></div>
-<div class="footer-col"><p class="footer-heading">Company</p><a href="/about.html">About</a><a href="/blog/">Blog</a><a href="/contact.html">Contact</a><a href="/advertise.html">Advertise</a></div>
-<div class="footer-col"><p class="footer-heading">Legal</p><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a><a href="/cookie-policy.html">Cookie Policy</a></div>
-</div>
-<div class="footer-bottom"><p>&copy; 2026 KwordSEO. All rights reserved.</p></div>
-</div>
-</footer>
+<footer class=\"site-footer\">
+    <div class=\"container\">
+      <div class=\"footer-top\">
+        <div class=\"footer-top-text\">
+          <span class=\"footer-top-label\">Newsletter</span>
+          <p class=\"footer-top-title\">Get new tools & SEO tips</p>
+          <p class=\"footer-top-sub\">No spam. Unsubscribe anytime.</p>
+        </div>
+        <form class=\"footer-top-form\" id=\"newsletterForm\" action=\"/api/subscribe\" method=\"POST\">
+          <input type=\"email\" name=\"email\" placeholder=\"your@email.com\" required aria-label=\"Email address\">
+          <button type=\"submit\">Subscribe</button>
+        </form>
+      </div>
+      <hr class=\"footer-divider\">
+      <div class=\"footer-grid\">
+        <div class=\"footer-brand\">
+          <a href=\"/\" class=\"site-logo\" style=\"color:inherit\"><svg class=\"logo-icon\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#2563eb\"/><path d=\"M9 8v16\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10-8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10 8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg><span class=\"logo-text\">Kword<span class=\"logo-seo\">SEO</span></span></a>
+          <p class=\"footer-brand-desc\">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser — your data never leaves your device.</p>
+          <div class=\"footer-social\">
+            <a href=\"https://twitter.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"Twitter\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z\"/></svg></a>
+            <a href=\"https://github.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"GitHub\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22\"/></svg></a>
+            <a href=\"https://linkedin.com/company/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"LinkedIn\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z\"/><rect x=\"2\" y=\"9\" width=\"4\" height=\"12\"/><circle cx=\"4\" cy=\"4\" r=\"2\"/></svg></a>
+          </div>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">Tools</p>
+          <a href=\"/tools/word-counter.html\">Word Counter</a>
+          <a href=\"/tools/case-converter.html\">Case Converter</a>
+          <a href=\"/tools/json-formatter.html\">JSON Formatter</a>
+          <a href=\"/tools/robots-txt.html\">Robots.txt</a>
+          <a href=\"/tools/\">Browse All 45+ Tools</a>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">SEO</p>
+          <a href=\"/tools/meta-gen.html\">Meta Tags</a>
+          <a href=\"/tools/keyword-density.html\">Keyword Density</a>
+          <a href=\"/tools/slug-generator.html\">Slug Generator</a>
+          <a href=\"/tools/sitemap-gen.html\">Sitemap Generator</a>
+          <a href=\"/tools/schema-gen.html\">Schema Markup</a>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">Company</p>
+          <a href=\"/about.html\">About Us</a>
+          <a href=\"/blog/\">Blog</a>
+          <a href=\"/contact.html\">Contact</a>
+          <a href=\"/advertise.html\">Advertise</a>
+          <a href=\"/authors/sarah-mitchell.html\">Our Team</a>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">Legal</p>
+          <a href=\"/privacy-policy.html\">Privacy Policy</a>
+          <a href=\"/terms.html\">Terms of Service</a>
+          <a href=\"/cookie-policy.html\">Cookie Policy</a>
+          <a href=\"/editorial-policy.html\">Editorial Policy</a>
+        </div>
+      </div>
+      <hr class=\"footer-divider\">
+      <div class=\"footer-bottom\">
+        <p>&copy; 2026 KwordSEO. All rights reserved.</p>
+        <div class=\"footer-bottom-links\">
+          <a href=\"/privacy-policy.html\">Privacy</a>
+          <a href=\"/terms.html\">Terms</a>
+          <a href=\"/cookie-policy.html\">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent">
-<p>🍪 We use cookies for analytics &amp; preferences. <a href="/cookie-policy.html">Learn more</a></p>
+<p> We use cookies for analytics &amp; preferences. <a href="/cookie-policy.html">Learn more</a></p>
 <div class="btn-group">
 <button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button>
 <button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button>
@@ -279,7 +350,7 @@ ${relatedLinks}
 </div>
 <div class="toast" id="appToast"></div>
 <script src="/js/app.js"></script>
-<script>if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(reg){reg.unregister();});});}</script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
 </body>
 </html>`;
 }
@@ -294,7 +365,7 @@ function generateDirectoryPage() {
     return `
     <div style="margin-bottom:48px">
       <h2 style="font-size:1.3rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px">
-        <a href="/tools/${cat.id}.html" style="color:var(--text);text-decoration:none;border-bottom:2px solid transparent;transition:border-color .2s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='transparent'">${cat.icon} ${esc(cat.name)}</a>
+        <a href="/tools/${cat.id}.html" style="color:var(--text);text-decoration:none;border-bottom:2px solid transparent;transition:border-color .2s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='transparent'">${esc(cat.name)}</a>
         <span style="font-size:.75rem;font-weight:400;color:var(--text-3);background:var(--bg-2);padding:2px 8px;border-radius:4px">${cat.tools.length} tools</span>
       </h2>
       <div style="overflow-x:auto">
@@ -362,7 +433,7 @@ function generateDirectoryPage() {
 <title>Complete Free Text Tools Directory - ${totalTools}+ Online Tools | KwordSEO</title>
 <meta name="description" content="Browse our complete directory of ${totalTools}+ free online text tools. Text analysis, SEO, formatting, developer tools, encoding, and schema generators. No sign-up.">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="${url}">
+<link rel="canonical" href="${url}">\n  <link rel="manifest" href="/manifest.json">\n  <meta name="theme-color" content="#2563eb">
 <link rel="alternate" hreflang="en" href="${url}">
 <link rel="alternate" hreflang="en-US" href="${url}">
 <link rel="alternate" hreflang="en-GB" href="${url}">
@@ -378,29 +449,44 @@ function generateDirectoryPage() {
 <meta name="twitter:description" content="Browse ${totalTools}+ free online text tools across 6 categories.">
 <meta name="twitter:image" content="${BASE}/og-image.png">
 <meta name="theme-color" content="#0a0a0a">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="alternate" type="application/rss+xml" title="KwordSEO Blog" href="/blog/feed.xml">
 <link rel="stylesheet" href="/css/style.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KDTPKT4T');</script>
+<!-- End Google Tag Manager -->
 <script>(function(){try{var t=localStorage.getItem('attTheme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <script type="application/ld+json">${siteNavSchema}</script>
 <script type="application/ld+json">${breadcrumbSchema}</script>
 <script type="application/ld+json">${faqSchema}</script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDTPKT4T"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <header class="site-header">
 <div class="header-inner">
-<a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>
-<nav class="nav" aria-label="Main navigation">
+<a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>\n\n<nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link active">Tools</a>
-<a href="/tools/smart-text-lab.html" class="nav-link">Smart Lab</a>
+<a href="/courses/" class="nav-link">Courses</a>
+<a href="/books/" class="nav-link">Books</a>
 <a href="/blog/" class="nav-link">Blog</a>
-<button type="button" class="theme-btn" onclick="App.toggleTheme()" aria-label="Toggle theme">🌙</button>
 </nav>
-<button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" onclick="App.toggleMenu()">☰</button>
+<div class="header-actions">
+<button type="button" class="theme-toggle" id="themeToggle" onclick="App.toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode"><span class="track"></span><span class="thumb"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
+<button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" onclick="App.toggleMenu()"><div class="hamburger"><span></span><span></span><span></span></div></button>
 </div>
+</div>
+<div class="nav-backdrop" id="navBackdrop" onclick="App.closeMenu()"></div>
 </header>
+
 <main id="main-content">
 <div class="container" style="max-width:900px;margin:0 auto;padding:32px 20px">
 <div class="breadcrumb" style="margin-bottom:24px;font-size:.85rem"><a href="/" style="color:var(--text-3);text-decoration:none">Home</a> <span style="color:var(--text-3)">/</span> <a href="/tools/" style="color:var(--text-3);text-decoration:none">Tools</a> <span style="color:var(--text-3)">/</span> <span style="color:var(--text)">Directory</span></div>
@@ -434,23 +520,75 @@ ${allToolLinks}
 </section>
 </div>
 </main>
-<footer class="site-footer">
-<div class="container">
-<div class="footer-grid">
-<div class="footer-col">
-<a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>
-<p style="font-size:13px;color:var(--text-3)">45+ free online text tools. No sign-up needed. Your data stays in your browser.</p>
-</div>
-<div class="footer-col"><p class="footer-heading">Tools</p><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a><a href="/tools/robots-txt.html">Robots.txt</a></div>
-<div class="footer-col"><p class="footer-heading">SEO</p><a href="/tools/meta-gen.html">Meta Tags</a><a href="/tools/keyword-density.html">Keyword Density</a><a href="/tools/slug-generator.html">Slug Generator</a><a href="/tools/sitemap-gen.html">Sitemap</a></div>
-<div class="footer-col"><p class="footer-heading">Company</p><a href="/about.html">About</a><a href="/blog/">Blog</a><a href="/contact.html">Contact</a><a href="/advertise.html">Advertise</a></div>
-<div class="footer-col"><p class="footer-heading">Legal</p><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a><a href="/cookie-policy.html">Cookie Policy</a></div>
-</div>
-<div class="footer-bottom"><p>&copy; 2026 KwordSEO. All rights reserved.</p></div>
-</div>
-</footer>
+<footer class=\"site-footer\">
+    <div class=\"container\">
+      <div class=\"footer-top\">
+        <div class=\"footer-top-text\">
+          <span class=\"footer-top-label\">Newsletter</span>
+          <p class=\"footer-top-title\">Get new tools & SEO tips</p>
+          <p class=\"footer-top-sub\">No spam. Unsubscribe anytime.</p>
+        </div>
+        <form class=\"footer-top-form\" id=\"newsletterForm\" action=\"/api/subscribe\" method=\"POST\">
+          <input type=\"email\" name=\"email\" placeholder=\"your@email.com\" required aria-label=\"Email address\">
+          <button type=\"submit\">Subscribe</button>
+        </form>
+      </div>
+      <hr class=\"footer-divider\">
+      <div class=\"footer-grid\">
+        <div class=\"footer-brand\">
+          <a href=\"/\" class=\"site-logo\" style=\"color:inherit\"><svg class=\"logo-icon\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#2563eb\"/><path d=\"M9 8v16\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10-8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10 8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg><span class=\"logo-text\">Kword<span class=\"logo-seo\">SEO</span></span></a>
+          <p class=\"footer-brand-desc\">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser — your data never leaves your device.</p>
+          <div class=\"footer-social\">
+            <a href=\"https://twitter.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"Twitter\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z\"/></svg></a>
+            <a href=\"https://github.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"GitHub\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22\"/></svg></a>
+            <a href=\"https://linkedin.com/company/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"LinkedIn\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z\"/><rect x=\"2\" y=\"9\" width=\"4\" height=\"12\"/><circle cx=\"4\" cy=\"4\" r=\"2\"/></svg></a>
+          </div>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">Tools</p>
+          <a href=\"/tools/word-counter.html\">Word Counter</a>
+          <a href=\"/tools/case-converter.html\">Case Converter</a>
+          <a href=\"/tools/json-formatter.html\">JSON Formatter</a>
+          <a href=\"/tools/robots-txt.html\">Robots.txt</a>
+          <a href=\"/tools/\">Browse All 45+ Tools</a>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">SEO</p>
+          <a href=\"/tools/meta-gen.html\">Meta Tags</a>
+          <a href=\"/tools/keyword-density.html\">Keyword Density</a>
+          <a href=\"/tools/slug-generator.html\">Slug Generator</a>
+          <a href=\"/tools/sitemap-gen.html\">Sitemap Generator</a>
+          <a href=\"/tools/schema-gen.html\">Schema Markup</a>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">Company</p>
+          <a href=\"/about.html\">About Us</a>
+          <a href=\"/blog/\">Blog</a>
+          <a href=\"/contact.html\">Contact</a>
+          <a href=\"/advertise.html\">Advertise</a>
+          <a href=\"/authors/sarah-mitchell.html\">Our Team</a>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">Legal</p>
+          <a href=\"/privacy-policy.html\">Privacy Policy</a>
+          <a href=\"/terms.html\">Terms of Service</a>
+          <a href=\"/cookie-policy.html\">Cookie Policy</a>
+          <a href=\"/editorial-policy.html\">Editorial Policy</a>
+        </div>
+      </div>
+      <hr class=\"footer-divider\">
+      <div class=\"footer-bottom\">
+        <p>&copy; 2026 KwordSEO. All rights reserved.</p>
+        <div class=\"footer-bottom-links\">
+          <a href=\"/privacy-policy.html\">Privacy</a>
+          <a href=\"/terms.html\">Terms</a>
+          <a href=\"/cookie-policy.html\">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent">
-<p>🍪 We use cookies for analytics &amp; preferences. <a href="/cookie-policy.html">Learn more</a></p>
+<p> We use cookies for analytics &amp; preferences. <a href="/cookie-policy.html">Learn more</a></p>
 <div class="btn-group">
 <button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button>
 <button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button>
@@ -458,7 +596,7 @@ ${allToolLinks}
 </div>
 <div class="toast" id="appToast"></div>
 <script src="/js/app.js"></script>
-<script>if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(reg){reg.unregister();});});}</script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
 </body>
 </html>`;
 }

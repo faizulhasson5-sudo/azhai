@@ -9,14 +9,14 @@ fs.mkdirSync(path.join(outDir, 'category'), { recursive: true });
 function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
 
 const categories = [
-  {id:'seo-fundamentals',name:'SEO Fundamentals',icon:'🎯',desc:'Core SEO concepts every marketer must know'},
-  {id:'technical-seo',name:'Technical SEO',icon:'⚙️',desc:'Server-side and crawlability concepts'},
-  {id:'on-page-seo',name:'On-Page SEO',icon:'📝',desc:'Content and HTML optimization techniques'},
-  {id:'off-page-seo',name:'Off-Page SEO',icon:'🔗',desc:'External ranking factors and link building'},
-  {id:'keywords',name:'Keywords',icon:'🔑',desc:'Keyword research and targeting strategies'},
-  {id:'content-ai',name:'Content & AI',icon:'🤖',desc:'Content quality, AI search, and E-E-A-T'},
-  {id:'analytics',name:'Analytics & Metrics',icon:'📊',desc:'Measuring and tracking SEO performance'},
-  {id:'tools-technology',name:'Tools & Technology',icon:'🛠️',desc:'SEO tools, schemas, and web technologies'}
+  {id:'seo-fundamentals',name:'SEO Fundamentals',desc:'Core SEO concepts every marketer must know'},
+  {id:'technical-seo',name:'Technical SEO',desc:'Server-side and crawlability concepts'},
+  {id:'on-page-seo',name:'On-Page SEO',desc:'Content and HTML optimization techniques'},
+  {id:'off-page-seo',name:'Off-Page SEO',desc:'External ranking factors and link building'},
+  {id:'keywords',name:'Keywords',desc:'Keyword research and targeting strategies'},
+  {id:'content-ai',name:'Content & AI',desc:'Content quality, AI search, and E-E-A-T'},
+  {id:'analytics',name:'Analytics & Metrics',desc:'Measuring and tracking SEO performance'},
+  {id:'tools-technology',name:'Tools & Technology',desc:'SEO tools, schemas, and web technologies'}
 ];
 
 const terms = [
@@ -79,7 +79,7 @@ const terms = [
    related:['robots-txt','crawlability','indexing','google-search-console','crawl-budget'],
    tools:['sitemap-gen','robots-txt']},
   {slug:'canonical-url',term:'Canonical URL',cat:'technical-seo',
-   def:'A canonical URL is the preferred version of a webpage when duplicate or similar content exists at multiple URLs. The canonical tag (<link rel="canonical">) tells search engines which URL to index and rank.',
+   def:'A canonical URL is the preferred version of a webpage when duplicate or similar content exists at multiple URLs. The canonical tag (rel="canonical") tells search engines which URL to index and rank.',
    example:'If your page is accessible at both /tools/word-counter and /tools/word-counter.html, you should set a canonical URL to prevent duplicate content issues. Our generator creates proper canonical tags.',
    related:['duplicate-content','hreflang','meta-tags','technical-seo','indexing'],
    tools:['canonical-gen','hreflang-gen']},
@@ -141,7 +141,7 @@ const terms = [
    related:['on-page-seo','content-structure','accessibility','heading-hierarchy','seo'],
    tools:['markdown-editor','html-previewer']},
   {slug:'keyword-density',term:'Keyword Density',cat:'keywords',
-   def:'Keyword density is the percentage of times a target keyword appears in content relative to the total word count. The ideal density is 1-2%. Over 3% is considered keyword stuffing and can trigger Google penalties.',
+   def:'Keyword density is the percentage of times a target keyword appears in content relative to the total word count. The ideal density is 1-2%. Over 3% is considered keyword stuffing and can trigger Google penalties. <a href="/blog/what-is-keyword-density/">Learn more in our complete guide to keyword density.</a>',
    example:'In a 1,000-word article, using your target keyword 10-15 times gives you a 1-1.5% density — ideal for SEO. Our Keyword Density Checker calculates this instantly.',
    related:['keyword-stuffing','keyword-research','on-page-seo','content-optimization','lsi-keywords'],
    tools:['keyword-density','word-counter','keyword-extract']},
@@ -396,7 +396,7 @@ function generateTermPage(term) {
 
   const toolLinks = (term.tools || []).map(tid => {
     const names = {'word-counter':'Word Counter','char-counter':'Character Counter','keyword-density':'Keyword Density Checker','keyword-extract':'Keyword Extractor','meta-gen':'Meta Tag Generator','meta-desc-gen':'Meta Description Generator','og-generator':'OG Tag Generator','canonical-gen':'Canonical URL Generator','robots-txt':'Robots.txt Generator','sitemap-gen':'Sitemap Generator','hreflang-gen':'Hreflang Generator','schema-gen':'Schema Markup Generator','faq-schema-gen':'FAQ Schema Generator','article-schema-gen':'Article Schema Generator','breadcrumb-schema-gen':'Breadcrumb Schema Generator','slug-generator':'URL Slug Generator','markdown-editor':'Markdown Editor','html-previewer':'HTML Previewer','url-encoder':'URL Encoder','url-decoder':'URL Decoder','html-encoder':'HTML Encoder'};
-    return '<a href="/tools/' + tid + '.html" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:var(--accent);color:#fff;border-radius:6px;text-decoration:none;font-size:.85rem;font-weight:500;transition:opacity .2s" onmouseover="this.style.opacity=\'0.85\'" onmouseout="this.style.opacity=\'1\'">⚡ ' + esc(names[tid] || tid) + '</a>';
+    return '<a href="/tools/' + tid + '.html" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:var(--accent);color:#fff;border-radius:6px;text-decoration:none;font-size:.85rem;font-weight:500;transition:opacity .2s" onmouseover="this.style.opacity=\'0.85\'" onmouseout="this.style.opacity=\'1\'">' + esc(names[tid] || tid) + '</a>';
   }).join(' ');
 
   const faqSchema = JSON.stringify({
@@ -438,7 +438,7 @@ function generateTermPage(term) {
 <title>What is ${esc(term.term.split('(')[0].trim())}? ${esc(catInfo.name)} Definition | SEO Glossary</title>
 <meta name="description" content="${esc(term.def.substring(0,155))}...">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="${url}">
+<link rel="canonical" href="${url}">\n  <link rel="manifest" href="/manifest.json">\n  <meta name="theme-color" content="#2563eb">
 <link rel="alternate" hreflang="en" href="${url}">
 <link rel="alternate" hreflang="en-US" href="${url}">
 <link rel="alternate" hreflang="en-GB" href="${url}">
@@ -454,33 +454,48 @@ function generateTermPage(term) {
 <meta name="twitter:description" content="${esc(term.def.substring(0,155))}">
 <meta name="twitter:image" content="${BASE}/og-image.png">
 <meta name="theme-color" content="#0a0a0a">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="stylesheet" href="/css/style.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KDTPKT4T');</script>
+<!-- End Google Tag Manager -->
 <script>(function(){try{var t=localStorage.getItem('attTheme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <script type="application/ld+json">${breadcrumbSchema}</script>
 <script type="application/ld+json">${faqSchema}</script>
 <script type="application/ld+json">${defSchema}</script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDTPKT4T"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <header class="site-header">
 <div class="header-inner">
-<a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>
-<nav class="nav" aria-label="Main navigation">
+<a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>\n\n<nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link">Tools</a>
-<a href="/glossary/" class="nav-link active">Glossary</a>
+<a href="/courses/" class="nav-link">Courses</a>
+<a href="/books/" class="nav-link">Books</a>
 <a href="/blog/" class="nav-link">Blog</a>
-<button type="button" class="theme-btn" onclick="App.toggleTheme()" aria-label="Toggle theme">🌙</button>
 </nav>
-<button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" onclick="App.toggleMenu()">☰</button>
+<div class="header-actions">
+<button type="button" class="theme-toggle" id="themeToggle" onclick="App.toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode"><span class="track"></span><span class="thumb"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
+<button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" onclick="App.toggleMenu()"><div class="hamburger"><span></span><span></span><span></span></div></button>
 </div>
+</div>
+<div class="nav-backdrop" id="navBackdrop" onclick="App.closeMenu()"></div>
 </header>
+
 <main id="main-content">
 <div class="container" style="max-width:800px;margin:0 auto;padding:32px 20px">
 <div class="breadcrumb" style="margin-bottom:24px;font-size:.85rem"><a href="/" style="color:var(--text-3);text-decoration:none">Home</a> <span style="color:var(--text-3)">/</span> <a href="/glossary/" style="color:var(--text-3);text-decoration:none">Glossary</a> <span style="color:var(--text-3)">/</span> <span style="color:var(--text)">${esc(term.term.split('(')[0].trim())}</span></div>
 
-<div style="display:inline-block;padding:6px 14px;background:var(--bg-2);border:1px solid var(--border);border-radius:20px;font-size:.8rem;color:var(--text-2);margin-bottom:16px">${catInfo.icon} ${esc(catInfo.name)}</div>
+<div style="display:inline-block;padding:6px 14px;background:var(--bg-2);border:1px solid var(--border);border-radius:20px;font-size:.8rem;color:var(--text-2);margin-bottom:16px">${esc(catInfo.name)}</div>
 
 <h1 style="font-size:2rem;font-weight:800;margin-bottom:8px;line-height:1.2">What is ${esc(term.term)}?</h1>
 <p style="font-size:.85rem;color:var(--text-3);margin-bottom:32px">SEO Glossary &middot; ${esc(catInfo.name)}</p>
@@ -510,25 +525,81 @@ ${sameLinks ? '<div style="margin-bottom:48px"><h2 style="font-size:1.1rem;font-
 
 <div style="text-align:center;padding:32px 0;border-top:1px solid var(--border)">
 <p style="color:var(--text-3);font-size:.85rem;margin-bottom:16px">Explore our complete SEO glossary</p>
-<a href="/glossary/" style="display:inline-block;padding:12px 28px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;transition:opacity .2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">📖 Browse All Terms</a>
+<a href="/glossary/" style="display:inline-block;padding:12px 28px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;transition:opacity .2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Browse All Terms</a>
 </div>
 </div>
 </main>
-<footer class="site-footer">
-<div class="container">
-<div class="footer-grid">
-<div class="footer-col"><a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a><p style="font-size:13px;color:var(--text-3)">45+ free online text tools. No sign-up needed.</p></div>
-<div class="footer-col"><p class="footer-heading">Tools</p><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a><a href="/tools/robots-txt.html">Robots.txt</a></div>
-<div class="footer-col"><p class="footer-heading">Resources</p><a href="/glossary/">SEO Glossary</a><a href="/tools/directory.html">Tools Directory</a><a href="/blog/">Blog</a></div>
-<div class="footer-col"><p class="footer-heading">Legal</p><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms</a></div>
-</div>
-<div class="footer-bottom"><p>&copy; 2026 KwordSEO. All rights reserved.</p></div>
-</div>
-</footer>
-<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent"><p>🍪 We use cookies for analytics &amp; preferences. <a href="/cookie-policy.html">Learn more</a></p><div class="btn-group"><button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button><button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button></div></div>
+<footer class=\"site-footer\">
+    <div class=\"container\">
+      <div class=\"footer-top\">
+        <div class=\"footer-top-text\">
+          <span class=\"footer-top-label\">Newsletter</span>
+          <p class=\"footer-top-title\">Get new tools & SEO tips</p>
+          <p class=\"footer-top-sub\">No spam. Unsubscribe anytime.</p>
+        </div>
+        <form class=\"footer-top-form\" id=\"newsletterForm\" action=\"/api/subscribe\" method=\"POST\">
+          <input type=\"email\" name=\"email\" placeholder=\"your@email.com\" required aria-label=\"Email address\">
+          <button type=\"submit\">Subscribe</button>
+        </form>
+      </div>
+      <hr class=\"footer-divider\">
+      <div class=\"footer-grid\">
+        <div class=\"footer-brand\">
+          <a href=\"/\" class=\"site-logo\" style=\"color:inherit\"><svg class=\"logo-icon\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#2563eb\"/><path d=\"M9 8v16\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10-8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10 8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg><span class=\"logo-text\">Kword<span class=\"logo-seo\">SEO</span></span></a>
+          <p class=\"footer-brand-desc\">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser — your data never leaves your device.</p>
+          <div class=\"footer-social\">
+            <a href=\"https://twitter.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"Twitter\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z\"/></svg></a>
+            <a href=\"https://github.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"GitHub\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22\"/></svg></a>
+            <a href=\"https://linkedin.com/company/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"LinkedIn\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z\"/><rect x=\"2\" y=\"9\" width=\"4\" height=\"12\"/><circle cx=\"4\" cy=\"4\" r=\"2\"/></svg></a>
+          </div>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">Tools</p>
+          <a href=\"/tools/word-counter.html\">Word Counter</a>
+          <a href=\"/tools/case-converter.html\">Case Converter</a>
+          <a href=\"/tools/json-formatter.html\">JSON Formatter</a>
+          <a href=\"/tools/robots-txt.html\">Robots.txt</a>
+          <a href=\"/tools/\">Browse All 45+ Tools</a>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">SEO</p>
+          <a href=\"/tools/meta-gen.html\">Meta Tags</a>
+          <a href=\"/tools/keyword-density.html\">Keyword Density</a>
+          <a href=\"/tools/slug-generator.html\">Slug Generator</a>
+          <a href=\"/tools/sitemap-gen.html\">Sitemap Generator</a>
+          <a href=\"/tools/schema-gen.html\">Schema Markup</a>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">Company</p>
+          <a href=\"/about.html\">About Us</a>
+          <a href=\"/blog/\">Blog</a>
+          <a href=\"/contact.html\">Contact</a>
+          <a href=\"/advertise.html\">Advertise</a>
+          <a href=\"/authors/sarah-mitchell.html\">Our Team</a>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">Legal</p>
+          <a href=\"/privacy-policy.html\">Privacy Policy</a>
+          <a href=\"/terms.html\">Terms of Service</a>
+          <a href=\"/cookie-policy.html\">Cookie Policy</a>
+          <a href=\"/editorial-policy.html\">Editorial Policy</a>
+        </div>
+      </div>
+      <hr class=\"footer-divider\">
+      <div class=\"footer-bottom\">
+        <p>&copy; 2026 KwordSEO. All rights reserved.</p>
+        <div class=\"footer-bottom-links\">
+          <a href=\"/privacy-policy.html\">Privacy</a>
+          <a href=\"/terms.html\">Terms</a>
+          <a href=\"/cookie-policy.html\">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent"><p> We use cookies for analytics &amp; preferences. <a href="/cookie-policy.html">Learn more</a></p><div class="btn-group"><button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button><button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button></div></div>
 <div class="toast" id="appToast"></div>
 <script src="/js/app.js"></script>
-<script>if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(reg){reg.unregister();});});}</script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
 </body>
 </html>`;
 }
@@ -545,7 +616,7 @@ function generateCategoryPage(cat) {
 
   const otherCats = categories.filter(c => c.id !== cat.id);
   const catLinks = otherCats.map(c =>
-    '<a href="/glossary/category/' + c.id + '.html" style="display:inline-block;padding:8px 16px;background:var(--bg-2);border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--text);font-size:.85rem;transition:border-color .2s" onmouseover="this.style.borderColor=\'var(--accent)\'" onmouseout="this.style.borderColor=\'var(--border)\'">' + c.icon + ' ' + esc(c.name) + '</a>'
+    '<a href="/glossary/category/' + c.id + '.html" style="display:inline-block;padding:8px 16px;background:var(--bg-2);border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--text);font-size:.85rem;transition:border-color .2s" onmouseover="this.style.borderColor=\'var(--accent)\'" onmouseout="this.style.borderColor=\'var(--border)\'">' + esc(c.name) + '</a>'
   ).join(' ');
 
   const faqSchema = JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -567,7 +638,7 @@ function generateCategoryPage(cat) {
 <title>${esc(cat.name)} Definitions - SEO Glossary | KwordSEO</title>
 <meta name="description" content="${esc(cat.desc)}. Browse ${catTerms.length} ${esc(cat.name).toLowerCase()} definitions with examples and practical applications.">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="${url}">
+<link rel="canonical" href="${url}">\n  <link rel="manifest" href="/manifest.json">\n  <meta name="theme-color" content="#2563eb">
 <link rel="alternate" hreflang="en" href="${url}">
 <link rel="alternate" hreflang="en-US" href="${url}">
 <link rel="alternate" hreflang="en-GB" href="${url}">
@@ -583,32 +654,47 @@ function generateCategoryPage(cat) {
 <meta name="twitter:description" content="${esc(cat.desc)}">
 <meta name="twitter:image" content="${BASE}/og-image.png">
 <meta name="theme-color" content="#0a0a0a">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="stylesheet" href="/css/style.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KDTPKT4T');</script>
+<!-- End Google Tag Manager -->
 <script>(function(){try{var t=localStorage.getItem('attTheme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <script type="application/ld+json">${breadcrumbSchema}</script>
 <script type="application/ld+json">${faqSchema}</script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDTPKT4T"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <header class="site-header">
 <div class="header-inner">
-<a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>
-<nav class="nav" aria-label="Main navigation">
+<a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>\n\n<nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link">Tools</a>
-<a href="/glossary/" class="nav-link active">Glossary</a>
+<a href="/courses/" class="nav-link">Courses</a>
+<a href="/books/" class="nav-link">Books</a>
 <a href="/blog/" class="nav-link">Blog</a>
-<button type="button" class="theme-btn" onclick="App.toggleTheme()" aria-label="Toggle theme">🌙</button>
 </nav>
-<button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" onclick="App.toggleMenu()">☰</button>
+<div class="header-actions">
+<button type="button" class="theme-toggle" id="themeToggle" onclick="App.toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode"><span class="track"></span><span class="thumb"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
+<button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" onclick="App.toggleMenu()"><div class="hamburger"><span></span><span></span><span></span></div></button>
 </div>
+</div>
+<div class="nav-backdrop" id="navBackdrop" onclick="App.closeMenu()"></div>
 </header>
+
 <main id="main-content">
 <div class="container" style="max-width:900px;margin:0 auto;padding:32px 20px">
 <div class="breadcrumb" style="margin-bottom:24px;font-size:.85rem"><a href="/" style="color:var(--text-3);text-decoration:none">Home</a> <span style="color:var(--text-3)">/</span> <a href="/glossary/" style="color:var(--text-3);text-decoration:none">Glossary</a> <span style="color:var(--text-3)">/</span> <span style="color:var(--text)">${esc(cat.name)}</span></div>
 
-<h1 style="font-size:2rem;font-weight:800;margin-bottom:12px;line-height:1.2">${cat.icon} ${esc(cat.name)}</h1>
+<h1 style="font-size:2rem;font-weight:800;margin-bottom:12px;line-height:1.2">${esc(cat.name)}</h1>
 <p style="font-size:1.05rem;color:var(--text-2);line-height:1.7;margin-bottom:12px;max-width:720px">${esc(cat.desc)}</p>
 <p style="font-size:.85rem;color:var(--text-3);margin-bottom:40px">${catTerms.length} terms defined</p>
 
@@ -622,24 +708,81 @@ ${catLinks}
 </div>
 
 <div style="text-align:center;padding:32px 0;border-top:1px solid var(--border)">
-<a href="/glossary/" style="display:inline-block;padding:12px 28px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;transition:opacity .2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">📖 Browse All Terms</a>
+<a href="/glossary/" style="display:inline-block;padding:12px 28px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;transition:opacity .2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Browse All Terms</a>
 </div>
 </div>
 </main>
-<footer class="site-footer">
-<div class="container">
-<div class="footer-grid">
-<div class="footer-col"><a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a><p style="font-size:13px;color:var(--text-3)">45+ free online text tools.</p></div>
-<div class="footer-col"><p class="footer-heading">Tools</p><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a></div>
-<div class="footer-col"><p class="footer-heading">Resources</p><a href="/glossary/">SEO Glossary</a><a href="/tools/directory.html">Tools Directory</a><a href="/blog/">Blog</a></div>
-<div class="footer-col"><p class="footer-heading">Legal</p><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a></div>
-</div>
-<div class="footer-bottom"><p>&copy; 2026 KwordSEO.</p></div>
-</div>
-</footer>
-<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent"><p>🍪 Cookies for analytics.</p><div class="btn-group"><button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button><button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button></div></div>
+<footer class=\"site-footer\">
+    <div class=\"container\">
+      <div class=\"footer-top\">
+        <div class=\"footer-top-text\">
+          <span class=\"footer-top-label\">Newsletter</span>
+          <p class=\"footer-top-title\">Get new tools & SEO tips</p>
+          <p class=\"footer-top-sub\">No spam. Unsubscribe anytime.</p>
+        </div>
+        <form class=\"footer-top-form\" id=\"newsletterForm\" action=\"/api/subscribe\" method=\"POST\">
+          <input type=\"email\" name=\"email\" placeholder=\"your@email.com\" required aria-label=\"Email address\">
+          <button type=\"submit\">Subscribe</button>
+        </form>
+      </div>
+      <hr class=\"footer-divider\">
+      <div class=\"footer-grid\">
+        <div class=\"footer-brand\">
+          <a href=\"/\" class=\"site-logo\" style=\"color:inherit\"><svg class=\"logo-icon\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#2563eb\"/><path d=\"M9 8v16\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10-8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10 8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg><span class=\"logo-text\">Kword<span class=\"logo-seo\">SEO</span></span></a>
+          <p class=\"footer-brand-desc\">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser — your data never leaves your device.</p>
+          <div class=\"footer-social\">
+            <a href=\"https://twitter.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"Twitter\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z\"/></svg></a>
+            <a href=\"https://github.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"GitHub\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22\"/></svg></a>
+            <a href=\"https://linkedin.com/company/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"LinkedIn\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z\"/><rect x=\"2\" y=\"9\" width=\"4\" height=\"12\"/><circle cx=\"4\" cy=\"4\" r=\"2\"/></svg></a>
+          </div>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">Tools</p>
+          <a href=\"/tools/word-counter.html\">Word Counter</a>
+          <a href=\"/tools/case-converter.html\">Case Converter</a>
+          <a href=\"/tools/json-formatter.html\">JSON Formatter</a>
+          <a href=\"/tools/robots-txt.html\">Robots.txt</a>
+          <a href=\"/tools/\">Browse All 45+ Tools</a>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">SEO</p>
+          <a href=\"/tools/meta-gen.html\">Meta Tags</a>
+          <a href=\"/tools/keyword-density.html\">Keyword Density</a>
+          <a href=\"/tools/slug-generator.html\">Slug Generator</a>
+          <a href=\"/tools/sitemap-gen.html\">Sitemap Generator</a>
+          <a href=\"/tools/schema-gen.html\">Schema Markup</a>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">Company</p>
+          <a href=\"/about.html\">About Us</a>
+          <a href=\"/blog/\">Blog</a>
+          <a href=\"/contact.html\">Contact</a>
+          <a href=\"/advertise.html\">Advertise</a>
+          <a href=\"/authors/sarah-mitchell.html\">Our Team</a>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">Legal</p>
+          <a href=\"/privacy-policy.html\">Privacy Policy</a>
+          <a href=\"/terms.html\">Terms of Service</a>
+          <a href=\"/cookie-policy.html\">Cookie Policy</a>
+          <a href=\"/editorial-policy.html\">Editorial Policy</a>
+        </div>
+      </div>
+      <hr class=\"footer-divider\">
+      <div class=\"footer-bottom\">
+        <p>&copy; 2026 KwordSEO. All rights reserved.</p>
+        <div class=\"footer-bottom-links\">
+          <a href=\"/privacy-policy.html\">Privacy</a>
+          <a href=\"/terms.html\">Terms</a>
+          <a href=\"/cookie-policy.html\">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent"><p> Cookies for analytics.</p><div class="btn-group"><button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button><button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button></div></div>
 <div class="toast" id="appToast"></div>
 <script src="/js/app.js"></script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
 </body>
 </html>`;
 }
@@ -655,9 +798,9 @@ function generateHubPage() {
       '<span style="color:var(--text-3);font-size:.8rem">&rarr;</span></a>'
     ).join('\n');
     return `
-    <div style="margin-bottom:40px">
+    <div class="glossary-section" data-category="${esc(cat.name)}" style="margin-bottom:40px">
       <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px">
-        <a href="/glossary/category/${cat.id}.html" style="color:var(--text);text-decoration:none;border-bottom:2px solid transparent;transition:border-color .2s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='transparent'">${cat.icon} ${esc(cat.name)}</a>
+        <a href="/glossary/category/${cat.id}.html" style="color:var(--text);text-decoration:none;border-bottom:2px solid transparent;transition:border-color .2s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='transparent'">${esc(cat.name)}</a>
         <span style="font-size:.75rem;font-weight:400;color:var(--text-3);background:var(--bg-2);padding:2px 8px;border-radius:4px">${catTerms.length} terms</span>
       </h2>
       <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden">${termHtml}</div>
@@ -684,7 +827,7 @@ function generateHubPage() {
 <title>SEO Glossary - ${terms.length}+ Terms Explained | KwordSEO</title>
 <meta name="description" content="Comprehensive SEO glossary with ${terms.length}+ terms explained. What is SEO, SERP, backlink, keyword density? Definitions, examples, and free tools.">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="${url}">
+<link rel="canonical" href="${url}">\n  <link rel="manifest" href="/manifest.json">\n  <meta name="theme-color" content="#2563eb">
 <link rel="alternate" hreflang="en" href="${url}">
 <link rel="alternate" hreflang="en-US" href="${url}">
 <link rel="alternate" hreflang="en-GB" href="${url}">
@@ -700,38 +843,55 @@ function generateHubPage() {
 <meta name="twitter:description" content="Comprehensive SEO glossary. Every term explained with examples.">
 <meta name="twitter:image" content="${BASE}/og-image.png">
 <meta name="theme-color" content="#0a0a0a">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="stylesheet" href="/css/style.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KDTPKT4T');</script>
+<!-- End Google Tag Manager -->
 <script>(function(){try{var t=localStorage.getItem('attTheme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <script type="application/ld+json">${siteNavSchema}</script>
 <script type="application/ld+json">${faqSchema}</script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDTPKT4T"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <header class="site-header">
 <div class="header-inner">
-<a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>
-<nav class="nav" aria-label="Main navigation">
+<a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>\n\n<nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link">Tools</a>
-<a href="/glossary/" class="nav-link active">Glossary</a>
+<a href="/courses/" class="nav-link">Courses</a>
+<a href="/books/" class="nav-link">Books</a>
 <a href="/blog/" class="nav-link">Blog</a>
-<button type="button" class="theme-btn" onclick="App.toggleTheme()" aria-label="Toggle theme">🌙</button>
 </nav>
-<button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" onclick="App.toggleMenu()">☰</button>
+<div class="header-actions">
+<button type="button" class="theme-toggle" id="themeToggle" onclick="App.toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode"><span class="track"></span><span class="thumb"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
+<button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" onclick="App.toggleMenu()"><div class="hamburger"><span></span><span></span><span></span></div></button>
 </div>
+</div>
+<div class="nav-backdrop" id="navBackdrop" onclick="App.closeMenu()"></div>
 </header>
+
 <main id="main-content">
 <div class="container" style="max-width:900px;margin:0 auto;padding:32px 20px">
 <div class="breadcrumb" style="margin-bottom:24px;font-size:.85rem"><a href="/" style="color:var(--text-3);text-decoration:none">Home</a> <span style="color:var(--text-3)">/</span> <span style="color:var(--text)">Glossary</span></div>
 
-<h1 style="font-size:2.4rem;font-weight:800;margin-bottom:12px;line-height:1.15">📖 SEO Glossary</h1>
+<h1 style="font-size:2.4rem;font-weight:800;margin-bottom:12px;line-height:1.15"> SEO Glossary</h1>
 <p style="font-size:1.15rem;color:var(--text-2);line-height:1.7;margin-bottom:12px;max-width:720px">Comprehensive glossary of <strong style="color:var(--text)">${terms.length}+ SEO, digital marketing, and web technology terms</strong> explained with definitions, real-world examples, and free tools.</p>
 <p style="font-size:.85rem;color:var(--text-3);margin-bottom:32px">${categories.length} categories &middot; Updated for 2026</p>
 
-<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:48px">
-${categories.map(c => '<a href="/glossary/category/' + c.id + '.html" style="display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:var(--bg-2);border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--text);font-size:.9rem;transition:border-color .2s" onmouseover="this.style.borderColor=\'var(--accent)\'" onmouseout="this.style.borderColor=\'var(--border)\'">' + c.icon + ' ' + esc(c.name) + ' <span style="font-size:.75rem;color:var(--text-3)">(' + terms.filter(t => t.cat === c.id).length + ')</span></a>').join(' ')}
+<div class="glossary-filters" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px">
+<button class="glossary-filter active" data-cat="All" style="padding:8px 16px;border-radius:6px;border:1px solid var(--border);background:var(--accent);color:var(--accent-text);font-size:.85rem;font-weight:600;cursor:pointer;font-family:var(--font)">All Terms</button>
+${categories.map(c => '<button class="glossary-filter" data-cat="' + esc(c.name) + '" style="padding:8px 16px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text-3);font-size:.85rem;font-weight:600;cursor:pointer;font-family:var(--font)">' + esc(c.name) + ' (' + terms.filter(t => t.cat === c.id).length + ')</button>').join('')}
 </div>
+<div class="glossary-count" style="font-size:.85rem;color:var(--text-3);margin-bottom:16px">${terms.length} terms</div>
 
 ${catSections}
 
@@ -754,20 +914,119 @@ ${allTermLinks}
 </section>
 </div>
 </main>
-<footer class="site-footer">
-<div class="container">
-<div class="footer-grid">
-<div class="footer-col"><a href="/" class="site-logo" style="color:inherit;margin-bottom:8px"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a><p style="font-size:13px;color:var(--text-3)">45+ free online text tools.</p></div>
-<div class="footer-col"><p class="footer-heading">Tools</p><a href="/tools/word-counter.html">Word Counter</a><a href="/tools/case-converter.html">Case Converter</a><a href="/tools/json-formatter.html">JSON Formatter</a></div>
-<div class="footer-col"><p class="footer-heading">Resources</p><a href="/glossary/">SEO Glossary</a><a href="/tools/directory.html">Tools Directory</a><a href="/blog/">Blog</a></div>
-<div class="footer-col"><p class="footer-heading">Legal</p><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a></div>
-</div>
-<div class="footer-bottom"><p>&copy; 2026 KwordSEO.</p></div>
-</div>
-</footer>
-<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent"><p>🍪 Cookies for analytics.</p><div class="btn-group"><button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button><button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button></div></div>
+<footer class=\"site-footer\">
+    <div class=\"container\">
+      <div class=\"footer-top\">
+        <div class=\"footer-top-text\">
+          <span class=\"footer-top-label\">Newsletter</span>
+          <p class=\"footer-top-title\">Get new tools & SEO tips</p>
+          <p class=\"footer-top-sub\">No spam. Unsubscribe anytime.</p>
+        </div>
+        <form class=\"footer-top-form\" id=\"newsletterForm\" action=\"/api/subscribe\" method=\"POST\">
+          <input type=\"email\" name=\"email\" placeholder=\"your@email.com\" required aria-label=\"Email address\">
+          <button type=\"submit\">Subscribe</button>
+        </form>
+      </div>
+      <hr class=\"footer-divider\">
+      <div class=\"footer-grid\">
+        <div class=\"footer-brand\">
+          <a href=\"/\" class=\"site-logo\" style=\"color:inherit\"><svg class=\"logo-icon\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#2563eb\"/><path d=\"M9 8v16\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10-8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10 8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg><span class=\"logo-text\">Kword<span class=\"logo-seo\">SEO</span></span></a>
+          <p class=\"footer-brand-desc\">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser — your data never leaves your device.</p>
+          <div class=\"footer-social\">
+            <a href=\"https://twitter.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"Twitter\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z\"/></svg></a>
+            <a href=\"https://github.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"GitHub\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22\"/></svg></a>
+            <a href=\"https://linkedin.com/company/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"LinkedIn\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z\"/><rect x=\"2\" y=\"9\" width=\"4\" height=\"12\"/><circle cx=\"4\" cy=\"4\" r=\"2\"/></svg></a>
+          </div>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">Tools</p>
+          <a href=\"/tools/word-counter.html\">Word Counter</a>
+          <a href=\"/tools/case-converter.html\">Case Converter</a>
+          <a href=\"/tools/json-formatter.html\">JSON Formatter</a>
+          <a href=\"/tools/robots-txt.html\">Robots.txt</a>
+          <a href=\"/tools/\">Browse All 45+ Tools</a>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">SEO</p>
+          <a href=\"/tools/meta-gen.html\">Meta Tags</a>
+          <a href=\"/tools/keyword-density.html\">Keyword Density</a>
+          <a href=\"/tools/slug-generator.html\">Slug Generator</a>
+          <a href=\"/tools/sitemap-gen.html\">Sitemap Generator</a>
+          <a href=\"/tools/schema-gen.html\">Schema Markup</a>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">Company</p>
+          <a href=\"/about.html\">About Us</a>
+          <a href=\"/blog/\">Blog</a>
+          <a href=\"/contact.html\">Contact</a>
+          <a href=\"/advertise.html\">Advertise</a>
+          <a href=\"/authors/sarah-mitchell.html\">Our Team</a>
+        </div>
+        <div class=\"footer-col\">
+          <p class=\"footer-col-title\">Legal</p>
+          <a href=\"/privacy-policy.html\">Privacy Policy</a>
+          <a href=\"/terms.html\">Terms of Service</a>
+          <a href=\"/cookie-policy.html\">Cookie Policy</a>
+          <a href=\"/editorial-policy.html\">Editorial Policy</a>
+        </div>
+      </div>
+      <hr class=\"footer-divider\">
+      <div class=\"footer-bottom\">
+        <p>&copy; 2026 KwordSEO. All rights reserved.</p>
+        <div class=\"footer-bottom-links\">
+          <a href=\"/privacy-policy.html\">Privacy</a>
+          <a href=\"/terms.html\">Terms</a>
+          <a href=\"/cookie-policy.html\">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent"><p> Cookies for analytics.</p><div class="btn-group"><button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button><button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button></div></div>
 <div class="toast" id="appToast"></div>
 <script src="/js/app.js"></script>
+<script>
+(function(){
+  var filters=document.querySelectorAll('.glossary-filter');
+  var sections=document.querySelectorAll('.glossary-section');
+  var count=document.querySelector('.glossary-count');
+  var allCount=${terms.length};
+  filters.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      filters.forEach(function(f){
+        f.classList.remove('active');
+        f.style.background='var(--surface)';
+        f.style.color='var(--text-3)';
+        f.style.borderColor='var(--border)';
+      });
+      btn.classList.add('active');
+      btn.style.background='var(--accent)';
+      btn.style.color='var(--accent-text)';
+      btn.style.borderColor='var(--accent)';
+      var cat=btn.getAttribute('data-cat');
+      var shown=0;
+      sections.forEach(function(section){
+        if(cat==='All'||section.getAttribute('data-category')===cat){
+          section.style.display='';shown++;
+        }else{
+          section.style.display='none';
+        }
+      });
+      if(cat==='All'){
+        count.textContent=allCount+' terms';
+      }else{
+        var catCount=0;
+        sections.forEach(function(s){
+          if(s.getAttribute('data-category')===cat){
+            catCount++;
+          }
+        });
+        count.textContent=catCount+' terms';
+      }
+    });
+  });
+})();
+</script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
 </body>
 </html>`;
 }

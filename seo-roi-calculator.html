@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en" data-page="seo-roi-calculator" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free SEO ROI Calculator | Calculate Your SEO Return on Investment</title>
+<meta name="description" content="Free SEO ROI calculator to measure your return on investment. Calculate monthly SEO revenue, projected 12-month growth, break-even point, and ROI percentage.">
+<meta name="keywords" content="seo roi calculator, seo return on investment, seo cost calculator, seo revenue calculator, seo roi formula">
+<link rel="canonical" href="https://azhai-six.vercel.app/seo-roi-calculator.html">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2563eb">
+<meta property="og:title" content="Free SEO ROI Calculator | Calculate Your SEO Return on Investment">
+<meta property="og:description" content="Calculate your SEO return on investment with our free calculator. See projected 12-month growth and break-even analysis.">
+<meta property="og:url" content="https://azhai-six.vercel.app/seo-roi-calculator.html">
+<meta property="og:type" content="article">
+<meta name="twitter:title" content="Free SEO ROI Calculator | KwordSEO">
+<meta name="twitter:description" content="Calculate your SEO ROI with our free calculator. Projected 12-month growth and break-even analysis.">
+<link rel="stylesheet" href="/css/style.css">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KDTPKT4T');</script>
+<script>
+  (function(){
+    try {
+      var t = localStorage.getItem('attTheme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch(e) {}
+  })();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://azhai-six.vercel.app/" },
+    { "@type": "ListItem", "position": 2, "name": "SEO ROI Calculator", "item": "https://azhai-six.vercel.app/seo-roi-calculator.html" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is SEO ROI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SEO ROI (Return on Investment) measures the profitability of your SEO efforts. It compares the revenue generated from organic search traffic against the cost of your SEO activities. A positive ROI means your SEO investment is generating more money than it costs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you calculate SEO ROI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The formula for SEO ROI is: ((SEO Revenue - SEO Cost) / SEO Cost) × 100. SEO Revenue is calculated by multiplying your monthly organic traffic by your conversion rate and average order value. For example, if you spend $2,000/month on SEO and generate $6,000 in revenue, your ROI is ((6,000 - 2,000) / 2,000) × 100 = 200%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good SEO ROI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A good SEO ROI varies by industry, but most businesses see an ROI of 200-600% from SEO. The average is around 500% according to industry studies. Compared to paid advertising (typically 200-400% ROI), SEO tends to deliver higher long-term returns because organic traffic compounds over time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to see ROI from SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most businesses begin seeing measurable SEO ROI within 3-6 months of consistent effort. However, significant returns typically take 6-12 months. SEO is a long-term strategy — unlike paid ads, the traffic compounds over time, meaning your ROI improves each month without additional proportional spending."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What factors affect SEO ROI the most?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The key factors affecting SEO ROI are: conversion rate (higher = more revenue per visitor), average order value (higher = more revenue per conversion), monthly organic traffic volume, cost of SEO services or in-house team, and the monthly growth rate of organic traffic. Improving any of these variables directly impacts your ROI."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDTPKT4T"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-logo" href="/" aria-label="KwordSEO Home">
+      <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
+      <span class="logo-text">Kword<span class="logo-seo">SEO</span></span>
+    </a>
+    <nav class="nav" id="mainNav" aria-label="Main navigation">
+<a href="/" class="nav-link">Home</a>
+<a href="/tools/" class="nav-link">Tools</a>
+<a href="/courses/" class="nav-link">Courses</a>
+<a href="/books/" class="nav-link">Books</a>
+<a href="/blog/" class="nav-link">Blog</a>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="theme-toggle" id="themeToggle" onclick="App.toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode"><span class="track"></span><span class="thumb"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
+      <button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" onclick="App.toggleMenu()"><div class="hamburger"><span></span><span></span><span></span></div></button>
+    </div>
+    <div class="nav-backdrop" id="navBackdrop" onclick="App.closeMenu()"></div>
+  </div>
+</header>
+
+<main id="main-content">
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-eyebrow"> Free Calculator · No Login · Instant Results</span>
+    <h1>Free SEO ROI Calculator</h1>
+    <p class="hero-sub">Calculate your SEO return on investment and see projected 12-month growth</p>
+    <div class="hero-cta-row">
+      <button type="button" class="hero-cta" onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'})">Calculate Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- Breadcrumbs -->
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="/">Home</a>
+  <span aria-hidden="true">›</span>
+  <span aria-current="page">SEO ROI Calculator</span>
+</nav>
+
+<!-- Calculator Section -->
+<section id="calculator" class="calc-section reveal" aria-labelledby="calc-heading">
+  <h2 id="calc-heading" class="section-title">SEO ROI Calculator</h2>
+  <p class="section-sub">Adjust the inputs to see your projected SEO return on investment in real time.</p>
+
+  <div class="calc-layout">
+
+    <!-- Input Panel -->
+    <div class="calc-inputs">
+      <div class="calc-group">
+        <label for="traffic">Monthly Organic Traffic</label>
+        <div class="calc-slider-row">
+          <input type="range" id="trafficSlider" min="1000" max="500000" step="1000" value="10000" aria-label="Monthly organic traffic slider">
+          <input type="number" id="traffic" min="1000" max="500000" step="1000" value="10000" aria-label="Monthly organic traffic">
+        </div>
+        <div class="calc-range"><span>1,000</span><span>500,000</span></div>
+      </div>
+
+      <div class="calc-group">
+        <label for="conversion">Conversion Rate %</label>
+        <div class="calc-slider-row">
+          <input type="range" id="conversionSlider" min="0.1" max="15" step="0.1" value="2.5" aria-label="Conversion rate slider">
+          <input type="number" id="conversion" min="0.1" max="15" step="0.1" value="2.5" aria-label="Conversion rate">
+        </div>
+        <div class="calc-range"><span>0.1%</span><span>15%</span></div>
+      </div>
+
+      <div class="calc-group">
+        <label for="aov">Average Order Value $</label>
+        <div class="calc-slider-row">
+          <input type="range" id="aovSlider" min="5" max="500" step="5" value="50" aria-label="Average order value slider">
+          <input type="number" id="aov" min="5" max="500" step="5" value="50" aria-label="Average order value">
+        </div>
+        <div class="calc-range"><span>$5</span><span>$500</span></div>
+      </div>
+
+      <div class="calc-group">
+        <label for="cost">Monthly SEO Cost $</label>
+        <div class="calc-slider-row">
+          <input type="range" id="costSlider" min="0" max="50000" step="100" value="2000" aria-label="Monthly SEO cost slider">
+          <input type="number" id="cost" min="0" max="50000" step="100" value="2000" aria-label="Monthly SEO cost">
+        </div>
+        <div class="calc-range"><span>$0</span><span>$50,000</span></div>
+      </div>
+
+      <div class="calc-group">
+        <label for="growth">Expected Traffic Growth % per Month</label>
+        <div class="calc-slider-row">
+          <input type="range" id="growthSlider" min="1" max="50" step="1" value="10" aria-label="Expected traffic growth slider">
+          <input type="number" id="growth" min="1" max="50" step="1" value="10" aria-label="Expected traffic growth">
+        </div>
+        <div class="calc-range"><span>1%</span><span>50%</span></div>
+      </div>
+    </div>
+
+    <!-- Output Panel -->
+    <div class="calc-outputs">
+      <div class="output-card output-highlight">
+        <span class="output-label">Monthly SEO Revenue</span>
+        <span class="output-value" id="outRevenue">$0</span>
+      </div>
+      <div class="output-card output-highlight">
+        <span class="output-label">Monthly ROI</span>
+        <span class="output-value" id="outROI">0%</span>
+      </div>
+      <div class="output-card">
+        <span class="output-label">12-Month Projected Traffic</span>
+        <span class="output-value" id="outTraffic12">0</span>
+      </div>
+      <div class="output-card">
+        <span class="output-label">12-Month Projected Revenue</span>
+        <span class="output-value" id="outRevenue12">$0</span>
+      </div>
+      <div class="output-card">
+        <span class="output-label">12-Month Total ROI</span>
+        <span class="output-value" id="outROI12">0%</span>
+      </div>
+      <div class="output-card">
+        <span class="output-label">Break-even Point</span>
+        <span class="output-value" id="outBreakeven">0 months</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bar Chart -->
+  <div class="chart-container" id="chartContainer" aria-label="12-month revenue projection chart">
+    <h3 class="chart-title">12-Month Revenue Projection</h3>
+    <div class="chart-note">Green = Revenue · Red = Cumulative Cost</div>
+    <div class="chart-wrapper">
+      <div class="chart-bars" id="chartBars"></div>
+      <div class="chart-labels" id="chartLabels"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Educational Section -->
+<section class="edu-section reveal" aria-labelledby="edu-heading">
+  <h2 id="edu-heading">How to Calculate SEO ROI</h2>
+  <p class="section-sub">Understanding the formulas behind SEO return on investment helps you make better marketing budget decisions.</p>
+
+  <div class="edu-content">
+
+    <div class="formula-card">
+      <h3>1. Monthly SEO Revenue Formula</h3>
+      <div class="formula-block">
+        <code>Revenue = Organic Traffic × Conversion Rate × Average Order Value</code>
+      </div>
+      <p>This formula calculates how much revenue your organic search traffic generates each month. For example, 10,000 monthly visitors × 2.5% conversion rate × $50 average order value = <strong>$12,500 per month</strong>.</p>
+    </div>
+
+    <div class="formula-card">
+      <h3>2. Monthly ROI Formula</h3>
+      <div class="formula-block">
+        <code>ROI % = ((Revenue - Cost) / Cost) × 100</code>
+      </div>
+      <p>This measures the profitability of your SEO spend. An ROI of 200% means you earn $2 for every $1 spent on SEO. A negative ROI indicates your SEO investment costs more than it generates.</p>
+    </div>
+
+    <div class="formula-card">
+      <h3>3. 12-Month Projected Traffic</h3>
+      <div class="formula-block">
+        <code>Traffic(month n) = Initial Traffic × (1 + Growth Rate)^n</code>
+      </div>
+      <p>Organic traffic compounds monthly. If you start at 10,000 visitors and grow 10% monthly, after 12 months you will have approximately <strong>31,384 monthly visitors</strong> — more than triple your starting traffic.</p>
+    </div>
+
+    <div class="formula-card">
+      <h3>4. Break-Even Point</h3>
+      <div class="formula-block">
+        <code>Break-even = Monthly Cost / (Monthly Revenue per Visitor)</code>
+      </div>
+      <p>The break-even point tells you how many months it takes before your cumulative SEO revenue exceeds your cumulative SEO cost. With consistent growth, SEO typically breaks even in 2-4 months.</p>
+    </div>
+
+    <div class="edu-note">
+      <h3>Why SEO ROI Compounds</h3>
+      <p>Unlike paid advertising, where traffic stops the moment you stop paying, SEO builds lasting value. Each month of investment adds to your organic traffic base. This compounding effect means your ROI improves significantly over time — the longer you invest, the higher your returns become.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section reveal" aria-labelledby="faq-heading">
+  <h2 id="faq-heading">Frequently Asked Questions</h2>
+  <details class="faq-item">
+    <summary class="faq-question">What is SEO ROI? <span>+</span></summary>
+    <div class="faq-answer">SEO ROI (Return on Investment) measures the profitability of your SEO efforts. It compares the revenue generated from organic search traffic against the cost of your SEO activities. A positive ROI means your SEO investment is generating more money than it costs.</div>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-question">How do you calculate SEO ROI? <span>+</span></summary>
+    <div class="faq-answer">The formula for SEO ROI is: ((SEO Revenue - SEO Cost) / SEO Cost) × 100. SEO Revenue is calculated by multiplying your monthly organic traffic by your conversion rate and average order value. For example, if you spend $2,000/month on SEO and generate $6,000 in revenue, your ROI is ((6,000 - 2,000) / 2,000) × 100 = 200%.</div>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-question">What is a good SEO ROI? <span>+</span></summary>
+    <div class="faq-answer">A good SEO ROI varies by industry, but most businesses see an ROI of 200-600% from SEO. The average is around 500% according to industry studies. Compared to paid advertising (typically 200-400% ROI), SEO tends to deliver higher long-term returns because organic traffic compounds over time.</div>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-question">How long does it take to see ROI from SEO? <span>+</span></summary>
+    <div class="faq-answer">Most businesses begin seeing measurable SEO ROI within 3-6 months of consistent effort. However, significant returns typically take 6-12 months. SEO is a long-term strategy — unlike paid ads, the traffic compounds over time, meaning your ROI improves each month without additional proportional spending.</div>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-question">What factors affect SEO ROI the most? <span>+</span></summary>
+    <div class="faq-answer">The key factors affecting SEO ROI are: conversion rate (higher = more revenue per visitor), average order value (higher = more revenue per conversion), monthly organic traffic volume, cost of SEO services or in-house team, and the monthly growth rate of organic traffic. Improving any of these variables directly impacts your ROI.</div>
+  </details>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-top-text">
+          <span class="footer-top-label">Newsletter</span>
+          <p class="footer-top-title">Get new tools & SEO tips</p>
+          <p class="footer-top-sub">No spam. Unsubscribe anytime.</p>
+        </div>
+        <form class="footer-top-form" id="newsletterForm" action="/api/subscribe" method="POST">
+          <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <hr class="footer-divider">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="site-logo" style="color:inherit"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>
+          <p class="footer-brand-desc">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser — your data never leaves your device.</p>
+          <div class="footer-social">
+            <a href="https://twitter.com/kwordseo" target="_blank" rel="noopener" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+            <a href="https://github.com/kwordseo" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+            <a href="https://linkedin.com/company/kwordseo" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">Tools</p>
+          <a href="/tools/word-counter.html">Word Counter</a>
+          <a href="/tools/case-converter.html">Case Converter</a>
+          <a href="/tools/json-formatter.html">JSON Formatter</a>
+          <a href="/tools/robots-txt.html">Robots.txt</a>
+          <a href="/tools/">Browse All 45+ Tools</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">SEO</p>
+          <a href="/tools/meta-gen.html">Meta Tags</a>
+          <a href="/tools/keyword-density.html">Keyword Density</a>
+          <a href="/tools/slug-generator.html">Slug Generator</a>
+          <a href="/tools/sitemap-gen.html">Sitemap Generator</a>
+          <a href="/tools/schema-gen.html">Schema Markup</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">Company</p>
+          <a href="/about.html">About Us</a>
+          <a href="/blog/">Blog</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/advertise.html">Advertise</a>
+          <a href="/authors/sarah-mitchell.html">Our Team</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">Legal</p>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+          <a href="/cookie-policy.html">Cookie Policy</a>
+          <a href="/editorial-policy.html">Editorial Policy</a>
+        </div>
+      </div>
+      <hr class="footer-divider">
+      <div class="footer-bottom">
+        <p>&copy; 2026 KwordSEO. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="/privacy-policy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/cookie-policy.html">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<!-- Cookie Consent -->
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent">
+  <p> We use cookies for analytics & preferences. <a href="/cookie-policy.html">Learn more</a></p>
+  <div class="btn-group">
+    <button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button>
+    <button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="appToast" aria-live="polite"></div>
+
+<!-- Back to Top -->
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<style>
+/* ===== CALCULATOR PAGE STYLES ===== */
+.calc-section {
+  padding: 48px 0 32px;
+}
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+.section-sub {
+  color: var(--text-3);
+  font-size: 0.95rem;
+  margin-bottom: 32px;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  padding: 16px 20px 0;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-size: 0.82rem;
+  color: var(--text-3);
+}
+.breadcrumbs a {
+  color: var(--text-3);
+  transition: color .15s;
+}
+.breadcrumbs a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+.breadcrumbs span[aria-hidden] {
+  margin: 0 6px;
+  opacity: 0.5;
+}
+
+/* Calculator Layout */
+.calc-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Inputs */
+.calc-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.calc-group label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.calc-slider-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.calc-slider-row input[type="range"] {
+  flex: 1;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--border);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+.calc-slider-row input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.calc-slider-row input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.calc-slider-row input[type="number"] {
+  width: 110px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: var(--surface);
+  color: var(--text);
+  text-align: right;
+  font-family: inherit;
+}
+.calc-slider-row input[type="number"]:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+.calc-range {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--text-3);
+  margin-top: 4px;
+  padding: 0 2px;
+}
+
+/* Outputs */
+.calc-outputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.output-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.output-highlight {
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+.output-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.output-value {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.5px;
+}
+
+/* Chart */
+.chart-container {
+  margin-top: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 24px 20px;
+}
+.chart-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.chart-note {
+  font-size: 0.78rem;
+  color: var(--text-3);
+  margin-bottom: 20px;
+}
+.chart-wrapper {
+  overflow-x: auto;
+}
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 220px;
+  padding-bottom: 4px;
+  min-width: 600px;
+}
+.chart-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  height: 100%;
+  justify-content: flex-end;
+}
+.bar-pair {
+  display: flex;
+  gap: 3px;
+  align-items: flex-end;
+  width: 100%;
+  justify-content: center;
+}
+.bar {
+  width: 40%;
+  border-radius: 4px 4px 0 0;
+  min-height: 2px;
+  transition: height .4s ease;
+  position: relative;
+}
+.bar-revenue {
+  background: var(--accent);
+}
+.bar-cost {
+  background: var(--danger, #ef4444);
+  opacity: 0.75;
+}
+.bar-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-3);
+  margin-top: 6px;
+  text-align: center;
+  white-space: nowrap;
+}
+.bar-value {
+  font-size: 0.62rem;
+  color: var(--text-3);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Educational Section */
+.edu-section {
+  padding: 48px 0;
+}
+.edu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.formula-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+}
+.formula-card h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.formula-block {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  overflow-x: auto;
+}
+.formula-block code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.formula-card p {
+  color: var(--text-2);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+.formula-card strong {
+  color: var(--text);
+}
+.edu-note {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 10px;
+  padding: 28px;
+}
+.edu-note h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.edu-note p {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  opacity: 0.95;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .calc-layout {
+    grid-template-columns: 1fr;
+  }
+  .calc-outputs {
+    grid-template-columns: 1fr 1fr;
+  }
+  .output-value {
+    font-size: 1.15rem;
+  }
+  .chart-bars {
+    height: 180px;
+  }
+}
+@media (max-width: 480px) {
+  .calc-outputs {
+    grid-template-columns: 1fr;
+  }
+  .calc-slider-row input[type="number"] {
+    width: 90px;
+    font-size: 0.85rem;
+    padding: 6px 8px;
+  }
+}
+</style>
+
+<script src="/js/app.js"></script>
+<script>
+(function(){
+  var $ = function(s){ return document.getElementById(s); };
+
+  var trafficSlider = $('trafficSlider');
+  var trafficInput = $('traffic');
+  var conversionSlider = $('conversionSlider');
+  var conversionInput = $('conversion');
+  var aovSlider = $('aovSlider');
+  var aovInput = $('aov');
+  var costSlider = $('costSlider');
+  var costInput = $('cost');
+  var growthSlider = $('growthSlider');
+  var growthInput = $('growth');
+
+  var pairs = [
+    [trafficSlider, trafficInput],
+    [conversionSlider, conversionInput],
+    [aovSlider, aovInput],
+    [costSlider, costInput],
+    [growthSlider, growthInput]
+  ];
+
+  pairs.forEach(function(p){
+    p[0].addEventListener('input', function(){
+      p[1].value = p[0].value;
+      recalc();
+    });
+    p[1].addEventListener('input', function(){
+      p[0].value = p[1].value;
+      recalc();
+    });
+  });
+
+  function fmt$(n){
+    if(n >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+    if(n >= 1e3) return '$' + n.toLocaleString('en-US', {maximumFractionDigits:0});
+    return '$' + n.toFixed(0);
+  }
+  function fmtNum(n){
+    if(n >= 1e6) return (n/1e6).toFixed(1) + 'M';
+    return n.toLocaleString('en-US', {maximumFractionDigits:0});
+  }
+  function fmtPct(n){
+    if(n >= 1000) return n.toFixed(0) + '%';
+    if(n >= 100) return n.toFixed(0) + '%';
+    return n.toFixed(1) + '%';
+  }
+
+  function recalc(){
+    var traffic = Math.max(0, parseFloat(trafficInput.value) || 0);
+    var conv = Math.max(0, parseFloat(conversionInput.value) || 0) / 100;
+    var aov = Math.max(0, parseFloat(aovInput.value) || 0);
+    var cost = Math.max(0, parseFloat(costInput.value) || 0);
+    var growth = Math.max(0, parseFloat(growthInput.value) || 0) / 100;
+
+    // Current month
+    var revenue = traffic * conv * aov;
+    var roi = cost > 0 ? ((revenue - cost) / cost) * 100 : 0;
+
+    // 12-month projection
+    var months = [];
+    var totalRevenue = 0;
+    var totalCost = 0;
+    var currentTraffic = traffic;
+    var breakeven = null;
+    var cumRevenue = 0;
+    var cumCost = 0;
+
+    for(var m = 1; m <= 12; m++){
+      var monthRev = currentTraffic * conv * aov;
+      var monthCost = cost;
+      totalRevenue += monthRev;
+      totalCost += monthCost;
+      cumRevenue += monthRev;
+      cumCost += monthCost;
+
+      if(breakeven === null && cumRevenue >= cumCost){
+        breakeven = m;
+      }
+
+      months.push({
+        month: m,
+        traffic: currentTraffic,
+        revenue: monthRev,
+        cost: monthCost,
+        cumRevenue: cumRevenue,
+        cumCost: cumCost
+      });
+
+      currentTraffic = currentTraffic * (1 + growth);
+    }
+
+    var totalROI = totalCost > 0 ? ((totalRevenue - totalCost) / totalCost) * 100 : 0;
+    var finalTraffic = months[11].traffic;
+
+    // Update outputs
+    $('outRevenue').textContent = fmt$(revenue);
+    $('outROI').textContent = fmtPct(roi);
+    $('outTraffic12').textContent = fmtNum(finalTraffic);
+    $('outRevenue12').textContent = fmt$(totalRevenue);
+    $('outROI12').textContent = fmtPct(totalROI);
+    $('outBreakeven').textContent = breakeven ? breakeven + (breakeven === 1 ? ' month' : ' months') : 'N/A (cost > revenue)';
+
+    // Color code ROI
+    $('outROI').style.color = roi >= 0 ? 'var(--success, #10b981)' : 'var(--danger, #ef4444)';
+    $('outROI12').style.color = totalROI >= 0 ? 'var(--success, #10b981)' : 'var(--danger, #ef4444)';
+
+    // Build chart
+    var maxVal = 0;
+    months.forEach(function(m){
+      if(m.revenue > maxVal) maxVal = m.revenue;
+      if(m.cumCost > maxVal) maxVal = m.cumCost;
+    });
+    if(maxVal === 0) maxVal = 1;
+
+    var barsHtml = '';
+    var labelsHtml = '';
+    months.forEach(function(m){
+      var revH = Math.max(2, (m.revenue / maxVal) * 200);
+      var costH = Math.max(2, (m.cumCost / maxVal) * 200);
+      barsHtml += '<div class="chart-col">';
+      barsHtml += '<div class="bar-value">' + fmt$(m.revenue) + '</div>';
+      barsHtml += '<div class="bar-pair">';
+      barsHtml += '<div class="bar bar-revenue" style="height:' + revH + 'px" title="Revenue: ' + fmt$(m.revenue) + '"></div>';
+      barsHtml += '<div class="bar bar-cost" style="height:' + costH + 'px" title="Cumulative Cost: ' + fmt$(m.cumCost) + '"></div>';
+      barsHtml += '</div>';
+      barsHtml += '<div class="bar-label">M' + m.month + '</div>';
+      barsHtml += '</div>';
+    });
+
+    $('chartBars').innerHTML = barsHtml;
+  }
+
+  recalc();
+
+  // Scroll reveal
+  var reveals = document.querySelectorAll('.reveal');
+  if(reveals.length && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+    reveals.forEach(function(el){ io.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('visible'); });
+  }
+
+  // Back to top
+  var btt = $('backToTop');
+  if(btt){
+    window.addEventListener('scroll',function(){
+      btt.classList.toggle('visible', window.scrollY > 400);
+    },{passive:true});
+    btt.addEventListener('click',function(){
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  }
+
+  // Header newsletter
+  window.handleHeaderSubscribe = function(e){
+    e.preventDefault();
+    var f = e.target, email = f.querySelector('input[name=email]').value;
+    if(!email) return false;
+    var btn = f.querySelector('button'), orig = btn.textContent;
+    btn.textContent = '...'; btn.disabled = true;
+    fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email})})
+    .then(function(r){ return r.json(); }).then(function(d){
+      if(d.message){ f.innerHTML='<span style="color:var(--accent);font-size:13px;font-weight:600">'+d.message+'</span>';
+      } else { btn.textContent=orig;btn.disabled=false;alert(d.error||'Something went wrong'); }
+    }).catch(function(){ btn.textContent=orig;btn.disabled=false;alert('Network error'); });
+    return false;
+  };
+
+  // Newsletter form
+  var nf = $('newsletterForm');
+  if(nf){
+    nf.addEventListener('submit',function(e){
+      e.preventDefault();
+      var fd = new FormData(nf);
+      var email = fd.get('email');
+      if(!email) return;
+      var btn = nf.querySelector('button');
+      var origText = btn.textContent;
+      btn.textContent = '...'; btn.disabled = true;
+      fetch('/api/subscribe',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({email:email})
+      }).then(function(r){ return r.json(); }).then(function(d){
+        if(d.message){
+          nf.innerHTML = '<span class="success-msg">'+d.message+'</span>';
+        } else {
+          btn.textContent = origText; btn.disabled = false;
+          alert(d.error||'Something went wrong');
+        }
+      }).catch(function(){
+        btn.textContent = origText; btn.disabled = false;
+        alert('Network error. Please try again.');
+      });
+    });
+  }
+})();
+</script>
+
+  <script>
+if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}
+var _deferredPrompt;
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();_deferredPrompt=e;});
+function installPWA(){if(!_deferredPrompt)return;_deferredPrompt.prompt();_deferredPrompt.userChoice.then(function(r){_deferredPrompt=null;});}
+</script>
+</body>
+</html>

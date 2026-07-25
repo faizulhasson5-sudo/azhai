@@ -21,6 +21,12 @@ const tools = [
   'ai-prompt-gen'
 ];
 
+const skills = [
+  'ai-prompt-builder','decision-matrix','tone-analyzer',
+  'habit-builder','smart-goal-planner','financial-planner','study-toolkit',
+  'ai-literacy','communication-guide','financial-basics'
+];
+
 // Blog posts from build-blog.js
 const blogs = [
   'ultimate-guide-seo-text-tools',
@@ -206,6 +212,12 @@ blogs.forEach(blog => {
 const authors = ['sarah-mitchell', 'james-chen', 'emma-rodriguez', 'david-park'];
 authors.forEach(author => {
   xml += `  <url><loc>${baseUrl}/authors/${author}.html</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>\n`;
+});
+
+// Skills pages
+xml += `  <url><loc>${baseUrl}/skills/</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>\n`;
+skills.forEach(skill => {
+  xml += `  <url><loc>${baseUrl}/skills/${skill}.html</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>\n`;
 });
 
 xml += '</urlset>';

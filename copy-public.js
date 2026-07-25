@@ -87,6 +87,17 @@ if (fs.existsSync(authorDir)) {
   }
 }
 
+// Copy skills directory
+fs.mkdirSync(path.join(dst, 'skills'), { recursive: true });
+const skillsDir = path.join(src, 'skills');
+if (fs.existsSync(skillsDir)) {
+  const skillFiles = fs.readdirSync(skillsDir).filter(f => f.endsWith('.html'));
+  for (const s of skillFiles) {
+    const sp2 = path.join(skillsDir, s);
+    if (fs.existsSync(sp2)) fs.copyFileSync(sp2, path.join(dst, 'skills', s));
+  }
+}
+
 // Copy editorial policy
 const editorialPolicy = path.join(src, 'editorial-policy.html');
 if (fs.existsSync(editorialPolicy)) fs.copyFileSync(editorialPolicy, path.join(dst, 'editorial-policy.html'));

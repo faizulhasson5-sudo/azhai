@@ -476,11 +476,11 @@ a:hover { color: var(--accent-hover); }
   padding: 20px;
   background: var(--surface);
   text-decoration: none; color: var(--text);
-  transition: background 0.2s, box-shadow 0.2s, border-color 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
   position: relative;
-  border-left: 3px solid transparent;
+  border-left: 3px solid var(--accent);
 }
-.tool-card:hover { background: var(--bg-2); color: var(--text); box-shadow: 0 4px 20px rgba(37,99,235,0.1); border-left-color: var(--accent); }
+.tool-card:hover { background: var(--bg-2); color: var(--text); box-shadow: 0 4px 20px rgba(37,99,235,0.1); }
 .tool-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.01em; }
 .tool-card p { font-size: 13px; color: var(--text-3); line-height: 1.45; flex: 1; }
 .tool-card .card-arrow {
@@ -492,9 +492,8 @@ a:hover { color: var(--accent-hover); }
 .tool-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
   background: linear-gradient(90deg, var(--accent), transparent 80%);
-  opacity: 0; transition: opacity 0.2s;
+  opacity: 0.5;
 }
-.tool-card:hover::before { opacity: 0.5; }
 .tool-card .card-cat {
   display: inline-block;
   font-size: 10px; font-weight: 700;
@@ -509,7 +508,6 @@ a:hover { color: var(--accent-hover); }
   background: linear-gradient(135deg, var(--surface) 0%, var(--accent-light) 100%);
 }
 .tool-card.trending::before {
-  background: linear-gradient(90deg, var(--accent), transparent 80%);
   opacity: 1;
 }
 .tool-card.trending:hover {

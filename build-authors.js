@@ -94,6 +94,7 @@ function generateAuthorPage(author) {
 <nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link">Tools</a>
+<a class="nav-link" href="/skills/">Skills</a>
 <a href="/courses/" class="nav-link">Courses</a>
 <a href="/books/" class="nav-link">Books</a>
 <a href="/blog/" class="nav-link">Blog</a>

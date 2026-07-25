@@ -285,6 +285,7 @@ const html = `<!DOCTYPE html>
       <nav class="nav" id="mainNav" aria-label="Main navigation">
         <a class="nav-link" href="/">Home</a>
         <a class="nav-link" href="/tools/">Tools</a>
+        <a class="nav-link" href="/skills/">Skills</a>
         <a class="nav-link" href="/courses/">Courses</a>
         <a class="nav-link active" href="/books/">Books</a>
         <a class="nav-link" href="/blog/">Blog</a>

@@ -154,7 +154,8 @@ function showCustom() { document.getElementById('quickStart').style.display='non
 function useDecisionTemplate(idx) {
   var t = decisionTemplates[idx];
   document.getElementById('decisionName').value = t.name;
-  options = t.options.slice(); criteria = t.criteria.slice();
+  options = t.options.slice();
+  criteria = t.criteria.map(function(c) { return typeof c === 'string' ? {name:c, weight:3} : c; });
   renderOptions(); renderCriteria();
   document.getElementById('quickStart').style.display='none';
   document.getElementById('customDecision').style.display='';

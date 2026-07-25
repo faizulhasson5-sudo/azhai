@@ -83,7 +83,7 @@
       <nav class="nav" id="mainNav" aria-label="Main navigation">
         <a class="nav-link active" href="/">Home</a>
         <a class="nav-link" href="/tools/">Tools</a>
-        <a class="nav-link" href="/skills/">Skills</a>
+        <a class="nav-link" href="/skills/">α tools</a>
         <a class="nav-link" href="/courses/">Courses</a>
         <a class="nav-link" href="/books/">Books</a>
         <a class="nav-link" href="/blog/">Blog</a>
@@ -196,7 +196,7 @@
     <!-- Skills -->
     <section class="tool-section reveal" aria-labelledby="sec-skills">
       <div class="category-header">
-        <h2 id="sec-skills">Build Real Skills</h2>
+        <h2 id="sec-skills">Build Real α tools</h2>
         <a href="/skills/">View all →</a>
       </div>
       <p class="section-sub">Interactive tools that teach you abilities you'll use forever. Not just tasks — understanding.</p>
@@ -381,14 +381,25 @@
 
     // Trending tools section
     var trendingTools = tools.filter(function(t){ return t.trending; });
+    var skillTrending = [
+      {id:'tone-analyzer',name:'Writing Tone Analyzer',desc:'Understand how your writing sounds to others',skill:'Communication'},
+      {id:'habit-builder',name:'Habit Builder',desc:'Build lasting habits using behavioral science',skill:'Behavior Change'},
+      {id:'study-toolkit',name:'Study Skills Toolkit',desc:'Study smarter with science-backed techniques',skill:'Learning Science'},
+      {id:'financial-planner',name:'Financial Planner',desc:'Learn personal finance by doing',skill:'Financial Literacy'}
+    ];
+    skillTrending.forEach(function(s){ trendingTools.push(s); });
     if (trendingTools.length) {
       var trendEl = document.getElementById('trendingTools');
       if (trendEl) {
         var th = '';
+        var skillIds = ['tone-analyzer','habit-builder','study-toolkit','financial-planner'];
         trendingTools.forEach(function(t){
-          th+='<a href="/tools/'+esc(t.id)+'.html" class="tool-card trending">';
+          var isSkill = skillIds.indexOf(t.id)!==-1;
+          var href = isSkill ? '/skills/'+esc(t.id)+'.html' : '/tools/'+esc(t.id)+'.html';
+          th+='<a href="'+href+'" class="tool-card trending">';
           th+='<span class="trending-badge">Trending</span>';
-          th+='<span class="card-cat">'+esc(t.cat)+'</span>';
+          if(isSkill) th+='<span class="card-cat">'+esc(t.skill)+'</span>';
+          else th+='<span class="card-cat">'+esc(t.cat)+'</span>';
           th+='<h3>'+esc(t.name)+'</h3>';
           th+='<p>'+esc(t.desc)+'</p>';
           th+='<span class="card-arrow">→</span>';

@@ -10,7 +10,7 @@ function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').
 const nav = `<nav class="nav" id="mainNav" aria-label="Main navigation">
 <a class="nav-link" href="/">Home</a>
 <a class="nav-link" href="/tools/">Tools</a>
-<a class="nav-link active" href="/skills/">Skills</a>
+<a class="nav-link active" href="/skills/">α tools</a>
 <a class="nav-link" href="/courses/">Courses</a>
 <a class="nav-link" href="/books/">Books</a>
 <a class="nav-link" href="/blog/">Blog</a>
@@ -84,11 +84,11 @@ const footer = `<footer class="site-footer">
 <a href="/tools/">Browse all tools</a>
 </div>
 <div class="footer-col">
-<p class="footer-col-title">Skills</p>
+<p class="footer-col-title">α tools</p>
 <a href="/skills/ai-prompt-builder.html">AI Prompt Builder</a>
 <a href="/skills/decision-matrix.html">Decision Matrix</a>
 <a href="/skills/tone-analyzer.html">Tone Analyzer</a>
-<a href="/skills/">Browse all skills</a>
+<a href="/skills/">Browse all α tools</a>
 </div>
 <div class="footer-col">
 <p class="footer-col-title">Company</p>
@@ -137,7 +137,7 @@ const skills = [
 // Generate skills index page
 const indexHtml = `<!DOCTYPE html>
 <html lang="en" data-theme="light">
-${pageHead('Skills - Build Real Abilities | KwordSEO','Interactive tools that teach you skills, not just do tasks for you. Learn prompt engineering, critical thinking, communication, and more.',BASE+'/skills/')}
+${pageHead('α tools - Build Real Abilities | KwordSEO','Interactive tools that teach you skills, not just do tasks for you. Learn prompt engineering, critical thinking, communication, and more.',BASE+'/skills/')}
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDTPKT4T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -152,8 +152,8 @@ ${headerActions}
 <main id="main-content">
 <div class="container">
 <div class="tool-header">
-<div class="breadcrumb"><a href="/">Home</a> <span>/</span> <span>Skills</span></div>
-<h1 style="margin:0;font-size:1.8rem;font-weight:800;letter-spacing:-0.02em">Build Real Skills</h1>
+<div class="breadcrumb"><a href="/">Home</a> <span>/</span> <span>α tools</span></div>
+<h1 style="margin:0;font-size:1.8rem;font-weight:800;letter-spacing:-0.02em">Build Real α tools</h1>
 <p style="color:var(--text-2);margin-top:8px;font-size:0.95rem">Interactive tools that teach you abilities you'll use forever. Not just tasks — understanding.</p>
 </div>
 <div style="display:flex;gap:8px;margin:24px 0;flex-wrap:wrap">
@@ -255,7 +255,7 @@ ${headerActions}
 <main id="main-content">
 <div class="container" style="max-width:780px;margin:0 auto">
 <div class="tool-header">
-<div class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/skills/">Skills</a> <span>/</span> <span>${esc(ref.title.split(' - ')[0])}</span></div>
+<div class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/skills/">α tools</a> <span>/</span> <span>${esc(ref.title.split(' - ')[0])}</span></div>
 <h1 style="margin:0;font-size:1.8rem;font-weight:800;letter-spacing:-0.02em">${esc(ref.title.split(' - ')[0])}</h1>
 <p style="color:var(--text-2);margin-top:8px;font-size:0.95rem">${esc(ref.desc)}</p>
 </div>
@@ -273,7 +273,7 @@ ${ref.sections.map(function(s,i){
 <a href="/skills/ai-prompt-builder.html" style="display:inline-block;padding:8px 16px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem;font-weight:500;text-decoration:none;transition:border-color .15s">AI Prompt Builder</a>
 <a href="/skills/decision-matrix.html" style="display:inline-block;padding:8px 16px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem;font-weight:500;text-decoration:none;transition:border-color .15s">Decision Matrix</a>
 <a href="/skills/tone-analyzer.html" style="display:inline-block;padding:8px 16px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem;font-weight:500;text-decoration:none;transition:border-color .15s">Tone Analyzer</a>
-<a href="/skills/" style="display:inline-block;padding:8px 16px;background:var(--accent);border:1px solid var(--accent);border-radius:6px;color:#fff;font-size:0.85rem;font-weight:500;text-decoration:none;transition:opacity .15s">View All Skills</a>
+<a href="/skills/" style="display:inline-block;padding:8px 16px;background:var(--accent);border:1px solid var(--accent);border-radius:6px;color:#fff;font-size:0.85rem;font-weight:500;text-decoration:none;transition:opacity .15s">View All α tools</a>
 </div>
 </div>
 </div>
@@ -286,4 +286,4 @@ ${footer}
   console.log('Created: public/skills/' + ref.id + '.html');
 });
 
-console.log('\nSkills build complete! Index + ' + references.length + ' reference pages generated.');
+console.log('\nα tools build complete! Index + ' + references.length + ' reference pages generated.');

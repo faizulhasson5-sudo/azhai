@@ -193,16 +193,6 @@
       <div class="tool-grid" id="textTools"></div>
     </section>
 
-    <!-- Skills -->
-    <section class="tool-section reveal" aria-labelledby="sec-skills">
-      <div class="category-header">
-        <h2 id="sec-skills">Build Real α tools</h2>
-        <a href="/skills/">View all →</a>
-      </div>
-      <p class="section-sub">Interactive tools that teach you abilities you'll use forever. Not just tasks — understanding.</p>
-      <div class="tool-grid" style="grid-template-columns:repeat(3,1fr)" id="skillsGrid"></div>
-    </section>
-
     <!-- Blog Preview -->
     <section class="blog-preview reveal" aria-labelledby="blog-heading">
       <h2 id="blog-heading">From the Blog</h2>
@@ -407,30 +397,6 @@
         });
         trendEl.innerHTML = th;
       }
-    }
-
-    // Skills section
-    var skillsData = [
-      {id:'ai-prompt-builder',name:'AI Prompt Builder',desc:'Learn prompt engineering by building optimized prompts.',skill:'Prompt Engineering'},
-      {id:'decision-matrix',name:'Decision Matrix',desc:'Make complex decisions with structured critical thinking.',skill:'Critical Thinking'},
-      {id:'tone-analyzer',name:'Tone Analyzer',desc:'Understand how your writing sounds to others.',skill:'Communication'},
-      {id:'habit-builder',name:'Habit Builder',desc:'Build lasting habits using proven behavioral science.',skill:'Behavior Change'},
-      {id:'smart-goal-planner',name:'SMART Goal Planner',desc:'Turn vague goals into concrete action plans.',skill:'Goal Setting'},
-      {id:'financial-planner',name:'Financial Planner',desc:'Learn personal finance by doing.',skill:'Financial Literacy'},
-      {id:'study-toolkit',name:'Study Toolkit',desc:'Study smarter with science-backed techniques.',skill:'Learning Science'}
-    ];
-    var skillsEl = document.getElementById('skillsGrid');
-    if (skillsEl) {
-      var sh = '';
-      skillsData.forEach(function(s) {
-        sh += '<a href="/skills/' + s.id + '.html" class="tool-card">';
-        sh += '<span style="display:inline-block;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:2px 6px;border-radius:3px;background:var(--accent-light);color:var(--accent);margin-bottom:6px">' + s.skill + '</span>';
-        sh += '<h3>' + s.name + '</h3>';
-        sh += '<p>' + s.desc + '</p>';
-        sh += '<span class="card-arrow">→</span>';
-        sh += '</a>';
-      });
-      skillsEl.innerHTML = sh;
     }
 
     // Blog preview (4 most viewed)

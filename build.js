@@ -159,7 +159,7 @@ tools.forEach(toolId => {
         '<title id="page-title">'+esc(seo.title)+'</title>');
 
     // Add trending badge to AI tools
-    if (['ai-content-detector','ai-humanizer','ai-prompt-gen','readability-score'].includes(toolId)) {
+    if (['ai-content-detector','ai-humanizer','ai-prompt-gen','word-to-pdf'].includes(toolId)) {
         html = html.replace('<h1 id="toolTitle" style="margin:0">Tool</h1>',
             '<h1 id="toolTitle" style="margin:0">Tool</h1><span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:4px 10px;border-radius:4px;background:var(--accent);color:#fff;vertical-align:middle">Trending</span>');
     }

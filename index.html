@@ -385,8 +385,10 @@
       var trendEl = document.getElementById('trendingTools');
       if (trendEl) {
         var th = '';
+        var skillIds = ['tone-analyzer','habit-builder','study-toolkit','financial-planner'];
         trendingTools.forEach(function(t){
-          th+='<a href="/tools/'+esc(t.id)+'.html" class="tool-card trending">';
+          var href = skillIds.indexOf(t.id)!==-1 ? '/skills/'+esc(t.id)+'.html' : '/tools/'+esc(t.id)+'.html';
+          th+='<a href="'+href+'" class="tool-card trending">';
           th+='<span class="trending-badge">Trending</span>';
           th+='<span class="card-cat">'+esc(t.cat)+'</span>';
           th+='<h3>'+esc(t.name)+'</h3>';

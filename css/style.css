@@ -404,7 +404,8 @@ a:hover { color: var(--accent-hover); }
   display: flex; justify-content: center; gap: 56px;
   padding: 0 0 64px;
 }
-.stat { text-align: center; }
+.stat { text-align: center; transition: transform 0.2s; }
+a.stat:hover { transform: translateY(-2px); }
 .stat-num {
   font-size: 32px; font-weight: 900; color: var(--text);
   letter-spacing: -0.03em;

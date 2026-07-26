@@ -273,6 +273,48 @@ a:hover { color: var(--accent-hover); }
 .pill-nav { display: none; }
 .mobile-theme-btn { display: none; }
 
+/* ---- Bottom Pill Nav (Mobile) ---- */
+.bottom-pill-nav {
+  display: none;
+}
+@media (max-width: 768px) {
+  .bottom-pill-nav {
+    display: flex;
+    position: fixed; bottom: 0; left: 0; right: 0;
+    z-index: 999;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 6px 8px env(safe-area-inset-bottom, 6px);
+    justify-content: space-around;
+    align-items: center;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+  }
+  [data-theme="dark"] .bottom-pill-nav {
+    background: rgba(10,10,10,0.92);
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.3);
+  }
+  .bottom-pill-nav .pill-link {
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    padding: 6px 10px; border-radius: 10px;
+    color: var(--text-3); font-size: 10px; font-weight: 600;
+    text-decoration: none; transition: all 0.15s;
+    min-width: 52px;
+    letter-spacing: 0.01em;
+  }
+  .bottom-pill-nav .pill-link svg {
+    width: 20px; height: 20px; stroke-width: 1.8;
+  }
+  .bottom-pill-nav .pill-link.active,
+  .bottom-pill-nav .pill-link:hover {
+    color: var(--accent);
+    background: var(--accent-light);
+  }
+  /* Add safe area padding to body so content doesn't hide behind nav */
+  body { padding-bottom: 72px; }
+}
+
 /* ============================================================
    HERO — Product-first, minimal, high contrast
    ============================================================ */

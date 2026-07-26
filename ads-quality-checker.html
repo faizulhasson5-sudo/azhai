@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en" data-page="ads-quality-checker" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Ads Quality Checker | Analyze & Compare Ad Copy</title>
+<meta name="description" content="Free ads quality checker tool. Analyze up to 4 ad variations for AIDA, PAS, readability, CTA strength, and emotional appeal. Find your best-performing ad before launch.">
+<meta name="keywords" content="ads quality checker, ad copy analyzer, ad copy checker, facebook ad copy, google ad copy, ad performance analyzer">
+<link rel="canonical" href="https://azhai-six.vercel.app/ads-quality-checker.html">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:title" content="Free Ads Quality Checker | Analyze & Compare Ad Copy">
+<meta property="og:description" content="Analyze up to 4 ad variations instantly. AIDA, PAS, readability, CTA strength scores. Find your best ad before launching.">
+<meta property="og:url" content="https://azhai-six.vercel.app/ads-quality-checker.html">
+<meta property="og:type" content="article">
+<meta name="twitter:title" content="Free Ads Quality Checker | KwordSEO">
+<meta name="twitter:description" content="Analyze and compare ad copy variations. AIDA, PAS, readability, CTA strength scoring.">
+<link rel="stylesheet" href="/css/style.css">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KDTPKT4T');</script>
+<script>
+  (function(){
+    try {
+      var t = localStorage.getItem('attTheme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch(e) {}
+  })();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://azhai-six.vercel.app/" },
+    { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://azhai-six.vercel.app/tools/" },
+    { "@type": "ListItem", "position": 3, "name": "Ads Quality Checker", "item": "https://azhai-six.vercel.app/ads-quality-checker.html" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is an ads quality checker?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An ads quality checker is a tool that evaluates ad copy across multiple dimensions like AIDA framework compliance, PAS framework, readability, CTA strength, and emotional appeal. It scores each ad and helps you identify which variation will perform best before spending money on ads."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the AIDA scoring work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The AIDA score evaluates four components: Attention (headline power words, numbers, questions), Interest (second-person language, empathy words), Desire (benefit language, specificity with numbers), and Action (strong CTAs with action verbs and urgency). Each component is scored and weighted to produce an overall AIDA score."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I compare multiple ad variations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, the tool supports 1-4 ad variations. Each ad is scored independently across all dimensions, then compared side by side. The tool declares a winner and explains why it performs better than the other variations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which ad platforms are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool supports Facebook, Instagram, Google Search, Google Display, TikTok, LinkedIn, and Twitter/X. Each platform has specific length guidelines that are factored into the scoring."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my ad data sent to any server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All analysis happens entirely in your browser using JavaScript. Your ad copy never leaves your device. There are no external API calls or data transmission of any kind."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDTPKT4T"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-logo" href="/" aria-label="KwordSEO Home">
+      <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
+      <span class="logo-text">Kword<span class="logo-seo">SEO</span></span>
+    </a>
+    <nav class="nav" id="mainNav" aria-label="Main navigation">
+<a href="/" class="nav-link">Home</a>
+<a href="/tools/" class="nav-link">Tools</a>
+<a href="/skills/" class="nav-link">α tools</a>
+<a href="/courses/" class="nav-link">Courses</a>
+<a href="/books/" class="nav-link">Books</a>
+<a href="/blog/" class="nav-link">Blog</a>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="theme-toggle" id="themeToggle" onclick="App.toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode"><span class="track"></span><span class="thumb"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
+      <button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" onclick="App.toggleMenu()"><div class="hamburger"><span></span><span></span><span></span></div></button>
+    </div>
+    <div class="nav-backdrop" id="navBackdrop" onclick="App.closeMenu()"></div>
+  </div>
+</header>
+
+<main id="main-content">
+
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-eyebrow"> Free Tool · No Login · 100% Client-Side</span>
+    <h1>Ads Quality Checker</h1>
+    <p class="hero-sub">Analyze up to 4 ad variations and find your best performer before launch</p>
+    <div class="hero-cta-row">
+      <button type="button" class="hero-cta" onclick="document.getElementById('tool').scrollIntoView({behavior:'smooth'})">Analyze Ads</button>
+    </div>
+  </div>
+</section>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="/">Home</a>
+  <span aria-hidden="true">›</span>
+  <a href="/tools/">Tools</a>
+  <span aria-hidden="true">›</span>
+  <span aria-current="page">Ads Quality Checker</span>
+</nav>
+
+<section id="tool" class="tool-section reveal" aria-labelledby="tool-heading">
+  <h2 id="tool-heading" class="section-title">Ads Quality Checker</h2>
+  <p class="section-sub">Enter your ad copy below. The tool analyzes AIDA, PAS, readability, CTA strength, emotional appeal, and platform fit.</p>
+
+  <div class="platform-selector" role="radiogroup" aria-label="Ad platform">
+    <button type="button" class="platform-pill active" data-platform="facebook">Facebook</button>
+    <button type="button" class="platform-pill" data-platform="instagram">Instagram</button>
+    <button type="button" class="platform-pill" data-platform="google-search">Google Search</button>
+    <button type="button" class="platform-pill" data-platform="google-display">Google Display</button>
+    <button type="button" class="platform-pill" data-platform="tiktok">TikTok</button>
+    <button type="button" class="platform-pill" data-platform="linkedin">LinkedIn</button>
+    <button type="button" class="platform-pill" data-platform="twitter">Twitter/X</button>
+  </div>
+
+  <div class="ads-container" id="adsContainer"></div>
+
+  <div class="tool-actions">
+    <button type="button" class="btn btn-secondary" id="addAdBtn">+ Add Ad</button>
+    <button type="button" class="btn btn-primary btn-lg" id="analyzeBtn">Analyze All Ads</button>
+  </div>
+</section>
+
+<section id="results" class="results-section reveal" aria-labelledby="results-heading" style="display:none">
+  <h2 id="results-heading" class="section-title">Results</h2>
+
+  <div class="winner-banner" id="winnerBanner"></div>
+
+  <div class="score-cards" id="scoreCards"></div>
+
+  <div class="recommendations" id="recommendations"></div>
+</section>
+
+<section class="edu-section reveal" aria-labelledby="edu-heading">
+  <h2 id="edu-heading">What is an Ads Quality Checker?</h2>
+  <p class="section-sub">A comprehensive tool to evaluate and improve your advertising copy before spending money on ads.</p>
+  <div class="edu-content">
+    <div class="formula-card">
+      <h3>Analyze Every Ad Before You Launch</h3>
+      <p>An ads quality checker evaluates your ad copy across proven marketing frameworks — AIDA (Attention, Interest, Desire, Action) and PAS (Problem, Agitate, Solve) — along with readability, CTA strength, emotional appeal, and platform-specific best practices. Instead of guessing which ad will perform best, you get data-driven insights that help you choose the highest-converting variation before spending a single dollar on ad spend.</p>
+    </div>
+    <div class="formula-card">
+      <h3>Why Compare Multiple Ad Variations?</h3>
+      <p>Top advertisers never run a single ad variant. They create 3-4 variations of headlines, body text, and CTAs, then test them against each other. This tool gives you a head start by scoring each variation across six dimensions, showing you exactly where each ad is strong or weak, and recommending which one to run first. A/B testing with data beats guessing every time.</p>
+    </div>
+    <div class="formula-card">
+      <h3>100% Private — Your Data Stays in Your Browser</h3>
+      <p>All analysis runs entirely in your browser using JavaScript. Your ad copy is never sent to any server, API, or third party. This means you can safely analyze sensitive campaign copy, client ads, or competitive research without any privacy concerns.</p>
+    </div>
+  </div>
+</section>
+
+<section class="howto-section reveal" aria-labelledby="howto-heading">
+  <h2 id="howto-heading">How to Use This Tool</h2>
+  <div class="edu-content">
+    <div class="formula-card">
+      <h3>Step 1: Select Your Platform</h3>
+      <p>Choose the ad platform you're creating for — Facebook, Instagram, Google Search, Google Display, TikTok, LinkedIn, or Twitter/X. Each platform has specific character limits and best practices that the tool uses for scoring.</p>
+    </div>
+    <div class="formula-card">
+      <h3>Step 2: Enter Your Ad Copy</h3>
+      <p>Add 1 to 4 ad variations. Each ad has three fields: Headline (the main hook), Body (primary text or description), and Call-to-Action (the CTA button text or phrase). You can add or remove ads as needed.</p>
+    </div>
+    <div class="formula-card">
+      <h3>Step 3: Analyze and Compare</h3>
+      <p>Click "Analyze All Ads" to get instant scores. The tool evaluates each ad across six dimensions, gives a composite score and grade, and recommends the best performer. Review the dimension breakdown and specific recommendations to improve weaker ads.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section reveal" aria-labelledby="faq-heading">
+  <h2 id="faq-heading">Frequently Asked Questions</h2>
+  <details class="faq-item">
+    <summary class="faq-question">What is an ads quality checker? <span>+</span></summary>
+    <div class="faq-answer">An ads quality checker is a tool that evaluates ad copy across multiple dimensions like AIDA framework compliance, PAS framework, readability, CTA strength, and emotional appeal. It scores each ad and helps you identify which variation will perform best before spending money on ads.</div>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-question">How does the AIDA scoring work? <span>+</span></summary>
+    <div class="faq-answer">The AIDA score evaluates four components: Attention (headline power words, numbers, questions), Interest (second-person language, empathy words), Desire (benefit language, specificity with numbers), and Action (strong CTAs with action verbs and urgency). Each component is scored and weighted to produce an overall AIDA score.</div>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-question">Can I compare multiple ad variations? <span>+</span></summary>
+    <div class="faq-answer">Yes, the tool supports 1-4 ad variations. Each ad is scored independently across all dimensions, then compared side by side. The tool declares a winner and explains why it performs better than the other variations.</div>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-question">Which ad platforms are supported? <span>+</span></summary>
+    <div class="faq-answer">The tool supports Facebook, Instagram, Google Search, Google Display, TikTok, LinkedIn, and Twitter/X. Each platform has specific length guidelines that are factored into the scoring.</div>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-question">Is my ad data sent to any server? <span>+</span></summary>
+    <div class="faq-answer">No. All analysis happens entirely in your browser using JavaScript. Your ad copy never leaves your device. There are no external API calls or data transmission of any kind.</div>
+  </details>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-top-text">
+        <span class="footer-top-label">Newsletter</span>
+        <p class="footer-top-title">Get new tools & SEO tips</p>
+        <p class="footer-top-sub">No spam. Unsubscribe anytime.</p>
+      </div>
+      <form class="footer-top-form" id="newsletterForm" action="/api/subscribe" method="POST">
+        <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="site-logo" style="color:inherit"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>
+        <p class="footer-brand-desc">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser — your data never leaves your device.</p>
+        <div class="footer-social">
+          <a href="https://twitter.com/kwordseo" target="_blank" rel="noopener" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+          <a href="https://github.com/kwordseo" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+          <a href="https://linkedin.com/company/kwordseo" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Tools</p>
+        <a href="/tools/word-counter.html">Word Counter</a>
+        <a href="/tools/case-converter.html">Case Converter</a>
+        <a href="/tools/json-formatter.html">JSON Formatter</a>
+        <a href="/tools/robots-txt.html">Robots.txt</a>
+        <a href="/tools/">Browse All 45+ Tools</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">SEO</p>
+        <a href="/tools/meta-gen.html">Meta Tags</a>
+        <a href="/tools/keyword-density.html">Keyword Density</a>
+        <a href="/tools/slug-generator.html">Slug Generator</a>
+        <a href="/tools/sitemap-gen.html">Sitemap Generator</a>
+        <a href="/tools/schema-gen.html">Schema Markup</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Company</p>
+        <a href="/about.html">About Us</a>
+        <a href="/blog/">Blog</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/advertise.html">Advertise</a>
+        <a href="/authors/sarah-mitchell.html">Our Team</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Legal</p>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="/cookie-policy.html">Cookie Policy</a>
+        <a href="/editorial-policy.html">Editorial Policy</a>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <p>&copy; 2026 KwordSEO. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/cookie-policy.html">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent">
+  <p> We use cookies for analytics & preferences. <a href="/cookie-policy.html">Learn more</a></p>
+  <div class="btn-group">
+    <button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button>
+    <button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button>
+  </div>
+</div>
+
+<div class="toast" id="appToast" aria-live="polite"></div>
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<style>
+.tool-section{padding:48px 0 32px}
+.section-title{font-size:1.75rem;font-weight:800;letter-spacing:-.5px;margin-bottom:8px}
+.section-sub{color:var(--text-3);font-size:.95rem;margin-bottom:32px}
+.breadcrumbs{padding:16px 20px 0;max-width:1100px;margin:0 auto;font-size:.82rem;color:var(--text-3)}
+.breadcrumbs a{color:var(--text-3);transition:color .15s}
+.breadcrumbs a:hover{color:var(--accent);text-decoration:none}
+.breadcrumbs span[aria-hidden]{margin:0 6px;opacity:.5}
+
+.platform-selector{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.platform-pill{padding:8px 18px;border-radius:20px;border:1.5px solid var(--border);background:var(--surface);color:var(--text-2);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
+.platform-pill:hover{border-color:var(--accent);color:var(--accent)}
+.platform-pill.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+.ads-container{display:flex;flex-direction:column;gap:20px}
+.ad-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;position:relative;transition:border-color .2s}
+.ad-card:hover{border-color:var(--accent)}
+.ad-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.ad-card-title{font-size:1rem;font-weight:800}
+.ad-card-remove{background:none;border:none;color:var(--text-3);cursor:pointer;font-size:.8rem;padding:4px 8px;border-radius:4px;transition:color .2s}
+.ad-card-remove:hover{color:var(--danger,#ef4444)}
+.ad-field{margin-bottom:14px}
+.ad-field label{display:block;font-weight:700;font-size:.85rem;margin-bottom:6px;color:var(--text-2)}
+.ad-field input,.ad-field textarea{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:.92rem;background:var(--surface-2);color:var(--text);font-family:inherit;transition:border-color .2s}
+.ad-field input:focus,.ad-field textarea:focus{outline:2px solid var(--accent);border-color:var(--accent)}
+.ad-field textarea{resize:vertical;min-height:80px}
+.ad-field .char-count{font-size:.72rem;color:var(--text-3);text-align:right;margin-top:4px}
+
+.tool-actions{display:flex;gap:12px;margin-top:24px;justify-content:center;flex-wrap:wrap}
+.btn{padding:10px 24px;border-radius:8px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;transition:all .2s;font-family:inherit}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{filter:brightness(1.1)}
+.btn-secondary{background:var(--surface);border:1.5px solid var(--border);color:var(--text)}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+.btn-lg{padding:14px 40px;font-size:1rem}
+
+.results-section{padding:48px 0 40px;border-top:1px solid var(--border)}
+.winner-banner{background:linear-gradient(135deg,var(--accent),#7c3aed);color:#fff;border-radius:12px;padding:24px 32px;text-align:center;margin-bottom:32px}
+.winner-banner h3{font-size:1.3rem;font-weight:800;margin-bottom:4px}
+.winner-banner p{opacity:.9;font-size:.95rem}
+
+.score-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-bottom:32px}
+.score-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;position:relative}
+.score-card.is-winner{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.score-card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.score-card-name{font-weight:800;font-size:1rem}
+.score-card-badge{font-size:.7rem;font-weight:700;padding:3px 8px;border-radius:10px;background:var(--accent);color:#fff}
+.score-circle{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;margin:0 auto 16px;border:4px solid}
+.score-circle .score-num{font-size:1.6rem;font-weight:800;line-height:1}
+.score-circle .score-grade{font-size:.75rem;font-weight:700;margin-top:2px}
+.score-circle.grade-a{border-color:#22c55e;color:#22c55e}
+.score-circle.grade-b{border-color:#84cc16;color:#84cc16}
+.score-circle.grade-c{border-color:#eab308;color:#eab308}
+.score-circle.grade-d{border-color:#f97316;color:#f97316}
+.score-circle.grade-f{border-color:#ef4444;color:#ef4444}
+
+.dimension-bar{margin-bottom:10px}
+.dimension-label{display:flex;justify-content:space-between;font-size:.78rem;font-weight:600;margin-bottom:4px}
+.dimension-label span:first-child{color:var(--text-2)}
+.dimension-label span:last-child{color:var(--text-3)}
+.dim-track{height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.dim-fill{height:100%;border-radius:3px;transition:width .6s ease}
+
+.recommendations{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px}
+.recommendations h3{font-size:1.1rem;font-weight:800;margin-bottom:16px}
+.rec-group{margin-bottom:20px}
+.rec-group:last-child{margin-bottom:0}
+.rec-group-title{font-size:.9rem;font-weight:700;margin-bottom:10px;color:var(--accent)}
+.rec-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:.88rem;line-height:1.5;color:var(--text-2)}
+.rec-icon{flex-shrink:0;font-size:.9rem;margin-top:1px}
+
+.edu-section,.howto-section{padding:48px 0}
+.faq-section{padding:48px 0 64px}
+.faq-item{border:1px solid var(--border);border-radius:10px;margin-bottom:12px;overflow:hidden;background:var(--surface)}
+.faq-question{padding:16px 20px;font-weight:700;font-size:.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;list-style:none;transition:background .15s}
+.faq-question::-webkit-details-marker{display:none}
+.faq-question:hover{background:var(--surface-2)}
+.faq-question span{font-size:1.2rem;transition:transform .2s;color:var(--text-3)}
+details[open] .faq-question span{transform:rotate(45deg)}
+.faq-answer{padding:0 20px 16px;font-size:.9rem;line-height:1.7;color:var(--text-2)}
+
+@media(max-width:768px){
+  .score-cards{grid-template-columns:1fr}
+  .platform-selector{gap:6px}
+  .platform-pill{padding:6px 14px;font-size:.8rem}
+  .tool-actions{flex-direction:column}
+  .btn-lg{width:100%}
+}
+</style>
+
+<script src="/js/app.js"></script>
+<script>
+(function(){
+  var $=function(s){return document.getElementById(s)};
+  var platform='facebook';
+  var adCount=0;
+  var maxAds=4;
+
+  var platforms={
+    facebook:{name:'Facebook',headlineMax:125,bodyMax:125},
+    instagram:{name:'Instagram',headlineMax:125,bodyMax:2200},
+    'google-search':{name:'Google Search',headlineMax:30,bodyMax:90},
+    'google-display':{name:'Google Display',headlineMax:30,bodyMax:90},
+    tiktok:{name:'TikTok',headlineMax:100,bodyMax:2200},
+    linkedin:{name:'LinkedIn',headlineMax:150,bodyMax:3000},
+    twitter:{name:'Twitter/X',headlineMax:70,bodyMax:280}
+  };
+
+  // Sample ad
+  var sampleAd={
+    headline:'Save 40% on Premium Tools — Today Only',
+    body:'Tired of paying full price for the tools your business needs? You\'re not alone. Thousands of professionals struggle with expensive software costs. Imagine having access to every premium tool at a fraction of the price. Our exclusive 24-hour sale gives you up to 40% off. Join 10,000+ happy customers who switched last month.',
+    cta:'Claim Your Discount Now'
+  };
+
+  // Platform pills
+  var pills=document.querySelectorAll('.platform-pill');
+  pills.forEach(function(pill){
+    pill.addEventListener('click',function(){
+      pills.forEach(function(p){p.classList.remove('active')});
+      pill.classList.add('active');
+      platform=pill.dataset.platform;
+      updateCharCounts();
+    });
+  });
+
+  function createAdCard(data){
+    if(adCount>=maxAds)return;
+    adCount++;
+    var n=adCount;
+    var d=data||{headline:'',body:'',cta:''};
+    var card=document.createElement('div');
+    card.className='ad-card';
+    card.dataset.ad=n;
+    card.innerHTML=
+      '<div class="ad-card-header">'+
+        '<span class="ad-card-title">Ad '+n+'</span>'+
+        (n>1?'<button type="button" class="ad-card-remove" onclick="window._removeAd(this)">Remove</button>':'')+
+      '</div>'+
+      '<div class="ad-field">'+
+        '<label>Headline</label>'+
+        '<input type="text" class="ad-headline" placeholder="Your headline here..." value="'+escHtml(d.headline)+'" oninput="window._charCount(this)">'+
+        '<div class="char-count" data-type="headline">0 / '+platforms[platform].headlineMax+' chars</div>'+
+      '</div>'+
+      '<div class="ad-field">'+
+        '<label>Body / Primary Text</label>'+
+        '<textarea class="ad-body" placeholder="Your ad body text..." oninput="window._charCount(this)">'+escHtml(d.body)+'</textarea>'+
+        '<div class="char-count" data-type="body">0 / '+platforms[platform].bodyMax+' chars</div>'+
+      '</div>'+
+      '<div class="ad-field">'+
+        '<label>Call-to-Action</label>'+
+        '<input type="text" class="ad-cta" placeholder="e.g. Get Started Free" value="'+escHtml(d.cta)+'">'+
+      '</div>';
+    $('adsContainer').appendChild(card);
+    updateCharCounts();
+    if(adCount>=maxAds)$('addAdBtn').style.display='none';
+  }
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  window._removeAd=function(btn){
+    var card=btn.closest('.ad-card');
+    card.remove();
+    adCount--;
+    renumberAds();
+    $('addAdBtn').style.display='';
+  };
+
+  function renumberAds(){
+    var cards=document.querySelectorAll('.ad-card');
+    cards.forEach(function(c,i){
+      c.querySelector('.ad-card-title').textContent='Ad '+(i+1);
+      if(i===0){
+        var rem=c.querySelector('.ad-card-remove');
+        if(rem)rem.remove();
+      }
+    });
+  }
+
+  window._charCount=function(el){
+    var card=el.closest('.ad-card');
+    var type=el.classList.contains('ad-headline')?'headline':'body';
+    var max=platforms[platform][type+'Max'];
+    var len=el.value.length;
+    var cc=card.querySelector('.char-count[data-type="'+type+'"]');
+    if(cc)cc.textContent=len+' / '+max+' chars';
+  };
+
+  function updateCharCounts(){
+    document.querySelectorAll('.ad-card').forEach(function(card){
+      var headline=card.querySelector('.ad-headline');
+      var body=card.querySelector('.ad-body');
+      if(headline)window._charCount(headline);
+      if(body)window._charCount(body);
+    });
+  }
+
+  $('addAdBtn').addEventListener('click',function(){createAdCard()});
+
+  // --- ANALYSIS ENGINE ---
+
+  function countSyllables(word){
+    word=word.toLowerCase().replace(/[^a-z]/g,'');
+    if(!word)return 0;
+    if(word.length<=3)return 1;
+    word=word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/,'');
+    word=word.replace(/^y/,'');
+    var m=word.match(/[aeiouy]{1,2}/g);
+    return m?m.length:1;
+  }
+
+  function fleschReadingEase(text){
+    var sentences=text.split(/[.!?]+/).filter(function(s){return s.trim().length>0});
+    var words=text.split(/\s+/).filter(function(w){return w.replace(/[^a-zA-Z]/,'').length>0});
+    if(sentences.length===0||words.length===0)return 100;
+    var totalSyllables=0;
+    words.forEach(function(w){totalSyllables+=countSyllables(w)});
+    var score=206.835-1.015*(words.length/sentences.length)-84.6*(totalSyllables/words.length);
+    return Math.max(0,Math.min(100,Math.round(score)));
+  }
+
+  function countWords(text){
+    return text.split(/\s+/).filter(function(w){return w.replace(/[^a-zA-Z]/,'').length>0}).length;
+  }
+
+  function aidaScore(headline,body,cta){
+    var score={attention:0,interest:0,desire:0,action:0};
+    var hl=headline.toLowerCase();
+    var bd=body.toLowerCase();
+    var ct=cta.toLowerCase();
+    // Attention
+    if(/\d/.test(hl))score.attention+=25;
+    if(/\?/.test(hl))score.attention+=15;
+    var powerWords=['secret','exclusive','free','instant','proven','guaranteed','discover','unlock','missing','weird','strange','bizarre','little-known','controversial'];
+    powerWords.forEach(function(w){if(hl.indexOf(w)!==-1)score.attention+=10});
+    if(/now|today|limited|hurry|don't miss|last chance|ending soon/.test(hl))score.attention+=15;
+    if(score.attention>100)score.attention=100;
+    // Interest
+    var youWords=['you','your','yours','yourself'];
+    youWords.forEach(function(w){var r=new RegExp('\\b'+w+'\\b','gi');if(r.test(bd))score.interest+=12});
+    var empathyWords=['struggle','tired','frustrated','sick','hate','annoyed','overwhelmed','stuck','confused','worried','afraid','concerned'];
+    empathyWords.forEach(function(w){if(bd.indexOf(w)!==-1)score.interest+=10});
+    if(bd.indexOf('!==-1')||/\?$/.test(bd.trim()))score.interest+=8;
+    if(score.interest>100)score.interest=100;
+    // Desire
+    var benefitWords=['imagine','save','earn','transform','achieve','boost','increase','grow','improve','get','master','unlock'];
+    benefitWords.forEach(function(w){if(bd.indexOf(w)!==-1)score.desire+=8});
+    if(/%\|\$|percent|dollar|off|save|free/.test(bd))score.desire+=15;
+    if(/\d+\s*(days?|weeks?|months?|hours?|minutes?|percent|%)|within\s+\d+/.test(bd))score.desire+=12;
+    if(score.desire>100)score.desire=100;
+    // Action
+    var actionVerbs=['get','start','try','download','claim','grab','sign up','join','buy','shop','order','subscribe','book','reserve','claim','access','unlock'];
+    actionVerbs.forEach(function(w){if(ct.indexOf(w)!==-1)score.action+=20});
+    if(/now|today|immediately|right now|instantly/.test(ct))score.action+=15;
+    if(score.action>100)score.action=100;
+    return Math.round((score.attention*0.3+score.interest*0.3+score.desire*0.2+score.action*0.2));
+  }
+
+  function pasScore(headline,body,cta){
+    var all=(headline+' '+body+' '+cta).toLowerCase();
+    var score={problem:0,agitate:0,solve:0};
+    // Problem
+    var problemWords=['problem','issue','struggle','tired','frustrated','stuck','hate','annoyed','worried','afraid','concerned','confused','overwhelmed','sick','pain','trouble','challenge','difficulty'];
+    problemWords.forEach(function(w){if(all.indexOf(w)!==-1)score.problem+=10});
+    if(/\?/.test(headline))score.problem+=12;
+    if(score.problem>100)score.problem=100;
+    // Agitate
+    var agitateWords=['imagine','tired of','sick of','fed up','enough','wasting','losing','miss out','behind','falling behind','worse','dying','kill','destroy','nightmare','disaster','catastrophe'];
+    agitateWords.forEach(function(w){if(all.indexOf(w)!==-1)score.agitate+=12});
+    if(score.agitate>100)score.agitate=100;
+    // Solve
+    var solveWords=['solution','fix','solve','finally','discover','proven','guaranteed','works','results','transform','change','improve','boost','increase','save','free','better'];
+    solveWords.forEach(function(w){if(all.indexOf(w)!==-1)score.solve+=8});
+    if(score.solve>100)score.solve=100;
+    return Math.round((score.problem*0.3+score.agitate*0.3+score.solve*0.4));
+  }
+
+  function ctaScore(cta){
+    var ct=cta.toLowerCase().trim();
+    var score=0;
+    var actionVerbs=['get','start','try','download','claim','grab','sign up','join','buy','shop','order','subscribe','book','reserve','access','unlock','discover','learn','see','watch','listen','read','take','receive','enter','win'];
+    actionVerbs.forEach(function(v){if(ct.indexOf(v)===0||ct.indexOf(' '+v)!==-1)score+=20});
+    if(/now|today|immediately|right now|instantly|limited|hurry|fast|quick/.test(ct))score+=15;
+    if(/free|bonus|extra|save|discount|%|off|\$|guide|checklist|template|ebook|report/.test(ct))score+=20;
+    if(/try free|no credit card|risk free|no obligation|cancel anytime|money back/.test(ct))score+=15;
+    if(/\d+|join \d+|trusted by|over \d+/.test(ct))score+=15;
+    if(/click here|submit|enter|learn more/.test(ct))score-=10;
+    return Math.max(0,Math.min(100,score));
+  }
+
+  function emotionalScore(text){
+    var t=text.toLowerCase();
+    var words=t.split(/\s+/);
+    var total=words.length||1;
+    var positive=['free','proven','guaranteed','exclusive','instant','save','win','discover','amazing','incredible','best','top','premium','love','happy','success','powerful','beautiful'];
+    var power=['secret','breakthrough','revolutionary','certified','legendary','ultimate','insane','unbelievable','mind-blowing','epic'];
+    var social=['trusted','recommended','award-winning','#1','rated','reviewed','featured','popular','best-selling','community'];
+    var posCount=0;
+    positive.forEach(function(w){if(t.indexOf(w)!==-1)posCount++});
+    power.forEach(function(w){if(t.indexOf(w)!==-1)posCount++});
+    social.forEach(function(w){if(t.indexOf(w)!==-1)posCount++});
+    var ratio=posCount/Math.max(1,total/20);
+    return Math.round(Math.min(100,ratio*100));
+  }
+
+  function platformLengthScore(headline,body,platform){
+    var p=platforms[platform];
+    var hlLen=headline.length;
+    var bdLen=body.length;
+    var hlScore=100;
+    var bdScore=100;
+    if(hlLen>p.headlineMax)hlScore=Math.max(0,100-((hlLen-p.headlineMax)/p.headlineMax*100));
+    else if(hlLen<p.headlineMax*0.3)hlScore=60;
+    if(bdLen>p.bodyMax)bdScore=Math.max(0,100-((bdLen-p.bodyMax)/p.bodyMax*100));
+    else if(bdLen<p.bodyMax*0.1)bdScore=50;
+    return Math.round(hlScore*0.4+bdScore*0.6);
+  }
+
+  function analyzeAd(headline,body,cta){
+    var aida=aidaScore(headline,body,cta);
+    var pas=pasScore(headline,body,cta);
+    var readability=fleschReadingEase(body||headline);
+    var ctaS=ctaScore(cta);
+    var emotional=emotionalScore(headline+' '+body+' '+cta);
+    var platformLen=platformLengthScore(headline,body,platform);
+    var composite=Math.round(aida*0.3+pas*0.2+readability*0.2+ctaS*0.15+emotional*0.1+platformLen*0.05);
+    var grade=composite>=85?'A':composite>=70?'B':composite>=55?'C':composite>=40?'D':'F';
+    return{aida:aida,pas:pas,readability:readability,ctaStrength:ctaS,emotional:emotional,platformLength:platformLen,composite:composite,grade:grade};
+  }
+
+  function getGradeColor(grade){
+    var colors={A:'#22c55e',B:'#84cc16',C:'#eab308',D:'#f97316',F:'#ef4444'};
+    return colors[grade]||'#eab308';
+  }
+
+  function getRecommendations(headline,body,cta,results){
+    var recs=[];
+    var hl=headline.toLowerCase();
+    var bd=body.toLowerCase();
+    var ct=cta.toLowerCase();
+    if(!/\d/.test(headline))recs.push({icon:'💡',text:'Add a number to your headline (e.g. "7 Ways to..." or "Save 40%")'});
+    if(!/\?/.test(headline)&&hl.length>10)recs.push({icon:'💡',text:'Consider using a question in your headline to boost curiosity'});
+    if(bd.split(/\s+/).length<20)recs.push({icon:'⚠️',text:'Your body text is short. Add more detail to build interest and desire'});
+    if(!/you|your/.test(bd))recs.push({icon:'⚠️',text:'Use "you/your" language in body text to make it personal'});
+    if(!/free|guaranteed|proven|exclusive/.test(ct))recs.push({icon:'⚠️',text:'Add a value proposition to your CTA (e.g. "Get your free guide")'});
+    if(!/now|today|limited/.test(ct))recs.push({icon:'⚠️',text:'Add urgency to your CTA (e.g. "Now", "Today", "Limited")'});
+    if(results.aida>=75)recs.push({icon:'✅',text:'Strong AIDA structure — your ad follows proven copywriting principles'});
+    if(results.readability>=70)recs.push({icon:'✅',text:'Easy to read — your message is clear and accessible'});
+    if(results.emotional>=60)recs.push({icon:'✅',text:'Good emotional appeal — your ad connects on an emotional level'});
+    if(results.ctaStrength>=60)recs.push({icon:'✅',text:'Strong CTA — clear action with motivation to click'});
+    var pl=platforms[platform];
+    if(headline.length>pl.headlineMax)recs.push({icon:'⚠️',text:'Headline exceeds '+pl.name+' limit of '+pl.headlineMax+' characters ('+headline.length+' chars)'});
+    if(body.length>pl.bodyMax)recs.push({icon:'⚠️',text:'Body exceeds '+pl.name+' limit of '+pl.bodyMax+' characters ('+body.length+' chars)'});
+    if(recs.length===0)recs.push({icon:'✅',text:'Your ad looks solid across all dimensions!'});
+    return recs;
+  }
+
+  function renderResults(allResults){
+    var results=$('results');
+    results.style.display='';
+    // Find winner
+    var maxScore=0;
+    var winnerIdx=0;
+    allResults.forEach(function(r,i){if(r.composite>maxScore){maxScore=r.composite;winnerIdx=i}});
+    var cards=document.querySelectorAll('.ad-card');
+    var winnerAd=cards[winnerIdx];
+    var winnerName='Ad '+(winnerIdx+1);
+    $('winnerBanner').innerHTML='<h3>'+winnerName+' Performs Best</h3><p>Score: '+allResults[winnerIdx].composite+'/100 (Grade '+allResults[winnerIdx].grade+') — '+allResults[winnerIdx].composite+' out of 100 across all dimensions</p>';
+
+    var cardsHtml='';
+    allResults.forEach(function(r,i){
+      var isWinner=i===winnerIdx;
+      var gc='grade-'+r.grade.toLowerCase();
+      cardsHtml+='<div class="score-card'+(isWinner?' is-winner':'')+'">';
+      cardsHtml+='<div class="score-card-header"><span class="score-card-name">Ad '+(i+1)+'</span>'+(isWinner?'<span class="score-card-badge">★ Winner</span>':'')+'</div>';
+      cardsHtml+='<div class="score-circle '+gc+'"><span class="score-num">'+r.composite+'</span><span class="score-grade">Grade '+r.grade+'</span></div>';
+      var dims=[
+        {name:'AIDA',val:r.aida,weight:'30%'},
+        {name:'PAS',val:r.pas,weight:'20%'},
+        {name:'Readability',val:r.readability,weight:'20%'},
+        {name:'CTA Strength',val:r.ctaStrength,weight:'15%'},
+        {name:'Emotional Appeal',val:r.emotional,weight:'10%'},
+        {name:'Platform Fit',val:r.platformLength,weight:'5%'}
+      ];
+      dims.forEach(function(d){
+        var color=d.val>=75?'#22c55e':d.val>=50?'#eab308':'#ef4444';
+        cardsHtml+='<div class="dimension-bar"><div class="dimension-label"><span>'+d.name+' ('+d.weight+')</span><span>'+d.val+'</span></div><div class="dim-track"><div class="dim-fill" style="width:'+d.val+'%;background:'+color+'"></div></div></div>';
+      });
+      cardsHtml+='</div>';
+    });
+    $('scoreCards').innerHTML=cardsHtml;
+
+    // Recommendations
+    var recsHtml='<h3>Recommendations</h3>';
+    var allRecs=getRecommendations(
+      document.querySelectorAll('.ad-headline')[winnerIdx].value,
+      document.querySelectorAll('.ad-body')[winnerIdx].value,
+      document.querySelectorAll('.ad-cta')[winnerIdx].value,
+      allResults[winnerIdx]
+    );
+    allRecs.forEach(function(r){recsHtml+='<div class="rec-item"><span class="rec-icon">'+r.icon+'</span><span>'+r.text+'</span></div>'});
+    if(allResults.length>1){
+      recsHtml+='<div class="rec-group" style="margin-top:20px"><div class="rec-group-title">Comparison Notes</div>';
+      allResults.forEach(function(r,i){
+        if(i===winnerIdx)return;
+        var diff=maxScore-r.composite;
+        recsHtml+='<div class="rec-item"><span class="rec-icon">📊</span><span>Ad '+(i+1)+' scored '+diff+' points lower. Key weaknesses: '+
+          (r.aida<50?'weak AIDA structure':'')+
+          (r.pas<50?', weak PAS framework':'')+
+          (r.ctaStrength<40?', weak CTA':'')+
+          (r.readability<60?', complex language':'')+
+          '</span></div>';
+      });
+      recsHtml+='</div>';
+    }
+    $('recommendations').innerHTML=recsHtml;
+
+    results.scrollIntoView({behavior:'smooth'});
+  }
+
+  $('analyzeBtn').addEventListener('click',function(){
+    var cards=document.querySelectorAll('.ad-card');
+    if(cards.length===0){alert('Please add at least one ad to analyze.');return}
+    var allResults=[];
+    cards.forEach(function(card){
+      var headline=card.querySelector('.ad-headline').value.trim();
+      var body=card.querySelector('.ad-body').value.trim();
+      var cta=card.querySelector('.ad-cta').value.trim();
+      if(!headline&&!body&&!cta){allResults.push({aida:0,pas:0,readability:0,ctaStrength:0,emotional:0,platformLength:0,composite:0,grade:'F'});return}
+      allResults.push(analyzeAd(headline,body,cta));
+    });
+    renderResults(allResults);
+  });
+
+  // Initialize with sample ad
+  createAdCard(sampleAd);
+
+  // Back to top
+  var btt=$('backToTop');
+  if(btt){
+    window.addEventListener('scroll',function(){btt.classList.toggle('visible',window.scrollY>400)},{passive:true});
+    btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+  }
+
+  // Newsletter
+  var nf=$('newsletterForm');
+  if(nf){
+    nf.addEventListener('submit',function(e){
+      e.preventDefault();
+      var fd=new FormData(nf);var email=fd.get('email');
+      if(!email)return;
+      var btn=nf.querySelector('button');var origText=btn.textContent;
+      btn.textContent='...';btn.disabled=true;
+      fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email})})
+      .then(function(r){return r.json()}).then(function(d){
+        if(d.message){nf.innerHTML='<span style="color:var(--accent);font-weight:600">'+d.message+'</span>'}
+        else{btn.textContent=origText;btn.disabled=false;alert(d.error||'Something went wrong')}
+      }).catch(function(){btn.textContent=origText;btn.disabled=false;alert('Network error.')});
+    });
+  }
+
+  // Scroll reveal
+  var reveals=document.querySelectorAll('.reveal');
+  if(reveals.length&&'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');io.unobserve(entry.target)}});
+    },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+    reveals.forEach(function(el){io.observe(el)});
+  }else{reveals.forEach(function(el){el.classList.add('visible')})}
+})();
+</script>
+<script>
+if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}
+var _deferredPrompt;
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();_deferredPrompt=e;});
+function installPWA(){if(!_deferredPrompt)return;_deferredPrompt.prompt();_deferredPrompt.userChoice.then(function(r){_deferredPrompt=null;});}
+</script>
+</body>
+</html>

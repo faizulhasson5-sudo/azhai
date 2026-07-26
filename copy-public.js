@@ -29,7 +29,8 @@ if (fs.existsSync(path.join(src, 'blog', 'images'))) copyDir(path.join(src, 'blo
 const htmlFiles = [
   'index.html', 'about.html', 'contact.html', 'advertise.html',
   'privacy-policy.html', 'terms.html', 'cookie-policy.html', '404.html',
-  'seo-statistics-2026.html', 'best-free-seo-tools.html', 'seo-checklist-2026.html', 'google-algorithm-history.html', 'seo-roi-calculator.html', 'editorial-policy.html'
+  'seo-statistics-2026.html', 'best-free-seo-tools.html', 'seo-checklist-2026.html', 'google-algorithm-history.html', 'seo-roi-calculator.html', 'editorial-policy.html',
+  'resume-builder.html', 'ads-quality-checker.html'
 ];
 for (const f of htmlFiles) {
   const sp = path.join(src, f);

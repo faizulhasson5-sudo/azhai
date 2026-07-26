@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
 <title>Premium Resume Builder | Create Professional Resumes Free Online</title>
 <meta name="description" content="Free online resume builder with live preview and PDF export. Create a professional resume in minutes with 3 modern templates. No signup required.">
 <meta name="keywords" content="resume builder, free resume builder, online resume maker, cv builder, professional resume, resume template, pdf resume">
@@ -22,12 +23,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,
 f);})(window,document,'script','dataLayer','GTM-KDTPKT4T');</script>
 <script>
-  (function(){
-    try {
-      var t = localStorage.getItem('attTheme');
-      if (t) document.documentElement.setAttribute('data-theme', t);
-    } catch(e) {}
-  })();
+  // Resume builder always uses light mode for preview visibility
+  document.documentElement.setAttribute('data-theme', 'light');
 </script>
 <script type="application/ld+json">
 {
@@ -610,6 +607,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .faq-item h3{font-size:.92rem;font-weight:600;color:var(--text,#1f2937);margin-bottom:4px}
 .faq-item p{font-size:.85rem;color:var(--text-secondary,#4b5563);line-height:1.6;margin:0}
 
+/* ---- NUCLEAR PREVIEW ISOLATION ---- */
+/* Force all text in preview to be dark on white background regardless of page theme */
+.rb-preview-wrapper{color-scheme:light !important;--text:#1f2937 !important;--bg:#ffffff !important;--text-2:#374151 !important;--text-3:#6b7280 !important;--surface:#f9fafb !important;--border:#e5e7eb !important;--accent:#2563eb !important}
+.rb-preview-wrapper .rb-preview,.rb-preview-wrapper .rb-preview *{color:#1f2937 !important;background-color:transparent !important}
+.rb-preview-wrapper .rb-preview{background:#fff !important;color:#222 !important}
+/* Re-apply template-specific colors (these already have !important but reinforcing) */
+.rb-preview-wrapper .tpl-modern .rp-name,.rb-preview-wrapper .tpl-classic .rp-main .rp-name,.rb-preview-wrapper .tpl-minimal .rp-name{color:#111 !important}
+.rb-preview-wrapper .tpl-modern .rp-title,.rb-preview-wrapper .tpl-classic .rp-main .rp-title,.rb-preview-wrapper .tpl-minimal .rp-title{color:#2563eb !important}
+.rb-preview-wrapper .tpl-modern .rp-contact,.rb-preview-wrapper .tpl-minimal .rp-contact{color:#555 !important}
+.rb-preview-wrapper .tpl-modern .rp-section h2,.rb-preview-wrapper .tpl-minimal .rp-section h2{color:#2563eb !important}
+.rb-preview-wrapper .tpl-modern .rp-summary,.rb-preview-wrapper .tpl-classic .rp-main .rp-summary,.rb-preview-wrapper .tpl-minimal .rp-summary{color:#444 !important}
+.rb-preview-wrapper .tpl-modern .rp-exp-title,.rb-preview-wrapper .tpl-classic .rp-main .rp-exp-title,.rb-preview-wrapper .tpl-minimal .rp-exp-title{color:#111 !important}
+.rb-preview-wrapper .tpl-modern .rp-exp-date,.rb-preview-wrapper .tpl-classic .rp-main .rp-exp-date,.rb-preview-wrapper .tpl-minimal .rp-exp-date{color:#888 !important}
+.rb-preview-wrapper .tpl-modern .rp-exp-sub,.rb-preview-wrapper .tpl-classic .rp-main .rp-exp-sub,.rb-preview-wrapper .tpl-minimal .rp-exp-sub{color:#555 !important}
+.rb-preview-wrapper .tpl-modern .rp-skill-tag{background:#eff6ff !important;color:#2563eb !important}
+.rb-preview-wrapper .tpl-minimal .rp-skill-tag{color:#333 !important}
+.rb-preview-wrapper .tpl-minimal .rp-skill-tag::after{color:#ccc !important}
+.rb-preview-wrapper .tpl-minimal .rp-skills-label,.rb-preview-wrapper .tpl-modern .rp-skills-label{color:#555 !important}
+.rb-preview-wrapper .tpl-minimal .rp-section h2{color:#000 !important}
+.rb-preview-wrapper .tpl-minimal .rp-exp{color:#333 !important}
+/* Classic sidebar - dark bg with light text (intentional) */
+.rb-preview-wrapper .tpl-classic .rp-sidebar{background:#1e293b !important;color:#e2e8f0 !important}
+.rb-preview-wrapper .tpl-classic .rp-sidebar *{color:#e2e8f0 !important}
+.rb-preview-wrapper .tpl-classic .rp-sidebar h2{color:#93c5fd !important}
+.rb-preview-wrapper .tpl-classic .rp-sidebar .rp-contact-item{color:#cbd5e1 !important}
+.rb-preview-wrapper .tpl-classic .rp-sidebar .rp-contact-item a{color:#93c5fd !important}
+.rb-preview-wrapper .tpl-classic .rp-sidebar .rp-skill-chip{background:#334155 !important;color:#e2e8f0 !important}
+.rb-preview-wrapper .tpl-classic .rp-sidebar .rp-skills-label{color:#94a3b8 !important}
+/* Links */
+.rb-preview-wrapper .rb-preview a{color:#2563eb !important}
 /* Responsive */
 @media(max-width:900px){
   .rb-panels{flex-direction:column}
@@ -1286,10 +1313,17 @@ function update(){
   }
   preview.innerHTML=html;
   preview.className='rb-preview tpl-'+state.template;
-  // Force light-mode preview via inline styles
-  if(wrapper){wrapper.style.background='#fff';wrapper.style.borderColor='#e5e7eb'}
-  preview.style.background='#fff';
-  preview.style.color='#222';
+  // Force light-mode preview via inline styles + style attribute
+  if(wrapper){
+    wrapper.setAttribute('style','background:#fff !important;border-color:#e5e7eb !important;color-scheme:light !important');
+  }
+  preview.setAttribute('style','background:#fff !important;color:#222 !important;color-scheme:light !important');
+  // Also force all direct children to have dark text
+  preview.querySelectorAll('*').forEach(function(el){
+    if(!el.closest('.rp-sidebar')){
+      el.style.color='#1f2937';
+    }
+  });
 }
 
 // Expose

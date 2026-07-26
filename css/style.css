@@ -273,47 +273,7 @@ a:hover { color: var(--accent-hover); }
 .pill-nav { display: none; }
 .mobile-theme-btn { display: none; }
 
-/* ---- Bottom Pill Nav (Mobile) ---- */
-.bottom-pill-nav {
-  display: none;
-}
-@media (max-width: 768px) {
-  .bottom-pill-nav {
-    display: flex;
-    position: fixed; bottom: 0; left: 0; right: 0;
-    z-index: 999;
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    padding: 6px 8px env(safe-area-inset-bottom, 6px);
-    justify-content: space-around;
-    align-items: center;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
-  }
-  [data-theme="dark"] .bottom-pill-nav {
-    background: rgba(10,10,10,0.92);
-    box-shadow: 0 -2px 12px rgba(0,0,0,0.3);
-  }
-  .bottom-pill-nav .pill-link {
-    display: flex; flex-direction: column; align-items: center; gap: 2px;
-    padding: 6px 10px; border-radius: 10px;
-    color: var(--text-3); font-size: 10px; font-weight: 600;
-    text-decoration: none; transition: all 0.15s;
-    min-width: 52px;
-    letter-spacing: 0.01em;
-  }
-  .bottom-pill-nav .pill-link svg {
-    width: 20px; height: 20px; stroke-width: 1.8;
-  }
-  .bottom-pill-nav .pill-link.active,
-  .bottom-pill-nav .pill-link:hover {
-    color: var(--accent);
-    background: var(--accent-light);
-  }
-  /* Add safe area padding to body so content doesn't hide behind nav */
-  body { padding-bottom: 72px; }
-}
+
 
 /* ============================================================
    HERO — Product-first, minimal, high contrast
@@ -1103,30 +1063,61 @@ a:hover { color: var(--accent-hover); }
   .nav .theme-btn { display: none; }
   .nav-backdrop {
     display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,0.65); z-index: 999;
+    background: rgba(0,0,0,0.5); z-index: 999;
     opacity: 0; transition: opacity 0.3s ease;
   }
   .nav-backdrop.open { display: block; opacity: 1; }
   .nav.open {
     display: flex; flex-direction: column;
-    position: fixed; top: var(--header-h, 52px); left: 0; right: 0;
-    height: 40vh;
+    position: fixed; top: 0; right: 0;
+    width: 280px; height: 100vh;
+    height: 100dvh;
     background: var(--surface); z-index: 1000;
-    padding: 20px 24px; gap: 0;
-    animation: slideDown 0.25s cubic-bezier(0.4,0,0.2,1);
+    padding: 68px 20px 32px; gap: 6px;
+    animation: slideInRight 0.25s cubic-bezier(0.4,0,0.2,1);
     overflow-y: auto;
     overscroll-behavior: contain;
-    border-bottom: 1px solid var(--border);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    border-left: 1px solid var(--border);
+    box-shadow: -8px 0 32px rgba(0,0,0,0.15);
   }
-  @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+  [data-theme="dark"] .nav.open {
+    box-shadow: -8px 0 32px rgba(0,0,0,0.4);
+  }
+  @keyframes slideInRight { from { opacity: 0; transform: translateX(100%); } to { opacity: 1; transform: translateX(0); } }
   .nav.open .nav-link {
-    display: block; padding: 16px 0; font-size: 18px; font-weight: 600;
-    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px; font-size: 15px; font-weight: 600;
+    border-radius: 10px;
     letter-spacing: -0.01em; color: var(--text-2);
+    transition: background 0.15s, color 0.15s;
   }
+  .nav.open .nav-link:hover { background: var(--bg-2); color: var(--text); }
   .nav.open .nav-link:last-of-type { border-bottom: none; }
-  .nav.open .nav-link.active { color: var(--accent); }
+  .nav.open .nav-link.active { color: var(--accent); background: var(--accent-light); }
+  .nav.open .nav-link::before {
+    content: ''; display: inline-block; width: 20px; height: 20px; flex-shrink: 0;
+    background-size: contain; background-repeat: no-repeat;
+    background-position: center; opacity: 0.7;
+  }
+  .nav.open .nav-link.active::before { opacity: 1; }
+  .nav.open .nav-link:nth-child(1)::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23737373' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z'/%3E%3Cpolyline points='9 22 9 12 15 12 15 22'/%3E%3C/svg%3E");
+  }
+  .nav.open .nav-link:nth-child(2)::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23737373' stroke-width='2'%3E%3Crect x='2' y='3' width='20' height='14' rx='2'/%3E%3Cline x1='8' y1='21' x2='16' y2='21'/%3E%3Cline x1='12' y1='17' x2='12' y2='21'/%3E%3C/svg%3E");
+  }
+  .nav.open .nav-link:nth-child(3)::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23737373' stroke-width='2'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5z'/%3E%3Cpath d='M2 17l10 5 10-5'/%3E%3Cpath d='M2 12l10 5 10-5'/%3E%3C/svg%3E");
+  }
+  .nav.open .nav-link:nth-child(4)::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23737373' stroke-width='2'%3E%3Cpath d='M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z'/%3E%3Cpath d='M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z'/%3E%3C/svg%3E");
+  }
+  .nav.open .nav-link:nth-child(5)::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23737373' stroke-width='2'%3E%3Cpath d='M4 19.5A2.5 2.5 0 016.5 17H20'/%3E%3Cpath d='M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z'/%3E%3C/svg%3E");
+  }
+  .nav.open .nav-link:nth-child(6)::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23737373' stroke-width='2'%3E%3Cpath d='M4 12h8'/%3E%3Cpath d='M4 18h6'/%3E%3Cpath d='M4 6h16'/%3E%3C/svg%3E");
+  }
   .nav.open .nav-item { width: 100%; }
   .nav.open .dropdown-trigger { display: flex; justify-content: space-between; width: 100%; }
   .nav.open .dropdown-menu { display: none; position: static; box-shadow: none; border: none; padding: 0 0 0 16px; min-width: 0; }

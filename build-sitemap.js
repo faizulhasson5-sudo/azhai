@@ -187,7 +187,9 @@ const staticPages = [
   {url: '/best-free-seo-tools.html', priority: '0.9', changefreq: 'monthly'},
   {url: '/seo-checklist-2026.html', priority: '0.9', changefreq: 'monthly'},
   {url: '/google-algorithm-history.html', priority: '0.9', changefreq: 'monthly'},
-  {url: '/seo-roi-calculator.html', priority: '0.9', changefreq: 'monthly'}
+  {url: '/seo-roi-calculator.html', priority: '0.9', changefreq: 'monthly'},
+  {url: '/resume-builder.html', priority: '0.9', changefreq: 'monthly'},
+  {url: '/ads-quality-checker.html', priority: '0.9', changefreq: 'monthly'}
 ];
 
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';

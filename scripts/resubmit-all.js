@@ -151,6 +151,8 @@ const urls = [
   `${BASE}/seo-checklist-2026.html`,
   `${BASE}/google-algorithm-history.html`,
   `${BASE}/seo-roi-calculator.html`,
+  `${BASE}/resume-builder.html`,
+  `${BASE}/ads-quality-checker.html`,
   `${BASE}/editorial-policy.html`,
 
   // Glossary hub + categories

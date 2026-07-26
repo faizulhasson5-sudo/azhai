@@ -278,32 +278,18 @@ a:hover { color: var(--accent-hover); }
    ============================================================ */
 .hero {
   position: relative; z-index: 1;
-  min-height: 520px;
+  min-height: 480px;
   display: flex; align-items: center;
   overflow: hidden;
   margin-bottom: 0;
   background: #09090b;
   border-bottom: 1px solid #1a1a1e;
 }
-.hero::before {
-  content: ''; position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 600px 400px at 20% 50%, rgba(37,99,235,0.07), transparent),
-    radial-gradient(ellipse 500px 300px at 80% 40%, rgba(99,102,241,0.05), transparent);
-  pointer-events: none;
-}
 .hero-inner {
   position: relative; z-index: 2;
   max-width: 640px; margin: 0 auto;
   text-align: center;
   padding: 80px 24px 72px;
-}
-.hero-badge {
-  display: inline-block;
-  font-size: 12px; font-weight: 600; color: #71717a;
-  border: 1px solid #27272a; border-radius: 100px;
-  padding: 6px 16px; margin-bottom: 28px;
-  letter-spacing: 0.01em;
 }
 .hero h1 {
   font-size: clamp(36px, 5.5vw, 64px);
@@ -314,11 +300,11 @@ a:hover { color: var(--accent-hover); }
 }
 .hero-sub {
   font-size: 16px; color: #71717a;
-  max-width: 480px; margin: 0 auto 36px;
+  max-width: 500px; margin: 0 auto 36px;
   line-height: 1.7;
 }
 .hero-search {
-  max-width: 520px; margin: 0 auto;
+  max-width: 480px; margin: 0 auto;
 }
 .hero-search-wrap {
   position: relative;
@@ -331,7 +317,7 @@ a:hover { color: var(--accent-hover); }
   padding: 2px 6px; pointer-events: none;
 }
 .hero-search input {
-  width: 100%; padding: 14px 18px 14px 44px;
+  width: 100%; padding: 14px 18px;
   border: 1px solid #27272a;
   border-radius: 10px;
   font-size: 15px; font-family: var(--font);
@@ -342,13 +328,6 @@ a:hover { color: var(--accent-hover); }
 .hero-search input:focus { border-color: #3f3f46; }
 .hero-search input::placeholder { color: #52525b; }
 .hero-search input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.hero-search::before {
-  content: ''; position: absolute; left: 16px; top: 50%;
-  transform: translateY(-50%);
-  width: 16px; height: 16px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23737373' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'/%3E%3C/svg%3E") center/contain no-repeat;
-  pointer-events: none;
-}
 .hero-search-results {
   position: absolute; top: 100%; left: 0; right: 0;
   background: var(--surface);
@@ -378,43 +357,14 @@ a:hover { color: var(--accent-hover); }
   padding: 14px; text-align: center;
   font-size: 13px; color: var(--text-3);
 }
-.hero-actions {
-  display: flex; gap: 12px; justify-content: center;
-  margin-top: 24px;
-}
 .hero-cta {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 12px 24px;
+  margin-top: 8px; padding: 12px 28px;
   background: #fafafa; color: #09090b;
   border-radius: 8px; font-weight: 600; font-size: 14px;
   transition: background 0.15s;
 }
 .hero-cta:hover { background: #e4e4e7; color: #09090b; }
-.hero-cta-sub {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 12px 24px;
-  border: 1px solid #27272a; color: #a1a1aa;
-  border-radius: 8px; font-weight: 600; font-size: 14px;
-  transition: border-color 0.15s, color 0.15s;
-}
-.hero-cta-sub:hover { border-color: #52525b; color: #fafafa; }
-.hero-cta-row {
-  display: flex; gap: 10px; margin-top: 12px; justify-content: center;
-}
-.hero-cta-secondary {
-  padding: 10px 20px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--surface);
-  color: var(--text);
-  font-weight: 600; font-size: 13px;
-  cursor: pointer;
-  transition: all 0.15s;
-}
-.hero-cta-secondary:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
 /* ---- Stats ---- */
 .trust-bar {
   display: flex; justify-content: center; align-items: center; gap: 32px;

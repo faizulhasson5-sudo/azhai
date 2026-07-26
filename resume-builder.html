@@ -657,6 +657,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="/js/app.js"></script>
 <script>
+// app.js reads attTheme from localStorage and overrides data-theme to dark.
+// Force light mode BACK after app.js loads. Also disable theme toggle on this page.
+document.documentElement.setAttribute('data-theme', 'light');
+App.toggleTheme = function() {};
+</script>
+<script>
 (function(){
 var RB=window.RB={};
 

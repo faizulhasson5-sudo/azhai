@@ -460,6 +460,9 @@ a:hover { color: var(--accent-hover); }
   border-radius: var(--radius);
   overflow: hidden;
 }
+.skills-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
 .tool-card {
   display: flex; flex-direction: column;
   padding: 20px;
@@ -1112,6 +1115,7 @@ a:hover { color: var(--accent-hover); }
 
   /* Tools grid on homepage */
   .tool-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
 
   /* Tools index page */
   .tools-index-layout { grid-template-columns: 1fr !important; }
@@ -1174,6 +1178,7 @@ a:hover { color: var(--accent-hover); }
   .hero-content { padding: 36px 16px; }
   .hero-sub { font-size: 14px; }
   .tool-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; }
   .tool-header h1 { font-size: 22px; }
   .tool-card-actions { flex-wrap: wrap; }
   .tool-card-actions .btn { flex: 1; justify-content: center; }

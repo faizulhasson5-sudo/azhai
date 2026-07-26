@@ -161,7 +161,7 @@ ${headerActions}
 <button type="button" class="btn btn-secondary btn-sm skill-filter" data-filter="tools">Skill Tools</button>
 <button type="button" class="btn btn-secondary btn-sm skill-filter" data-filter="guides">Guides</button>
 </div>
-<div class="tool-grid" style="grid-template-columns:repeat(3,1fr)">
+<div class="tool-grid skills-grid">
 ${skills.map(s => `
 <a href="/skills/${s.id}.html" class="tool-card" data-cat="${s.cat}">
 <div class="skill-badge" style="display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:3px 8px;border-radius:4px;background:var(--accent-light);color:var(--accent);margin-bottom:8px">${esc(s.skill)}</div>

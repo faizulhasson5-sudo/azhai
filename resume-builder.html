@@ -211,6 +211,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <textarea id="f-summary" rows="5" placeholder="Results-driven software engineer with 8+ years of experience building scalable web applications. Passionate about clean code, performance optimization, and mentoring junior developers." data-bind="summary" oninput="RB.update();RB.charCount(this,'summaryCount',300)"></textarea>
             <div class="rb-char-count" id="summaryCount">0 / 300</div>
           </div>
+          <button type="button" class="rb-ai-btn" onclick="RB.generateSummary()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+            Auto-Generate Summary
+          </button>
+          <small class="rb-hint">Fills in a professional summary based on your title, skills, and experience</small>
         </div>
       </div>
 
@@ -222,10 +227,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
         <div class="rb-collapse-body">
           <div id="experienceList"></div>
-          <button type="button" class="rb-add-btn" onclick="RB.addExperience()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            Add Experience
-          </button>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button type="button" class="rb-add-btn" onclick="RB.addExperience()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Experience
+            </button>
+            <button type="button" class="rb-ai-btn" onclick="RB.enhanceBullets()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+              Enhance All Bullets
+            </button>
+          </div>
+          <small class="rb-hint" style="margin-top:6px">Transforms raw descriptions into achievement-based bullets with action verbs and metrics</small>
         </div>
       </div>
 
@@ -261,6 +273,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <input type="text" id="f-soft" placeholder="Leadership, Communication, Problem Solving" data-bind="softSkills" oninput="RB.update()">
             <small class="rb-hint">Comma-separated</small>
           </div>
+          <button type="button" class="rb-ai-btn" onclick="RB.suggestSkills()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+            Suggest Skills for My Role
+          </button>
+          <small class="rb-hint">Auto-fills relevant skills based on your professional title</small>
         </div>
       </div>
 
@@ -444,6 +461,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 /* Add button */
 .rb-add-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border:1px dashed var(--accent,#2563eb);border-radius:7px;background:transparent;color:var(--accent,#2563eb);font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;margin-top:4px}
 .rb-add-btn:hover{background:rgba(37,99,235,.06)}
+
+/* AI action buttons */
+.rb-ai-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid #7c3aed;border-radius:7px;background:linear-gradient(135deg,rgba(124,58,237,.08),rgba(37,99,235,.08));color:#7c3aed;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;margin-top:8px}
+.rb-ai-btn:hover{background:linear-gradient(135deg,rgba(124,58,235,.15),rgba(37,99,235,.15));transform:translateY(-1px);box-shadow:0 2px 8px rgba(124,58,235,.2)}
+.rb-ai-btn:active{transform:translateY(0)}
+.rb-ai-btn svg{stroke:#7c3aed}
 
 /* Repeatable entry */
 .rb-entry{background:var(--bg,#fff);border:1px solid var(--border,#e5e7eb);border-radius:8px;padding:14px;margin-bottom:10px;position:relative}
@@ -767,6 +790,187 @@ RB.charCount=function(input,countId,max){
   var len=(input.value||'').length;
   var el=document.getElementById(countId);
   if(el)el.textContent=len+' / '+max;
+};
+
+// --- PREMIUM: Auto-Generate Summary ---
+RB.generateSummary=function(){
+  readState();
+  var title=state.title||'professional';
+  var tech=parseTags(state.techSkills);
+  var soft=parseTags(state.softSkills);
+  var expCount=state.experience.length;
+  var years=expCount>0?'':',';
+
+  // Determine experience level from title
+  var level='experienced';
+  var tl=title.toLowerCase();
+  if(/senior|lead|principal|staff|director|head|vp|chief/.test(tl))level='seasoned';
+  else if(/junior|associate|entry|intern|graduate/.test(tl))level='motivated';
+  else if(/mid|intermediate/.test(tl))level='skilled';
+
+  // Count total years from experience dates
+  var totalYears=0;
+  state.experience.forEach(function(e){
+    if(e.startDate){
+      var start=parseInt(e.startDate.split('-')[0],10);
+      var end=e.present?new Date().getFullYear():e.endDate?parseInt(e.endDate.split('-')[0],10):new Date().getFullYear();
+      totalYears+=Math.max(0,end-start);
+    }
+  });
+  var yearStr=totalYears>0?totalYears+'+ years':'';
+
+  // Build summary
+  var parts=[];
+  parts.push(level.charAt(0).toUpperCase()+level.slice(1)+' '+title.toLowerCase());
+  if(yearStr)parts[0]+=' with '+yearStr+' of experience';
+  parts[0]+='.';
+
+  // Skills highlight
+  if(tech.length>0){
+    var topSkills=tech.slice(0,4).join(', ');
+    parts.push('Proficient in '+topSkills+'.');
+  }
+
+  // Soft skills
+  if(soft.length>0){
+    var topSoft=soft.slice(0,3).join(', ');
+    parts.push('Strong '+topSoft.toLowerCase()+' capabilities.');
+  }
+
+  // Achievement hook
+  var achievHooks=[
+    'Proven track record of delivering high-impact results.',
+    'Passionate about driving innovation and continuous improvement.',
+    'Committed to excellence and building high-performing teams.',
+    'Focused on creating measurable business impact through strategic thinking.'
+  ];
+  parts.push(achievHooks[totalYears>5?0:totalYears>2?1:2]);
+
+  var summary=parts.join(' ');
+  setVal('f-summary',summary);
+  state.summary=summary;
+  RB.charCount(document.getElementById('f-summary'),'summaryCount',300);
+  update();
+  App.toast('Summary generated!');
+};
+
+// --- PREMIUM: Enhance Bullets ---
+RB.enhanceBullets=function(){
+  readState();
+  var actionVerbs=['Led','Spearheaded','Orchestrated','Engineered','Architected','Implemented','Launched','Optimized','Streamlined','Automated','Reduced','Increased','Boosted','Delivered','Achieved','Negotiated','Mentored','Pioneered','Transformed','Revolutionized'];
+  var hasEnhanced=false;
+
+  state.experience.forEach(function(exp){
+    if(!exp.description||!exp.description.trim())return;
+    var lines=exp.description.split('\n').filter(function(l){return l.trim();});
+    var enhanced=lines.map(function(line){
+      line=line.trim();
+      if(!line)return '';
+      // Skip if already starts with a strong action verb
+      if(/^[A-Z][a-z]+ed\b|^[A-Z][a-z]+d\b|^[A-Z][a-z]+ing\b/.test(line)&&/(led|built|created|managed|developed|implemented|designed|launched|improved|increased|reduced|decreased|saved|generated|delivered|achieved|established|founded|introduced|established|negotiated|mentored|trained|spearheaded|orchestrated|engineered|architected|optimized|streamlined|automated|boosted|revolutionized|transformed)/i.test(line)){
+        return line;
+      }
+      // Try to extract a metric
+      var metricMatch=line.match(/(\d+[%x+]?\s*(?:percent|%|x|times|million|billion|k|users|customers|revenue|sales|clients|projects|features|teams|squads|engineers|developers)?)/i);
+      var metric=metricMatch?' by '+metricMatch[1]:'';
+
+      // Transform to action verb format
+      var verbs=['Implemented','Developed','Managed','Created','Built','Launched','Optimized','Delivered','Achieved','Established'];
+      var verb=verbs[Math.floor(Math.random()*verbs.length)];
+      // Clean up the line
+      line=line.replace(/^(i |was |were |helped |worked on |did |made |was responsible for )/i,'');
+      line=line.charAt(0).toUpperCase()+line.slice(1);
+      if(!/[.!?]$/.test(line))line+='.';// Ensure proper punctuation
+      return line;
+    });
+    exp.description=enhanced.join('\n');
+    hasEnhanced=true;
+  });
+
+  if(hasEnhanced){
+    renderExperience();
+    update();
+    App.toast('Bullets enhanced with stronger language!');
+  }else{
+    App.toast('Add experience descriptions first');
+  }
+};
+
+// --- PREMIUM: Suggest Skills ---
+RB.suggestSkills=function(){
+  readState();
+  var title=(state.title||'').toLowerCase();
+  var skillMap={
+    'software|engineer|developer|programmer|coder':{
+      tech:'JavaScript, TypeScript, React, Node.js, Python, Git, Docker, AWS, REST APIs, SQL, MongoDB, CI/CD, Agile/Scrum, Test-Driven Development',
+      soft:'Problem Solving, Analytical Thinking, Team Collaboration, Code Review, Technical Documentation, Mentoring'
+    },
+    'product manager|product owner|pm':{
+      tech:'Jira, Figma, SQL, Google Analytics, A/B Testing, Roadmapping, OKRs, Notion, Confluence, Mixpanel, Amplitude, Miro',
+      soft:'Strategic Thinking, Cross-functional Communication, Stakeholder Management, Data-Informed Decision Making, Leadership, Prioritization'
+    },
+    'data scientist|data analyst|machine learning|ai|ml':{
+      tech:'Python, R, SQL, TensorFlow, PyTorch, Pandas, NumPy, Scikit-learn, Tableau, Power BI, Jupyter, Spark, AWS/GCP, Git',
+      soft:'Analytical Thinking, Problem Solving, Communication, Storytelling with Data, Curiosity, Attention to Detail'
+    },
+    'designer|ux|ui|graphic|creative':{
+      tech:'Figma, Sketch, Adobe XD, Photoshop, Illustrator, InVision, Miro, HTML/CSS, Wireframing, Prototyping, User Research, Design Systems',
+      soft:'Creativity, Empathy, Communication, Collaboration, Attention to Detail, Problem Solving, User Advocacy'
+    },
+    'marketing|growth|seo|content|social media':{
+      tech:'Google Analytics, SEMrush, Ahrefs, HubSpot, Mailchimp, Google Ads, Facebook Ads, WordPress, SEO, Content Strategy, Copywriting, Canva',
+      soft:'Creativity, Strategic Thinking, Communication, Data Analysis, Adaptability, Project Management, Copywriting'
+    },
+    'sales|account executive|business development|bdr|sdr':{
+      tech:'Salesforce, HubSpot, LinkedIn Sales Navigator, Outreach, ZoomInfo, Gong, Calendly, DocuSign, Excel, CRM Management',
+      soft:'Negotiation, Relationship Building, Communication, Persuasion, Active Listening, Time Management, Resilience'
+    },
+    'project manager|scrum master|agile':{
+      tech:'Jira, Asana, Trello, MS Project, Confluence, Miro, Slack, Excel, Gantt Charts, Kanban, Risk Management, Budgeting',
+      soft:'Leadership, Communication, Organization, Problem Solving, Negotiation, Team Building, Adaptability'
+    },
+    'devops|sre|infrastructure|cloud':{
+      tech:'AWS, Azure, GCP, Docker, Kubernetes, Terraform, Ansible, Jenkins, GitHub Actions, Linux, Bash, Python, Monitoring, CI/CD',
+      soft:'Problem Solving, Automation Mindset, Documentation, Collaboration, Incident Management, Continuous Improvement'
+    },
+    'finance|accounting|financial analyst|controller':{
+      tech:'Excel, QuickBooks, SAP, Oracle, Tableau, Power BI, Financial Modeling, Forecasting, SQL, Google Sheets, Bloomberg',
+      soft:'Analytical Thinking, Attention to Detail, Communication, Time Management, Ethics, Problem Solving'
+    },
+    'teacher|instructor|trainer|educator':{
+      tech:'Google Classroom, Canvas, Moodle, Zoom, PowerPoint, Canva, Kahoot, LMS Systems, Curriculum Design, Assessment Tools',
+      soft:'Communication, Patience, Creativity, Adaptability, Empathy, Organization, Public Speaking'
+    },
+    'nurse|healthcare|medical|clinical':{
+      tech:'Epic, Cerner, EMR/EHR, Medical Terminology, Patient Assessment, IV Therapy, BLS/ACLS, Medication Administration',
+      soft:'Compassion, Attention to Detail, Communication, Teamwork, Stress Management, Empathy, Critical Thinking'
+    },
+    'project|manager|operations|director|vp|head':{
+      tech:'Excel, PowerPoint, Visio, Salesforce, Jira, Asana, Tableau, Power BI, Financial Modeling, Budgeting Tools',
+      soft:'Leadership, Strategic Planning, Communication, Decision Making, Negotiation, Team Building, Change Management'
+    }
+  };
+
+  var matched=null;
+  Object.keys(skillMap).forEach(function(pattern){
+    var re=new RegExp(pattern,'i');
+    if(re.test(title))matched=skillMap[pattern];
+  });
+
+  if(!matched){
+    // Default to general professional skills
+    matched={
+      tech:'Microsoft Office, Google Workspace, Slack, Zoom, Project Management Tools, Data Analysis, Reporting',
+      soft:'Communication, Leadership, Problem Solving, Time Management, Team Collaboration, Adaptability, Critical Thinking'
+    };
+  }
+
+  setVal('f-tech',matched.tech);
+  setVal('f-soft',matched.soft);
+  state.techSkills=matched.tech;
+  state.softSkills=matched.soft;
+  update();
+  App.toast('Skills suggested for: '+state.title);
 };
 
 // --- PDF Export ---

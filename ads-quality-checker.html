@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free Ads Quality Checker | Analyze & Compare Ad Copy</title>
-<meta name="description" content="Free ads quality checker tool. Analyze up to 4 ad variations for AIDA, PAS, readability, CTA strength, and emotional appeal. Find your best-performing ad before launch.">
-<meta name="keywords" content="ads quality checker, ad copy analyzer, ad copy checker, facebook ad copy, google ad copy, ad performance analyzer">
+<meta name="description" content="Free ads quality checker tool. Upload ad images or paste text. Analyze up to 4 ad variations for AIDA, PAS, readability, CTA strength, and emotional appeal. Find your best-performing ad before launch.">
+<meta name="keywords" content="ads quality checker, ad copy analyzer, ad copy checker, facebook ad copy, google ad copy, ad performance analyzer, ad image analyzer, ad OCR">
 <link rel="canonical" href="https://azhai-six.vercel.app/ads-quality-checker.html">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2563eb">
@@ -140,7 +140,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section id="tool" class="tool-section reveal" aria-labelledby="tool-heading">
   <h2 id="tool-heading" class="section-title">Ads Quality Checker</h2>
-  <p class="section-sub">Enter your ad copy below. The tool analyzes AIDA, PAS, readability, CTA strength, emotional appeal, and platform fit.</p>
+  <p class="section-sub">Upload ad images or enter text. The tool analyzes AIDA, PAS, readability, CTA strength, emotional appeal, and platform fit.</p>
 
   <div class="platform-selector" role="radiogroup" aria-label="Ad platform">
     <button type="button" class="platform-pill active" data-platform="facebook">Facebook</button>
@@ -150,6 +150,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button type="button" class="platform-pill" data-platform="tiktok">TikTok</button>
     <button type="button" class="platform-pill" data-platform="linkedin">LinkedIn</button>
     <button type="button" class="platform-pill" data-platform="twitter">Twitter/X</button>
+  </div>
+
+  <!-- Image Upload Zone -->
+  <div class="image-upload-zone" id="imageUploadZone">
+    <div class="upload-icon">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    </div>
+    <p class="upload-text">Drag & drop your ad image(s) here</p>
+    <p class="upload-sub">or <label class="upload-browse" for="adImageInput">browse files</label></p>
+    <p class="upload-formats">Supports JPG, PNG, WebP, GIF — Text will be extracted automatically via OCR</p>
+    <input type="file" id="adImageInput" accept="image/*" multiple style="display:none">
+  </div>
+  <div class="image-preview-grid" id="imagePreviewGrid" style="display:none"></div>
+  <div class="ocr-status" id="ocrStatus" style="display:none">
+    <div class="ocr-spinner"></div>
+    <span>Extracting text from images...</span>
   </div>
 
   <div class="ads-container" id="adsContainer"></div>
@@ -400,9 +416,34 @@ details[open] .faq-question span{transform:rotate(45deg)}
   .tool-actions{flex-direction:column}
   .btn-lg{width:100%}
 }
+
+/* Image Upload Zone */
+.image-upload-zone{border:2px dashed var(--border);border-radius:12px;padding:40px 24px;text-align:center;margin-bottom:24px;transition:all .2s;cursor:pointer;background:var(--surface)}
+.image-upload-zone:hover,.image-upload-zone.dragover{border-color:var(--accent);background:rgba(37,99,235,.04)}
+.upload-icon{margin-bottom:12px;color:var(--text-3)}
+.upload-icon svg{opacity:.5}
+.upload-text{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.upload-sub{font-size:.85rem;color:var(--text-3);margin-bottom:8px}
+.upload-browse{color:var(--accent);font-weight:600;cursor:pointer;text-decoration:underline}
+.upload-formats{font-size:.75rem;color:var(--text-3)}
+
+.image-preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:20px}
+.image-preview-card{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--border);background:var(--surface)}
+.image-preview-card img{width:100%;height:100px;object-fit:cover;display:block}
+.image-preview-card .img-label{padding:6px 8px;font-size:.72rem;color:var(--text-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.image-preview-card .img-remove{position:absolute;top:4px;right:4px;width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.7rem;line-height:1}
+.image-preview-card .img-status{position:absolute;top:4px;left:4px;padding:2px 6px;border-radius:4px;font-size:.65rem;font-weight:600}
+.img-status.extracting{background:rgba(245,158,11,.9);color:#000}
+.img-status.done{background:rgba(34,197,94,.9);color:#fff}
+.img-status.error{background:rgba(239,68,68,.9);color:#fff}
+
+.ocr-status{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:20px;font-size:.88rem;color:var(--text-2)}
+.ocr-spinner{width:20px;height:20px;border:2.5px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 
 <script src="/js/app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 <script>
 (function(){
   var $=function(s){return document.getElementById(s)};
@@ -512,6 +553,119 @@ details[open] .faq-question span{transform:rotate(45deg)}
   }
 
   $('addAdBtn').addEventListener('click',function(){createAdCard()});
+
+  // --- IMAGE UPLOAD & OCR ---
+  var uploadZone=$('imageUploadZone');
+  var fileInput=$('adImageInput');
+  var previewGrid=$('imagePreviewGrid');
+  var ocrStatus=$('ocrStatus');
+  var uploadedImages=[];
+
+  // Drag and drop
+  uploadZone.addEventListener('click',function(){fileInput.click()});
+  uploadZone.addEventListener('dragover',function(e){e.preventDefault();uploadZone.classList.add('dragover')});
+  uploadZone.addEventListener('dragleave',function(){uploadZone.classList.remove('dragover')});
+  uploadZone.addEventListener('drop',function(e){
+    e.preventDefault();
+    uploadZone.classList.remove('dragover');
+    handleFiles(e.dataTransfer.files);
+  });
+  fileInput.addEventListener('change',function(){handleFiles(fileInput.files)});
+
+  function handleFiles(files){
+    if(!files||!files.length)return;
+    Array.from(files).forEach(function(file){
+      if(!file.type.startsWith('image/'))return;
+      var reader=new FileReader();
+      reader.onload=function(e){
+        var imgData={file:file,url:e.target.result,name:file.name,status:'extracting',text:''};
+        uploadedImages.push(imgData);
+        renderPreviews();
+        runOCR(imgData);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function renderPreviews(){
+    if(uploadedImages.length===0){previewGrid.style.display='none';return}
+    previewGrid.style.display='';
+    var h='';
+    uploadedImages.forEach(function(img,i){
+      h+='<div class="image-preview-card">';
+      h+='<img src="'+img.url+'" alt="'+escHtml(img.name)+'">';
+      h+='<span class="img-status '+img.status+'">'+(img.status==='extracting'?'Extracting...':img.status==='done'?'Done':'Error')+'</span>';
+      h+='<button type="button" class="img-remove" onclick="window._removeImage('+i+')">&times;</button>';
+      h+='<div class="img-label">'+escHtml(img.name)+'</div>';
+      h+='</div>';
+    });
+    previewGrid.innerHTML=h;
+  }
+
+  window._removeImage=function(idx){
+    uploadedImages.splice(idx,1);
+    renderPreviews();
+  };
+
+  async function runOCR(imgData){
+    try{
+      ocrStatus.style.display='flex';
+      var result=await Tesseract.recognize(imgData.url,'eng',{
+        logger:function(m){if(m.status==='recognizing text')ocrStatus.querySelector('span').textContent='Reading: '+Math.round(m.progress*100)+'%'}
+      });
+      var text=(result.data.text||'').trim();
+      imgData.text=text;
+      imgData.status=text.length>0?'done':'error';
+      renderPreviews();
+
+      // Auto-fill ad fields from extracted text
+      if(text.length>0){
+        fillAdFromOCR(text);
+      }
+    }catch(err){
+      imgData.status='error';
+      renderPreviews();
+    }
+    // Hide status when all done
+    if(uploadedImages.every(function(i){return i.status!=='extracting'})){
+      ocrStatus.style.display='none';
+    }
+  }
+
+  function fillAdFromOCR(text){
+    var lines=text.split('\n').map(function(l){return l.trim()}).filter(Boolean);
+    if(lines.length===0)return;
+
+    // Try to identify headline (usually the first prominent line) and body
+    var headline=lines[0];
+    var body=lines.slice(1).join(' ');
+    var cta='';
+
+    // Look for CTA-like phrases
+    var ctaPatterns=/\b(sign up|get started|buy now|shop now|learn more|download|subscribe|join|try|claim|order|book|contact|call|visit|click|discover|explore)\b/i;
+    for(var i=lines.length-1;i>=0;i--){
+      if(ctaPatterns.test(lines[i])&&lines[i].length<50){
+        cta=lines[i];
+        body=lines.slice(1,i).join(' ');
+        break;
+      }
+    }
+
+    // Auto-fill into the first ad card
+    var firstCard=document.querySelector('.ad-card');
+    if(firstCard){
+      var hlInput=firstCard.querySelector('.ad-headline');
+      var bodyInput=firstCard.querySelector('.ad-body');
+      var ctaInput=firstCard.querySelector('.ad-cta');
+      if(hlInput&&!hlInput.value)hlInput.value=headline;
+      if(bodyInput&&!bodyInput.value)bodyInput.value=body;
+      if(ctaInput&&!ctaInput.value)ctaInput.value=cta;
+      // Trigger char counts
+      if(hlInput)window._charCount(hlInput);
+      if(bodyInput)window._charCount(bodyInput);
+      App.toast('Text extracted from image and filled in!');
+    }
+  }
 
   // --- ANALYSIS ENGINE ---
 

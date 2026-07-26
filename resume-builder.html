@@ -285,8 +285,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- PREVIEW PANEL -->
     <div class="rb-preview-panel">
-      <div class="rb-preview-wrapper" id="previewWrapper">
-        <div class="rb-preview" id="resume-preview"></div>
+      <div class="rb-preview-wrapper" id="previewWrapper" style="background:#fff !important">
+        <div class="rb-preview" id="resume-preview" style="color:#222 !important;background:#fff !important;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif"></div>
       </div>
     </div>
   </div>
@@ -1277,6 +1277,8 @@ function renderMinimal(){
 function update(){
   readState();
   var preview=document.getElementById('resume-preview');
+  var wrapper=document.getElementById('previewWrapper');
+  var panel=preview.closest('.rb-preview-panel');
   var html='';
   switch(state.template){
     case 'classic': html=renderClassic(); break;
@@ -1285,6 +1287,25 @@ function update(){
   }
   preview.innerHTML=html;
   preview.className='rb-preview tpl-'+state.template;
+  // Nuclear: force white background via inline styles on every ancestor
+  if(wrapper)wrapper.style.background='#fff';
+  if(panel)panel.style.background='transparent';
+  preview.style.background='#fff';
+  preview.style.color='#222';
+  // Force readable colors on all text elements
+  var allEls=preview.querySelectorAll('h1,h2,h3,p,li,span,div,small,a,ul');
+  for(var i=0;i<allEls.length;i++){
+    var el=allEls[i];
+    var computed=window.getComputedStyle(el);
+    var bg=computed.backgroundColor;
+    // If element background matches text color (both dark), fix it
+    if(bg&&(bg==='rgb(10, 10, 10)'||bg==='rgb(0, 0, 0)'||bg==='rgba(0, 0, 0, 0)')){
+      // text is likely also dark - force readable
+      if(!el.closest('.rp-sidebar')){
+        el.style.color='#222';
+      }
+    }
+  }
 }
 
 // Expose

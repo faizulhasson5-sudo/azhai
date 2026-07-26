@@ -109,42 +109,17 @@
 
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-content">
-        <span class="hero-eyebrow">100% free · Private · Works in your browser</span>
-        <h1>SEO & Text Tools<br>for Professionals.</h1>
-        <p class="hero-sub">46 powerful tools to analyze, optimize, and transform your content. Zero data collection — everything runs locally in your browser.</p>
+      <div class="hero-inner">
+        <h1>Tools. Courses. Books.<br>For everyone who builds.</h1>
+        <p class="hero-sub">SEO tools for professionals. Courses for learners. Books for readers. AI tools for the curious. All free. All private. All in your browser.</p>
         <div class="hero-search">
-          <label for="heroSearch" class="hero-search-label">Find the right tool</label>
           <div class="hero-search-wrap">
-            <input type="search" id="heroSearch" placeholder="Search tools..." aria-label="Search tools" autocomplete="off">
+            <input type="search" id="heroSearch" placeholder="Search..." aria-label="Search" autocomplete="off">
             <kbd class="hero-kbd">Ctrl K</kbd>
             <div class="hero-search-results" id="heroResults"></div>
           </div>
         </div>
-        <a href="/tools/" class="hero-cta">Browse All Tools</a>
-        <div class="hero-cta-row">
-          <button type="button" class="hero-cta-secondary" onclick="document.getElementById('headerNewsletter').classList.toggle('open')">Subscribe</button>
-          <button type="button" class="hero-cta-secondary" onclick="openGetStarted()">Get Started</button>
-        </div>
-        <button type="button" class="hero-cta" onclick="installPWA()" style="margin-top:16px">Download App</button>
-      </div>
-    </section>
-
-    <!-- Stats � Minimal -->
-    <section class="stats-bar reveal" aria-label="Platform statistics">
-      <div class="stat"><div class="stat-num">45+</div><div class="stat-label">Free Tools</div></div>
-      <div class="stat"><div class="stat-num">0</div><div class="stat-label">Data Collected</div></div>
-      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Client-Side</div></div>
-    </section>
-
-    <!-- Social Proof -->
-    <section class="reveal" style="padding:32px 0;text-align:center" aria-label="Social proof">
-      <p style="color:var(--text-3);font-size:0.85rem;margin-bottom:16px">Trusted by SEO professionals, content marketers, and developers worldwide</p>
-      <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:24px;opacity:0.6">
-        <span style="font-size:0.8rem;font-weight:600;color:var(--text-3)">&#9733; No sign-up required</span>
-        <span style="font-size:0.8rem;font-weight:600;color:var(--text-3)">&#9733; 100% free forever</span>
-        <span style="font-size:0.8rem;font-weight:600;color:var(--text-3)">&#9733; Privacy-first design</span>
-        <span style="font-size:0.8rem;font-weight:600;color:var(--text-3)">&#9733; Instant results</span>
+        <button type="button" class="hero-cta" onclick="openGetStarted()">Get Started</button>
       </div>
     </section>
 
@@ -191,16 +166,6 @@
         <a href="/tools/?cat=counters">View all →</a>
       </div>
       <div class="tool-grid" id="textTools"></div>
-    </section>
-
-    <!-- Skills -->
-    <section class="tool-section reveal" aria-labelledby="sec-skills">
-      <div class="category-header">
-        <h2 id="sec-skills">Build Real α tools</h2>
-        <a href="/skills/">View all →</a>
-      </div>
-      <p class="section-sub">Interactive tools that teach you abilities you'll use forever. Not just tasks — understanding.</p>
-      <div class="tool-grid" style="grid-template-columns:repeat(3,1fr)" id="skillsGrid"></div>
     </section>
 
     <!-- Blog Preview -->
@@ -409,30 +374,6 @@
       }
     }
 
-    // Skills section
-    var skillsData = [
-      {id:'ai-prompt-builder',name:'AI Prompt Builder',desc:'Learn prompt engineering by building optimized prompts.',skill:'Prompt Engineering'},
-      {id:'decision-matrix',name:'Decision Matrix',desc:'Make complex decisions with structured critical thinking.',skill:'Critical Thinking'},
-      {id:'tone-analyzer',name:'Tone Analyzer',desc:'Understand how your writing sounds to others.',skill:'Communication'},
-      {id:'habit-builder',name:'Habit Builder',desc:'Build lasting habits using proven behavioral science.',skill:'Behavior Change'},
-      {id:'smart-goal-planner',name:'SMART Goal Planner',desc:'Turn vague goals into concrete action plans.',skill:'Goal Setting'},
-      {id:'financial-planner',name:'Financial Planner',desc:'Learn personal finance by doing.',skill:'Financial Literacy'},
-      {id:'study-toolkit',name:'Study Toolkit',desc:'Study smarter with science-backed techniques.',skill:'Learning Science'}
-    ];
-    var skillsEl = document.getElementById('skillsGrid');
-    if (skillsEl) {
-      var sh = '';
-      skillsData.forEach(function(s) {
-        sh += '<a href="/skills/' + s.id + '.html" class="tool-card">';
-        sh += '<span style="display:inline-block;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:2px 6px;border-radius:3px;background:var(--accent-light);color:var(--accent);margin-bottom:6px">' + s.skill + '</span>';
-        sh += '<h3>' + s.name + '</h3>';
-        sh += '<p>' + s.desc + '</p>';
-        sh += '<span class="card-arrow">→</span>';
-        sh += '</a>';
-      });
-      skillsEl.innerHTML = sh;
-    }
-
     // Blog preview (4 most viewed)
     if(App.blogPosts){
       var bp=document.getElementById('blogPreview');
@@ -577,15 +518,27 @@
   <div class="auth-overlay" id="authOverlay" onclick="if(event.target===this)closeGetStarted()">
     <div class="auth-modal">
       <button type="button" class="auth-modal-close" onclick="closeGetStarted()" aria-label="Close">&times;</button>
-      <h2>Get Started</h2>
-      <p class="auth-modal-sub">Enter your email to get new tools and SEO tips.</p>
-      <form class="auth-form" onsubmit="emailSubmit(event)">
-        <div class="auth-field">
-          <label for="emailInput">Email</label>
-          <input type="email" id="emailInput" placeholder="you@example.com" required autocomplete="email">
-        </div>
-        <button type="submit" class="auth-submit">Submit</button>
-      </form>
+      <div class="auth-form-wrap" id="authFormWrap">
+        <h2>Join the Community</h2>
+        <p class="auth-modal-sub">Get new tools, SEO tips, and course recommendations.</p>
+        <form class="auth-form" onsubmit="emailSubmit(event)">
+          <div class="auth-field">
+            <label for="emailInput">Email <span class="auth-optional">(required)</span></label>
+            <input type="email" id="emailInput" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <div class="auth-field">
+            <label for="usernameInput">Username <span class="auth-optional">(optional)</span></label>
+            <input type="text" id="usernameInput" placeholder="Optional" maxlength="30" autocomplete="off">
+          </div>
+          <button type="submit" class="auth-submit" id="authSubmitBtn">Join</button>
+        </form>
+      </div>
+      <div class="auth-success" id="authSuccess" style="display:none">
+        <div class="auth-success-icon">&#10003;</div>
+        <h2>Welcome aboard!</h2>
+        <p class="auth-modal-sub">You're on the list. We'll send you new tools, tips, and recommendations.</p>
+        <button type="button" class="auth-submit" onclick="closeGetStarted()">Done</button>
+      </div>
     </div>
   </div>
 

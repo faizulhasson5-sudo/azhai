@@ -20,9 +20,15 @@ module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
 
   try {
-    const emails = await redis('SMEMBERS', 'getstarted:emails');
-    const count = await redis('SCARD', 'getstarted:emails');
-    return res.status(200).json({ total: count, emails: emails });
+    const raw = await redis('HGETALL', 'getstarted:users');
+    const entries = [];
+    if (raw && typeof raw === 'object') {
+      const keys = Object.keys(raw);
+      for (let i = 0; i < keys.length; i++) {
+        entries.push({ email: keys[i], username: raw[keys[i]] || '' });
+      }
+    }
+    return res.status(200).json({ total: entries.length, emails: entries });
   } catch (e) {
     return res.status(500).json({ error: e.message });
   }

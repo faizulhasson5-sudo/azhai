@@ -27,18 +27,26 @@ module.exports = async function handler(req, res) {
   let body = '';
   for await (const chunk of req) body += chunk;
 
-  let email;
-  try { email = JSON.parse(body).email; } catch (e) { return res.status(400).json({ error: 'Invalid JSON' }); }
+  let email, username;
+  try {
+    const parsed = JSON.parse(body);
+    email = parsed.email;
+    username = parsed.username || '';
+  } catch (e) { return res.status(400).json({ error: 'Invalid JSON' }); }
 
   if (!email || typeof email !== 'string') return res.status(400).json({ error: 'Email required' });
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({ error: 'Invalid email' });
+  if (username && typeof username !== 'string') return res.status(400).json({ error: 'Invalid username' });
+  if (username && username.length > 30) return res.status(400).json({ error: 'Username too long (max 30 chars)' });
 
   const normalized = email.toLowerCase().trim();
+  const cleanUsername = username ? username.trim().substring(0, 30) : '';
+
   try {
-    const exists = await redis('SISMEMBER', 'getstarted:emails', normalized);
+    const exists = await redis('HEXISTS', 'getstarted:users', normalized);
     if (exists === 1) return res.status(200).json({ message: 'Already registered!' });
-    await redis('SADD', 'getstarted:emails', normalized);
-    console.log('[GET STARTED]', normalized, new Date().toISOString());
+    await redis('HSET', 'getstarted:users', normalized, cleanUsername);
+    console.log('[JOIN]', normalized, cleanUsername || '(no username)', new Date().toISOString());
     return res.status(200).json({ message: 'Done!' });
   } catch (e) {
     console.error('[REDIS ERROR]', e.message);

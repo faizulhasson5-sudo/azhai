@@ -119,7 +119,7 @@
             <div class="hero-search-results" id="heroResults"></div>
           </div>
         </div>
-        <a href="/tools/" class="hero-cta">Get Started</a>
+        <button type="button" class="hero-cta" onclick="openGetStarted()">Get Started</button>
       </div>
     </section>
 
@@ -518,15 +518,27 @@
   <div class="auth-overlay" id="authOverlay" onclick="if(event.target===this)closeGetStarted()">
     <div class="auth-modal">
       <button type="button" class="auth-modal-close" onclick="closeGetStarted()" aria-label="Close">&times;</button>
-      <h2>Get Started</h2>
-      <p class="auth-modal-sub">Enter your email to get new tools and SEO tips.</p>
-      <form class="auth-form" onsubmit="emailSubmit(event)">
-        <div class="auth-field">
-          <label for="emailInput">Email</label>
-          <input type="email" id="emailInput" placeholder="you@example.com" required autocomplete="email">
-        </div>
-        <button type="submit" class="auth-submit">Submit</button>
-      </form>
+      <div class="auth-form-wrap" id="authFormWrap">
+        <h2>Join the Community</h2>
+        <p class="auth-modal-sub">Get new tools, SEO tips, and course recommendations.</p>
+        <form class="auth-form" onsubmit="emailSubmit(event)">
+          <div class="auth-field">
+            <label for="emailInput">Email <span class="auth-optional">(required)</span></label>
+            <input type="email" id="emailInput" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <div class="auth-field">
+            <label for="usernameInput">Username <span class="auth-optional">(optional)</span></label>
+            <input type="text" id="usernameInput" placeholder="Optional" maxlength="30" autocomplete="off">
+          </div>
+          <button type="submit" class="auth-submit" id="authSubmitBtn">Join</button>
+        </form>
+      </div>
+      <div class="auth-success" id="authSuccess" style="display:none">
+        <div class="auth-success-icon">&#10003;</div>
+        <h2>Welcome aboard!</h2>
+        <p class="auth-modal-sub">You're on the list. We'll send you new tools, tips, and recommendations.</p>
+        <button type="button" class="auth-submit" onclick="closeGetStarted()">Done</button>
+      </div>
     </div>
   </div>
 

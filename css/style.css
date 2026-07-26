@@ -1047,7 +1047,7 @@ a:hover { color: var(--accent-hover); }
   display: flex; align-items: center; justify-content: space-between;
   margin-bottom: 16px;
 }
-.category-header h2 { font-size: 1.1rem; font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
+.category-header h2 { font-size: 1.35rem; font-weight: 700; color: var(--text); letter-spacing: -0.01em; margin-left: -8px; }
 .category-header a { font-size: .85rem; color: var(--accent); font-weight: 600; }
 
 @media (max-width: 768px) {

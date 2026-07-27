@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
 
 const BASE = 'https://azhai-six.vercel.app';
@@ -21,7 +21,7 @@ const authors = [
     slug: 'james-chen',
     name: 'James Chen',
     role: 'Technical SEO Engineer',
-    bio: 'James specializes in the technical side of SEO — crawlability, indexation, site speed, and structured data. He has worked with enterprise clients managing sites with millions of pages and previously contributed to Google\'s web developer documentation.',
+    bio: 'James specializes in the technical side of SEO â€” crawlability, indexation, site speed, and structured data. He has worked with enterprise clients managing sites with millions of pages and previously contributed to Google\'s web developer documentation.',
     credentials: ['Google Developer Expert', 'AWS Certified', 'Schema.org Contributor'],
     expertise: ['Technical SEO', 'Schema Markup', 'Core Web Vitals'],
     color: '#7c3aed'
@@ -94,7 +94,7 @@ function generateAuthorPage(author) {
 <nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link">Tools</a>
-<a class="nav-link" href="/skills/">α tools</a>
+<a class="nav-link" href="/skills/">Î± tools</a>
 <a href="/courses/" class="nav-link">Courses</a>
 <a href="/books/" class="nav-link">Books</a>
 <a href="/blog/" class="nav-link">Blog</a>
@@ -138,7 +138,7 @@ ${author.expertise.map(e => `<span style="padding:6px 14px;background:var(--surf
 <div style="padding:24px 28px;background:var(--surface);border:1px solid var(--border);border-radius:12px;margin-bottom:32px">
 <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:12px">Credentials</h2>
 <ul style="list-style:none;padding:0;margin:0">
-${author.credentials.map(c => `<li style="padding:8px 0;border-bottom:1px solid var(--border);color:var(--text-2);font-size:.9rem">✓ ${esc(c)}</li>`).join('\n')}
+${author.credentials.map(c => `<li style="padding:8px 0;border-bottom:1px solid var(--border);color:var(--text-2);font-size:.9rem">âœ“ ${esc(c)}</li>`).join('\n')}
 </ul>
 </div>
 
@@ -150,7 +150,7 @@ ${(() => {
   html += '<div style="display:grid;gap:16px">';
   posts.forEach(p => {
     html += '<a href="/blog/' + p.slug + '.html" style="display:block;padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor=\'var(--accent)\'" onmouseout="this.style.borderColor=\'var(--border)\'">';
-    html += '<div style="display:flex;gap:8px;align-items:center;margin-bottom:6px"><span style="font-size:.75rem;padding:3px 8px;background:var(--accent-light);color:var(--accent);border-radius:4px;font-weight:600">' + esc(p.category) + '</span><span style="font-size:.75rem;color:var(--text-3)">' + esc(p.date) + '</span><span style="font-size:.75rem;color:var(--text-3)">· ' + esc(p.readTime) + '</span></div>';
+    html += '<div style="display:flex;gap:8px;align-items:center;margin-bottom:6px"><span style="font-size:.75rem;padding:3px 8px;background:var(--accent-light);color:var(--accent);border-radius:4px;font-weight:600">' + esc(p.category) + '</span><span style="font-size:.75rem;color:var(--text-3)">' + esc(p.date) + '</span><span style="font-size:.75rem;color:var(--text-3)">Â· ' + esc(p.readTime) + '</span></div>';
     html += '<h3 style="font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:4px;line-height:1.4">' + esc(p.title) + '</h3>';
     html += '<p style="font-size:.85rem;color:var(--text-3);margin:0;line-height:1.5">' + esc(p.desc) + '</p>';
     html += '</a>';
@@ -184,7 +184,7 @@ ${(() => {
       <div class=\"footer-grid\">
         <div class=\"footer-brand\">
           <a href=\"/\" class=\"site-logo\" style=\"color:inherit\"><svg class=\"logo-icon\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#2563eb\"/><path d=\"M9 8v16\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10-8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10 8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg><span class=\"logo-text\">Kword<span class=\"logo-seo\">SEO</span></span></a>
-          <p class=\"footer-brand-desc\">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser — your data never leaves your device.</p>
+          <p class=\"footer-brand-desc\">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser â€” your data never leaves your device.</p>
           <div class=\"footer-social\">
             <a href=\"https://twitter.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"Twitter\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z\"/></svg></a>
             <a href=\"https://github.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"GitHub\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22\"/></svg></a>
@@ -238,7 +238,6 @@ ${(() => {
 <div class="toast" id="appToast"></div>
 
 <script src="/js/app.js"></script>
-<script src="/js/dict.js"></script>
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
 </body>
 </html>`;

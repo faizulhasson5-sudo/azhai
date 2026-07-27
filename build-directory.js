@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
 
 const BASE = 'https://azhai-six.vercel.app';
@@ -25,16 +25,16 @@ const categories = [
     ],
     faqs: [
       {q:'What is a text analysis tool?',a:'A text analysis tool processes text to extract useful information like word count, character count, sentence structure, keyword frequency, and readability metrics. These tools help writers, students, and SEO professionals analyze their content.'},
-      {q:'Why is word count important for SEO?',a:'Search engines consider content length when determining topical depth. Generally, longer content (1,500+ words) ranks better because it covers topics more thoroughly. However, quality matters more than quantity — a well-written 800-word post can outrank a thin 2,000-word post.'},
+      {q:'Why is word count important for SEO?',a:'Search engines consider content length when determining topical depth. Generally, longer content (1,500+ words) ranks better because it covers topics more thoroughly. However, quality matters more than quantity â€” a well-written 800-word post can outrank a thin 2,000-word post.'},
       {q:'What is keyword density and what should it be?',a:'Keyword density is the percentage of times a keyword appears in your content relative to the total word count. The ideal keyword density is 1-2%. Stuffing keywords above 3% can trigger spam penalties from Google.'},
-      {q:'How do I extract keywords from text?',a:'Use our Keyword Extractor tool — paste your text and it will identify the most frequently used terms. Focus on nouns and noun phrases that represent your main topics. Use these keywords naturally throughout your content.'}
+      {q:'How do I extract keywords from text?',a:'Use our Keyword Extractor tool â€” paste your text and it will identify the most frequently used terms. Focus on nouns and noun phrases that represent your main topics. Use these keywords naturally throughout your content.'}
     ]
   },
   {
     id: 'seo-tools',
     name: 'SEO Tools',
     title: 'Best Free SEO Tools for Small Businesses in 2026',
-    desc: 'Generate meta tags, check keyword density, create robots.txt files, build sitemaps, and optimize your website for search engines — all free.',
+    desc: 'Generate meta tags, check keyword density, create robots.txt files, build sitemaps, and optimize your website for search engines â€” all free.',
     tools: [
       {id:'meta-gen',name:'Meta Tag Generator',desc:'Generate complete HTML meta tags including OG and Twitter cards.',use:'On-page SEO'},
       {id:'meta-desc-gen',name:'Meta Description Generator',desc:'Generate SEO-optimized meta descriptions from content.',use:'SERP optimization'},
@@ -232,7 +232,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>\n\n<nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link active">Tools</a>
-<a class="nav-link" href="/skills/">α tools</a>
+<a class="nav-link" href="/skills/">Î± tools</a>
 <a href="/courses/" class="nav-link">Courses</a>
 <a href="/books/" class="nav-link">Books</a>
 <a href="/blog/" class="nav-link">Blog</a>
@@ -270,7 +270,7 @@ ${relatedLinks}
 
 <section style="padding:32px 0;border-top:1px solid var(--border)">
 <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:12px">About ${esc(cat.name)}</h2>
-<p style="color:var(--text-2);line-height:1.7;margin-bottom:16px">Our collection of ${esc(cat.name).toLowerCase()} includes ${cat.tools.length} free online tools designed for writers, developers, and SEO professionals. All tools run entirely in your browser — no data is uploaded to any server. Your text stays private and secure.</p>
+<p style="color:var(--text-2);line-height:1.7;margin-bottom:16px">Our collection of ${esc(cat.name).toLowerCase()} includes ${cat.tools.length} free online tools designed for writers, developers, and SEO professionals. All tools run entirely in your browser â€” no data is uploaded to any server. Your text stays private and secure.</p>
 <p style="color:var(--text-2);line-height:1.7">Each tool is designed for speed and accuracy. Simply paste your text, click a button, and get instant results. No sign-up required. No ads. No tracking. Just fast, free tools that work.</p>
 </section>
 </div>
@@ -292,7 +292,7 @@ ${relatedLinks}
       <div class=\"footer-grid\">
         <div class=\"footer-brand\">
           <a href=\"/\" class=\"site-logo\" style=\"color:inherit\"><svg class=\"logo-icon\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#2563eb\"/><path d=\"M9 8v16\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10-8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10 8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg><span class=\"logo-text\">Kword<span class=\"logo-seo\">SEO</span></span></a>
-          <p class=\"footer-brand-desc\">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser — your data never leaves your device.</p>
+          <p class=\"footer-brand-desc\">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser â€” your data never leaves your device.</p>
           <div class=\"footer-social\">
             <a href=\"https://twitter.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"Twitter\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z\"/></svg></a>
             <a href=\"https://github.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"GitHub\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22\"/></svg></a>
@@ -352,7 +352,6 @@ ${relatedLinks}
 <div class="toast" id="appToast"></div>
 
 <script src="/js/app.js"></script>
-<script src="/js/dict.js"></script>
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
 </body>
 </html>`;
@@ -478,7 +477,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>\n\n<nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link active">Tools</a>
-<a class="nav-link" href="/skills/">α tools</a>
+<a class="nav-link" href="/skills/">Î± tools</a>
 <a href="/courses/" class="nav-link">Courses</a>
 <a href="/books/" class="nav-link">Books</a>
 <a href="/blog/" class="nav-link">Blog</a>
@@ -496,7 +495,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="breadcrumb" style="margin-bottom:24px;font-size:.85rem"><a href="/" style="color:var(--text-3);text-decoration:none">Home</a> <span style="color:var(--text-3)">/</span> <a href="/tools/" style="color:var(--text-3);text-decoration:none">Tools</a> <span style="color:var(--text-3)">/</span> <span style="color:var(--text)">Directory</span></div>
 
 <h1 style="font-size:2.4rem;font-weight:800;margin-bottom:12px;line-height:1.15">Complete Free Text Tools Directory</h1>
-<p style="font-size:1.15rem;color:var(--text-2);line-height:1.7;margin-bottom:16px;max-width:720px">Browse our collection of <strong style="color:var(--text)">${totalTools}+ free online text tools</strong> organized across ${categories.length} categories. No sign-up required. 100% client-side processing — your data never leaves your browser.</p>
+<p style="font-size:1.15rem;color:var(--text-2);line-height:1.7;margin-bottom:16px;max-width:720px">Browse our collection of <strong style="color:var(--text)">${totalTools}+ free online text tools</strong> organized across ${categories.length} categories. No sign-up required. 100% client-side processing â€” your data never leaves your browser.</p>
 
 <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:40px">
 ${catLinks}
@@ -519,7 +518,7 @@ ${allToolLinks}
 
 <section style="padding:32px 0;border-top:1px solid var(--border)">
 <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:12px">About This Collection</h2>
-<p style="color:var(--text-2);line-height:1.7;margin-bottom:12px">This directory lists every free tool available on our platform. Each tool is designed for speed, accuracy, and privacy. All processing happens in your browser — no data is ever sent to our servers.</p>
+<p style="color:var(--text-2);line-height:1.7;margin-bottom:12px">This directory lists every free tool available on our platform. Each tool is designed for speed, accuracy, and privacy. All processing happens in your browser â€” no data is ever sent to our servers.</p>
 <p style="color:var(--text-2);line-height:1.7">Whether you need to count words for a blog post, generate meta tags for SEO, format JSON for development, or encode data for security, our free tools have you covered. Bookmark this page for quick access to all ${totalTools}+ tools.</p>
 </section>
 </div>
@@ -541,7 +540,7 @@ ${allToolLinks}
       <div class=\"footer-grid\">
         <div class=\"footer-brand\">
           <a href=\"/\" class=\"site-logo\" style=\"color:inherit\"><svg class=\"logo-icon\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#2563eb\"/><path d=\"M9 8v16\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10-8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10 8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg><span class=\"logo-text\">Kword<span class=\"logo-seo\">SEO</span></span></a>
-          <p class=\"footer-brand-desc\">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser — your data never leaves your device.</p>
+          <p class=\"footer-brand-desc\">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser â€” your data never leaves your device.</p>
           <div class=\"footer-social\">
             <a href=\"https://twitter.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"Twitter\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z\"/></svg></a>
             <a href=\"https://github.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"GitHub\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22\"/></svg></a>
@@ -601,7 +600,6 @@ ${allToolLinks}
 <div class="toast" id="appToast"></div>
 
 <script src="/js/app.js"></script>
-<script src="/js/dict.js"></script>
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
 </body>
 </html>`;

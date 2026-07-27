@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
 
 const BASE = 'https://azhai-six.vercel.app';
@@ -7,7 +7,7 @@ const courses = [
   /* ===== SEO & MARKETING ===== */
   {
     id: 'semrush-academy',
-    title: 'Semrush Academy — SEO Fundamentals',
+    title: 'Semrush Academy â€” SEO Fundamentals',
     platform: 'Semrush',
     url: 'https://www.semrush.com/academy/',
     price: 'Free',
@@ -18,10 +18,10 @@ const courses = [
     desc: 'The most comprehensive free SEO course library on the internet. Covers technical SEO, content marketing, PPC, and social media. Taught by industry experts like Brian Dean and Neil Patel.',
     bestFor: 'Beginners who want a structured SEO education without paying thousands for bootcamps.',
     steps: [
-      'Start with "SEO Fundamentals" course — covers crawling, indexing, ranking factors',
-      'Take "Content Marketing" course next — learn keyword research and content strategy',
-      'Move to "Technical SEO" — understand site architecture, Core Web Vitals, structured data',
-      'Practice with the Semrush tool (free trial) while learning — apply concepts immediately',
+      'Start with "SEO Fundamentals" course â€” covers crawling, indexing, ranking factors',
+      'Take "Content Marketing" course next â€” learn keyword research and content strategy',
+      'Move to "Technical SEO" â€” understand site architecture, Core Web Vitals, structured data',
+      'Practice with the Semrush tool (free trial) while learning â€” apply concepts immediately',
       'Take the certification exam at the end of each course for credibility'
     ],
     after: [
@@ -34,7 +34,7 @@ const courses = [
   },
   {
     id: 'ahrefs-seo-course',
-    title: 'Ahrefs Academy — SEO Course for Beginners',
+    title: 'Ahrefs Academy â€” SEO Course for Beginners',
     platform: 'Ahrefs',
     url: 'https://ahrefs.com/academy',
     price: 'Free',
@@ -45,11 +45,11 @@ const courses = [
     desc: 'Ahrefs distills their massive dataset expertise into a beginner-friendly course. Focuses on practical, data-driven SEO with real examples from their tool.',
     bestFor: 'People who learn best with data-backed examples and want to understand SEO "why" not just "how."',
     steps: [
-      'Watch the "SEO Basics" module first — understand how search engines work',
+      'Watch the "SEO Basics" module first â€” understand how search engines work',
       'Follow along with Ahrefs Webmaster Tools (free) on your own site',
-      'Complete the keyword research module — build your first keyword list',
-      'Learn link building fundamentals — understand what makes a good backlink',
-      'Take notes on Ahrefs ranking factors study — it is backed by real data'
+      'Complete the keyword research module â€” build your first keyword list',
+      'Learn link building fundamentals â€” understand what makes a good backlink',
+      'Take notes on Ahrefs ranking factors study â€” it is backed by real data'
     ],
     after: [
       'Run a full site audit using Ahrefs Webmaster Tools (free)',
@@ -61,7 +61,7 @@ const courses = [
   },
   {
     id: 'google-digital-garage',
-    title: 'Google Digital Garage — Fundamentals of Digital Marketing',
+    title: 'Google Digital Garage â€” Fundamentals of Digital Marketing',
     platform: 'Google',
     url: 'https://learndigital.withgoogle.com/digitalgarage',
     price: 'Free',
@@ -69,13 +69,13 @@ const courses = [
     level: 'Beginner',
     duration: '40 hours',
     rating: '4.6/5',
-    desc: 'Official Google course covering digital marketing holistically — SEO, SEM, social, email, analytics. Includes a certificate from Google upon completion.',
+    desc: 'Official Google course covering digital marketing holistically â€” SEO, SEM, social, email, analytics. Includes a certificate from Google upon completion.',
     bestFor: 'Anyone wanting a broad digital marketing foundation with a recognized Google certificate.',
     steps: [
       'Register with your Google account for progress tracking',
-      'Complete modules in order — they build on each other',
-      'Pay special attention to the analytics modules — data literacy is critical',
-      'Take the final assessment seriously — the certificate has real value',
+      'Complete modules in order â€” they build on each other',
+      'Pay special attention to the analytics modules â€” data literacy is critical',
+      'Take the final assessment seriously â€” the certificate has real value',
       'Supplement with YouTube tutorials for modules you find confusing'
     ],
     after: [
@@ -99,10 +99,10 @@ const courses = [
     desc: 'HubSpot\'s SEO course focuses on building a sustainable SEO strategy. Covers on-page, technical, and off-page SEO with HubSpot\'s perspective on inbound marketing.',
     bestFor: 'Marketers who want SEO integrated with inbound marketing and content strategy.',
     steps: [
-      'Start with "Building a Content Strategy" — the foundation of modern SEO',
-      'Learn on-page optimization — title tags, meta descriptions, header structure',
-      'Understand technical SEO basics — site speed, mobile-friendliness, crawlability',
-      'Study the link building module — focus on quality over quantity',
+      'Start with "Building a Content Strategy" â€” the foundation of modern SEO',
+      'Learn on-page optimization â€” title tags, meta descriptions, header structure',
+      'Understand technical SEO basics â€” site speed, mobile-friendliness, crawlability',
+      'Study the link building module â€” focus on quality over quantity',
       'Complete the certification exam for your LinkedIn profile'
     ],
     after: [
@@ -117,7 +117,7 @@ const courses = [
   /* ===== WEB DEVELOPMENT ===== */
   {
     id: 'free-code-camp',
-    title: 'freeCodeCamp — Responsive Web Design',
+    title: 'freeCodeCamp â€” Responsive Web Design',
     platform: 'freeCodeCamp',
     url: 'https://www.freecodecamp.org/learn/2022/responsive-web-design/',
     price: 'Free',
@@ -128,11 +128,11 @@ const courses = [
     desc: 'The most popular free coding course on the internet. Build 5 responsive projects from scratch. Earn a verified certification. No experience needed.',
     bestFor: 'Complete beginners who want to learn web development from zero with hands-on projects.',
     steps: [
-      'Start with HTML basics — understand semantic elements, forms, accessibility',
-      'Move to CSS — learn Flexbox and Grid (these are essential)',
-      'Complete all 5 required projects — they build real portfolio pieces',
-      'Don\'t skip the accessibility sections — they are critical for modern web dev',
-      'Use the freeCodeCamp forum when stuck — the community is incredibly helpful'
+      'Start with HTML basics â€” understand semantic elements, forms, accessibility',
+      'Move to CSS â€” learn Flexbox and Grid (these are essential)',
+      'Complete all 5 required projects â€” they build real portfolio pieces',
+      'Don\'t skip the accessibility sections â€” they are critical for modern web dev',
+      'Use the freeCodeCamp forum when stuck â€” the community is incredibly helpful'
     ],
     after: [
       'Build 3-5 more personal projects to solidify your skills',
@@ -144,7 +144,7 @@ const courses = [
   },
   {
     id: 'theodinproject',
-    title: 'The Odin Project — Full Stack Ruby on Rails',
+    title: 'The Odin Project â€” Full Stack Ruby on Rails',
     platform: 'The Odin Project',
     url: 'https://www.theodinproject.com',
     price: 'Free',
@@ -155,10 +155,10 @@ const courses = [
     desc: 'The gold standard for free, comprehensive web development education. Covers HTML, CSS, JavaScript, Ruby on Rails, and Git. Project-based curriculum.',
     bestFor: 'Dedicated learners who want a full computer science-level education in web development.',
     steps: [
-      'Start with the "Foundations" course — don\'t skip anything',
+      'Start with the "Foundations" course â€” don\'t skip anything',
       'Set up your development environment properly (Linux/Mac recommended)',
-      'Build every project from scratch — resist the urge to look at solutions',
-      'Join the Discord community — pair programming helps enormously',
+      'Build every project from scratch â€” resist the urge to look at solutions',
+      'Join the Discord community â€” pair programming helps enormously',
       'Choose one path: Ruby on Rails or JavaScript after Foundations'
     ],
     after: [
@@ -171,7 +171,7 @@ const courses = [
   },
   {
     id: 'javascript-info',
-    title: 'JavaScript.info — The Modern JavaScript Tutorial',
+    title: 'JavaScript.info â€” The Modern JavaScript Tutorial',
     platform: 'JavaScript.info',
     url: 'https://javascript.info',
     price: 'Free',
@@ -180,18 +180,18 @@ const courses = [
     duration: 'Self-paced (200+ hours)',
     rating: '4.9/5',
     desc: 'The most thorough JavaScript tutorial on the web. Covers fundamentals through advanced topics like async/await, proxies, and generators. Interactive code examples.',
-    bestFor: 'Anyone serious about mastering JavaScript — the definitive reference.',
+    bestFor: 'Anyone serious about mastering JavaScript â€” the definitive reference.',
     steps: [
-      'Read Part 1 (Fundamentals) cover to cover — don\'t skip basics',
-      'Type out every code example yourself — don\'t copy-paste',
+      'Read Part 1 (Fundamentals) cover to cover â€” don\'t skip basics',
+      'Type out every code example yourself â€” don\'t copy-paste',
       'Complete the exercises at the end of each chapter',
-      'Revisit chapters after a week — spaced repetition helps retention',
+      'Revisit chapters after a week â€” spaced repetition helps retention',
       'Build small projects after each major topic to reinforce learning'
     ],
     after: [
       'Learn a framework: React, Vue, or Svelte',
       'Build full-stack projects with Node.js/Express',
-      'Study TypeScript — it is becoming the industry standard',
+      'Study TypeScript â€” it is becoming the industry standard',
       'Practice algorithms on LeetCode/HackerRank',
       'Contribute to open-source JavaScript projects'
     ]
@@ -200,7 +200,7 @@ const courses = [
   /* ===== WRITING & CONTENT ===== */
   {
     id: 'copyblogger',
-    title: 'Copyblogger — Copywriting 101',
+    title: 'Copyblogger â€” Copywriting 101',
     platform: 'Copyblogger',
     url: 'https://copyblogger.com/copywriting-101/',
     price: 'Free',
@@ -211,7 +211,7 @@ const courses = [
     desc: 'The foundational course for anyone who writes marketing content. Teaches headline writing, persuasive copy, and the psychology behind why people buy.',
     bestFor: 'Marketers, bloggers, and business owners who want to write content that converts.',
     steps: [
-      'Read all 20 lessons in order — each builds on the previous',
+      'Read all 20 lessons in order â€” each builds on the previous',
       'Practice writing headlines using the formulas taught',
       'Rewrite your existing website copy using the principles learned',
       'Study the recommended swipe file of proven copy examples',
@@ -240,8 +240,8 @@ const courses = [
     steps: [
       'Start with "The Content Marketing Framework" module',
       'Build a content strategy document as you go through the course',
-      'Learn the storytelling techniques — they apply to every content format',
-      'Study the content promotion tactics — creation is only half the battle',
+      'Learn the storytelling techniques â€” they apply to every content format',
+      'Study the content promotion tactics â€” creation is only half the battle',
       'Take the certification exam for your LinkedIn'
     ],
     after: [
@@ -256,7 +256,7 @@ const courses = [
   /* ===== AI & TOOLS ===== */
   {
     id: 'deep-learning-ai',
-    title: 'DeepLearning.AI — AI for Everyone',
+    title: 'DeepLearning.AI â€” AI for Everyone',
     platform: 'Coursera',
     url: 'https://www.coursera.org/learn/ai-for-everyone',
     price: 'Free (audit)',
@@ -265,12 +265,12 @@ const courses = [
     duration: '4 weeks',
     rating: '4.8/5',
     desc: 'Andrew Ng\'s non-technical introduction to AI. Understand what AI can and cannot do, how to build AI projects, and AI\'s impact on society. No coding required.',
-    bestFor: 'Anyone who wants to understand AI without needing to code — business professionals, managers, curious minds.',
+    bestFor: 'Anyone who wants to understand AI without needing to code â€” business professionals, managers, curious minds.',
     steps: [
-      'Watch all videos at 1x speed first — Andrew Ng explains clearly',
-      'Take notes on the AI project workflow — it is the most practical section',
+      'Watch all videos at 1x speed first â€” Andrew Ng explains clearly',
+      'Take notes on the AI project workflow â€” it is the most practical section',
       'Complete all quizzes to reinforce key concepts',
-      'Discuss with peers — AI understanding benefits from different perspectives',
+      'Discuss with peers â€” AI understanding benefits from different perspectives',
       'Watch Andrew Ng\'s "Machine Learning" course next if you want to go deeper'
     ],
     after: [
@@ -294,7 +294,7 @@ const courses = [
     desc: 'Short, practical course on writing effective prompts for LLMs. Covers prompting principles, iterative development, and real-world applications.',
     bestFor: 'Developers and power users who want to get 10x more out of ChatGPT/Claude.',
     steps: [
-      'Complete the course in one sitting — it is only 1 hour',
+      'Complete the course in one sitting â€” it is only 1 hour',
       'Practice each prompting technique with your own use cases',
       'Create a personal prompt library for your most common tasks',
       'Experiment with system prompts, role prompting, and chain-of-thought',
@@ -323,7 +323,7 @@ const courses = [
     steps: [
       'Complete one module per week for better retention',
       'Try the hands-on exercises with Google\'s AI tools',
-      'Focus on the "responsible AI" module — it is increasingly important',
+      'Focus on the "responsible AI" module â€” it is increasingly important',
       'Apply AI concepts to your current role as you learn',
       'Get the Google certificate for your resume'
     ],
@@ -347,11 +347,11 @@ const courses = [
     level: 'Beginner',
     duration: '6 weeks',
     rating: '4.8/5',
-    desc: 'The most popular free AI course in the world. Created by the University of Helsinki and Reaktor. No coding required — teaches AI concepts through practical exercises and real-world examples.',
+    desc: 'The most popular free AI course in the world. Created by the University of Helsinki and Reaktor. No coding required â€” teaches AI concepts through practical exercises and real-world examples.',
     bestFor: 'Anyone who wants to understand AI fundamentals without writing code. Perfect starting point for non-technical professionals.',
     steps: [
       'Complete one chapter per week for best retention',
-      'Do all the interactive exercises — they reinforce concepts',
+      'Do all the interactive exercises â€” they reinforce concepts',
       'Read the supplementary material links for deeper understanding',
       'Join the Elements of AI community forum for discussions',
       'Complete the final project to earn your certificate'
@@ -366,7 +366,7 @@ const courses = [
   },
   {
     id: 'kaggle-intro-ml',
-    title: 'Kaggle — Intro to Machine Learning',
+    title: 'Kaggle â€” Intro to Machine Learning',
     platform: 'Kaggle',
     url: 'https://www.kaggle.com/learn/intro-to-machine-learning',
     price: 'Free',
@@ -377,9 +377,9 @@ const courses = [
     desc: 'Hands-on ML course using real datasets. Learn decision trees, random forests, and model validation. Includes Kaggle competition exercises.',
     bestFor: 'Anyone who wants to actually BUILD ML models, not just learn theory.',
     steps: [
-      'Create a free Kaggle account first — you\'ll need it for exercises',
+      'Create a free Kaggle account first â€” you\'ll need it for exercises',
       'Install Python and Jupyter Notebook locally (or use Kaggle\'s kernels)',
-      'Complete each exercise in the browser — don\'t skip the coding parts',
+      'Complete each exercise in the browser â€” don\'t skip the coding parts',
       'Submit to a Kaggle competition to experience real ML workflow',
       'Join Kaggle discussions to learn from other data scientists'
     ],
@@ -393,7 +393,7 @@ const courses = [
   },
   {
     id: 'kaggle-learn-full',
-    title: 'Kaggle Learn — Complete ML Track',
+    title: 'Kaggle Learn â€” Complete ML Track',
     platform: 'Kaggle',
     url: 'https://www.kaggle.com/learn',
     price: 'Free',
@@ -404,15 +404,15 @@ const courses = [
     desc: 'Full Kaggle learning track covering Python, Pandas, Data Visualization, Feature Engineering, Deep Learning, and ML Explainability. All courses use free GPU notebooks.',
     bestFor: 'Data science learners who want hands-on practice with real datasets and competitions.',
     steps: [
-      'Start with Python and Pandas courses — the foundation of data science',
+      'Start with Python and Pandas courses â€” the foundation of data science',
       'Move to Data Visualization (Matplotlib/Seaborn)',
       'Complete Intro to Machine Learning and Intermediate ML',
-      'Learn Feature Engineering — this separates good from great models',
+      'Learn Feature Engineering â€” this separates good from great models',
       'Enter a Kaggle competition to apply everything you\'ve learned'
     ],
     after: [
-      'Enter Kaggle competitions regularly — aim for top 25%',
-      'Share your notebooks publicly — build a data science portfolio',
+      'Enter Kaggle competitions regularly â€” aim for top 25%',
+      'Share your notebooks publicly â€” build a data science portfolio',
       'Learn XGBoost and LightGBM for gradient boosting',
       'Study Deep Learning with the Kaggle Deep Learning course',
       'Apply for data science roles or freelance projects'
@@ -420,7 +420,7 @@ const courses = [
   },
   {
     id: 'freecodecamp-ml-python',
-    title: 'freeCodeCamp — Machine Learning with Python',
+    title: 'freeCodeCamp â€” Machine Learning with Python',
     platform: 'freeCodeCamp',
     url: 'https://www.freecodecamp.org/learn/machine-learning-with-python/',
     price: 'Free',
@@ -434,7 +434,7 @@ const courses = [
       'Complete the Python fundamentals section first',
       'Learn TensorFlow basics through the interactive exercises',
       'Build each of the 5 required projects from scratch',
-      'Don\'t copy-paste code — type everything yourself',
+      'Don\'t copy-paste code â€” type everything yourself',
       'Use the freeCodeCamp forum when you get stuck'
     ],
     after: [
@@ -447,7 +447,7 @@ const courses = [
   },
   {
     id: 'huggingface-agents',
-    title: 'Hugging Face — Agents Course',
+    title: 'Hugging Face â€” Agents Course',
     platform: 'Hugging Face',
     url: 'https://huggingface.co/learn/agents-course',
     price: 'Free',
@@ -461,7 +461,7 @@ const courses = [
       'Complete Module 1 (Introduction to Agents) first',
       'Set up your Hugging Face account and API tokens',
       'Follow along with every code example in the exercises',
-      'Build the capstone project — it ties everything together',
+      'Build the capstone project â€” it ties everything together',
       'Join the Hugging Face Discord for community support'
     ],
     after: [
@@ -474,7 +474,7 @@ const courses = [
   },
   {
     id: 'huggingface-nlp',
-    title: 'Hugging Face — NLP Course',
+    title: 'Hugging Face â€” NLP Course',
     platform: 'Hugging Face',
     url: 'https://huggingface.co/learn/nlp-course',
     price: 'Free',
@@ -485,9 +485,9 @@ const courses = [
     desc: 'The definitive NLP course using Hugging Face Transformers library. Covers tokenization, fine-tuning models, building pipelines, and deploying NLP applications.',
     bestFor: 'ML practitioners who want to master NLP with the Hugging Face ecosystem.',
     steps: [
-      'Start with Chapter 1 — understanding the Transformers library',
+      'Start with Chapter 1 â€” understanding the Transformers library',
       'Complete all coding exercises in Google Colab (free GPU)',
-      'Learn tokenization deeply — it is the foundation of NLP',
+      'Learn tokenization deeply â€” it is the foundation of NLP',
       'Fine-tune a model on your own dataset',
       'Build a complete NLP application for the capstone'
     ],
@@ -501,7 +501,7 @@ const courses = [
   },
   {
     id: 'mit-ocw',
-    title: 'MIT OpenCourseWare — Data Science',
+    title: 'MIT OpenCourseWare â€” Data Science',
     platform: 'MIT',
     url: 'https://ocw.mit.edu/',
     price: 'Free',
@@ -514,7 +514,7 @@ const courses = [
     steps: [
       'Start with "Introduction to Computational Thinking and Data Science" (6.0002)',
       'Take "Introduction to Computer Science and Programming" (6.0001) if new to Python',
-      'Complete all problem sets — they are challenging but essential',
+      'Complete all problem sets â€” they are challenging but essential',
       'Watch the lecture videos on MIT OpenCourseWare',
       'Review the exams to test your understanding'
     ],
@@ -528,7 +528,7 @@ const courses = [
   },
   {
     id: 'mit-15-data-science',
-    title: 'MIT — 15 Free Data Science Courses',
+    title: 'MIT â€” 15 Free Data Science Courses',
     platform: 'MIT OpenLearning',
     url: 'https://openlearning.mit.edu/news/15-free-mit-data-science-courses',
     price: 'Free',
@@ -555,7 +555,7 @@ const courses = [
   },
   {
     id: 'harvard-cs50-ai',
-    title: 'Harvard CS50 — AI with Python',
+    title: 'Harvard CS50 â€” AI with Python',
     platform: 'Harvard/edX',
     url: 'https://cs50.harvard.edu/ai/',
     price: 'Free',
@@ -567,9 +567,9 @@ const courses = [
     bestFor: 'Programmers who want a rigorous, university-quality AI education from Harvard.',
     steps: [
       'Complete CS50x first if you\'re new to Python',
-      'Watch all lectures — David Malan is an excellent instructor',
-      'Complete every problem set — they are challenging but rewarding',
-      'Do the final project — it\'s your capstone AI application',
+      'Watch all lectures â€” David Malan is an excellent instructor',
+      'Complete every problem set â€” they are challenging but rewarding',
+      'Do the final project â€” it\'s your capstone AI application',
       'Join the CS50 community for support and discussions'
     ],
     after: [
@@ -582,7 +582,7 @@ const courses = [
   },
   {
     id: 'harvard-cs50x',
-    title: 'Harvard CS50x — Introduction to Computer Science',
+    title: 'Harvard CS50x â€” Introduction to Computer Science',
     platform: 'Harvard/edX',
     url: 'https://cs50.harvard.edu/x/',
     price: 'Free',
@@ -593,9 +593,9 @@ const courses = [
     desc: 'Harvard\'s legendary intro CS course. Covers algorithms, data structures, web development, Python, SQL, and more. The gold standard for learning to program.',
     bestFor: 'Complete beginners who want a world-class foundation in computer science.',
     steps: [
-      'Register for free on edX — you get access to all materials',
-      'Watch the lectures weekly — David Malan makes complex topics clear',
-      'Complete all 10 problem sets — they build progressively',
+      'Register for free on edX â€” you get access to all materials',
+      'Watch the lectures weekly â€” David Malan makes complex topics clear',
+      'Complete all 10 problem sets â€” they build progressively',
       'Use the CS50 IDE (online) or set up VS Code locally',
       'Join the CS50 Discord for help and community'
     ],
@@ -609,7 +609,7 @@ const courses = [
   },
   {
     id: 'uc-berkeley-data-8',
-    title: 'UC Berkeley — Data 8: Foundations of Data Science',
+    title: 'UC Berkeley â€” Data 8: Foundations of Data Science',
     platform: 'UC Berkeley',
     url: 'https://data8.org/',
     price: 'Free',
@@ -620,9 +620,9 @@ const courses = [
     desc: 'Berkeley\'s introductory data science course combining coding, statistics, and critical thinking. Uses Python and Jupyter notebooks with real-world datasets.',
     bestFor: 'Students who want a university-quality intro to data science from a top public university.',
     steps: [
-      'Follow the course on data8.org — all materials are free',
+      'Follow the course on data8.org â€” all materials are free',
       'Install Python and Jupyter Notebook locally (or use Berkeley\'s binder)',
-      'Complete all homework assignments — they use real datasets',
+      'Complete all homework assignments â€” they use real datasets',
       'Attend the lectures or watch recordings online',
       'Use the Data 8 textbook (Inferential Thinking) for reference'
     ],
@@ -636,7 +636,7 @@ const courses = [
   },
   {
     id: 'stanford-ml-specialization',
-    title: 'Stanford — Machine Learning Specialization',
+    title: 'Stanford â€” Machine Learning Specialization',
     platform: 'Coursera',
     url: 'https://www.coursera.org/specializations/machine-learning-introduction',
     price: 'Free (audit)',
@@ -647,10 +647,10 @@ const courses = [
     desc: 'Andrew Ng\'s updated ML course from Stanford. Covers supervised learning, unsupervised learning, neural networks, and decision trees with practical Python implementations.',
     bestFor: 'Anyone who wants the best possible introduction to machine learning from the world\'s most popular ML instructor.',
     steps: [
-      'Complete Course 1 (Supervised ML) first — it is the foundation',
+      'Complete Course 1 (Supervised ML) first â€” it is the foundation',
       'Use Python with NumPy, pandas, and scikit-learn',
       'Implement every algorithm from scratch before using libraries',
-      'Complete all coding assignments — they reinforce learning',
+      'Complete all coding assignments â€” they reinforce learning',
       'Watch Andrew Ng\'s supplementary videos for intuition building'
     ],
     after: [
@@ -663,7 +663,7 @@ const courses = [
   },
   {
     id: 'google-ml-crash-course',
-    title: 'Google — Machine Learning Crash Course',
+    title: 'Google â€” Machine Learning Crash Course',
     platform: 'Google',
     url: 'https://developers.google.com/machine-learning/crash-course',
     price: 'Free',
@@ -675,9 +675,9 @@ const courses = [
     bestFor: 'Developers who want a quick, practical ML education from Google\'s ML experts.',
     steps: [
       'Complete the Python prerequisites first if needed',
-      'Watch all videos at 1x speed — they pack in a lot of information',
+      'Watch all videos at 1x speed â€” they pack in a lot of information',
       'Complete the programming exercises in TensorFlow',
-      'Focus on the "ML Systems" module — production ML is different',
+      'Focus on the "ML Systems" module â€” production ML is different',
       'Review the glossary of ML terms for quick reference'
     ],
     after: [
@@ -690,7 +690,7 @@ const courses = [
   },
   {
     id: 'freeacademy-python-ai',
-    title: 'FreeAcademy — Python for AI & Data Science',
+    title: 'FreeAcademy â€” Python for AI & Data Science',
     platform: 'FreeAcademy',
     url: 'https://freeacademy.ai/courses/python-for-ai-data-science',
     price: 'Free',
@@ -701,7 +701,7 @@ const courses = [
     desc: 'Comprehensive Python course designed specifically for AI and data science. Covers Python fundamentals, data structures, NumPy, pandas, and visualization.',
     bestFor: 'Beginners who want to learn Python specifically for data science applications.',
     steps: [
-      'Start with Python basics — variables, loops, functions',
+      'Start with Python basics â€” variables, loops, functions',
       'Learn data structures (lists, dicts, sets) thoroughly',
       'Master NumPy for numerical computing',
       'Learn pandas for data manipulation and analysis',
@@ -717,7 +717,7 @@ const courses = [
   },
   {
     id: 'simplilearn-data-science',
-    title: 'Simplilearn — Data Science Course (YouTube)',
+    title: 'Simplilearn â€” Data Science Course (YouTube)',
     platform: 'YouTube',
     url: 'https://www.youtube.com/watch?v=_kA4hMNFPnU',
     price: 'Free',
@@ -744,7 +744,7 @@ const courses = [
   },
   {
     id: 'intellipaat-data-science',
-    title: 'Intellipaat — Data Science Full Course (YouTube)',
+    title: 'Intellipaat â€” Data Science Full Course (YouTube)',
     platform: 'YouTube',
     url: 'https://www.youtube.com/watch?v=th-f5qO389A',
     price: 'Free',
@@ -782,23 +782,23 @@ const courses = [
     desc: 'Comprehensive data science program covering Python, SQL, data visualization, machine learning, and capstone project. IBM-branded certificate.',
     bestFor: 'Career changers who want a structured path into data science with a recognized certificate.',
     steps: [
-      'Complete courses in order — they build on each other',
+      'Complete courses in order â€” they build on each other',
       'Use IBM Watson Studio (free tier) for hands-on practice',
       'Build a strong GitHub portfolio with each course\'s projects',
-      'Focus on the capstone project — it is your portfolio centerpiece',
+      'Focus on the capstone project â€” it is your portfolio centerpiece',
       'Network with other learners in the Coursera discussion forums'
     ],
     after: [
       'Build 3-5 end-to-end data science projects',
       'Learn Tableau or Power BI for data visualization',
-      'Practice SQL daily — it is the most in-demand data skill',
+      'Practice SQL daily â€” it is the most in-demand data skill',
       'Apply for data analyst or junior data scientist roles',
       'Consider AWS/GCP certifications for cloud data skills'
     ]
   },
   {
     id: 'applied-data-science-umich',
-    title: 'Applied Data Science with Python — University of Michigan',
+    title: 'Applied Data Science with Python â€” University of Michigan',
     platform: 'Coursera',
     url: 'https://www.coursera.org/specializations/data-science-python',
     price: 'Free (audit)',
@@ -825,7 +825,7 @@ const courses = [
   },
   {
     id: 'johns-hopkins-data-science',
-    title: 'Johns Hopkins — Data Science Specialization',
+    title: 'Johns Hopkins â€” Data Science Specialization',
     platform: 'Coursera',
     url: 'https://www.coursera.org/specializations/data-science',
     price: 'Free (audit)',
@@ -838,8 +838,8 @@ const courses = [
     steps: [
       'Start with "The Data Scientist\'s Toolbox" for setup',
       'Learn R programming from the second course',
-      'Complete all courses in order — they build progressively',
-      'Focus on the capstone project — it demonstrates your skills',
+      'Complete all courses in order â€” they build progressively',
+      'Focus on the capstone project â€” it demonstrates your skills',
       'Use GitHub to track all your course projects'
     ],
     after: [
@@ -852,7 +852,7 @@ const courses = [
   },
   {
     id: 'google-foundations-data-science',
-    title: 'Google — Foundations of Data Science',
+    title: 'Google â€” Foundations of Data Science',
     platform: 'Coursera',
     url: 'https://www.coursera.org/learn/foundations-data-science',
     price: 'Free (audit)',
@@ -879,7 +879,7 @@ const courses = [
   },
   {
     id: 'google-intro-python',
-    title: 'Google — Introduction to Python',
+    title: 'Google â€” Introduction to Python',
     platform: 'Coursera',
     url: 'https://www.coursera.org/learn/python',
     price: 'Free (audit)',
@@ -891,7 +891,7 @@ const courses = [
     bestFor: 'Absolute beginners who want to learn Python from Google\'s perspective.',
     steps: [
       'Complete one module per week for best retention',
-      'Type all code examples yourself — don\'t copy-paste',
+      'Type all code examples yourself â€” don\'t copy-paste',
       'Complete all quizzes and practice exercises',
       'Build small projects after each major topic',
       'Join Google\'s Python community for support'
@@ -906,7 +906,7 @@ const courses = [
   },
   {
     id: 'google-what-is-data-science',
-    title: 'Google — What is Data Science?',
+    title: 'Google â€” What is Data Science?',
     platform: 'Coursera',
     url: 'https://www.coursera.org/learn/what-is-datascience',
     price: 'Free (audit)',
@@ -914,10 +914,10 @@ const courses = [
     level: 'Beginner',
     duration: '1 week',
     rating: '4.6/5',
-    desc: 'Quick introduction to data science — what it is, how it works, and what data scientists do. Perfect first step before diving into technical courses.',
+    desc: 'Quick introduction to data science â€” what it is, how it works, and what data scientists do. Perfect first step before diving into technical courses.',
     bestFor: 'Curious professionals who want to understand data science before committing to learning it.',
     steps: [
-      'Complete the course in one sitting — it is very short',
+      'Complete the course in one sitting â€” it is very short',
       'Take notes on the different roles in data science',
       'Identify which aspect interests you most',
       'Use this to decide which learning path to take next',
@@ -926,14 +926,14 @@ const courses = [
     after: [
       'Take the full Google Data Analytics Certificate',
       'Learn Python or R based on your interests',
-      'Start with SQL — the most accessible data skill',
+      'Start with SQL â€” the most accessible data skill',
       'Explore data visualization tools (Tableau, Power BI)',
       'Connect with data science communities for networking'
     ]
   },
   {
     id: 'fast-ai',
-    title: 'fast.ai — Practical Deep Learning for Coders',
+    title: 'fast.ai â€” Practical Deep Learning for Coders',
     platform: 'fast.ai',
     url: 'https://course.fast.ai',
     price: 'Free',
@@ -941,12 +941,12 @@ const courses = [
     level: 'Intermediate',
     duration: '7 weeks',
     rating: '4.9/5',
-    desc: 'The most practical deep learning course available. Jeremy Howard teaches top-down learning — build real models first, understand theory later. State-of-the-art results from day one.',
+    desc: 'The most practical deep learning course available. Jeremy Howard teaches top-down learning â€” build real models first, understand theory later. State-of-the-art results from day one.',
     bestFor: 'Programmers who want to build production-quality deep learning models quickly.',
     steps: [
-      'Watch each lesson twice — first for overview, second for details',
-      'Run every code cell yourself — don\'t just watch',
-      'Complete the homework assignments — they are essential',
+      'Watch each lesson twice â€” first for overview, second for details',
+      'Run every code cell yourself â€” don\'t just watch',
+      'Complete the homework assignments â€” they are essential',
       'Use Kaggle notebooks for free GPU access',
       'Join the fast.ai forums for help and inspiration'
     ],
@@ -960,7 +960,7 @@ const courses = [
   },
   {
     id: 'google-cloud-skills-boost',
-    title: 'Google Cloud Skills Boost — Data Science',
+    title: 'Google Cloud Skills Boost â€” Data Science',
     platform: 'Google Cloud',
     url: 'https://cloudskillsboost.google/',
     price: 'Free',
@@ -973,7 +973,7 @@ const courses = [
     steps: [
       'Start with "Google Cloud Fundamentals: Core Infrastructure"',
       'Take the "Data Science on Google Cloud" learning path',
-      'Complete the hands-on labs — they use real Google Cloud resources',
+      'Complete the hands-on labs â€” they use real Google Cloud resources',
       'Focus on BigQuery for large-scale data analysis',
       'Learn Vertex AI for ML model deployment'
     ],
@@ -981,13 +981,13 @@ const courses = [
       'Get Google Cloud Professional Data Engineer certification',
       'Build ML pipelines using Google Cloud Dataflow',
       'Deploy models using Vertex AI Prediction',
-      'Optimize costs — cloud data science can get expensive',
+      'Optimize costs â€” cloud data science can get expensive',
       'Apply for Google Cloud data science roles'
     ]
   },
   {
     id: 'aws-free-tech-courses',
-    title: 'AWS — Free Tech Courses (Data Science)',
+    title: 'AWS â€” Free Tech Courses (Data Science)',
     platform: 'AWS Skill Builder',
     url: 'https://explore.skillbuilder.aws/',
     price: 'Free',
@@ -1005,7 +1005,7 @@ const courses = [
       'Practice with the free tier of AWS services'
     ],
     after: [
-      'Get AWS Certified Machine Learning — Specialty',
+      'Get AWS Certified Machine Learning â€” Specialty',
       'Build ML pipelines using SageMaker',
       'Use Athena for serverless SQL queries on S3 data',
       'Deploy models as real-time endpoints',
@@ -1014,7 +1014,7 @@ const courses = [
   },
   {
     id: 'microsoft-learn-ai',
-    title: 'Microsoft Learn — AI on Azure',
+    title: 'Microsoft Learn â€” AI on Azure',
     platform: 'Microsoft',
     url: 'https://learn.microsoft.com/en-us/training/paths/get-started-with-artificial-intelligence-on-azure/',
     price: 'Free',
@@ -1041,7 +1041,7 @@ const courses = [
   },
   {
     id: 'great-learning-data-science',
-    title: 'Great Learning Academy — Data Science Foundations',
+    title: 'Great Learning Academy â€” Data Science Foundations',
     platform: 'Great Learning',
     url: 'https://www.mygreatlearning.com/academy/learn-for-free/courses/data-science-foundations',
     price: 'Free',
@@ -1053,7 +1053,7 @@ const courses = [
     bestFor: 'Beginners who want a structured, free data science course with a certificate.',
     steps: [
       'Start with Python fundamentals module',
-      'Complete the statistics section — it is the foundation',
+      'Complete the statistics section â€” it is the foundation',
       'Learn data visualization with Matplotlib and Seaborn',
       'Take the machine learning intro module',
       'Complete the final project for your certificate'
@@ -1068,7 +1068,7 @@ const courses = [
   },
   {
     id: 'free-academy-python-ai',
-    title: 'FreeAcademy — Python for AI & Data Science',
+    title: 'FreeAcademy â€” Python for AI & Data Science',
     platform: 'FreeAcademy',
     url: 'https://freeacademy.ai/courses/python-for-ai-data-science',
     price: 'Free',
@@ -1079,7 +1079,7 @@ const courses = [
     desc: 'Comprehensive Python course designed specifically for AI and data science. Covers Python fundamentals, data structures, NumPy, pandas, and visualization libraries.',
     bestFor: 'Beginners who want to learn Python specifically for data science applications.',
     steps: [
-      'Start with Python basics — variables, loops, functions',
+      'Start with Python basics â€” variables, loops, functions',
       'Learn data structures (lists, dicts, sets) thoroughly',
       'Master NumPy for numerical computing',
       'Learn pandas for data manipulation and analysis',
@@ -1108,9 +1108,9 @@ const courses = [
     desc: 'Google\'s official UX design course. Learn the entire design process: empathize, define, ideate, prototype, test. Build a portfolio with 3 projects.',
     bestFor: 'Aspiring UX designers who want Google\'s curriculum and certificate.',
     steps: [
-      'Complete all 7 courses in sequence — they build a complete skill set',
-      'Use Figma (free) for all design exercises — it is the industry standard',
-      'Document your design process thoroughly — this becomes your portfolio',
+      'Complete all 7 courses in sequence â€” they build a complete skill set',
+      'Use Figma (free) for all design exercises â€” it is the industry standard',
+      'Document your design process thoroughly â€” this becomes your portfolio',
       'Get feedback from the Coursera peer review system',
       'Study the Google Material Design guidelines'
     ],
@@ -1134,7 +1134,7 @@ const courses = [
     price: 'Free (audit)',
     rating: '4.8',
     url: 'https://www.coursera.org/learn/google-ai-essentials',
-    desc: 'Google\'s official introduction to AI — what AI is, how it works, and how to use it responsibly. Covers prompt engineering, AI tools, and ethical AI use.',
+    desc: 'Google\'s official introduction to AI â€” what AI is, how it works, and how to use it responsibly. Covers prompt engineering, AI tools, and ethical AI use.',
     bestFor: 'Anyone who wants to understand AI basics and use AI tools effectively in their work.',
     steps: [
       'Complete Module 1: Introduction to AI',
@@ -1161,7 +1161,7 @@ const courses = [
     price: 'Free (audit)',
     rating: '4.7',
     url: 'https://www.coursera.org/professional-certificates/meta-front-end-developer',
-    desc: 'Meta\'s comprehensive front-end program — HTML, CSS, JavaScript, React, version control, and UI/UX design principles.',
+    desc: 'Meta\'s comprehensive front-end program â€” HTML, CSS, JavaScript, React, version control, and UI/UX design principles.',
     bestFor: 'Aspiring front-end developers who want a structured path from zero to job-ready.',
     steps: [
       'Start with Introduction to Front-End Development',
@@ -1188,7 +1188,7 @@ const courses = [
     price: 'Free',
     rating: '4.6',
     url: 'https://www.freecodecamp.org/learn/machine-learning-with-python/',
-    desc: 'freeCodeCamp\'s machine learning certification — TensorFlow, neural networks, NLP, reinforcement learning, and real-world projects.',
+    desc: 'freeCodeCamp\'s machine learning certification â€” TensorFlow, neural networks, NLP, reinforcement learning, and real-world projects.',
     bestFor: 'Developers who want to build deep learning models and earn a recognized certification.',
     steps: [
       'Complete the TensorFlow beginner course first',
@@ -1215,7 +1215,7 @@ const courses = [
     price: 'Free',
     rating: '4.7',
     url: 'https://explore.skillbuilder.aws/learn/course/external/view/elearning/134/aws-cloud-practitioner-essentials',
-    desc: 'AWS\'s official cloud computing introduction — cloud concepts, AWS services, security, pricing, and support.',
+    desc: 'AWS\'s official cloud computing introduction â€” cloud concepts, AWS services, security, pricing, and support.',
     bestFor: 'Anyone starting their cloud journey or needing AWS fundamentals for their role.',
     steps: [
       'Complete all 9 modules sequentially',
@@ -1243,7 +1243,7 @@ const courses = [
     price: 'Free',
     rating: '4.7',
     url: 'https://learn.microsoft.com/en-us/training/paths/get-started-with-artificial-intelligence-on-azure/',
-    desc: 'Microsoft\'s AI fundamentals — machine learning, computer vision, NLP, and generative AI on Azure.',
+    desc: 'Microsoft\'s AI fundamentals â€” machine learning, computer vision, NLP, and generative AI on Azure.',
     bestFor: 'Professionals who need to understand AI concepts and Microsoft\'s AI services.',
     steps: [
       'Complete the AI overview module',
@@ -1270,7 +1270,7 @@ const courses = [
     price: 'Free',
     rating: '4.6',
     url: 'https://academy.hubspot.com/courses/content-marketing',
-    desc: 'HubSpot\'s content marketing course — storytelling, content creation, repurposing, and promotion strategies.',
+    desc: 'HubSpot\'s content marketing course â€” storytelling, content creation, repurposing, and promotion strategies.',
     bestFor: 'Marketers and business owners who want to attract customers through valuable content.',
     steps: [
       'Complete all lessons and take notes',
@@ -1297,7 +1297,7 @@ const courses = [
     price: 'Free',
     rating: '4.7',
     url: 'https://skillshop.exceedlms.com/student/catalog/list?category_ids=6450',
-    desc: 'Google\'s official GA4 certification — measurement, reporting, audience insights, and conversion tracking.',
+    desc: 'Google\'s official GA4 certification â€” measurement, reporting, audience insights, and conversion tracking.',
     bestFor: 'Marketers, analysts, and website owners who need to measure and understand their data.',
     steps: [
       'Complete the GA4 fundamentals course',
@@ -1324,7 +1324,7 @@ const courses = [
     price: 'Free',
     rating: '4.5',
     url: 'https://www.w3schools.com/css/',
-    desc: 'W3Schools comprehensive CSS tutorial — selectors, box model, flexbox, grid, animations, and responsive design.',
+    desc: 'W3Schools comprehensive CSS tutorial â€” selectors, box model, flexbox, grid, animations, and responsive design.',
     bestFor: 'Beginners who want to learn CSS with interactive examples and exercises.',
     steps: [
       'Complete the CSS Basics section',
@@ -1351,7 +1351,7 @@ const courses = [
     price: 'Free',
     rating: '4.5',
     url: 'https://www.w3schools.com/js/',
-    desc: 'W3Schools JavaScript tutorial — variables, functions, DOM manipulation, events, and ES6+ features.',
+    desc: 'W3Schools JavaScript tutorial â€” variables, functions, DOM manipulation, events, and ES6+ features.',
     bestFor: 'Beginners who want interactive JavaScript examples and quick reference.',
     steps: [
       'Complete the JS Basics section',
@@ -1378,7 +1378,7 @@ const courses = [
     price: 'Free',
     rating: '4.6',
     url: 'https://www.freecodecamp.org/learn/scientific-computing-with-python/',
-    desc: 'freeCodeCamp\'s Python certification — Python basics, data structures, algorithms, and 5 portfolio projects.',
+    desc: 'freeCodeCamp\'s Python certification â€” Python basics, data structures, algorithms, and 5 portfolio projects.',
     bestFor: 'Anyone who wants to learn Python through hands-on projects and earn a free certification.',
     steps: [
       'Start with Learn Python by Building a Game',
@@ -1407,11 +1407,11 @@ const courses = [
     duration: 'Self-paced (20+ hours)',
     rating: '4.9/5',
     desc: 'The official React tutorial from the team that built it. Learn components, hooks, state management, and modern React patterns.',
-    bestFor: 'Anyone who wants to learn React from the source — the most in-demand frontend framework.',
+    bestFor: 'Anyone who wants to learn React from the source â€” the most in-demand frontend framework.',
     steps: [
-      'Start with "Thinking in React" — understand the component mental model',
-      'Build the tic-tac-toe tutorial step by step — hands-on practice',
-      'Learn useState and useEffect hooks — the core of React state management',
+      'Start with "Thinking in React" â€” understand the component mental model',
+      'Build the tic-tac-toe tutorial step by step â€” hands-on practice',
+      'Learn useState and useEffect hooks â€” the core of React state management',
       'Build a small project: a todo app or weather dashboard',
       'Explore the official docs for advanced patterns like context and reducers'
     ],
@@ -1459,14 +1459,14 @@ const courses = [
     level: 'Intermediate',
     duration: '3 months (10 hrs/week)',
     rating: '4.9/5',
-    desc: 'Andrew Ng\'s flagship course — neural networks, CNNs, RNNs, LSTMs, and deployment. The gold standard for deep learning education.',
-    bestFor: 'Anyone serious about mastering deep learning — the most respected AI course online.',
+    desc: 'Andrew Ng\'s flagship course â€” neural networks, CNNs, RNNs, LSTMs, and deployment. The gold standard for deep learning education.',
+    bestFor: 'Anyone serious about mastering deep learning â€” the most respected AI course online.',
     steps: [
       'Start with Course 1: Neural Networks and Deep Learning',
-      'Complete Course 2: Improving Deep Neural Networks — regularization, optimization',
+      'Complete Course 2: Improving Deep Neural Networks â€” regularization, optimization',
       'Take Course 3: Structuring Machine Learning Projects',
       'Work through Course 4: Convolutional Neural Networks',
-      'Finish with Course 5: Sequence Models — RNNs, LSTMs, Transformers'
+      'Finish with Course 5: Sequence Models â€” RNNs, LSTMs, Transformers'
     ],
     after: [
       'Build and deploy a deep learning model end-to-end',
@@ -1486,12 +1486,12 @@ const courses = [
     level: 'Beginner to Advanced',
     duration: 'Self-paced (100+ hours)',
     rating: '4.6/5',
-    desc: 'Google\'s official cloud training platform — hands-on labs for BigQuery, Compute Engine, Kubernetes, and ML on GCP.',
+    desc: 'Google\'s official cloud training platform â€” hands-on labs for BigQuery, Compute Engine, Kubernetes, and ML on GCP.',
     bestFor: 'Anyone wanting to learn cloud computing with hands-on labs, not just theory.',
     steps: [
       'Start with "Google Cloud Fundamentals: Core Infrastructure"',
       'Take the "Cloud Engineering" learning path',
-      'Complete the hands-on labs — they give you real GCP access',
+      'Complete the hands-on labs â€” they give you real GCP access',
       'Practice with the Cloud Skills Boost sandbox environment',
       'Aim for the Google Cloud certification exam'
     ],
@@ -1513,7 +1513,7 @@ const courses = [
     level: 'Beginner',
     duration: '5 hours',
     rating: '4.5/5',
-    desc: 'Microsoft\'s official Azure fundamentals course — cloud concepts, Azure services, pricing, and governance.',
+    desc: 'Microsoft\'s official Azure fundamentals course â€” cloud concepts, Azure services, pricing, and governance.',
     bestFor: 'Anyone wanting to learn Azure or get the AZ-900 certification.',
     steps: [
       'Complete the "Cloud Concepts" learning path first',
@@ -1539,14 +1539,14 @@ const courses = [
     level: 'Beginner',
     duration: '6 months (7 hrs/week)',
     rating: '4.8/5',
-    desc: 'Google\'s cybersecurity professional certificate — networking, Linux, SQL, SIEM tools, and incident response.',
+    desc: 'Google\'s cybersecurity professional certificate â€” networking, Linux, SQL, SIEM tools, and incident response.',
     bestFor: 'Career changers who want to break into cybersecurity with no prior experience.',
     steps: [
-      'Start with "Foundations of Cybersecurity" — learn the landscape',
-      'Complete "Play It Safe: Manage Security Risks" — risk management frameworks',
-      'Learn Linux and SQL fundamentals — essential security skills',
+      'Start with "Foundations of Cybersecurity" â€” learn the landscape',
+      'Complete "Play It Safe: Manage Security Risks" â€” risk management frameworks',
+      'Learn Linux and SQL fundamentals â€” essential security skills',
       'Practice with SIEM tools (Splunk) in the hands-on labs',
-      'Complete the capstone project — a real security incident response'
+      'Complete the capstone project â€” a real security incident response'
     ],
     after: [
       'Apply for entry-level cybersecurity analyst roles',
@@ -1565,8 +1565,8 @@ const courses = [
     level: 'Beginner',
     duration: '4 hours',
     rating: '4.6/5',
-    desc: 'Essential Linux skills for developers and security professionals — file systems, permissions, networking, and scripting.',
-    bestFor: 'Anyone who works with servers, cloud, or security — Linux is everywhere.',
+    desc: 'Essential Linux skills for developers and security professionals â€” file systems, permissions, networking, and scripting.',
+    bestFor: 'Anyone who works with servers, cloud, or security â€” Linux is everywhere.',
     steps: [
       'Install a Linux distro (Ubuntu) or use WSL on Windows',
       'Practice basic commands: ls, cd, cp, mv, rm, cat',
@@ -1591,7 +1591,7 @@ const courses = [
     level: 'Beginner',
     duration: 'Self-paced (10 hours)',
     rating: '4.7/5',
-    desc: 'Official Figma tutorials — learn UI design, components, auto-layout, and prototyping with the industry-standard design tool.',
+    desc: 'Official Figma tutorials â€” learn UI design, components, auto-layout, and prototyping with the industry-standard design tool.',
     bestFor: 'Anyone who wants to learn UI/UX design with the tool professional designers actually use.',
     steps: [
       'Create a free Figma account and explore the interface',
@@ -1617,10 +1617,10 @@ const courses = [
     level: 'Beginner',
     duration: 'Self-paced (20+ hours)',
     rating: '4.5/5',
-    desc: 'Canva\'s free design courses — branding, social media design, presentations, and typography fundamentals.',
+    desc: 'Canva\'s free design courses â€” branding, social media design, presentations, and typography fundamentals.',
     bestFor: 'Small business owners and marketers who need design skills fast.',
     steps: [
-      'Start with "Design Basics" — color theory, typography, layout',
+      'Start with "Design Basics" â€” color theory, typography, layout',
       'Take "Brand Design" to learn consistent visual identity',
       'Complete "Social Media Design" for Instagram and LinkedIn',
       'Learn presentation design for pitch decks',
@@ -1644,8 +1644,8 @@ const courses = [
     level: 'Beginner',
     duration: '1 hour',
     rating: '4.8/5',
-    desc: 'Essential version control skills — branching, merging, pull requests, and collaboration with Git and GitHub.',
-    bestFor: 'Every developer needs Git — this is the fastest way to learn the essentials.',
+    desc: 'Essential version control skills â€” branching, merging, pull requests, and collaboration with Git and GitHub.',
+    bestFor: 'Every developer needs Git â€” this is the fastest way to learn the essentials.',
     steps: [
       'Install Git on your computer and configure your username/email',
       'Learn the basic commands: init, add, commit, push, pull',
@@ -1662,7 +1662,7 @@ const courses = [
   },
   {
     id: 'sql-mysql',
-    title: 'SQL Tutorial — Full Database Course',
+    title: 'SQL Tutorial â€” Full Database Course',
     platform: 'freeCodeCamp',
     url: 'https://www.youtube.com/watch?v=HXV3zeQKqGY',
     price: 'Free',
@@ -1670,12 +1670,12 @@ const courses = [
     level: 'Beginner',
     duration: '4 hours',
     rating: '4.7/5',
-    desc: 'Complete SQL course for beginners — queries, joins, aggregates, and database design with MySQL.',
-    bestFor: 'Anyone who works with data — SQL is the universal language of databases.',
+    desc: 'Complete SQL course for beginners â€” queries, joins, aggregates, and database design with MySQL.',
+    bestFor: 'Anyone who works with data â€” SQL is the universal language of databases.',
     steps: [
       'Install MySQL or use an online SQL playground',
       'Learn SELECT, WHERE, ORDER BY, and LIMIT',
-      'Master JOINs — inner, left, right, and full',
+      'Master JOINs â€” inner, left, right, and full',
       'Practice aggregate functions: COUNT, SUM, AVG, GROUP BY',
       'Design a simple database schema from scratch'
     ],
@@ -1696,11 +1696,11 @@ const courses = [
     level: 'Beginner',
     duration: '300 hours',
     rating: '4.5/5',
-    desc: 'freeCodeCamp\'s data analysis certification — Python, pandas, NumPy, matplotlib, and real-world data projects.',
+    desc: 'freeCodeCamp\'s data analysis certification â€” Python, pandas, NumPy, matplotlib, and real-world data projects.',
     bestFor: 'Analysts and business users who want to level up from Excel to Python.',
     steps: [
       'Complete the Python basics section first',
-      'Learn pandas for data manipulation — DataFrames, filtering, grouping',
+      'Learn pandas for data manipulation â€” DataFrames, filtering, grouping',
       'Master NumPy for numerical computing',
       'Create visualizations with matplotlib and seaborn',
       'Complete the 5 certification projects with real datasets'
@@ -1722,7 +1722,7 @@ const courses = [
     level: 'Intermediate',
     duration: '2.5 hours',
     rating: '4.9/5',
-    desc: 'The most popular Docker tutorial — containers, images, Dockerfiles, Docker Compose, and deployment.',
+    desc: 'The most popular Docker tutorial â€” containers, images, Dockerfiles, Docker Compose, and deployment.',
     bestFor: 'Developers who want to package and deploy apps consistently across environments.',
     steps: [
       'Install Docker Desktop on your machine',
@@ -1748,7 +1748,7 @@ const courses = [
     level: 'Intermediate',
     duration: '3 hours',
     rating: '4.8/5',
-    desc: 'Complete Node.js crash course — modules, HTTP, Express, file systems, and REST APIs.',
+    desc: 'Complete Node.js crash course â€” modules, HTTP, Express, file systems, and REST APIs.',
     bestFor: 'Frontend developers who want to learn backend JavaScript.',
     steps: [
       'Install Node.js and understand the runtime',
@@ -1774,12 +1774,12 @@ const courses = [
     level: 'Intermediate',
     duration: 'Self-paced (20+ hours)',
     rating: '4.7/5',
-    desc: 'Deep dive into SEO tools — keyword research, backlink analysis, site audits, and competitor research with Ahrefs and SEMrush.',
+    desc: 'Deep dive into SEO tools â€” keyword research, backlink analysis, site audits, and competitor research with Ahrefs and SEMrush.',
     bestFor: 'SEO practitioners who want to master the tools of the trade.',
     steps: [
-      'Start with "SEO for Beginners" — refresh the fundamentals',
-      'Take "Keyword Research" course — learn search intent analysis',
-      'Complete "Link Building" course — understand backlink strategy',
+      'Start with "SEO for Beginners" â€” refresh the fundamentals',
+      'Take "Keyword Research" course â€” learn search intent analysis',
+      'Complete "Link Building" course â€” understand backlink strategy',
       'Practice with Ahrefs\' free tools (Webmaster Tools, Backlink Checker)',
       'Do a full site audit using the tools you learned'
     ],
@@ -1807,7 +1807,7 @@ const courses = [
     steps: [
       'Install Python and set up your development environment with pip and Jupyter Notebook',
       'Complete the first module on LLM calls to understand the basics of LangChain',
-      'Follow along with every code example — type it out, do not copy-paste',
+      'Follow along with every code example â€” type it out, do not copy-paste',
       'Build the final project applying retrieval-augmented generation to a real use case',
       'Experiment with your own data to create a custom LLM application'
     ],
@@ -1832,7 +1832,7 @@ const courses = [
     desc: 'Learn to build complex LLM workflows by chaining prompts, using system instructions, and checking outputs. Teaches reliable, production-grade patterns.',
     bestFor: 'Developers who want to create reliable LLM-powered applications without hallucinations or inconsistent outputs.',
     steps: [
-      'Review the prerequisites — basic Python and familiarity with APIs',
+      'Review the prerequisites â€” basic Python and familiarity with APIs',
       'Complete Module 1 to understand language model capabilities and limitations',
       'Follow the chain-of-thought prompting patterns in Module 2',
       'Build the end-to-end customer service chatbot project',
@@ -1875,7 +1875,7 @@ const courses = [
   },
   {
     id: 'nvidia-rag-agents',
-    title: 'NVIDIA DLI — Building RAG Agents with LLMs',
+    title: 'NVIDIA DLI â€” Building RAG Agents with LLMs',
     platform: 'NVIDIA Deep Learning Institute',
     url: 'https://learn.nvidia.com/courses/course-detail?course_id=course-v1:DLI+S-FX-15+V1',
     price: 'Free',
@@ -1941,9 +1941,9 @@ const courses = [
     bestFor: 'Anyone who wants a clear, quick understanding of generative AI from one of the leaders in the field.',
     steps: [
       'Register for a free Google Cloud Skills Boost account',
-      'Complete the course modules in order — they are short and focused',
+      'Complete the course modules in order â€” they are short and focused',
       'Take notes on the key differences between generative and traditional AI',
-      'Review the responsible AI principles — they are critical for ethical deployment',
+      'Review the responsible AI principles â€” they are critical for ethical deployment',
       'Earn the completion badge to share on your LinkedIn profile'
     ],
     after: [
@@ -1994,10 +1994,10 @@ const courses = [
     desc: 'Andrew Ng original Stanford machine learning course lectures on YouTube. Covers supervised learning, unsupervised learning, and deep learning fundamentals with mathematical rigor.',
     bestFor: 'Learners who want the mathematical depth of Stanford actual ML course for free.',
     steps: [
-      'Watch the lectures sequentially — they build a rigorous foundation',
+      'Watch the lectures sequentially â€” they build a rigorous foundation',
       'Take detailed notes on the mathematical derivations and proofs',
       'Implement each algorithm from scratch in Python before using libraries',
-      'Complete the problem sets — they test deep understanding',
+      'Complete the problem sets â€” they test deep understanding',
       'Review linear algebra and probability prerequisites as needed'
     ],
     after: [
@@ -2024,7 +2024,7 @@ const courses = [
     bestFor: 'React developers who want to learn Next.js from the team that built it.',
     steps: [
       'Make sure you know JavaScript and React basics before starting',
-      'Follow along step-by-step — build every code example yourself',
+      'Follow along step-by-step â€” build every code example yourself',
       'Complete all 10 chapters of the tutorial from start to finish',
       'Deploy your project to Vercel to experience the full workflow',
       'Experiment with App Router patterns and server components'
@@ -2039,7 +2039,7 @@ const courses = [
   },
   {
     id: 'typescript-scrimba',
-    title: 'Learn TypeScript — Free Interactive Course',
+    title: 'Learn TypeScript â€” Free Interactive Course',
     platform: 'Scrimba',
     url: 'https://scrimba.com/learn/typescript',
     price: 'Free',
@@ -2051,7 +2051,7 @@ const courses = [
     bestFor: 'JavaScript developers who want to add type safety to their code quickly and practically.',
     steps: [
       'Complete the course in 1-2 weeks at your own pace',
-      'Practice every interactive exercise — edit the code directly in Scrimba',
+      'Practice every interactive exercise â€” edit the code directly in Scrimba',
       'Build a small TypeScript project after completing the basics',
       'Learn about TypeScript configuration and tsconfig.json',
       'Practice with TypeScript on a real React project'
@@ -2077,9 +2077,9 @@ const courses = [
     desc: 'The University of Helsinki comprehensive full-stack development course covering React, Node.js, Express, MongoDB, GraphQL, TypeScript, and testing.',
     bestFor: 'Anyone who wants a complete, university-quality full-stack development education from zero to advanced.',
     steps: [
-      'Start with Part 1 (Fundamentals of React) — build your first components',
-      'Work through all parts sequentially — each builds on the previous',
-      'Complete every exercise — they are the core of the learning experience',
+      'Start with Part 1 (Fundamentals of React) â€” build your first components',
+      'Work through all parts sequentially â€” each builds on the previous',
+      'Complete every exercise â€” they are the core of the learning experience',
       'Use the course Discord for help when stuck',
       'Submit exercises for review to earn course credit'
     ],
@@ -2093,7 +2093,7 @@ const courses = [
   },
   {
     id: 'react-scrimba',
-    title: 'Learn React — Free Interactive Course',
+    title: 'Learn React â€” Free Interactive Course',
     platform: 'Scrimba',
     url: 'https://scrimba.com/learn/learnreact',
     price: 'Free',
@@ -2105,9 +2105,9 @@ const courses = [
     bestFor: 'JavaScript developers who want an engaging, hands-on way to learn React.',
     steps: [
       'Make sure you know HTML, CSS, and JavaScript fundamentals first',
-      'Follow along with every exercise — edit code in Scrimba interactive player',
+      'Follow along with every exercise â€” edit code in Scrimba interactive player',
       'Build the projects from each section yourself before moving on',
-      'Practice React hooks extensively — they are the core of modern React',
+      'Practice React hooks extensively â€” they are the core of modern React',
       'Complete the final projects to solidify your skills'
     ],
     after: [
@@ -2131,9 +2131,9 @@ const courses = [
     desc: 'Harvard follow-up to CS50 focused on web development with Python, JavaScript, SQL, Django, React, and more.',
     bestFor: 'Developers who have completed CS50x and want to specialize in full-stack web development.',
     steps: [
-      'Complete CS50x first if you have not — it provides the necessary foundation',
+      'Complete CS50x first if you have not â€” it provides the necessary foundation',
       'Work through each lecture and problem set sequentially',
-      'Build all projects from scratch — they mirror real-world development',
+      'Build all projects from scratch â€” they mirror real-world development',
       'Learn both Django (back-end) and React (front-end) frameworks',
       'Join the CS50 Discord for community support and discussions'
     ],
@@ -2159,7 +2159,7 @@ const courses = [
     bestFor: 'Beginners who prefer video learning and want a thorough React introduction in one sitting.',
     steps: [
       'Set up your development environment with Node.js and VS Code',
-      'Code along with every example — do not just watch passively',
+      'Code along with every example â€” do not just watch passively',
       'Practice useState and useEffect hooks extensively after the course',
       'Build your own project using the concepts learned',
       'Pause and experiment with code variations to deepen understanding'
@@ -2185,9 +2185,9 @@ const courses = [
     desc: 'Fireship fast-paced, entertaining TypeScript crash course covering types, interfaces, generics, enums, utility types, and practical patterns.',
     bestFor: 'Developers who want a quick but thorough TypeScript overview with clear examples.',
     steps: [
-      'Watch the full video at normal speed — Fireship packs in a lot of information',
+      'Watch the full video at normal speed â€” Fireship packs in a lot of information',
       'Code along with every example in a TypeScript playground',
-      'Review the sections on interfaces and generics — they are the most important',
+      'Review the sections on interfaces and generics â€” they are the most important',
       'Take notes on TypeScript most useful utility types',
       'Practice by converting a small JavaScript project to TypeScript'
     ],
@@ -2212,9 +2212,9 @@ const courses = [
     desc: 'Scrimba interactive course on Svelte, the lightweight frontend framework that compiles away the framework. Covers reactivity, components, stores, and SvelteKit.',
     bestFor: 'Developers who want to learn a simpler, faster alternative to React and Vue.',
     steps: [
-      'Complete JavaScript prerequisites — you need solid JS fundamentals',
+      'Complete JavaScript prerequisites â€” you need solid JS fundamentals',
       'Follow along with the interactive exercises in Scrimba editor',
-      'Understand Svelte reactivity model — it differs fundamentally from React',
+      'Understand Svelte reactivity model â€” it differs fundamentally from React',
       'Build the course project from scratch',
       'Try SvelteKit for server-side rendering and routing'
     ],
@@ -2320,9 +2320,9 @@ const courses = [
     desc: 'Complete web development course covering HTML, CSS, JavaScript, and basic backend concepts. Extremely beginner-friendly with clear explanations.',
     bestFor: 'Complete beginners who want to learn web development from scratch with a structured approach.',
     steps: [
-      'Start with the HTML section — learn semantic elements and forms',
-      'Move to CSS — master the box model, Flexbox, and responsive design',
-      'Complete the JavaScript section — variables, functions, DOM manipulation',
+      'Start with the HTML section â€” learn semantic elements and forms',
+      'Move to CSS â€” master the box model, Flexbox, and responsive design',
+      'Complete the JavaScript section â€” variables, functions, DOM manipulation',
       'Build all the course projects from scratch',
       'Review and refactor your code after each section'
     ],
@@ -2365,7 +2365,7 @@ const courses = [
   },
   {
     id: 'aws-technical-essentials',
-    title: 'AWS Skill Builder — Technical Essentials',
+    title: 'AWS Skill Builder â€” Technical Essentials',
     platform: 'AWS Skill Builder',
     url: 'https://explore.skillbuilder.aws/learn/course/external/view/elearning/158/aws-technical-essentials',
     price: 'Free',
@@ -2430,7 +2430,7 @@ const courses = [
     desc: 'The Linux Foundation official introduction to Kubernetes. Covers container orchestration concepts, pods, deployments, services, and architecture.',
     bestFor: 'DevOps engineers and developers who need to understand Kubernetes for container orchestration.',
     steps: [
-      'Review Docker basics before starting — Kubernetes orchestrates containers',
+      'Review Docker basics before starting â€” Kubernetes orchestrates containers',
       'Complete the architecture module to understand the Kubernetes control plane',
       'Learn about pods, replicas, and deployments in the core concepts module',
       'Practice with Minikube or Kind for a local Kubernetes environment',
@@ -2475,7 +2475,7 @@ const courses = [
   /* ===== NEW CYBERSECURITY COURSES ===== */
   {
     id: 'tryhackme-beginner',
-    title: 'TryHackMe — Complete Beginner Path',
+    title: 'TryHackMe â€” Complete Beginner Path',
     platform: 'TryHackMe',
     url: 'https://tryhackme.com/room/beginner',
     price: 'Free',
@@ -2490,7 +2490,7 @@ const courses = [
       'Start with the Introduction to Cyber Security room',
       'Complete the Pre-Security path for networking and Linux basics',
       'Move to the Cyber Defense path for defensive security skills',
-      'Practice daily — consistency is key in cybersecurity'
+      'Practice daily â€” consistency is key in cybersecurity'
     ],
     after: [
       'Move to the Offensive Pentesting path for ethical hacking',
@@ -2502,7 +2502,7 @@ const courses = [
   },
   {
     id: 'cybrary-intro',
-    title: 'Cybrary — Introduction to IT and Cybersecurity',
+    title: 'Cybrary â€” Introduction to IT and Cybersecurity',
     platform: 'Cybrary',
     url: 'https://www.cybrary.it/course/intro-it-cybersecurity',
     price: 'Free',
@@ -2529,7 +2529,7 @@ const courses = [
   },
   {
     id: 'professer-messer-security',
-    title: 'Professor Messer — CompTIA Security+ (SY0-701)',
+    title: 'Professor Messer â€” CompTIA Security+ (SY0-701)',
     platform: 'YouTube / Professor Messer',
     url: 'https://www.youtube.com/playlist?list=PLG49S3nxzAnlCJiCrOYuRYb6cne864a7F',
     price: 'Free',
@@ -2541,7 +2541,7 @@ const courses = [
     bestFor: 'Anyone preparing for the CompTIA Security+ certification without paying for expensive training.',
     steps: [
       'Download the Security+ exam objectives as your study guide',
-      'Watch each video section in order — they map directly to exam objectives',
+      'Watch each video section in order â€” they map directly to exam objectives',
       'Take detailed notes on key concepts, ports, and protocols',
       'Use Professor Messer free practice exams to test your knowledge',
       'Re-watch sections you find difficult until concepts are clear'
@@ -2568,7 +2568,7 @@ const courses = [
     bestFor: 'Anyone who wants world-class cybersecurity foundations from the most respected name in the field.',
     steps: [
       'Start with the Operating Systems module',
-      'Complete the Networking module thoroughly — networking is the foundation',
+      'Complete the Networking module thoroughly â€” networking is the foundation',
       'Move to the Security Concepts module',
       'Practice all hands-on exercises and labs',
       'Review and revisit any topics you find challenging'
@@ -2594,8 +2594,8 @@ const courses = [
     desc: 'IBM comprehensive cybersecurity program covering network security, incident response, penetration testing, forensics, and threat intelligence with hands-on labs.',
     bestFor: 'Career changers who want a structured path into cybersecurity with an industry-recognized credential.',
     steps: [
-      'Complete courses in order — they build on each other progressively',
-      'Focus on the hands-on labs — they provide real-world experience',
+      'Complete courses in order â€” they build on each other progressively',
+      'Focus on the hands-on labs â€” they provide real-world experience',
       'Master the SIEM tools (QRadar) and incident response processes',
       'Build the capstone project for your portfolio',
       'Join the Coursera learner community for networking'
@@ -2612,7 +2612,7 @@ const courses = [
   /* ===== NEW DATA SCIENCE & ML COURSES ===== */
   {
     id: 'kaggle-deep-learning',
-    title: 'Kaggle — Intro to Deep Learning',
+    title: 'Kaggle â€” Intro to Deep Learning',
     platform: 'Kaggle',
     url: 'https://www.kaggle.com/learn/intro-to-deep-learning',
     price: 'Free',
@@ -2626,7 +2626,7 @@ const courses = [
       'Complete Kaggle Intro to ML course first as a prerequisite',
       'Work through all 6 micro-courses sequentially',
       'Use Kaggle Notebooks with free GPU access for exercises',
-      'Build the exercise projects — do not just read the code',
+      'Build the exercise projects â€” do not just read the code',
       'Experiment with hyperparameters to improve model performance'
     ],
     after: [
@@ -2650,7 +2650,7 @@ const courses = [
     desc: 'Imperial College London rigorous mathematics course for machine learning. Covers linear algebra, multivariate calculus, and PCA.',
     bestFor: 'Anyone who wants to truly understand the math behind ML algorithms rather than treating them as black boxes.',
     steps: [
-      'Start with the Linear Algebra course — it is the foundation',
+      'Start with the Linear Algebra course â€” it is the foundation',
       'Complete all exercises and assessments for each module',
       'Practice matrix operations, eigenvalues, and decompositions by hand',
       'Move to the Multivariate Calculus course for gradient descent understanding',
@@ -2732,7 +2732,7 @@ const courses = [
     bestFor: 'Anyone who wants to transition from Excel to Python for data analysis.',
     steps: [
       'Start with the Python basics section if needed',
-      'Master pandas DataFrames — they are the core of data analysis',
+      'Master pandas DataFrames â€” they are the core of data analysis',
       'Learn NumPy for numerical computing and array operations',
       'Create visualizations with Matplotlib and Seaborn',
       'Complete all 5 certification projects with real datasets'
@@ -2897,7 +2897,7 @@ const courses = [
     desc: 'HubSpot content marketing certification covering content strategy, storytelling, content creation frameworks, and promotion.',
     bestFor: 'Content creators and marketers who want to build a structured content marketing strategy.',
     steps: [
-      'Complete all lessons sequentially — they build on each other',
+      'Complete all lessons sequentially â€” they build on each other',
       'Practice the content creation frameworks with your own topics',
       'Complete the certification exam',
       'Apply the strategy to your own content channels',
@@ -2940,7 +2940,7 @@ function generateCoursePage(){
             <span class="course-platform">${esc(c.platform)}</span>
             <span class="course-price ${priceClass}">${esc(c.price)}</span>
           </div>
-          <h3 class="course-title"><a href="${esc(c.url)}" target="_blank" rel="noopener noreferrer">${esc(c.title)} ↗</a></h3>
+          <h3 class="course-title"><a href="${esc(c.url)}" target="_blank" rel="noopener noreferrer">${esc(c.title)} â†—</a></h3>
           <p class="course-desc">${esc(c.desc)}</p>
           <div class="course-meta">
             <span class="meta-item"><span class="meta-label">Level</span> ${esc(c.level)}</span>
@@ -2955,7 +2955,7 @@ function generateCoursePage(){
             <h4>What to Do After Completing</h4>
             <ol>${c.after.map(function(a){return '<li>'+esc(a)+'</li>';}).join('')}</ol>
           </div>
-          <a href="${esc(c.url)}" target="_blank" rel="noopener noreferrer" class="course-cta">Start Learning →</a>
+          <a href="${esc(c.url)}" target="_blank" rel="noopener noreferrer" class="course-cta">Start Learning â†’</a>
         </div>`;
   }).join('\n');
 
@@ -2964,14 +2964,14 @@ function generateCoursePage(){
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Free & Paid Courses — Learn SEO, Web Dev, AI & More | KwordSEO</title>
+  <title>Free & Paid Courses â€” Learn SEO, Web Dev, AI & More | KwordSEO</title>
   <meta name="description" content="Curated free and paid courses on SEO, web development, AI, data science, writing, and design. Each course includes step-by-step guides and post-course action plans.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="${BASE}/courses/">
   <link rel="alternate" hreflang="en" href="${BASE}/courses/">
   <link rel="alternate" hreflang="x-default" href="${BASE}/courses/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Free & Paid Courses — Learn SEO, Web Dev, AI & More | KwordSEO">
+  <meta property="og:title" content="Free & Paid Courses â€” Learn SEO, Web Dev, AI & More | KwordSEO">
   <meta property="og:description" content="Curated courses on SEO, web dev, AI, data science, and design with step-by-step guides and post-course action plans.">
   <meta property="og:url" content="${BASE}/courses/">
   <meta property="og:site_name" content="KwordSEO">
@@ -2986,7 +2986,7 @@ function generateCoursePage(){
   {
     "@context":"https://schema.org",
     "@type":"CollectionPage",
-    "name":"Free & Paid Courses — Learn SEO, Web Dev, AI & More",
+    "name":"Free & Paid Courses â€” Learn SEO, Web Dev, AI & More",
     "description":"Curated free and paid courses on SEO, web development, AI, data science, writing, and design.",
     "url":"${BASE}/courses/",
     "breadcrumb":{"@type":"BreadcrumbList","itemListElement":[
@@ -3009,7 +3009,7 @@ function generateCoursePage(){
       <nav class="nav" id="mainNav" aria-label="Main navigation">
         <a class="nav-link" href="/">Home</a>
         <a class="nav-link" href="/tools/">Tools</a>
-        <a class="nav-link" href="/skills/">α tools</a>
+        <a class="nav-link" href="/skills/">Î± tools</a>
         <a class="nav-link active" href="/courses/">Courses</a>
         <a class="nav-link" href="/books/">Books</a>
         <a class="nav-link" href="/blog/">Blog</a>
@@ -3054,7 +3054,7 @@ ${courseCards}
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="site-logo" style="color:inherit"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>
-          <p class="footer-brand-desc">47+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser — your data never leaves your device.</p>
+          <p class="footer-brand-desc">47+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser â€” your data never leaves your device.</p>
         </div>
         <div class="footer-col">
           <p class="footer-col-title">Tools</p>
@@ -3096,7 +3096,6 @@ ${courseCards}
   <div class="toast" id="appToast"></div>
 
   <script src="/js/app.js"></script>
-  <script src="/js/dict.js"></script>
   <script>
 (function(){
   var filters=document.querySelectorAll('.course-filter');

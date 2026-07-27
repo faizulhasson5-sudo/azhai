@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
 
 const BASE = 'https://azhai-six.vercel.app';
@@ -23,7 +23,7 @@ const terms = [
   // SEO Fundamentals
   {slug:'what-is-seo',term:'SEO (Search Engine Optimization)',cat:'seo-fundamentals',
    def:'SEO is the practice of optimizing websites to rank higher in search engine results pages (SERPs). It involves improving technical infrastructure, content quality, and backlink profiles to increase organic (non-paid) traffic from search engines like Google, Bing, and DuckDuckGo.',
-   example:'A blog post targeting "best free text tools" that appears on page 1 of Google results is ranking well due to effective SEO — proper keyword usage, fast loading speed, quality backlinks, and comprehensive content.',
+   example:'A blog post targeting "best free text tools" that appears on page 1 of Google results is ranking well due to effective SEO â€” proper keyword usage, fast loading speed, quality backlinks, and comprehensive content.',
    related:['serp','organic-traffic','keyword-research','on-page-seo','technical-seo'],
    tools:['meta-gen','keyword-density','robots-txt','sitemap-gen']},
   {slug:'serp',term:'SERP (Search Engine Results Page)',cat:'seo-fundamentals',
@@ -110,7 +110,7 @@ const terms = [
    tools:['schema-gen','faq-schema-gen','article-schema-gen','breadcrumb-schema-gen']},
   {slug:'schema-markup',term:'Schema Markup',cat:'tools-technology',
    def:'Schema markup is code you add to your website using Schema.org vocabulary. It helps search engines understand your content context and can trigger enhanced search features like star ratings, event dates, and FAQ dropdowns.',
-   example:'Adding Article schema to a blog post helps Google understand it\'s an article with an author, date published, and publisher — potentially triggering article-specific rich results.',
+   example:'Adding Article schema to a blog post helps Google understand it\'s an article with an author, date published, and publisher â€” potentially triggering article-specific rich results.',
    related:['structured-data','json-ld','rich-results','faq-schema','breadcrumb-schema'],
    tools:['schema-gen','faq-schema-gen','article-schema-gen','breadcrumb-schema-gen']},
   {slug:'rich-results',term:'Rich Results',cat:'seo-fundamentals',
@@ -127,12 +127,12 @@ const terms = [
   // On-Page SEO
   {slug:'meta-description',term:'Meta Description',cat:'on-page-seo',
    def:'A meta description is an HTML attribute that provides a brief summary of a webpage. It appears below the title in search results. While not a direct ranking factor, a compelling meta description increases click-through rate (CTR), which indirectly impacts rankings.',
-   example:'A good meta description for a word counter tool: "Free online word counter — count words, characters, and sentences instantly. No sign-up required." It\'s concise, includes the keyword, and has a clear value proposition.',
+   example:'A good meta description for a word counter tool: "Free online word counter â€” count words, characters, and sentences instantly. No sign-up required." It\'s concise, includes the keyword, and has a clear value proposition.',
    related:['title-tag','serp','ctr','on-page-seo','meta-tags'],
    tools:['meta-desc-gen','meta-gen','og-generator']},
   {slug:'title-tag',term:'Title Tag',cat:'on-page-seo',
    def:'The title tag is the clickable headline that appears in search results and browser tabs. It\'s one of the most important on-page SEO factors. Titles should be 50-60 characters, include the primary keyword, and be compelling enough to earn clicks.',
-   example:'<title>Free Word Counter - Count Words Instantly | KwordSEO</title> — includes the keyword "word counter", is under 60 characters, and has a clear value proposition.',
+   example:'<title>Free Word Counter - Count Words Instantly | KwordSEO</title> â€” includes the keyword "word counter", is under 60 characters, and has a clear value proposition.',
    related:['meta-description','on-page-seo','ctr','serp','meta-tags'],
    tools:['meta-gen','meta-desc-gen']},
   {slug:'header-tags',term:'Header Tags (H1-H6)',cat:'on-page-seo',
@@ -142,7 +142,7 @@ const terms = [
    tools:['markdown-editor','html-previewer']},
   {slug:'keyword-density',term:'Keyword Density',cat:'keywords',
    def:'Keyword density is the percentage of times a target keyword appears in content relative to the total word count. The ideal density is 1-2%. Over 3% is considered keyword stuffing and can trigger Google penalties. <a href="/blog/what-is-keyword-density/">Learn more in our complete guide to keyword density.</a>',
-   example:'In a 1,000-word article, using your target keyword 10-15 times gives you a 1-1.5% density — ideal for SEO. Our Keyword Density Checker calculates this instantly.',
+   example:'In a 1,000-word article, using your target keyword 10-15 times gives you a 1-1.5% density â€” ideal for SEO. Our Keyword Density Checker calculates this instantly.',
    related:['keyword-stuffing','keyword-research','on-page-seo','content-optimization','lsi-keywords'],
    tools:['keyword-density','word-counter','keyword-extract']},
   {slug:'internal-linking',term:'Internal Linking',cat:'on-page-seo',
@@ -152,7 +152,7 @@ const terms = [
    tools:['meta-gen','meta-desc-gen']},
   {slug:'anchor-text',term:'Anchor Text',cat:'on-page-seo',
    def:'Anchor text is the visible, clickable text in a hyperlink. It helps search engines understand what the linked page is about. Good anchor text is descriptive, relevant, and varies naturally. Avoid generic text like "click here".',
-   example:'Instead of "click here to use our tool", use "try our free word counter" — the anchor text "free word counter" tells Google the linked page is about a word counter tool.',
+   example:'Instead of "click here to use our tool", use "try our free word counter" â€” the anchor text "free word counter" tells Google the linked page is about a word counter tool.',
    related:['internal-linking','backlink','link-equity','on-page-seo','external-linking'],
    tools:['word-counter','slug-generator']},
   {slug:'image-optimization',term:'Image Optimization',cat:'on-page-seo',
@@ -162,7 +162,7 @@ const terms = [
    tools:['slug-generator','html-previewer']},
   {slug:'alt-text',term:'Alt Text',cat:'on-page-seo',
    def:'Alt text (alternative text) is a description added to image tags for accessibility and SEO. It helps screen readers describe images to visually impaired users and helps search engines understand image content.',
-   example:'<img src="word-counter.png" alt="Free word counter tool showing 500 words, 3,200 characters, and 25 sentences"> — descriptive, includes relevant terms, and helps both users and search engines.',
+   example:'<img src="word-counter.png" alt="Free word counter tool showing 500 words, 3,200 characters, and 25 sentences"> â€” descriptive, includes relevant terms, and helps both users and search engines.',
    related:['image-optimization','accessibility','seo','on-page-seo','image-search'],
    tools:['html-encoder','html-previewer']},
   {slug:'content-optimization',term:'Content Optimization',cat:'on-page-seo',
@@ -173,7 +173,7 @@ const terms = [
 
   // Off-Page SEO
   {slug:'backlink',term:'Backlink',cat:'off-page-seo',
-   def:'A backlink is a link from another website to yours. Backlinks are one of Google\'s top ranking factors because they act as "votes of confidence" from other sites. Quality matters more than quantity — one link from a high-authority site is worth more than 100 low-quality links.',
+   def:'A backlink is a link from another website to yours. Backlinks are one of Google\'s top ranking factors because they act as "votes of confidence" from other sites. Quality matters more than quantity â€” one link from a high-authority site is worth more than 100 low-quality links.',
    example:'If a popular marketing blog writes "we recommend this free word counter tool" and links to your site, that\'s a high-quality backlink that boosts your domain authority.',
    related:['domain-authority','link-building','anchor-text','do-follow','referring-domain'],
    tools:['meta-gen','schema-gen']},
@@ -184,11 +184,11 @@ const terms = [
    tools:['meta-gen','schema-gen']},
   {slug:'link-building',term:'Link Building',cat:'off-page-seo',
    def:'Link building is the practice of acquiring backlinks from other websites. Common strategies include guest posting, creating linkable assets (tools, research, infographics), broken link building, and digital PR.',
-   example:'Creating a free SEO glossary (like this one) is a link building strategy — other websites link to it as a reference resource, naturally earning backlinks without manual outreach.',
+   example:'Creating a free SEO glossary (like this one) is a link building strategy â€” other websites link to it as a reference resource, naturally earning backlinks without manual outreach.',
    related:['backlink','domain-authority','guest-posting','digital-pr','linkable-asset'],
    tools:['meta-gen','schema-gen','robots-txt']},
   {slug:'do-follow',term:'DoFollow vs NoFollow Links',cat:'off-page-seo',
-   def:'DoFollow links pass "link equity" (PageRank) to the linked page, helping it rank better. NoFollow links (rel="nofollow") tell search engines not to pass equity. Both types exist naturally — a healthy backlink profile includes both.',
+   def:'DoFollow links pass "link equity" (PageRank) to the linked page, helping it rank better. NoFollow links (rel="nofollow") tell search engines not to pass equity. Both types exist naturally â€” a healthy backlink profile includes both.',
    example:'A natural backlink profile includes ~70% doFollow and ~30% noFollow links. Too many doFollow links from low-quality sites can trigger Google penalties.',
    related:['backlink','link-equity','page-authority','off-page-seo','anchor-text'],
    tools:['meta-gen','hreflang-gen']},
@@ -206,7 +206,7 @@ const terms = [
   // Keywords
   {slug:'keyword-research',term:'Keyword Research',cat:'keywords',
    def:'Keyword research is the process of finding and analyzing search terms that people enter into search engines. It helps you understand what your audience is searching for, how competitive keywords are, and which terms to target.',
-   example:'Researching "free word counter" reveals 12,000 monthly searches with medium competition — a good target keyword. Researching "word" alone shows 1M+ searches but extreme competition — not worth targeting.',
+   example:'Researching "free word counter" reveals 12,000 monthly searches with medium competition â€” a good target keyword. Researching "word" alone shows 1M+ searches but extreme competition â€” not worth targeting.',
    related:['long-tail-keyword','keyword-density','search-volume','keyword-difficulty','search-intent'],
    tools:['keyword-extract','keyword-density','slug-generator']},
   {slug:'long-tail-keyword',term:'Long-Tail Keyword',cat:'keywords',
@@ -254,7 +254,7 @@ const terms = [
    related:['eeat','helpful-content','search-intent','user-experience','content-optimization'],
    tools:['word-counter','keyword-density']},
   {slug:'helpful-content',term:'Helpful Content System',cat:'content-ai',
-   def:'Google\'s Helpful Content system is an algorithm that rewards content written primarily for humans and demotes content created mainly for search engine manipulation. It uses a site-wide signal — unhelpful content affects all pages on your site.',
+   def:'Google\'s Helpful Content system is an algorithm that rewards content written primarily for humans and demotes content created mainly for search engine manipulation. It uses a site-wide signal â€” unhelpful content affects all pages on your site.',
    example:'Writing a genuinely useful word counter tutorial with examples and tips is helpful content. Writing 100 thin articles stuffed with keywords to manipulate rankings is unhelpful content.',
    related:['eeat','content-quality','search-intent','google-algorithm','content-strategy'],
    tools:['word-counter','keyword-density']},
@@ -278,8 +278,8 @@ const terms = [
 
   // Analytics
   {slug:'ctr',term:'CTR (Click-Through Rate)',cat:'analytics',
-   def:'CTR is the percentage of people who click on your link after seeing it in search results. CTR = (clicks / impressions) × 100. A good organic CTR is 3-5%. Higher CTR signals to Google that your result is relevant.',
-   example:'If your page shows up 1,000 times in search results and 45 people click, your CTR is 4.5% — above average. Improving your title tag and meta description can boost CTR.',
+   def:'CTR is the percentage of people who click on your link after seeing it in search results. CTR = (clicks / impressions) Ã— 100. A good organic CTR is 3-5%. Higher CTR signals to Google that your result is relevant.',
+   example:'If your page shows up 1,000 times in search results and 45 people click, your CTR is 4.5% â€” above average. Improving your title tag and meta description can boost CTR.',
    related:['serp','rank-position','meta-description','title-tag','impressions'],
    tools:['meta-desc-gen','meta-gen']},
   {slug:'impressions',term:'Impressions',cat:'analytics',
@@ -301,7 +301,7 @@ const terms = [
   // Tools & Technology
   {slug:'json-ld',term:'JSON-LD',cat:'tools-technology',
    def:'JSON-LD (JavaScript Object Notation for Linked Data) is Google\'s preferred format for structured data. It\'s a script tag placed in the <head> or <body> that describes your content using Schema.org vocabulary.',
-   example:'<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[...]}</script> — this JSON-LD code tells Google your page has FAQ content.',
+   example:'<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[...]}</script> â€” this JSON-LD code tells Google your page has FAQ content.',
    related:['structured-data','schema-markup','rich-results','seo','technical-seo'],
    tools:['schema-gen','faq-schema-gen','article-schema-gen','breadcrumb-schema-gen']},
   {slug:'open-graph',term:'Open Graph Tags',cat:'tools-technology',
@@ -316,7 +316,7 @@ const terms = [
    tools:['og-generator','meta-gen']},
   {slug:'http-status-codes',term:'HTTP Status Codes',cat:'technical-seo',
    def:'HTTP status codes indicate the result of a server\'s response to a browser request. 200 = success, 301 = permanent redirect, 302 = temporary redirect, 404 = not found, 500 = server error. Broken pages (404s) waste crawl budget.',
-   example:'A 301 redirect from /old-page to /new-page preserves link equity. A 404 error means the page doesn\'t exist — search engines won\'t index it.',
+   example:'A 301 redirect from /old-page to /new-page preserves link equity. A 404 error means the page doesn\'t exist â€” search engines won\'t index it.',
    related:['redirects','crawl-budget','technical-seo','broken-links','page-speed'],
    tools:['url-encoder','url-decoder']},
   {slug:'301-redirect',term:'301 Redirect',cat:'technical-seo',
@@ -326,7 +326,7 @@ const terms = [
    tools:['url-encoder','url-decoder']},
   {slug:'cdn',term:'CDN (Content Delivery Network)',cat:'technical-seo',
    def:'A CDN is a network of servers distributed globally that delivers cached content to users based on their geographic location. It reduces page load times, handles traffic spikes, and improves security.',
-   example:'When a user in London requests your page, a CDN serves it from a London server instead of your US server — reducing load time from 3 seconds to 0.5 seconds.',
+   example:'When a user in London requests your page, a CDN serves it from a London server instead of your US server â€” reducing load time from 3 seconds to 0.5 seconds.',
    related:['page-speed','core-web-vitals','user-experience','technical-seo','global-audience'],
    tools:['html-previewer']},
   {slug:'orphan-page',term:'Orphan Page',cat:'technical-seo',
@@ -341,7 +341,7 @@ const terms = [
    tools:['meta-gen','schema-gen']},
   {slug:'site-architecture',term:'Site Architecture',cat:'technical-seo',
    def:'Site architecture is how your website\'s pages are organized and interlinked. Good architecture uses a flat structure (most pages within 3 clicks of homepage), clear categories, and logical internal linking.',
-   example:'Homepage → Tools Directory → Category Page → Tool Page (3 clicks). This flat architecture ensures every page is easily discoverable by both users and search engines.',
+   example:'Homepage â†’ Tools Directory â†’ Category Page â†’ Tool Page (3 clicks). This flat architecture ensures every page is easily discoverable by both users and search engines.',
    related:['internal-linking','crawlability','orphan-page','sitemap','user-experience'],
    tools:['sitemap-gen','robots-txt']},
 
@@ -365,12 +365,12 @@ const terms = [
    tools:['keyword-extract','word-counter']},
   {slug:'topic-clusters',term:'Topic Clusters',cat:'content-ai',
    def:'Topic clusters are groups of interlinked content centered around a core topic. A pillar page covers the broad topic, and cluster pages cover specific subtopics, all linking to each other. This builds topical authority.',
-   example:'Pillar: "Complete SEO Guide" → Clusters: "Keyword Research", "On-Page SEO", "Link Building", "Technical SEO". Each cluster page links to the pillar and to related clusters.',
+   example:'Pillar: "Complete SEO Guide" â†’ Clusters: "Keyword Research", "On-Page SEO", "Link Building", "Technical SEO". Each cluster page links to the pillar and to related clusters.',
    related:['content-strategy','internal-linking','topical-authority','pillar-page','content-hub'],
    tools:['meta-gen','schema-gen']},
   {slug:'pillar-page',term:'Pillar Page',cat:'content-ai',
    def:'A pillar page is a comprehensive, long-form page covering a broad topic in depth. It serves as the hub for topic clusters, linking to detailed cluster pages and receiving links back from them.',
-   example:'A "Complete Guide to Free Text Tools" pillar page linking to individual tool guides, category comparisons, and how-to tutorials — all interlinked.',
+   example:'A "Complete Guide to Free Text Tools" pillar page linking to individual tool guides, category comparisons, and how-to tutorials â€” all interlinked.',
    related:['topic-clusters','content-hub','internal-linking','topical-authority','content-strategy'],
    tools:['word-counter','meta-gen']},
   {slug:'topical-authority',term:'Topical Authority',cat:'content-ai',
@@ -427,7 +427,7 @@ function generateTermPage(term) {
 
   const otherTerms = terms.filter(t => t.slug !== term.slug && t.cat === term.cat).slice(0,5);
   const sameLinks = otherTerms.map(t =>
-    '<a href="/glossary/' + t.slug + '.html" style="display:block;padding:10px 14px;background:var(--bg-2);border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--text);font-size:.85rem;transition:border-color .2s;margin-bottom:8px" onmouseover="this.style.borderColor=\'var(--accent)\'" onmouseout="this.style.borderColor=\'var(--border)\'">' + esc(t.term.split('(')[0].trim()) + ' →</a>'
+    '<a href="/glossary/' + t.slug + '.html" style="display:block;padding:10px 14px;background:var(--bg-2);border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--text);font-size:.85rem;transition:border-color .2s;margin-bottom:8px" onmouseover="this.style.borderColor=\'var(--accent)\'" onmouseout="this.style.borderColor=\'var(--border)\'">' + esc(t.term.split('(')[0].trim()) + ' â†’</a>'
   ).join('\n');
 
   return `<!DOCTYPE html>
@@ -479,7 +479,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>\n\n<nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link">Tools</a>
-<a class="nav-link" href="/skills/">α tools</a>
+<a class="nav-link" href="/skills/">Î± tools</a>
 <a href="/courses/" class="nav-link">Courses</a>
 <a href="/books/" class="nav-link">Books</a>
 <a href="/blog/" class="nav-link">Blog</a>
@@ -547,7 +547,7 @@ ${sameLinks ? '<div style="margin-bottom:48px"><h2 style="font-size:1.1rem;font-
       <div class=\"footer-grid\">
         <div class=\"footer-brand\">
           <a href=\"/\" class=\"site-logo\" style=\"color:inherit\"><svg class=\"logo-icon\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#2563eb\"/><path d=\"M9 8v16\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10-8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10 8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg><span class=\"logo-text\">Kword<span class=\"logo-seo\">SEO</span></span></a>
-          <p class=\"footer-brand-desc\">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser — your data never leaves your device.</p>
+          <p class=\"footer-brand-desc\">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser â€” your data never leaves your device.</p>
           <div class=\"footer-social\">
             <a href=\"https://twitter.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"Twitter\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z\"/></svg></a>
             <a href=\"https://github.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"GitHub\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22\"/></svg></a>
@@ -601,7 +601,6 @@ ${sameLinks ? '<div style="margin-bottom:48px"><h2 style="font-size:1.1rem;font-
 <div class="toast" id="appToast"></div>
 
 <script src="/js/app.js"></script>
-<script src="/js/dict.js"></script>
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
 </body>
 </html>`;
@@ -681,7 +680,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>\n\n<nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link">Tools</a>
-<a class="nav-link" href="/skills/">α tools</a>
+<a class="nav-link" href="/skills/">Î± tools</a>
 <a href="/courses/" class="nav-link">Courses</a>
 <a href="/books/" class="nav-link">Books</a>
 <a href="/blog/" class="nav-link">Blog</a>
@@ -733,7 +732,7 @@ ${catLinks}
       <div class=\"footer-grid\">
         <div class=\"footer-brand\">
           <a href=\"/\" class=\"site-logo\" style=\"color:inherit\"><svg class=\"logo-icon\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#2563eb\"/><path d=\"M9 8v16\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10-8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10 8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg><span class=\"logo-text\">Kword<span class=\"logo-seo\">SEO</span></span></a>
-          <p class=\"footer-brand-desc\">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser — your data never leaves your device.</p>
+          <p class=\"footer-brand-desc\">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser â€” your data never leaves your device.</p>
           <div class=\"footer-social\">
             <a href=\"https://twitter.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"Twitter\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z\"/></svg></a>
             <a href=\"https://github.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"GitHub\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22\"/></svg></a>
@@ -787,7 +786,6 @@ ${catLinks}
 <div class="toast" id="appToast"></div>
 
 <script src="/js/app.js"></script>
-<script src="/js/dict.js"></script>
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
 </body>
 </html>`;
@@ -873,7 +871,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>\n\n<nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link">Tools</a>
-<a class="nav-link" href="/skills/">α tools</a>
+<a class="nav-link" href="/skills/">Î± tools</a>
 <a href="/courses/" class="nav-link">Courses</a>
 <a href="/books/" class="nav-link">Books</a>
 <a href="/blog/" class="nav-link">Blog</a>
@@ -938,7 +936,7 @@ ${allTermLinks}
       <div class=\"footer-grid\">
         <div class=\"footer-brand\">
           <a href=\"/\" class=\"site-logo\" style=\"color:inherit\"><svg class=\"logo-icon\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#2563eb\"/><path d=\"M9 8v16\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10-8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><path d=\"M12 16l10 8\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg><span class=\"logo-text\">Kword<span class=\"logo-seo\">SEO</span></span></a>
-          <p class=\"footer-brand-desc\">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser — your data never leaves your device.</p>
+          <p class=\"footer-brand-desc\">46+ free online tools for writers, developers, and SEO professionals. All processing happens in your browser â€” your data never leaves your device.</p>
           <div class=\"footer-social\">
             <a href=\"https://twitter.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"Twitter\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z\"/></svg></a>
             <a href=\"https://github.com/kwordseo\" target=\"_blank\" rel=\"noopener\" aria-label=\"GitHub\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22\"/></svg></a>
@@ -992,7 +990,6 @@ ${allTermLinks}
 <div class="toast" id="appToast"></div>
 
 <script src="/js/app.js"></script>
-<script src="/js/dict.js"></script>
 <script>
 (function(){
   var filters=document.querySelectorAll('.glossary-filter');

@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
 
 const BASE = 'https://azhai-six.vercel.app';
@@ -10,7 +10,7 @@ function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').
 const nav = `<nav class="nav" id="mainNav" aria-label="Main navigation">
 <a class="nav-link" href="/">Home</a>
 <a class="nav-link" href="/tools/">Tools</a>
-<a class="nav-link active" href="/skills/">α tools</a>
+<a class="nav-link active" href="/skills/">Î± tools</a>
 <a class="nav-link" href="/courses/">Courses</a>
 <a class="nav-link" href="/books/">Books</a>
 <a class="nav-link" href="/blog/">Blog</a>
@@ -84,11 +84,11 @@ const footer = `<footer class="site-footer">
 <a href="/tools/">Browse all tools</a>
 </div>
 <div class="footer-col">
-<p class="footer-col-title">α tools</p>
+<p class="footer-col-title">Î± tools</p>
 <a href="/skills/ai-prompt-builder.html">AI Prompt Builder</a>
 <a href="/skills/decision-matrix.html">Decision Matrix</a>
 <a href="/skills/tone-analyzer.html">Tone Analyzer</a>
-<a href="/skills/">Browse all α tools</a>
+<a href="/skills/">Browse all Î± tools</a>
 </div>
 <div class="footer-col">
 <p class="footer-col-title">Company</p>
@@ -119,7 +119,6 @@ const footer = `<footer class="site-footer">
 <div class="toast" id="appToast"></div>
 
 <script src="/js/app.js"></script>
-<script src="/js/dict.js"></script>
 <script src="/js/blog-data.js"></script>
 <script src="/js/tool-core.js"></script>`;
 
@@ -127,10 +126,10 @@ const skills = [
   {id:'ai-prompt-builder',title:'AI Prompt Builder',desc:'Learn prompt engineering by building optimized prompts. See what works, why it works, and copy ready-to-use prompts for ChatGPT, Claude, and Gemini.',skill:'Prompt Engineering',cat:'tools'},
   {id:'decision-matrix',title:'Decision Matrix',desc:'Make complex decisions with structured critical thinking. Weight your criteria, rate your options, and discover which choice wins with clear reasoning.',skill:'Critical Thinking',cat:'tools'},
   {id:'tone-analyzer',title:'Writing Tone Analyzer',desc:'Understand how your writing sounds to others. Analyze tone, clarity, and emotional impact. Get specific suggestions to improve every message.',skill:'Communication',cat:'tools'},
-  {id:'habit-builder',title:'Habit Builder',desc:'Build lasting habits using proven behavioral science. Habit stacking, the 2-minute rule, and environment design — all backed by research.',skill:'Behavior Change',cat:'tools'},
+  {id:'habit-builder',title:'Habit Builder',desc:'Build lasting habits using proven behavioral science. Habit stacking, the 2-minute rule, and environment design â€” all backed by research.',skill:'Behavior Change',cat:'tools'},
   {id:'smart-goal-planner',title:'SMART Goal Planner',desc:'Turn vague goals into concrete action plans. Walk through the SMART framework step by step and create a plan you can actually follow.',skill:'Goal Setting',cat:'tools'},
   {id:'financial-planner',title:'Financial Planner',desc:'Learn personal finance by doing. Budget with the 50/30/20 rule, calculate compound interest, and compare debt payoff strategies.',skill:'Financial Literacy',cat:'tools'},
-  {id:'study-toolkit',title:'Study Skills Toolkit',desc:'Study smarter, not harder. Get personalized study plans using spaced repetition, active recall, and Pomodoro technique — all backed by neuroscience.',skill:'Learning Science',cat:'tools'},
+  {id:'study-toolkit',title:'Study Skills Toolkit',desc:'Study smarter, not harder. Get personalized study plans using spaced repetition, active recall, and Pomodoro technique â€” all backed by neuroscience.',skill:'Learning Science',cat:'tools'},
   {id:'resume-builder',title:'Resume Builder',desc:'Build a professional resume with live preview. 3 templates, PDF export, ATS-friendly format. All data stays in your browser.',skill:'Career',cat:'tools',url:'/resume-builder.html'},
   {id:'ads-quality-checker',title:'Ads Quality Checker',desc:'Compare 1-4 ads and find the winner. AIDA, PAS, readability scoring. Get actionable recommendations based on marketing research.',skill:'Marketing',cat:'tools',url:'/ads-quality-checker.html'},
   {id:'ai-literacy',title:'AI Literacy Guide',desc:'Understand what AI can and cannot do. Learn to evaluate AI output, spot common pitfalls, and use AI tools responsibly in your work.',skill:'AI Literacy',cat:'guides'},
@@ -141,7 +140,7 @@ const skills = [
 // Generate skills index page
 const indexHtml = `<!DOCTYPE html>
 <html lang="en" data-theme="light">
-${pageHead('α tools - Build Real Abilities | KwordSEO','Interactive tools that teach you skills, not just do tasks for you. Learn prompt engineering, critical thinking, communication, and more.',BASE+'/skills/')}
+${pageHead('Î± tools - Build Real Abilities | KwordSEO','Interactive tools that teach you skills, not just do tasks for you. Learn prompt engineering, critical thinking, communication, and more.',BASE+'/skills/')}
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDTPKT4T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -156,9 +155,9 @@ ${headerActions}
 <main id="main-content">
 <div class="container">
 <div class="tool-header">
-<div class="breadcrumb"><a href="/">Home</a> <span>/</span> <span>α tools</span></div>
-<h1 style="margin:0;font-size:1.8rem;font-weight:800;letter-spacing:-0.02em">Build Real α tools</h1>
-<p style="color:var(--text-2);margin-top:8px;font-size:0.95rem">Interactive tools that teach you abilities you'll use forever. Not just tasks — understanding.</p>
+<div class="breadcrumb"><a href="/">Home</a> <span>/</span> <span>Î± tools</span></div>
+<h1 style="margin:0;font-size:1.8rem;font-weight:800;letter-spacing:-0.02em">Build Real Î± tools</h1>
+<p style="color:var(--text-2);margin-top:8px;font-size:0.95rem">Interactive tools that teach you abilities you'll use forever. Not just tasks â€” understanding.</p>
 </div>
 <div style="display:flex;gap:8px;margin:24px 0;flex-wrap:wrap">
 <button type="button" class="btn btn-primary btn-sm skill-filter active" data-filter="all">All</button>
@@ -201,10 +200,10 @@ const references = [
     title: 'AI Literacy Guide - What Everyone Should Know About AI',
     desc: 'A practical guide to understanding AI: what it can do, what it cannot, how to evaluate AI output, and how to use AI tools responsibly.',
     sections: [
-      {h:'What Is AI?',content:'Artificial Intelligence (AI) refers to computer systems that can perform tasks that typically require human intelligence. This includes understanding language, recognizing patterns, making decisions, and generating content. The AI tools you interact with daily — ChatGPT, Claude, Gemini, Copilot — are all based on Large Language Models (LLMs).'},
+      {h:'What Is AI?',content:'Artificial Intelligence (AI) refers to computer systems that can perform tasks that typically require human intelligence. This includes understanding language, recognizing patterns, making decisions, and generating content. The AI tools you interact with daily â€” ChatGPT, Claude, Gemini, Copilot â€” are all based on Large Language Models (LLMs).'},
       {h:'What AI Can Do',content:'AI excels at: generating text, code, and creative content; summarizing long documents; translating between languages; analyzing data and finding patterns; answering questions on wide-ranging topics; brainstorming ideas and alternatives; automating repetitive writing tasks.'},
       {h:'What AI Cannot Do',content:'AI struggles with: understanding context deeply (it predicts likely words, not meaning); factual accuracy (it can "hallucinate" false information); reasoning about novel situations; understanding current events (training data has a cutoff); emotional intelligence and nuance; domain expertise without specific training.'},
-      {h:'How to Evaluate AI Output',content:'Always verify AI-generated facts with authoritative sources. Check citations — AI often fabricates references. Look for logical consistency. Test claims against your own knowledge. Use multiple AI models to cross-check important outputs. Ask AI to show its reasoning, not just conclusions.'},
+      {h:'How to Evaluate AI Output',content:'Always verify AI-generated facts with authoritative sources. Check citations â€” AI often fabricates references. Look for logical consistency. Test claims against your own knowledge. Use multiple AI models to cross-check important outputs. Ask AI to show its reasoning, not just conclusions.'},
       {h:'Common AI Pitfalls',content:'Hallucination: AI confidently states false information. Bias: AI reflects biases in training data. Over-reliance: Using AI without understanding the output. Privacy: Do not input sensitive personal or business data into AI tools. Plagiarism: AI may reproduce copyrighted text from training data.'},
       {h:'AI by Profession',content:'Writers: Use AI for drafts and brainstorming, not final copy. Developers: Use AI for code suggestions, always review. Marketers: Use AI for content ideas, verify claims. Students: Use AI for learning support, not academic dishonesty. Business: Use AI for analysis, make final decisions yourself.'},
       {h:'The Bottom Line',content:'AI is a powerful tool, not a replacement for human judgment. The people who benefit most from AI are those who understand its strengths and limitations. Use AI to augment your thinking, not replace it. Always keep a human in the loop for important decisions.'}
@@ -231,11 +230,11 @@ const references = [
     sections: [
       {h:'The 50/30/20 Budget Rule',content:'Allocate 50% of after-tax income to needs (rent, food, utilities, insurance). Allocate 30% to wants (dining out, entertainment, hobbies). Allocate 20% to savings and debt repayment. This is the simplest budgeting framework that actually works. Adjust ratios based on your situation.'},
       {h:'Emergency Fund',content:'Goal: 3-6 months of essential expenses in a high-yield savings account. Start with a $1,000 mini emergency fund, then build to 3 months, then 6 months. This fund prevents one unexpected expense from derailing your entire financial plan.'},
-      {h:'Understanding Compound Interest',content:'Compound interest is interest earned on interest. If you invest $500/month at 7% annual return, in 30 years you will have approximately $566,000 (you contributed $180,000, compound interest added $386,000). Start early — time is the most powerful factor in building wealth.'},
+      {h:'Understanding Compound Interest',content:'Compound interest is interest earned on interest. If you invest $500/month at 7% annual return, in 30 years you will have approximately $566,000 (you contributed $180,000, compound interest added $386,000). Start early â€” time is the most powerful factor in building wealth.'},
       {h:'Debt Payoff: Snowball vs Avalanche',content:'Snowball: pay off smallest balance first, then roll that payment to the next smallest. Builds momentum through quick wins. Avalanche: pay off highest interest rate first. Saves the most money mathematically. Choose the method you will actually stick with. Both work.'},
-      {h:'Investing Basics',content:'Start with index funds (low cost, diversified, historically 7-10% annual returns). Contribute to retirement accounts (401k, IRA) before taxable accounts. Never invest money you need within 5 years. Diversify across stocks, bonds, and international. Ignore market timing — invest consistently.'},
+      {h:'Investing Basics',content:'Start with index funds (low cost, diversified, historically 7-10% annual returns). Contribute to retirement accounts (401k, IRA) before taxable accounts. Never invest money you need within 5 years. Diversify across stocks, bonds, and international. Ignore market timing â€” invest consistently.'},
       {h:'Credit Score Fundamentals',content:'Payment history (35%): pay every bill on time. Credit utilization (30%): keep balances below 30% of limits. Length of history (15%): keep old accounts open. Credit mix (10%): have different types of credit. New inquiries (10%): don\'t apply for credit unnecessarily. Check your free credit report annually.'},
-      {h:'The Golden Rule',content:'Spend less than you earn. Invest the difference. Repeat for decades. Every financial concept above serves this one principle. You don\'t need to be perfect — you need to be consistent. Start where you are, use what you have, do what you can.'}
+      {h:'The Golden Rule',content:'Spend less than you earn. Invest the difference. Repeat for decades. Every financial concept above serves this one principle. You don\'t need to be perfect â€” you need to be consistent. Start where you are, use what you have, do what you can.'}
     ]
   }
 ];
@@ -259,7 +258,7 @@ ${headerActions}
 <main id="main-content">
 <div class="container" style="max-width:780px;margin:0 auto">
 <div class="tool-header">
-<div class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/skills/">α tools</a> <span>/</span> <span>${esc(ref.title.split(' - ')[0])}</span></div>
+<div class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/skills/">Î± tools</a> <span>/</span> <span>${esc(ref.title.split(' - ')[0])}</span></div>
 <h1 style="margin:0;font-size:1.8rem;font-weight:800;letter-spacing:-0.02em">${esc(ref.title.split(' - ')[0])}</h1>
 <p style="color:var(--text-2);margin-top:8px;font-size:0.95rem">${esc(ref.desc)}</p>
 </div>
@@ -277,7 +276,7 @@ ${ref.sections.map(function(s,i){
 <a href="/skills/ai-prompt-builder.html" style="display:inline-block;padding:8px 16px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem;font-weight:500;text-decoration:none;transition:border-color .15s">AI Prompt Builder</a>
 <a href="/skills/decision-matrix.html" style="display:inline-block;padding:8px 16px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem;font-weight:500;text-decoration:none;transition:border-color .15s">Decision Matrix</a>
 <a href="/skills/tone-analyzer.html" style="display:inline-block;padding:8px 16px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem;font-weight:500;text-decoration:none;transition:border-color .15s">Tone Analyzer</a>
-<a href="/skills/" style="display:inline-block;padding:8px 16px;background:var(--accent);border:1px solid var(--accent);border-radius:6px;color:#fff;font-size:0.85rem;font-weight:500;text-decoration:none;transition:opacity .15s">View All α tools</a>
+<a href="/skills/" style="display:inline-block;padding:8px 16px;background:var(--accent);border:1px solid var(--accent);border-radius:6px;color:#fff;font-size:0.85rem;font-weight:500;text-decoration:none;transition:opacity .15s">View All Î± tools</a>
 </div>
 </div>
 </div>
@@ -290,4 +289,4 @@ ${footer}
   console.log('Created: public/skills/' + ref.id + '.html');
 });
 
-console.log('\nα tools build complete! Index + ' + references.length + ' reference pages generated.');
+console.log('\nÎ± tools build complete! Index + ' + references.length + ' reference pages generated.');

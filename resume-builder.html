@@ -132,7 +132,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span aria-current="page">Resume Builder</span>
 </nav>
 
-<section id="builder" class="rb-section reveal" aria-labelledby="rb-heading">
+<section id="builder" class="rb-section" aria-labelledby="rb-heading">
   <div class="rb-top-bar">
     <div class="rb-top-left">
       <h2 id="rb-heading" class="section-title" style="margin-bottom:0">Resume Builder</h2>
@@ -1319,17 +1319,25 @@ function update(){
   }
   preview.innerHTML=html;
   preview.className='rb-preview tpl-'+state.template;
-  // Force light-mode preview via inline styles + style attribute
+  // Force light-mode preview via inline styles with IMPORTANT flag
   if(wrapper){
-    wrapper.setAttribute('style','background:#fff !important;border-color:#e5e7eb !important;color-scheme:light !important');
+    wrapper.style.setProperty('background','#fff','important');
+    wrapper.style.setProperty('border-color','#e5e7eb','important');
+    wrapper.style.setProperty('color-scheme','light','important');
   }
-  preview.setAttribute('style','background:#fff !important;color:#222 !important;color-scheme:light !important');
-  // Also force all direct children to have dark text
-  preview.querySelectorAll('*').forEach(function(el){
-    if(!el.closest('.rp-sidebar')){
-      el.style.color='#1f2937';
+  preview.style.setProperty('background','#fff','important');
+  preview.style.setProperty('color','#222','important');
+  preview.style.setProperty('color-scheme','light','important');
+  // Force ALL children: dark text on transparent background (except classic sidebar)
+  var els=preview.querySelectorAll('*');
+  for(var i=0;i<els.length;i++){
+    var el=els[i];
+    var isSidebar=el.closest('.rp-sidebar');
+    if(!isSidebar){
+      el.style.setProperty('color','#1f2937','important');
     }
-  });
+    el.style.setProperty('background-color',isSidebar?'#1e293b':'transparent','important');
+  }
 }
 
 // Expose

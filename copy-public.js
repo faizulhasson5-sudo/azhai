@@ -70,11 +70,6 @@ if (fs.existsSync(pillarDir)) {
   }
 }
 
-// Copy books reader page
-fs.mkdirSync(path.join(dst, 'books'), { recursive: true });
-const booksReader = path.join(src, 'books', 'reader.html');
-if (fs.existsSync(booksReader)) fs.copyFileSync(booksReader, path.join(dst, 'books', 'reader.html'));
-
 // Copy tools listing page
 fs.mkdirSync(path.join(dst, 'tools'), { recursive: true });
 const toolsIndex = path.join(src, 'tools', 'index.html');

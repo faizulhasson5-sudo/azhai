@@ -1087,7 +1087,7 @@ books.forEach(b => {
       '<span>' + esc(b.pages) + ' pages</span>' +
       '<span>' + esc(b.rating) + ' â˜…</span>' +
     '</div>' +
-    '<a href="' + (b.readUrl.indexOf('gutenberg.org')!==-1 ? '/books/reader.html?url='+encodeURIComponent(b.readUrl)+'&title='+encodeURIComponent(b.title)+'&author='+encodeURIComponent(b.author)+'&genre='+encodeURIComponent(b.genre) : esc(b.readUrl)) + '" class="book-card-btn"' + (b.readUrl.indexOf('gutenberg.org')!==-1 ? '' : ' target="_blank" rel="noopener"') + '>' + esc(b.readType) + ' â†’</a>' +
+    '<a href="' + esc(b.readUrl) + '" class="book-card-btn" target="_blank" rel="noopener">' + esc(b.readType) + ' â†’</a>' +
   '</div>\n';
 });
 

@@ -130,6 +130,8 @@ const skills = [
   {id:'smart-goal-planner',title:'SMART Goal Planner',desc:'Turn vague goals into concrete action plans. Walk through the SMART framework step by step and create a plan you can actually follow.',skill:'Goal Setting',cat:'tools'},
   {id:'financial-planner',title:'Financial Planner',desc:'Learn personal finance by doing. Budget with the 50/30/20 rule, calculate compound interest, and compare debt payoff strategies.',skill:'Financial Literacy',cat:'tools'},
   {id:'study-toolkit',title:'Study Skills Toolkit',desc:'Study smarter, not harder. Get personalized study plans using spaced repetition, active recall, and Pomodoro technique — all backed by neuroscience.',skill:'Learning Science',cat:'tools'},
+  {id:'resume-builder',title:'Resume Builder',desc:'Build a professional resume with live preview. 3 templates, PDF export, ATS-friendly format. All data stays in your browser.',skill:'Career',cat:'tools',url:'/resume-builder.html'},
+  {id:'ads-quality-checker',title:'Ads Quality Checker',desc:'Compare 1-4 ads and find the winner. AIDA, PAS, readability scoring. Get actionable recommendations based on marketing research.',skill:'Marketing',cat:'tools',url:'/ads-quality-checker.html'},
   {id:'ai-literacy',title:'AI Literacy Guide',desc:'Understand what AI can and cannot do. Learn to evaluate AI output, spot common pitfalls, and use AI tools responsibly in your work.',skill:'AI Literacy',cat:'guides'},
   {id:'communication-guide',title:'Communication Guide',desc:'Master the frameworks for difficult conversations, active listening, conflict resolution, and professional email writing.',skill:'Communication',cat:'guides'},
   {id:'financial-basics',title:'Financial Basics Guide',desc:'A complete beginner guide to budgeting, saving, investing, and debt management. Everything you need to take control of your money.',skill:'Financial Literacy',cat:'guides'}
@@ -164,7 +166,7 @@ ${headerActions}
 </div>
 <div class="tool-grid skills-grid">
 ${skills.map(s => `
-<a href="/skills/${s.id}.html" class="tool-card" data-cat="${s.cat}">
+<a href="${s.url || '/skills/' + s.id + '.html'}" class="tool-card" data-cat="${s.cat}">
 <div class="skill-badge" style="display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:3px 8px;border-radius:4px;background:var(--accent-light);color:var(--accent);margin-bottom:8px">${esc(s.skill)}</div>
 <h3>${esc(s.title)}</h3>
 <p>${esc(s.desc)}</p>

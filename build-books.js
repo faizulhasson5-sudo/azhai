@@ -1289,6 +1289,7 @@ const html = `<!DOCTYPE html>
   <div class="toast" id="appToast"></div>
 
   <script src="/js/app.js"></script>
+  <script src="/js/dict.js"></script>
   ${filterJs}
   <script>
   if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}

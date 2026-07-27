@@ -601,6 +601,7 @@ ${sameLinks ? '<div style="margin-bottom:48px"><h2 style="font-size:1.1rem;font-
 <div class="toast" id="appToast"></div>
 
 <script src="/js/app.js"></script>
+<script src="/js/dict.js"></script>
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
 </body>
 </html>`;
@@ -786,6 +787,7 @@ ${catLinks}
 <div class="toast" id="appToast"></div>
 
 <script src="/js/app.js"></script>
+<script src="/js/dict.js"></script>
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
 </body>
 </html>`;
@@ -990,6 +992,7 @@ ${allTermLinks}
 <div class="toast" id="appToast"></div>
 
 <script src="/js/app.js"></script>
+<script src="/js/dict.js"></script>
 <script>
 (function(){
   var filters=document.querySelectorAll('.glossary-filter');

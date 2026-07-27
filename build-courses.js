@@ -3096,6 +3096,7 @@ ${courseCards}
   <div class="toast" id="appToast"></div>
 
   <script src="/js/app.js"></script>
+  <script src="/js/dict.js"></script>
   <script>
 (function(){
   var filters=document.querySelectorAll('.course-filter');

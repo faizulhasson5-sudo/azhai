@@ -119,6 +119,7 @@ const footer = `<footer class="site-footer">
 <div class="toast" id="appToast"></div>
 
 <script src="/js/app.js"></script>
+<script src="/js/dict.js"></script>
 <script src="/js/blog-data.js"></script>
 <script src="/js/tool-core.js"></script>`;
 

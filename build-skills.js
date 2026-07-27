@@ -140,7 +140,7 @@ const skills = [
 // Generate skills index page
 const indexHtml = `<!DOCTYPE html>
 <html lang="en" data-theme="light">
-${pageHead('α tools - Build Real Abilities | KwordSEO','Interactive tools that teach you skills, not just do tasks for you. Learn prompt engineering, critical thinking, communication, and more.',BASE+'/skills/')}
+${pageHead('α tools | KwordSEO','Interactive tools that teach you abilities you will use forever. Not just tasks, build understanding.',BASE+'/skills/')}
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDTPKT4T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -156,8 +156,8 @@ ${headerActions}
 <div class="container">
 <div class="tool-header">
 <div class="breadcrumb"><a href="/">Home</a> <span>/</span> <span>α tools</span></div>
-<h1 style="margin:0;font-size:1.8rem;font-weight:800;letter-spacing:-0.02em">Build Real α tools</h1>
-<p style="color:var(--text-2);margin-top:8px;font-size:0.95rem">Interactive tools that teach you abilities you'll use forever. Not just tasks â€” understanding.</p>
+<h1 style="margin:0;font-size:1.8rem;font-weight:800;letter-spacing:-0.02em">α tools</h1>
+<p style="color:var(--text-2);margin-top:8px;font-size:0.95rem">Interactive tools that teach you abilities you'll use forever. Not just tasks — build understanding.</p>
 </div>
 <div style="display:flex;gap:8px;margin:24px 0;flex-wrap:wrap">
 <button type="button" class="btn btn-primary btn-sm skill-filter active" data-filter="all">All</button>

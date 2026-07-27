@@ -197,4 +197,45 @@ if(tid==='breadcrumb-schema-gen'){
   document.getElementById('toolOptions').innerHTML='<div class="tool-option"><label>Breadcrumb items (one per line, format: label|url):</label><textarea id="opt-bc" placeholder="Home|https://example.com/&#10;Blog|https://example.com/blog/&#10;Current Page|https://example.com/blog/post" style="width:100%;min-height:80px;font-family:var(--mono);font-size:.8rem"></textarea></div>';
 }
 
+/* ===== Hide generic text input for ALL SEO tools, add tool-specific UI ===== */
+var seoAllIds=['keyword-density','keyword-extract','meta-gen','meta-desc-gen','og-generator',
+  'canonical-gen','robots-txt','sitemap-gen','hreflang-gen','schema-gen',
+  'faq-schema-gen','article-schema-gen','breadcrumb-schema-gen'];
+
+if(seoAllIds.indexOf(tid)!==-1){
+  var _inputSec=document.querySelector('.tool-card-section');
+  if(_inputSec)_inputSec.style.display='none';
+  var _actSec=document.querySelector('.tool-card-actions');
+  if(_actSec)_actSec.style.display='none';
+
+  var _contentMap={
+    'keyword-density':{lbl:'Content to analyze',ph:'Paste your article or blog post here...'},
+    'keyword-extract':{lbl:'Content to analyze',ph:'Paste your article or blog post here...'},
+    'meta-desc-gen':{lbl:'Page content',ph:'Paste your page content here...'},
+    'sitemap-gen':{lbl:'Page URLs (one per line)',ph:'https://example.com/&#10;https://example.com/about&#10;https://example.com/contact'},
+    'hreflang-gen':{lbl:'Base URL',ph:'https://example.com/page'},
+    'schema-gen':{lbl:'Name / Headline',ph:'Enter the name or headline'}
+  };
+  var _optEl=document.getElementById('toolOptions');
+  if(_contentMap[tid]){
+    var _c=_contentMap[tid];
+    _optEl.innerHTML+='<div class="tool-option"><label>'+_c.lbl+':</label><textarea id="seo-content" placeholder="'+_c.ph+'" style="width:100%;min-height:100px;font-family:var(--mono);font-size:.8rem"></textarea></div>';
+  }
+  _optEl.innerHTML+='<div class="tool-option" style="margin-top:12px"><button type="button" class="btn btn-primary" onclick="seoToolGo()">Process</button> <button type="button" class="btn btn-secondary btn-sm" onclick="seoToolClear()">Clear</button></div>';
+
+  window.seoToolGo=function(){
+    var _sc=document.getElementById('seo-content');
+    if(_sc)document.getElementById('tool-input').value=_sc.value;
+    processCurrentTool();
+  };
+  window.seoToolClear=function(){
+    var _sc=document.getElementById('seo-content');
+    if(_sc)_sc.value='';
+    document.getElementById('tool-input').value='';
+    document.getElementById('tool-output').innerHTML='';
+    document.getElementById('outputActions').style.display='none';
+    document.getElementById('outputMeta').textContent='';
+  };
+}
+
 })();

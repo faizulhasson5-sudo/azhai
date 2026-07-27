@@ -232,7 +232,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>\n\n<nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link active">Tools</a>
-<a class="nav-link" href="/skills/">Î± tools</a>
+<a class="nav-link" href="/skills/">α tools</a>
 <a href="/courses/" class="nav-link">Courses</a>
 <a href="/books/" class="nav-link">Books</a>
 <a href="/blog/" class="nav-link">Blog</a>
@@ -477,7 +477,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="/" class="site-logo"><svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2563eb"/><path d="M9 8v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10-8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M12 16l10 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">Kword<span class="logo-seo">SEO</span></span></a>\n\n<nav class="nav" aria-label="Main navigation">
 <a href="/" class="nav-link">Home</a>
 <a href="/tools/" class="nav-link active">Tools</a>
-<a class="nav-link" href="/skills/">Î± tools</a>
+<a class="nav-link" href="/skills/">α tools</a>
 <a href="/courses/" class="nav-link">Courses</a>
 <a href="/books/" class="nav-link">Books</a>
 <a href="/blog/" class="nav-link">Blog</a>

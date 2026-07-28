@@ -600,7 +600,7 @@ ${sameLinks ? '<div style="margin-bottom:48px"><h2 style="font-size:1.1rem;font-
 <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent"><p> We use cookies for analytics &amp; preferences. <a href="/cookie-policy.html">Learn more</a></p><div class="btn-group"><button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button><button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button></div></div>
 <div class="toast" id="appToast"></div>
 
-<script src="/js/app.js"></script>
+<script src="/js/app.js"></script>\n<script src="/js/cross-links.js"></script>
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
 </body>
 </html>`;
@@ -785,7 +785,7 @@ ${catLinks}
 <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent"><p> Cookies for analytics.</p><div class="btn-group"><button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button><button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button></div></div>
 <div class="toast" id="appToast"></div>
 
-<script src="/js/app.js"></script>
+<script src="/js/app.js"></script>\n<script src="/js/cross-links.js"></script>
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
 </body>
 </html>`;
@@ -989,7 +989,7 @@ ${allTermLinks}
 <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent"><p> Cookies for analytics.</p><div class="btn-group"><button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button><button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Dismiss</button></div></div>
 <div class="toast" id="appToast"></div>
 
-<script src="/js/app.js"></script>
+<script src="/js/app.js"></script>\n<script src="/js/cross-links.js"></script>
 <script>
 (function(){
   var filters=document.querySelectorAll('.glossary-filter');

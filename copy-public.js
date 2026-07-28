@@ -38,7 +38,7 @@ for (const f of htmlFiles) {
 }
 
 // Copy other static files
-const otherFiles = ['sitemap.xml', 'robots.txt', 'og-image.png', 'manifest.json', 'sw.js', 'favicon.svg'];
+const otherFiles = ['robots.txt', 'og-image.png', 'manifest.json', 'sw.js', 'favicon.svg'];
 for (const f of otherFiles) {
   const sp = path.join(src, f);
   if (fs.existsSync(sp)) fs.copyFileSync(sp, path.join(dst, f));

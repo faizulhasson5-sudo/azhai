@@ -4,228 +4,61 @@ const path = require('path');
 const baseUrl = 'https://azhai-six.vercel.app';
 const today = new Date().toISOString().slice(0, 10);
 
-const tools = [
-  'word-counter','char-counter','sentence-counter','paragraph-counter','word-frequency',
-  'case-converter','remove-spaces','find-replace','line-sorter','alpha-sorter',
-  'text-reverser','duplicate-remover','lorem-generator','slug-generator',
-  'keyword-density','keyword-extract','meta-gen','meta-desc-gen','og-generator',
-  'canonical-gen','robots-txt','sitemap-gen',
-  'json-formatter','json-validator','xml-formatter','xml-validator',
-  'markdown-editor','markdown-preview','html-previewer','regex-tester',
-  'url-encoder','url-decoder','html-encoder','html-decoder',
-  'b64-encoder','b64-decoder','hash-generator',
-  'hreflang-gen','schema-gen','faq-schema-gen','article-schema-gen','breadcrumb-schema-gen',
-  'pdf-to-word','word-to-pdf',
-  'ai-content-detector',
-  'ai-humanizer',
-  'ai-prompt-gen'
-];
+// Auto-discover all HTML pages from public/
+function walk(dir, results) {
+  if (!fs.existsSync(dir)) return;
+  fs.readdirSync(dir).forEach(f => {
+    const p = path.join(dir, f);
+    if (fs.statSync(p).isDirectory()) walk(p, results);
+    else if (f.endsWith('.html') && f !== 'template.html') results.push(p);
+  });
+}
 
-const skills = [
-  'ai-prompt-builder','decision-matrix','tone-analyzer',
-  'habit-builder','smart-goal-planner','financial-planner','study-toolkit',
-  'ai-literacy','communication-guide','financial-basics'
-];
+const pubDir = path.join(__dirname, 'public');
+const pages = [];
+walk(pubDir, pages);
 
-// Blog posts from build-blog.js
-const blogs = [
-  'ultimate-guide-seo-text-tools',
-  'how-to-write-perfect-meta-descriptions',
-  'json-formatting-best-practices',
-  'markdown-for-bloggers',
-  'understanding-canonical-tags-seo',
-  'open-graph-tags-social-media',
-  'google-ai-overview-spam-policy-2026',
-  'optimize-google-ai-overviews',
-  'google-june-2026-spam-update',
-  'ai-content-detection-2026',
-  'query-fanout-seo-2026',
-  'how-to-get-cited-google-ai-overviews',
-  'find-trending-keywords-before-competitors',
-  'query-fanout-vs-keywords',
-  'long-tail-keyword-strategy-2026',
-  'what-is-keyword-density',
-  'free-seo-tools-small-business',
-  'how-to-check-keyword-density',
-  'seo-content-writing-guide',
-  'how-to-write-meta-descriptions',
-  'how-to-create-robots-txt-file',
-  'xml-sitemap-guide-seo',
-  'eeat-2026-google-trust-guide',
-  'how-to-optimize-images-for-seo',
-  'internal-linking-strategy-seo',
-  'schema-markup-types-for-seo',
-  'google-search-console-guide-beginners',
-  'how-to-improve-core-web-vitals',
-  'local-seo-checklist-2026',
-  'how-to-build-backlinks-2026',
-  'seo-vs-sem-whats-the-difference',
-  'seo-rank-tracking-guide',
-  'seo-analytics-dashboard',
-  'ecommerce-seo-checklist',
-  'competitor-seo-analysis',
-  'youtube-seo-guide',
-  'google-ai-mode-seo-guide-2026',
-  'zero-click-search-optimization',
-  'chatgpt-search-vs-google-seo',
-  'structured-data-for-ai-search',
-  'prompt-engineering-for-seo'
-];
+// Priority map: higher priority for money pages
+function getPriority(rel) {
+  if (rel === 'index.html') return '1.0';
+  if (rel.startsWith('tools/') && !rel.includes('directory') && !rel.includes('index')) return '0.8';
+  if (rel.startsWith('skills/') && !rel.includes('index')) return '0.8';
+  if (rel.startsWith('blog/') && !rel.includes('index') && !rel.includes('strategy') && !rel.includes('keyword-research') && !rel.includes('tutorials')) return '0.8';
+  if (rel.startsWith('pillar/')) return '0.9';
+  if (rel.startsWith('glossary/') && !rel.includes('index') && !rel.includes('category/')) return '0.8';
+  if (rel.startsWith('courses/')) return '0.9';
+  if (rel.startsWith('books/')) return '0.9';
+  if (rel.startsWith('authors/')) return '0.7';
+  if (rel === 'tools/index.html' || rel === 'tools/directory.html') return '0.9';
+  if (rel.includes('seo-') || rel.includes('best-') || rel.includes('google-')) return '0.9';
+  if (rel === 'about.html') return '0.7';
+  if (rel.includes('policy') || rel.includes('terms')) return '0.5';
+  return '0.7';
+}
 
-const staticPages = [
-  {url: '/', priority: '1.0', changefreq: 'weekly'},
-  {url: '/about.html', priority: '0.7', changefreq: 'monthly'},
-  {url: '/contact.html', priority: '0.6', changefreq: 'monthly'},
-  {url: '/advertise.html', priority: '0.6', changefreq: 'monthly'},
-  {url: '/editorial-policy.html', priority: '0.6', changefreq: 'monthly'},
-  {url: '/privacy-policy.html', priority: '0.5', changefreq: 'yearly'},
-  {url: '/terms.html', priority: '0.5', changefreq: 'yearly'},
-  {url: '/cookie-policy.html', priority: '0.5', changefreq: 'yearly'},
-  {url: '/tools/', priority: '0.9', changefreq: 'weekly'},
-  {url: '/courses/', priority: '0.9', changefreq: 'weekly'},
-  {url: '/books/', priority: '0.9', changefreq: 'weekly'},
-  {url: '/tools/directory.html', priority: '0.9', changefreq: 'weekly'},
-  {url: '/tools/text-analysis.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/tools/seo-tools.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/tools/text-formatting.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/tools/developer-tools.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/tools/encoding-tools.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/tools/schema-generators.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/tools/smart-text-lab.html', priority: '0.9', changefreq: 'monthly'},
-  {url: '/blog/', priority: '0.9', changefreq: 'weekly'},
-  {url: '/blog/seo-strategy.html', priority: '0.8', changefreq: 'weekly'},
-  {url: '/blog/keyword-research.html', priority: '0.8', changefreq: 'weekly'},
-  {url: '/blog/seo-tutorials.html', priority: '0.8', changefreq: 'weekly'},
-  {url: '/blog/technical-seo.html', priority: '0.8', changefreq: 'weekly'},
-  {url: '/blog/content-strategy.html', priority: '0.8', changefreq: 'weekly'},
-  {url: '/blog/tools-tutorials.html', priority: '0.8', changefreq: 'weekly'},
-  {url: '/blog/social-media.html', priority: '0.8', changefreq: 'weekly'},
-  {url: '/blog/local-seo.html', priority: '0.8', changefreq: 'weekly'},
-  {url: '/blog/off-page-seo.html', priority: '0.8', changefreq: 'weekly'},
-  {url: '/pillar/seo-complete-guide.html', priority: '0.9', changefreq: 'monthly'},
-  {url: '/pillar/keyword-research-masterclass.html', priority: '0.9', changefreq: 'monthly'},
-  {url: '/pillar/technical-seo-checklist.html', priority: '0.9', changefreq: 'monthly'},
-  {url: '/pillar/seo-content-writing-guide.html', priority: '0.9', changefreq: 'monthly'},
-  {url: '/glossary/', priority: '0.9', changefreq: 'weekly'},
-  {url: '/glossary/category/seo-fundamentals.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/category/technical-seo.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/category/on-page-seo.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/category/off-page-seo.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/category/keywords.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/category/content-ai.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/category/analytics.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/category/tools-technology.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/what-is-seo.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/serp.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/organic-traffic.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/crawlability.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/indexing.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/rank-position.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/search-intent.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/bounce-rate.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/dwell-time.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/robots-txt.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/sitemap.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/canonical-url.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/hreflang.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/page-speed.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/mobile-first-indexing.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/core-web-vitals.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/structured-data.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/schema-markup.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/rich-results.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/featured-snippet.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/meta-description.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/title-tag.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/header-tags.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/keyword-density.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/internal-linking.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/anchor-text.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/image-optimization.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/alt-text.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/content-optimization.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/backlink.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/domain-authority.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/link-building.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/do-follow.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/guest-posting.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/digital-pr.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/keyword-research.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/long-tail-keyword.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/search-volume.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/keyword-difficulty.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/lsi-keywords.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/semantic-keywords.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/eeat.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/ai-overview.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/content-quality.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/helpful-content.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/generative-engine-optimization.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/content-strategy-term.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/citation.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/ctr.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/impressions.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/conversion-rate.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/user-experience.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/json-ld.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/open-graph.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/twitter-card.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/http-status-codes.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/301-redirect.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/cdn.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/orphan-page.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/link-equity.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/site-architecture.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/local-seo.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/google-business-profile.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/editorial-calendar.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/topic-clusters.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/pillar-page.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/topical-authority.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/glossary/content-hub.html', priority: '0.8', changefreq: 'monthly'},
-  {url: '/seo-statistics-2026.html', priority: '0.9', changefreq: 'monthly'},
-  {url: '/best-free-seo-tools.html', priority: '0.9', changefreq: 'monthly'},
-  {url: '/seo-checklist-2026.html', priority: '0.9', changefreq: 'monthly'},
-  {url: '/google-algorithm-history.html', priority: '0.9', changefreq: 'monthly'},
-  {url: '/seo-roi-calculator.html', priority: '0.9', changefreq: 'monthly'},
-  {url: '/resume-builder.html', priority: '0.9', changefreq: 'monthly'},
-  {url: '/ads-quality-checker.html', priority: '0.9', changefreq: 'monthly'}
-];
+function getChangeFreq(rel) {
+  if (rel === 'index.html') return 'daily';
+  if (rel.startsWith('tools/') || rel.startsWith('skills/') || rel.startsWith('blog/')) return 'weekly';
+  if (rel.startsWith('courses/') || rel.startsWith('books/')) return 'weekly';
+  if (rel.startsWith('pillar/') || rel.startsWith('glossary/')) return 'monthly';
+  return 'monthly';
+}
 
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
 xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
 
-// Static pages
-staticPages.forEach(p => {
-  xml += `  <url><loc>${baseUrl}${p.url}</loc><lastmod>${today}</lastmod><changefreq>${p.changefreq}</changefreq><priority>${p.priority}</priority></url>\n`;
-});
-
-// Tool pages
-tools.forEach(tool => {
-  xml += `  <url><loc>${baseUrl}/tools/${tool}.html</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>\n`;
-});
-
-// Blog pages
-blogs.forEach(blog => {
-  xml += `  <url><loc>${baseUrl}/blog/${blog}.html</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>\n`;
-});
-
-// Author pages
-const authors = ['sarah-mitchell', 'james-chen', 'emma-rodriguez', 'david-park'];
-authors.forEach(author => {
-  xml += `  <url><loc>${baseUrl}/authors/${author}.html</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>\n`;
-});
-
-// Skills pages
-xml += `  <url><loc>${baseUrl}/skills/</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>\n`;
-skills.forEach(skill => {
-  xml += `  <url><loc>${baseUrl}/skills/${skill}.html</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>\n`;
+let count = 0;
+pages.forEach(p => {
+  const rel = path.relative(pubDir, p).replace(/\\/g, '/');
+  if (rel === '404.html') return;
+  const loc = baseUrl + '/' + rel;
+  xml += `  <url><loc>${loc}</loc><lastmod>${today}</lastmod><changefreq>${getChangeFreq(rel)}</changefreq><priority>${getPriority(rel)}</priority></url>\n`;
+  count++;
 });
 
 xml += '</urlset>';
 
-const outPath = path.join(__dirname, 'public', 'sitemap.xml');
-fs.mkdirSync(path.dirname(outPath), {recursive:true});
+const outPath = path.join(pubDir, 'sitemap.xml');
 fs.writeFileSync(outPath, xml, 'utf8');
 console.log('Sitemap generated: ' + outPath);
-console.log('Total URLs: ' + (staticPages.length + tools.length + blogs.length + authors.length + 1));
+console.log('Total URLs: ' + count);
